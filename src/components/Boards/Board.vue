@@ -55,7 +55,7 @@
               <v-tabs v-model="active" slider-color="cyan lighten-4">
                 <v-tab :to="'/boards/' + board.id + '/'">소개</v-tab>
                 <v-tab :to="'/boards/' + board.id + '/history'">연혁</v-tab>
-                <v-tab :to="'/boards/' + board.id + '/recruit'">모집</v-tab>
+                <v-tab :to="'/boards/' + board.id + '/subrecruit'">모집</v-tab>
               </v-tabs>
               <router-view></router-view>
             </div>

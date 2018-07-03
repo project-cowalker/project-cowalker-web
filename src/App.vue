@@ -55,14 +55,14 @@ export default {
   computed: {
     menuItems () {
       let menuItems = [
-        { title: '개설', link: '/make' },
+        { title: '개설', link: '/opened1' },
         { title: '스크랩', link: '/bag' },
         { title: '메세지', link: '/message' },
         { title: '로그인', link: '/login' }
       ]
       if (this.userIsAuthenticated) {
         menuItems = [
-          { title: '개설', link: '/make' },
+          { title: '개설', link: '/opened1' },
           { title: '스크랩', link: '/bag' },
           { title: '메세지', link: '/message' },
           { title: '알림', link: '/alert' },
