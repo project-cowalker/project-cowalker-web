@@ -1,6 +1,6 @@
-# co-worker
+# co-walker
 
-> A Vue.js project
+> A Vue.js project co-walker
 
 ## Build Setup
 

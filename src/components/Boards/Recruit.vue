@@ -118,7 +118,38 @@
       </v-flex>
     </v-layout>
 
-    <v-layout>
+      <v-layout>
+        <v-flex x12 sm10 md8 lg2 offset-sm1 offset-md1>
+          <p class="p_title">활동기간 및 시간</p>
+        </v-flex>
+        <v-flex x12 sm10 md8 lg12>
+          <form>
+            <input type="text" class="regular" v-model="activitiy">
+          </form>
+        </v-flex>
+      </v-layout>
+
+      <v-layout>
+        <v-flex x12 sm10 md8 lg2 offset-sm1 offset-md1>
+          <p class="p_title">&emsp;&emsp;&emsp;활동 위치</p>
+        </v-flex>
+        <v-flex x12 sm10 md8 lg12 >
+          <input class="input_p" type="text" v-model="area"/>
+        </v-flex>
+      </v-layout>
+
+      <v-layout>
+        <v-flex x12 sm10 md8 lg2 offset-sm1 offset-md1>
+          <p class="p_title">&emsp;&ensp;혜택 및 보상</p>
+        </v-flex>
+        <v-flex x12 sm10 md8 lg12>
+          <v-flex x12 sm10 md8 lg12>
+            <input class="input_p" type="text" v-model="reward"/>
+          </v-flex>
+        </v-flex>
+      </v-layout>
+
+      <v-layout>
       <v-flex x12 sm10 md8 lg2 offset-sm1 offset-md1>
         <p class="p_title">필요역량 및 기술</p>
       </v-flex>
@@ -152,44 +183,11 @@
 
     <v-layout>
       <v-flex x12 sm10 md8 lg2 offset-sm1 offset-md1>
-        <p class="p_title">활동기간 및 시간</p>
-      </v-flex>
-      <v-flex x12 sm10 md8 lg12>
-        <form>
-          <input type="text" class="regular" v-model="activitiy">
-        </form>
-      </v-flex>
-    </v-layout>
-
-    <v-layout>
-      <v-flex x12 sm10 md8 lg2 offset-sm1 offset-md1>
-        <p class="p_title">&emsp;&ensp;혜택 및 보상</p>
-      </v-flex>
-      <v-flex x12 sm10 md8 lg12>
-          <v-flex x12 sm10 md8 lg12>
-            <input class="input_p" type="text" v-model="reward"/>
-          </v-flex>
-      </v-flex>
-    </v-layout>
-
-    <v-layout>
-      <v-flex x12 sm10 md8 lg2 offset-sm1 offset-md1>
-        <p class="p_title">&emsp;&emsp;&emsp;&emsp;&ensp;위치</p>
-      </v-flex>
-      <v-flex x12 sm10 md8 lg12>
-        <form>
-          <input type="text" class="regular" v-model="area">
-        </form>
-      </v-flex>
-    </v-layout>
-
-    <v-layout>
-      <v-flex x12 sm10 md8 lg2 offset-sm1 offset-md1>
         <p class="p_title" >&ensp;&emsp;&emsp;&emsp;코멘트</p>
       </v-flex>
       <v-flex x12 sm10 md8 lg12>
         <v-flex x12 sm10 md8 lg10>
-          <textarea class="textarea" cols="70" rows="15" v-model="comment"></textarea>
+          <textarea class="textarea" cols="70" rows="10" v-model="comment"></textarea>
         </v-flex>
       </v-flex>
     </v-layout>
@@ -202,7 +200,7 @@
     </v-layout>
 
       <ul class="list-group">
-        <li class="list-group-item" v-for="(question,index) in questions">
+        <li class="list-group-item" v-for="(question,index) in questions" :key="index">
           <v-flex x12 sm10 md8 lg11 offset-md2 >
             <form>
               <input type="text" class="plus">
@@ -338,14 +336,14 @@ export default {
   .input_p {
     width: 75%;
     height: 40px;
-    margin-bottom: 30px;
+    margin-bottom: 5%;
     border-radius: 8px;
     background-color: #fcfcfc;
     border: 1px solid #dbdbdb;
   }
   .p_title{
     font-size: 17px;
-    margin-bottom: 30px;
+    margin-top: 5%;
   }
   .combo{
     width: 30%;
@@ -354,7 +352,7 @@ export default {
   .regular{
     width: 33%;
     height: 40px;
-    margin-bottom: 20px;
+    margin-bottom: 5%;
     border-bottom: 1px solid #999;
   }
   .btn-done{

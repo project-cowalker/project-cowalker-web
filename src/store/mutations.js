@@ -22,6 +22,13 @@ export const boardMutations = {
     console.log('signInFinish')
     console.log(state.user)
   },
+  tokenSave (state, response) {
+    state.token = response.data.token
+    // 토큰을 로컬 스토리지에 저장
+    localStorage.setItem('token', state.token)
+    console.log('토큰값 출력')
+    console.log(state.token)
+  },
   writeBoards (state, payload) {
     state.boards = payload
   },
@@ -39,6 +46,8 @@ export const boardMutations = {
   },
   logoutSuccess (state) {
     state.user = null
+    state.token = null
+    localStorage.removeItem(state.token)
     console.log('user logout success')
     console.log(state.user)
     Router.push('/signin')
