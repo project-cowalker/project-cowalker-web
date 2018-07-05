@@ -10,6 +10,7 @@ import SubRecruit from '@/components/Subpage/SubRecruit'
 import Opened1 from '@/components/Opened/Opened1'
 import Opened2 from '@/components/Opened/Opened2'
 import Recruit from '@/components/Boards/Recruit'
+import Apply from '@/components/Boards/Apply'
 
 Vue.use(Router)
 
@@ -43,6 +44,11 @@ export default new Router({
       path: '/recruit',
       name: 'Recruit',
       component: Recruit
+    },
+    {
+      path: '/apply',
+      name: 'Apply',
+      component: Apply
     },
     {
       path: '/boards/:id',
