@@ -15,15 +15,13 @@
       <v-layout d-line-flex >
       <!--:navigate-to="someLocalProperty"-->
         <v-flex x12 sm10 md8 lg12>
+          <form class="imgsize">
+            <div class="dropbox" v-if="!image">
+              <input class="input-image" type="file" :multiple="false" @change="onFileChange" accept="image/*" /> <!--이미지만 선택가능-->
+            </div>
+            <img :src="image" v-if="image" alt="" class="newimg"><!--이미지가 있으면 뜨도록-->
+          </form>
           <carousel :per-page="10" :mouse-drag="true" >
-            <slide>
-              <form class="imgsize">
-                <div class="dropbox" v-if="!image">
-                  <input type="file" class="input-image" :multiple="true" @change="onFileChange" accept=".jpg, .jpeg, .png" /> <!--이미지만 선택가능-->
-                </div>
-                  <img :src="image" v-if="image" alt="" class="newimg"><!--이미지가 있으면 뜨도록-->
-              </form>
-            </slide>
             <slide>
               <form class="imgsize">
                 <div class="dropbox" v-if="!image">
@@ -59,7 +57,7 @@
       </v-layout>
 
       <v-flex x12 sm10 md8 lg10 offset-sm1 offset-md2>
-        <textarea class="textarea" cols="30" rows="10"></textarea>
+        <textarea class="textarea" cols="70" rows="25"></textarea>
       </v-flex>
 
       <v-container text-xs-center>
@@ -94,12 +92,11 @@ export default {
     },
     onFileChange (event) {
       // if ((event.target.files[0]['type']).split('/')[0] === 'image') {
-      for (let i = 0, numFiles = this.file.length; i < numFiles; i++) {
-        this.file = event.target.file[i]
-        this.getImage(this.file)
-      }
-      // }
+      // for (let i = 0, numFiles = this.file.length; i < numFiles; i++) {
+      this.file = event.target.files[0]
+      this.getImage(this.file)
     }
+    // }
   }
 }
 </script>
@@ -112,24 +109,23 @@ export default {
     font-weight: bold;
   }
   .p_title{
-    font-size: 19px;
+    font-size: 17px;
     margin-bottom: 50px;
   }
   .input_p {
     border-radius: 10px;
     width: 80%;
     height: 50px;
-    opacity: 0.4;
-    border: 1px solid #707070;
+    background-color: #fcfcfc;
+    border: 1px solid #dbdbdb;
   }
   .textarea{
     resize: none;
-    border-radius: 10px;
-    opacity: 0.4;
     width: 80%;
-    height: 440px;
+    border-radius: 10px;
     margin-bottom: 50px;
-    border: 1px solid #707070;
+    background-color: #fcfcfc;
+    border: 1px solid #dbdbdb;
   }
   .btn-img{
     margin-bottom: 60px;
