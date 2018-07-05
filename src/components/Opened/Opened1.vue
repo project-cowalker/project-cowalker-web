@@ -7,6 +7,7 @@
         </v-flex>
       </v-layout>
 
+    <form @submit.prevent="onUploadOpened">
       <v-layout row wrap >
         <v-flex x12 sm10 md8 lg10 offset-sm1 offset-md2>
           <p class="p_title">프로젝트 제목</p>
@@ -15,7 +16,7 @@
 
       <v-layout row wrap>
         <v-flex x12 sm10 md8 lg12 offset-sm1 offset-md2>
-          <input class="input_p" type="text"/>
+          <input class="input_p" type="text" v-model="title"/>
         </v-flex>
       </v-layout>
 
@@ -27,19 +28,16 @@
 
       <v-layout row wrap>
         <v-flex x12 sm10 md8 lg10 offset-sm1 offset-md3>
-          <textarea class="textarea" cols="30" rows="10"></textarea>
+          <textarea class="textarea" cols="30" rows="5" v-model="summary"></textarea>
         </v-flex>
       </v-layout>
 
-      <v-layout row wrap>
-        <v-flex x12 sm10 md8 lg10 offset-sm1 offset-md2>
+      <v-layout d-line-flex>
+        <v-flex x12 sm10 md8 lg1 offset-sm1 offset-md2>
           <p class="p_title1">지역</p>
         </v-flex>
-      </v-layout>
-
-      <v-layout>
-        <v-flex x12 sm10 md8 lg10 offset-sm1 offset-md2>
-          <v-combobox v-model="select" :items="locations" class="combo"></v-combobox>
+        <v-flex x12 sm10 md8 lg7>
+          <v-combobox v-model="area" :items="locations" class="combo"></v-combobox>
           <template class="combo" slot="selection" slot-scope="data">
             <v-chip :selected="data.selected" :disabled="data.disabled" :key="JSON.stringify(data.location)" class="v-chip--select-multi " @input="data.parent.selectItem(data.location)">
               <v-avatar class="accent white--text">
@@ -51,15 +49,12 @@
         </v-flex>
       </v-layout>
 
-      <v-layout row wrap>
-        <v-flex x12 sm10 md8 lg10 offset-sm1 offset-md2>
+      <v-layout d-line-flex>
+        <v-flex x12 sm10 md8 lg1 offset-sm1 offset-md2>
           <p class="p_title">목적</p>
         </v-flex>
-      </v-layout>
-
-      <v-layout>
-        <v-flex x12 sm10 md8 lg10 offset-sm1 offset-md2>
-          <v-combobox v-model="select" :items="purposes" class="combo"></v-combobox>
+        <v-flex x12 sm10 md8 lg7>
+          <v-combobox v-model="aim" :items="purposes" class="combo"></v-combobox>
 
           <template class="combo" slot="selection" slot-scope="data">
             <v-chip :selected="data.selected" :disabled="data.disabled" :key="JSON.stringify(data.purpose)" class="v-chip--select-multi " @input="data.parent.selectItem(data.purpose)">
@@ -73,15 +68,12 @@
         </v-flex>
       </v-layout>
 
-      <v-layout row wrap>
-        <v-flex x12 sm10 md8 lg10 offset-sm1 offset-md2>
+      <v-layout d-line-flex>
+        <v-flex x12 sm10 md8 lg1 offset-sm1 offset-md2>
           <p class="p_title">분야</p>
         </v-flex>
-      </v-layout>
-
-      <v-layout>
-        <v-flex x12 sm10 md8 lg10 offset-sm1 offset-md2>
-          <v-combobox v-model="select" :items="departments" class="combo"></v-combobox>
+        <v-flex x12 sm10 md8 lg7>
+          <v-combobox v-model="department" :items="departments" class="combo"></v-combobox>
 
           <template class="combo" slot="selection" slot-scope="data">
             <v-chip :selected="data.selected" :disabled="data.disabled" :key="JSON.stringify(data.field)" class="v-chip--select-multi " @input="data.parent.selectItem(data.field)">
@@ -95,26 +87,34 @@
         </v-flex>
       </v-layout>
 
+      <v-flex class="title1">
+        <p>프로젝트 소개</p>
+      </v-flex>
+
       <v-flex x12 sm10 md8 lg10 offset-sm1 offset-md2>
-        <p class="p_title1">커버이미지</p>
         <form class="imgsize">
           <div class="dropbox" v-if="!image">
             <input class="input-image" type="file" :multiple="false" @change="onFileChange" accept="image/*" /> <!--이미지만 선택가능-->
           </div>
+
           <img :src="image" v-if="image" alt="" class="newimg"><!--이미지가 있으면 뜨도록-->
         </form>
       </v-flex>
 
+      <v-flex x12 sm10 md8 lg10 offset-sm1 offset-md3>
+        <textarea class="textarea" cols="70" rows="7" placeholder="  프로젝트에 대해 소개해주세요."
+        v-model="explain"></textarea>
+      </v-flex>
+
       <v-container text-xs-center>
         <v-layout justify-center>
-          <button type="button">
-            <router-link to="./opened2">
-              <img class="btn-img" src="https://blogfiles.pstatic.net/MjAxODA3MDJfMjY3/MDAxNTMwNDYxNjIwNjM3.WkNGeb5ttCHPKw3FElpLdfkIaceOpT0SWZc1hzK7fr4g.SHpbRPUVuGE8PiUgoZx1d7L2k98o9okf-8k0TREwxTYg.PNG.peach404/right_btn.png">
-            </router-link>
-          </button>
+          <button type="submit" class="btn-done">개설하기</button>
         </v-layout>
       </v-container>
-    </v-container>
+
+      </form>
+
+      </v-container>
   </v-form>
 </template>
 
@@ -123,7 +123,12 @@ export default {
   name: 'Opened1',
   data () {
     return {
-      select: '',
+      title: '',
+      summary: '',
+      explain: '',
+      area: '',
+      aim: '',
+      department: '',
       locations: [
         '전체',
         '서울',
@@ -157,6 +162,25 @@ export default {
     }
   },
   methods: {
+    onUploadOpened () {
+      const data = new FormData()
+      data.append('title', this.title)
+      data.append('summary', this.summary)
+      data.append('area', this.area)
+      data.append('department', this.department)
+      data.append('aim', this.aim)
+      data.append('explain', this.explain)
+      data.append('img', this.file)
+
+      /* let axiosConfig = {
+        headers: {
+          'Content-Type': 'application/json',
+          'authorization': this.$store.getters.token
+        }
+      } */
+
+      this.$store.dispatch('uploadOpened', data)
+    },
     getImage (file) {
       const fileReader = new FileReader()
       fileReader.onload = () => { // 파일리더가 뭔가를 로드해왔을 때 함수블록을 실행된다
@@ -166,6 +190,7 @@ export default {
     },
     onFileChange (event) {
       // if ((event.target.files[0]['type']).split('/')[0] === 'image') {
+
       this.file = event.target.files[0]
       this.getImage(this.file)
       // }
@@ -178,21 +203,29 @@ export default {
 
   .title{
     margin-top: 30px;
-    margin-bottom: 110px;
+    margin-bottom: 5%;
     display: flex;
     justify-content: center;
     font-weight: bold;
+  }
+  .title1{
+    margin-top: 3%;
+    margin-bottom: 2%;
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 17px;
   }
   .p_title{
     font-size: 17px;
   }
   .p_title1{
-    margin-top: 60px;
+    margin-top: 5%;
     font-size: 17px;
   }
   .combo{
     width: 35%;
-    margin-left: 8%;
+    margin-left: -3%;
   }
   .dropbox{
     margin-left: 8%;
@@ -209,9 +242,9 @@ export default {
   .input-image  {
     display: flex;
     max-width: 100%;
-    margin-bottom: 70px;
+    margin-bottom: 5%;
     color: transparent;
-    width: 650px;
+    width: 70%;
     height: 350px;
     opacity: 0.4;
     border-radius: 15px;
@@ -227,17 +260,22 @@ export default {
     border: 1px solid #dbdbdb;
   }
   .newimg{
-    display: flex;
+    margin-left: 7%;
     max-width: 100%;
-    margin-bottom: 70px;
-    width: 650px;
+    margin-bottom: 5%;
+    width: 630px;
     height: 350px;
     border-radius: 15px;
   }
-  .btn-img{
-    margin-bottom: 60px;
-    width: 60px;
-    height: 60px;
+
+  .btn-done{
+    font-size: 16px;
+    width: 30%;
+    height: 65px;
+    border-radius: 19px;
+    background-color: #F3FCFE;
+    border: 1px solid #64DFFF;
+    margin: 5%;
   }
 
   </style>
