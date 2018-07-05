@@ -52,6 +52,23 @@ export const boardActions = {
         }
       )
   },
+  recruiting ({commit}, payload){
+    commit('setLoading', true)
+    commit('clearError')
+    axios.post('http://bghgu.tk:3000/api/recruit',payload)
+      .then(res => {
+        commit('setLoading', false)
+        commit('recruitingSuccess')
+      }
+      //console.log(payload)
+  // }).catch(
+  //   (error) => {
+  //     commit('setLoading', false)
+  //     commit('setError', error)
+  //     console.log(error)
+  // }
+)
+},
 
   writeBoards ({ commit }, payload) {
     axios.post('http://18.191.14.154:8080/reviews/write', payload)

@@ -26,8 +26,8 @@
       </v-layout>
 
       <v-layout row wrap>
-        <v-flex x12 sm10 md8 lg10 offset-sm1 offset-md2>
-          <input class="input_p" type="text" />
+        <v-flex x12 sm10 md8 lg10 offset-sm1 offset-md3>
+          <textarea class="textarea" cols="30" rows="10"></textarea>
         </v-flex>
       </v-layout>
 
@@ -202,8 +202,9 @@ export default {
     margin-left: 8%;
     width: 65%;
     height: 40px;
-    border-radius: 3px;
-    border: 1px solid #919191;
+    border-radius: 8px;
+    background-color: #fcfcfc;
+    border: 1px solid #dbdbdb;
   }
   .input-image  {
     display: flex;
@@ -216,6 +217,14 @@ export default {
     border-radius: 15px;
     border: 1px solid #707070;
     /*background-image: url('https://postfiles.pstatic.net/MjAxODA3MDJfNDMg/MDAxNTMwNDYwNzE2MzY5.aRhpCJFQlkEdPV2bOl_47fnU_DrgWBzeDb9UnDALMrIg.iu33-wVRHmnZcro8xT2W0GuYwfJi48fxDJXol5eWhA4g.PNG.peach404/aa.png?type=w773');*/
+  }
+  .textarea{
+    resize: none;
+    margin-left: -3%;
+    width: 73%;
+    border-radius: 10px;
+    background-color: #fcfcfc;
+    border: 1px solid #dbdbdb;
   }
   .newimg{
     display: flex;

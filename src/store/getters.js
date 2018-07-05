@@ -15,9 +15,8 @@ export const boardGetters = {
     return state.registeredboards
   },
 
-  store (state, getters) {
-    return state.store
-  },
+  // stor/////////////e: (state, getters) {
+  //   re/'
 
   user (state, getters) {
     return state.user
