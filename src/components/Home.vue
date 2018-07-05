@@ -134,7 +134,7 @@ export default {
     width: 262.08px;
     height:  40.64px;
     padding: 12px 20px;
-    margin: 8px 0;
+    margin: 0;
     display: inline-block;
     border: 1px solid #ccc;
     border-radius: 25px;
@@ -143,7 +143,7 @@ export default {
    width: 262.08px;
     height:  40.64px;
     padding: 12px 20px;
-    margin: 8px 0;
+    margin: 0;
     display: inline-block;
     border: 1px solid #ccc;
     border-radius: 4px;

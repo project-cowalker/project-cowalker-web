@@ -92,12 +92,12 @@ export default {
     },
     onFileChange (event) {
       // if ((event.target.files[0]['type']).split('/')[0] === 'image') {
-      //for (let i = 0, numFiles = this.file.length; i < numFiles; i++) {
-        this.file = event.target.files[0]
-        this.getImage(this.file)
-      }
-      // }
+      // for (let i = 0, numFiles = this.file.length; i < numFiles; i++) {
+      this.file = event.target.files[0]
+      this.getImage(this.file)
     }
+    // }
+  }
 }
 </script>
 <style scoped>

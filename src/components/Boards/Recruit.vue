@@ -292,7 +292,7 @@ export default {
     },
     createBtn (numb) {
       if (numb) {
-        this.questions.push({ numb: numb})
+        this.questions.push({ numb: numb })
         this.numb = null
       }
     },
@@ -313,7 +313,7 @@ export default {
         question: this.question
       }
       console.log(object)
-      this.$store.dispatch('recruiting',object)
+      this.$store.dispatch('recruiting', object)
     }
   }
 }
