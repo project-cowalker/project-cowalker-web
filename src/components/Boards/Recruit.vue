@@ -8,13 +8,13 @@
     </v-layout>
 
     <v-layout d-line-flex>
-      <v-flex lg1>
-        <p class="p_title">모집 역할</p>
+      <v-flex x12 sm10 md8 lg2 offset-sm1 offset-md1>
+        <v-text class="p_title">&emsp;&emsp;&emsp;모집 역할 </v-text>
       </v-flex>
       <v-flex x12 sm10 md8 lg12>
         <v-combobox
-          v-model="select"
-          :items="fields"
+          v-model="position"
+          :items="departments"
           class="combo"
         ></v-combobox>
 
@@ -22,169 +22,207 @@
           <v-chip
             :selected="data.selected"
             :disabled="data.disabled"
-            :key="JSON.stringify(data.field)"
+            :key="JSON.stringify(data.department)"
             class="v-chip--select-multi "
-            @input="data.parent.selectItem(data.field)"
+            @input="data.parent.selectItem(data.department)"
           >
             <v-avatar class="accent white--text">
-              {{ data.field.slice(0, 1).toUpperCase() }}
+              {{ data.department.slice(0, 1).toUpperCase() }}
             </v-avatar>
-            {{ data.field }}
+            {{ data.department }}
           </v-chip>
         </template>
       </v-flex>
+
     </v-layout>
 
     <v-layout>
-      <v-flex lg1>
-        <p class="p_title">모집 기간</p>
+      <v-flex x12 sm10 md8 lg2 offset-sm1 offset-md1>
+        <p class="p_title">&emsp;&emsp;&emsp;모집 기간</p>
       </v-flex>
-      <v-flex x12 sm10 md8 lg10>
-        <form>
-          <input type="text" class="regular">
-        </form>
-      </v-flex>
-    </v-layout>
 
+      <v-layout d-line-flex>
+      <!--시작날짜-->
+        <v-flex x12 sm10 md8 lg3>
+            <v-menu
+              ref="menu1"
+              :close-on-content-click="false"
+              v-model="menu1"
+              :nudge-right="40"
+              lazy
+              transition="scale-transition"
+              offset-y
+              full-width
+              max-width="290px"
+              min-width="290px"
+            >
+              <v-text-field
+                class="data_field"
+                slot="activator"
+                v-model="dateFormatted_start"
+                persistent-hint
+                label="시작날짜"
+                prepend-icon=""
+                @blur="start_date = parseDate(dateFormatted_start)"
+              ></v-text-field>
+              <v-date-picker v-model="start_date" no-title @input_start="menu1 = false"></v-date-picker>
+            </v-menu>
+        </v-flex>
+
+        <!--종료날짜-->
+        <v-flex x12 sm10 md8 lg3 offset-md1>
+          <v-menu
+            ref="menu1"
+            :close-on-content-click="false"
+            v-model="menu1"
+            :nudge-right="40"
+            lazy
+            transition="scale-transition"
+            offset-y
+            full-width
+            max-width="290px"
+            min-width="290px"
+          >
+            <v-text-field
+              class="data_field"
+              slot="activator"
+              v-model="dateFormatted_end"
+              persistent-hint
+              label="종료날짜"
+              prepend-icon=""
+              @blur="end_date = parseDate(dateFormatted)"
+            ></v-text-field>
+            <v-date-picker v-model="end_date" no-title @input_end="menu1 = false"></v-date-picker>
+          </v-menu>
+        </v-flex>
+
+      </v-layout>
+    </v-layout>
     <v-layout>
-      <v-flex lg1>
-        <p class="p_title">모집 인원</p>
+      <v-flex x12 sm10 md8 lg2 offset-sm1 offset-md1>
+        <p class="p_title">&emsp;&emsp;&emsp;모집 인원</p>
       </v-flex>
-      <v-flex x12 sm10 md8 lg10>
+      <v-flex x12 sm10 md8 lg12>
         <form>
-          <input type="text" class="regular">
+          <input type="text" class="regular" v-model="number">
         </form>
       </v-flex>
     </v-layout>
 
     <v-layout d-line-flex>
-      <v-flex lg1>
-        <p class="p_title">활동</p>
+      <v-flex x12 sm10 md8 lg2 offset-sm1 offset-md1>
+        <p class="p_title">&emsp;&emsp;&emsp;&emsp;&emsp;활동</p>
       </v-flex>
-      <v-flex x12 sm10 md8 lg10>
-        <v-combobox
-          v-model="select"
-          :items="fields"
-          class="combo"
-        ></v-combobox>
-
-        <template class="combo" slot="selection" slot-scope="data">
-          <v-chip
-            :selected="data.selected"
-            :disabled="data.disabled"
-            :key="JSON.stringify(data.field)"
-            class="v-chip--select-multi "
-            @input="data.parent.selectItem(data.field)"
-          >
-            <v-avatar class="accent white--text">
-              {{ data.field.slice(0, 1).toUpperCase() }}
-            </v-avatar>
-            {{ data.field }}
-          </v-chip>
-        </template>
+      <v-flex x12 sm10 md8 lg12 >
+        <input class="input_p" type="text" v-model="task"/>
       </v-flex>
     </v-layout>
 
     <v-layout>
+      <v-flex x12 sm10 md8 lg2 offset-sm1 offset-md1>
         <p class="p_title">필요역량 및 기술</p>
-      <v-flex x12 sm10 md8 lg10>
-        <form>
-          <input type="text" class="regular_long" autofocus style="margin-left: -3%">
-        </form>
+      </v-flex>
+
+      <v-flex x12 sm10 md8 lg12 >
+        <input class="input_p" type="text" v-model="ability"/>
       </v-flex>
     </v-layout>
 
     <v-layout>
-    <v-flex>
-      <p class="p_title">요구경력 및 경험</p>
+    <v-flex x12 sm10 md8 lg2 offset-sm1 offset-md1>
+      <p class="p_title">&emsp;&ensp;경력 및 경험</p>
     </v-flex>
     <v-flex x12 sm10 md8 lg12>
-      <form>
-        <input type="text" class="regular_long" style="margin-left: -4%">
-      </form>
+        <v-flex x12 sm10 md8 lg12>
+          <input class="input_p" type="text" v-model="career"/>
+        </v-flex>
     </v-flex>
   </v-layout>
 
     <v-layout>
-      <v-flex lg1>
-        <p class="p_title">우대사항</p>
+      <v-flex x12 sm10 md8 lg2 offset-sm1 offset-md1>
+        <p class="p_title">&emsp;&emsp;&emsp;우대사항</p>
       </v-flex>
-      <v-flex x12 sm10 md8 lg10>
-        <form>
-          <input type="text" class="regular_long" style="margin-left: 8%">
-        </form>
+      <v-flex x12 sm10 md8 lg12>
+          <v-flex x12 sm10 md8 lg12>
+            <input class="input_p" type="text" v-model="preference"/>
+          </v-flex>
       </v-flex>
     </v-layout>
 
     <v-layout>
-      <v-flex lg1>
+      <v-flex x12 sm10 md8 lg2 offset-sm1 offset-md1>
         <p class="p_title">활동기간 및 시간</p>
       </v-flex>
-      <v-flex x12 sm10 md8 lg10>
+      <v-flex x12 sm10 md8 lg12>
         <form>
-          <input type="text" class="regular">
+          <input type="text" class="regular" v-model="activitiy">
         </form>
       </v-flex>
     </v-layout>
 
     <v-layout>
-      <v-flex lg1>
-        <p class="p_title">혜택 및 보상</p>
+      <v-flex x12 sm10 md8 lg2 offset-sm1 offset-md1>
+        <p class="p_title">&emsp;&ensp;혜택 및 보상</p>
       </v-flex>
-      <v-flex x12 sm10 md8 lg10>
+      <v-flex x12 sm10 md8 lg12>
+          <v-flex x12 sm10 md8 lg12>
+            <input class="input_p" type="text" v-model="reward"/>
+          </v-flex>
+      </v-flex>
+    </v-layout>
+
+    <v-layout>
+      <v-flex x12 sm10 md8 lg2 offset-sm1 offset-md1>
+        <p class="p_title">&emsp;&emsp;&emsp;&emsp;&ensp;위치</p>
+      </v-flex>
+      <v-flex x12 sm10 md8 lg12>
         <form>
-          <input type="text" class="regular_long" style="margin-left: 8%">
+          <input type="text" class="regular" v-model="area">
         </form>
       </v-flex>
     </v-layout>
 
     <v-layout>
-      <v-flex lg1>
-        <p class="p_title">위치</p>
+      <v-flex x12 sm10 md8 lg2 offset-sm1 offset-md1>
+        <p class="p_title" >&ensp;&emsp;&emsp;&emsp;코멘트</p>
       </v-flex>
-      <v-flex x12 sm10 md8 lg10>
-        <form>
-          <input type="text" class="regular">
-        </form>
-      </v-flex>
-    </v-layout>
-
-    <v-layout>
-      <v-flex lg1>
-        <p class="p_title" >코멘트</p>
-      </v-flex>
-      <v-flex x12 sm10 md8 lg10>
-        <form>
-          <input type="text" class="regular_long" style="margin-left: 8%">
-        </form>
+      <v-flex x12 sm10 md8 lg12>
+        <v-flex x12 sm10 md8 lg10>
+          <textarea class="textarea" cols="70" rows="15" v-model="comment"></textarea>
+        </v-flex>
       </v-flex>
     </v-layout>
 
     <v-layout>
-      <v-flex lg1>
-        <p class="p_title">질문</p>
+      <v-flex x12 sm10 md8 lg2 offset-sm1 offset-md1>
+        <p class="p_title">&emsp;&emsp;&emsp;&emsp;&emsp;질문</p>
       </v-flex>
-      <v-flex x12 sm10 md8 lg10>
-        <form>
-          <input type="text" class="regular_long" style="margin-left: 8%">
-        </form>
-      </v-flex>
+
     </v-layout>
-    <v-layout>
-      <v-flex lg1>
-        <p class="p_title">  </p>
-      </v-flex>
-      <v-flex x12 sm10 md8 lg10>
-        <form>
-          <input type="text" class="regular_long" style="margin-left: 8%">
-        </form>
-      </v-flex>
-    </v-layout>
+
+      <ul class="list-group">
+        <li class="list-group-item" v-for="(question,index) in questions">
+          <v-flex x12 sm10 md8 lg11 offset-md2 >
+            <form>
+              <input type="text" class="plus">
+            </form>
+          </v-flex>
+        </li>
+      </ul>
+
+      <v-container text-xs-center>
+        <v-layout justify-center>
+          <button type="button" v-on:click="createBtn">
+              <img class="btn-img" src="https://blogfiles.pstatic.net/MjAxODA3MDRfMjY1/MDAxNTMwNzA2NjA1OTE3.6xxAPzQvc2DSHi4ws1LyT2eZPRLfaaHD3Jt16Pur5gEg.zwroeNnrRBffwvBFDNZNZgAI8IiSqbCmCt_VoDo4Fawg.PNG.peach404/plus_btn.png">
+          </button>
+        </v-layout>
+      </v-container>
 
     <v-layout justify-center style="margin: 10%">
-        <button type="submit" class="btn-done">
-          완료
-        </button>
+        <form @submit.prevent="onRecruit" class="btn-done">
+          <br>완료
+        </form>
     </v-layout>
     </v-container>
   </v-form>
@@ -192,20 +230,90 @@
 
 <script>
 export default {
-  name: 'Recruit',
   data () {
     return {
-      select: '',
-      fields: [
+      position: null,
+      start_date: null,
+      end_date: null,
+      number: null,
+      task: null,
+      activitiy: null,
+      reward: null,
+      area: null,
+      ability: null,
+      career: null,
+      preference: null,
+      comment: null,
+      dateFormatted_start: null,
+      dateFormatted_end: null,
+      menu1: false,
+      departments: [
         '전체',
-        '서울',
-        '경기도',
-        '강원도',
-        '충청도',
-        '경상도',
-        '전라도',
-        '제주도'
+        'PM',
+        '기획자',
+        '디자이너',
+        '개발자',
+        '기타'
+      ],
+      questions: [
+        '질문1.'
       ]
+    }
+  },
+  computed: {
+    computedDateFormatted_start () {
+      return this.formatDate(this.start_date)
+    },
+    computedDateFormatted_end () {
+      return this.formatDate(this.end_date)
+    }
+  },
+
+  watch: {
+    start_date (val) {
+      this.dateFormatted_start = this.formatDate(this.start_date)
+    },
+    end_date (val) {
+      this.dateFormatted_end = this.formatDate(this.end_date)
+    }
+  },
+  methods: {
+    formatDate (date) {
+      if (!date) return null
+
+      const [year, month, day] = date.split('-')
+      return `${month}/${day}/${year}`
+    },
+    parseDate (date) {
+      if (!date) return null
+
+      const [month, day, year] = date.split('/')
+      return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`
+    },
+    createBtn (numb) {
+      if (numb) {
+        this.questions.push({ numb: numb })
+        this.numb = null
+      }
+    },
+    onRecruit () {
+      const object = {
+        position: this.position,
+        start_date: this.start_date,
+        end_date: this.end_date,
+        number: this.number,
+        task: this.task,
+        activitiy: this.activitiy,
+        reward: this.reward,
+        area: this.area,
+        ability: this.ability,
+        career: this.career,
+        preference: this.preference,
+        comment: this.comment,
+        question: this.question
+      }
+      console.log(object)
+      this.$store.dispatch('recruiting', object)
     }
   }
 }
@@ -219,24 +327,34 @@ export default {
     justify-content: center;
     font-weight: bold;
   }
+  .textarea{
+    resize: none;
+    width: 90%;
+    border-radius: 10px;
+    margin-bottom: 50px;
+    background-color: #fcfcfc;
+    border: 1px solid #dbdbdb;
+  }
+  .input_p {
+    width: 75%;
+    height: 40px;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    background-color: #fcfcfc;
+    border: 1px solid #dbdbdb;
+  }
   .p_title{
-    font-size: 18px;
-    width: 200px;
+    font-size: 17px;
+    margin-bottom: 30px;
   }
   .combo{
     width: 30%;
-    margin-left: 8%;
+    margin-bottom: 15px;
   }
   .regular{
-    width: 30%;
-    margin-left: 8%;
+    width: 33%;
     height: 40px;
-    border-bottom: 1px solid #999;
-  }
-  .regular_long{
-    width: 60%;
-    height: 40px;
-    border: none;
+    margin-bottom: 20px;
     border-bottom: 1px solid #999;
   }
   .btn-done{
@@ -248,5 +366,20 @@ export default {
     border-radius: 19px;
     background-color: #F3FCFE;
     border: 1px solid #64DFFF;
+  }
+  .data_field{
+    margin-left: -15%;
+  }
+  .plus{
+    width: 74%;
+    height: 40px;
+    border: none;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #999;
+    margin-left: 5%;
+  }
+
+  ul{
+    list-style:none;
   }
 </style>
