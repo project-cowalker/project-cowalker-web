@@ -6,7 +6,11 @@ import Board from '@/components/Boards/Board'
 import Profile from '@/components/User/Profile'
 import Intro from '@/components/Subpage/Intro'
 import history from '@/components/Subpage/History'
-import Recruit from '@/components/Subpage/Recruit'
+import SubRecruit from '@/components/Subpage/SubRecruit'
+import Opened1 from '@/components/Opened/Opened1'
+import Opened2 from '@/components/Opened/Opened2'
+import Recruit from '@/components/Boards/Recruit'
+import Apply from '@/components/Boards/Apply'
 
 Vue.use(Router)
 
@@ -28,6 +32,25 @@ export default new Router({
       component: Profile
     },
     {
+      path: '/opened1',
+      name: 'Opened1',
+      component: Opened1
+    }, {
+      path: '/opened2',
+      name: 'Opened2',
+      component: Opened2
+    },
+    {
+      path: '/recruit',
+      name: 'Recruit',
+      component: Recruit
+    },
+    {
+      path: '/apply',
+      name: 'Apply',
+      component: Apply
+    },
+    {
       path: '/boards/:id',
       name: 'Boards',
       props: true,
@@ -42,8 +65,8 @@ export default new Router({
           component: history
         },
         {
-          path: 'recruit',
-          component: Recruit
+          path: 'subrecruit',
+          component: SubRecruit
         }
 
       ]

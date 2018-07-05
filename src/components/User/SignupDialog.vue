@@ -58,10 +58,10 @@ export default {
       confirmPassword: '',
       show3: false,
       rules: {
-        min: v => v.length >= 8 || 'Min 8 characters',
+        min: v => v.length >= 8 || '최소 8글자 이상',
         email: value => {
           const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-          return pattern.test(value) || 'Invalid e-mail.'
+          return pattern.test(value) || '유효하지 않은 이메일입니다.'
         }
       }
     }
@@ -113,6 +113,7 @@ export default {
     height:  33px;
     padding: 12px 20px;
     margin: 0;
+    margin-top: 20px;
     display: inline-block;
 
 }
@@ -121,6 +122,7 @@ export default {
     height:  33px;
     padding: 12px 20px;
     margin: 0;
+    margin-top: 20px;
     display: inline-block;
 }
 .pw {
@@ -132,6 +134,7 @@ export default {
   width: 116.86px;
   height: 40.64px;
   box-shadow: none;
+  margin-top: 30px;
   background: url("https://blogfiles.pstatic.net/MjAxODA3MDFfMzgg/MDAxNTMwNDUyNjQxNDM5.mKX989lzYykQU5ALcT3_SQP-J1VwLAmf29GEYo3bV2Yg.leHoFt4jmF-m96MXXCYj33BOMaMAEKs1HusK6LtD1mcg.PNG.rkdud410/sign_blue_btn.png");
 }
 

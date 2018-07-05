@@ -1,5 +1,5 @@
 <template>
-    <v-dialog persistent v-model="RecommendDialog" max-width="450">
+    <v-dialog v-model="RecommendDialog" max-width="450">
         <v-btn flat class="share" accent slot="activator">추천</v-btn> <!-- flat 버튼 뒷배경 삭제-->
         <v-card>
             <v-container class="v-container" text-xs-center>
@@ -21,13 +21,7 @@
                         <button class="share_btn"></button>
                     </v-card>
                 </v-layout>
-                 <v-layout row wrap>
-                    <v-flex xs12>
-                        <v-card-actions>
-                            <v-btn class="red--text darken-1" flat @click="RecommendDialog=false">취소</v-btn>
-                        </v-card-actions>
-                    </v-flex>
-                </v-layout>
+
             </v-container>
         </v-card>
     </v-dialog>
