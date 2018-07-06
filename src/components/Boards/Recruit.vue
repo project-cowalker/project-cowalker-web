@@ -53,8 +53,8 @@
               transition="scale-transition"
               offset-y
               full-width
-              max-width="290px"
-              min-width="290px"
+              max-width="290"
+              min-width="290"
             >
               <v-text-field
                 class="data_field"
@@ -149,11 +149,6 @@
         </v-flex>
       </v-layout>
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> develop
       <v-layout>
       <v-flex x12 sm10 md8 lg2 offset-sm1 offset-md1>
         <p class="p_title">필요역량 및 기술</p>
@@ -186,10 +181,6 @@
       </v-flex>
     </v-layout>
 
-<<<<<<< HEAD
-
-=======
->>>>>>> develop
     <v-layout>
       <v-flex x12 sm10 md8 lg2 offset-sm1 offset-md1>
         <p class="p_title" >&ensp;&emsp;&emsp;&emsp;코멘트</p>
@@ -212,7 +203,7 @@
         <li class="list-group-item" v-for="(question,index) in questions" :key="index">
           <v-flex x12 sm10 md8 lg11 offset-md2 >
             <form>
-              <input type="text" class="plus">
+              <input type="text" class="plus" v-model="adx[index]"/>
             </form>
           </v-flex>
         </li>
@@ -220,7 +211,7 @@
 
       <v-container text-xs-center>
         <v-layout justify-center>
-          <button type="button" v-on:click="createBtn">
+          <button type="button" v-on:click="createBtn(adx,$event)">
               <img class="btn-img" src="https://blogfiles.pstatic.net/MjAxODA3MDRfMjY1/MDAxNTMwNzA2NjA1OTE3.6xxAPzQvc2DSHi4ws1LyT2eZPRLfaaHD3Jt16Pur5gEg.zwroeNnrRBffwvBFDNZNZgAI8IiSqbCmCt_VoDo4Fawg.PNG.peach404/plus_btn.png">
           </button>
         </v-layout>
@@ -263,7 +254,9 @@ export default {
         '기타'
       ],
       questions: [
-        '질문1.'
+        null
+      ],
+      adxs: [
       ]
     }
   },
@@ -297,10 +290,11 @@ export default {
       const [month, day, year] = date.split('/')
       return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`
     },
-    createBtn (numb) {
-      if (numb) {
-        this.questions.push({ numb: numb })
-        this.numb = null
+    createBtn (adx,event) {
+      if (event) {
+        this.adx = adx
+        this.adx.push({ adx: this.adx })
+        this.event= null
       }
     },
     onRecruit () {

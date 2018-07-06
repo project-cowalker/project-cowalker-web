@@ -47,9 +47,6 @@ export const boardActions = {
         }
       )
   },
-<<<<<<< HEAD
-
-=======
   uploadOpened ({ commit }, payload) {
     axios.post('http://bghgu.tk:3000/api/project', payload,
       {
@@ -68,7 +65,6 @@ export const boardActions = {
         (error) => console.log(error)
       )
   },
->>>>>>> develop
   recruiting ({commit}, payload) {
     commit('setLoading', true)
     commit('clearError')

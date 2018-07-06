@@ -12,7 +12,7 @@
           <p class="p_title">소개</p>
         </v-flex>
         <v-flex x12 sm10 md8 lg10>
-          <textarea class="textarea" cols="70" rows="7" placeholder="  자기소개" ></textarea>
+          <textarea class="textarea" cols="70" rows="7" placeholder="  자기소개" v-model="introduce"></textarea>
         </v-flex>
       </v-layout>
 
@@ -22,7 +22,7 @@
         </v-flex>
         <v-flex x12 sm10 md8 lg10>
           <form>
-            <input type="text" class="regular" v-model="number" placeholder="[-없이 작성]">
+            <input type="text" class="regular" v-model="phone" placeholder="[-없이 작성]">
           </form>
         </v-flex>
       </v-layout>
@@ -31,13 +31,9 @@
           <v-flex x12 sm10 md8 lg2 offset-sm1 offset-md1>
             <p class="p_title">&emsp;&emsp;&emsp;&emsp;&ensp;이력서</p>
           </v-flex>
-            <form>
+            <form lg12>
               <v-flex>
-                <input class="input_p" type="text" v-model="preference" placeholder="이메일 또는 웹사이트" />
-              </v-flex>
-              <v-flex>
-                <button type="button"><img src="https://blogfiles.pstatic.net/MjAxODA3MDVfNzAg/MDAxNTMwNzg2Mjk4MDQy.ww-axj12lCFQavSp_GtEAn3GQg_oD03bBVLQg7V9bvIg.LQEXNcznuEDgWU-0gmvx8Ju-oT-Bo0l4xmBBP8JMCXAg.PNG.peach404/dropbox_application_btn.png" alt=""></button>
-                <input type="file" class="fileBtn" multiple>
+                <input v-model="portfolio_url" class="input_p" type="text" placeholder="이메일 또는 웹사이트" />
               </v-flex>
             </form>
       </v-layout>
@@ -49,14 +45,10 @@
       </v-layout>
 
       <ul class="list-group">
-<<<<<<< HEAD
-        <li class="list-group-item" v-for="(question,index) in questions">
-=======
-        <li class="list-group-item" v-for="(question,index) in questions" :key="index">
->>>>>>> develop
+        <li class="list-group-item" v-for="(answer,index) in answers" :key="index">
           <v-flex x12 sm10 md8 lg11 offset-md3 >
             <form>
-              <p>{{question}}</p>
+              <p>{{answer}}</p>
               <input type="text" class="plus">
             </form>
           </v-flex>
@@ -78,16 +70,38 @@
 </template>
 
 <script>
+  import {mapGetters} from 'vuex'
+
 export default {
   name: 'Apply',
+  props: ['id'],
   data () {
     return {
-      questions: [
+      answers: [
         '질문1.'
-      ]
+      ],
+      introduce: '',
+      phone: '',
+      portfolio_url:''
     }
-  },
+  }
+  // computed: {
+  //   ...mapGetters({
+  //     boards: 'allBoards',
+  //     user: 'user'
+  //   }),
+  //
+  //   board () { // 해당 id를 가진 게시글을 보여줌
+  //     return this.$store.getters.loadedBoard(this.id)
+  //   }
+  // }
+  ,
   methods: {
+    onUploadApply () {
+      const data = new FormData()
+      data.append('introduce',this.introduce)
+
+    }
   }
 }
 </script>

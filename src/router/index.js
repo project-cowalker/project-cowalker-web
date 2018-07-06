@@ -8,7 +8,6 @@ import Intro from '@/components/Subpage/Intro'
 import history from '@/components/Subpage/History'
 import SubRecruit from '@/components/Subpage/SubRecruit'
 import Opened1 from '@/components/Opened/Opened1'
-import Opened2 from '@/components/Opened/Opened2'
 import Recruit from '@/components/Boards/Recruit'
 import Apply from '@/components/Boards/Apply'
 
@@ -35,10 +34,6 @@ export default new Router({
       path: '/opened1',
       name: 'Opened1',
       component: Opened1
-    }, {
-      path: '/opened2',
-      name: 'Opened2',
-      component: Opened2
     },
     {
       path: '/recruit',
@@ -46,11 +41,7 @@ export default new Router({
       component: Recruit
     },
     {
-<<<<<<< HEAD
-      path: '/Apply',
-=======
       path: '/apply',
->>>>>>> develop
       name: 'Apply',
       component: Apply
     },
