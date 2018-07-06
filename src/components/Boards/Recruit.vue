@@ -7,16 +7,13 @@
       </v-flex>
     </v-layout>
 
+    <form @submit.prevent="onRecruit">
     <v-layout d-line-flex>
       <v-flex x12 sm10 md8 lg2 offset-sm1 offset-md1>
         <v-text class="p_title">&emsp;&emsp;&emsp;모집 역할 </v-text>
       </v-flex>
       <v-flex x12 sm10 md8 lg12>
-        <v-combobox
-          v-model="position"
-          :items="departments"
-          class="combo"
-        ></v-combobox>
+        <v-combobox v-model="position" :items="departments" class="combo"></v-combobox>
 
         <template class="combo" slot="selection" slot-scope="data">
           <v-chip
@@ -203,7 +200,7 @@
         <li class="list-group-item" v-for="(question,index) in questions" :key="index">
           <v-flex x12 sm10 md8 lg11 offset-md2 >
             <form>
-              <input type="text" class="plus">
+              <input type="text" class="plus" v-model="adx[index]"/>
             </form>
           </v-flex>
         </li>
@@ -211,18 +208,21 @@
 
       <v-container text-xs-center>
         <v-layout justify-center>
-          <button type="button" v-on:click="createBtn">
+          <button type="button" v-on:click="createBtn(adx,$event)">
               <img class="btn-img" src="https://blogfiles.pstatic.net/MjAxODA3MDRfMjY1/MDAxNTMwNzA2NjA1OTE3.6xxAPzQvc2DSHi4ws1LyT2eZPRLfaaHD3Jt16Pur5gEg.zwroeNnrRBffwvBFDNZNZgAI8IiSqbCmCt_VoDo4Fawg.PNG.peach404/plus_btn.png">
           </button>
         </v-layout>
       </v-container>
 
-    <v-layout justify-center style="margin: 10%">
-        <form @submit.prevent="onRecruit" class="btn-done">
-          <br>완료
-        </form>
-    </v-layout>
+    <v-container text-xs-center>
+        <v-layout justify-center>
+          <button type="submit" class="btn-done">완료</button>
+        </v-layout>
+      </v-container>
+
+    </form>
     </v-container>
+
   </v-form>
 </template>
 
@@ -230,7 +230,7 @@
 export default {
   data () {
     return {
-      position: null,
+      position: '', // 모집역할
       start_date: null,
       end_date: null,
       number: null,
@@ -242,8 +242,6 @@ export default {
       career: null,
       preference: null,
       comment: null,
-      dateFormatted_start: null,
-      dateFormatted_end: null,
       menu1: false,
       departments: [
         '전체',
@@ -254,7 +252,9 @@ export default {
         '기타'
       ],
       questions: [
-        '질문1.'
+
+      ],
+      adx: [
       ]
     }
   },
@@ -288,14 +288,16 @@ export default {
       const [month, day, year] = date.split('/')
       return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`
     },
-    createBtn (numb) {
-      if (numb) {
-        this.questions.push({ numb: numb })
-        this.numb = null
+    createBtn (adx, event) {
+      if (event) {
+        this.adx = adx
+        this.adx.push({ adx: this.adx })
+        this.event = null
       }
     },
     onRecruit () {
       const object = {
+        project_idx: '5b3f3f28a989031a3ef84e3c', // project_idx를 props를 통해서 가져오기
         position: this.position,
         start_date: this.start_date,
         end_date: this.end_date,
@@ -308,7 +310,7 @@ export default {
         career: this.career,
         preference: this.preference,
         comment: this.comment,
-        question: this.question
+        question_list: this.adx
       }
       console.log(object)
       this.$store.dispatch('recruiting', object)
@@ -379,5 +381,14 @@ export default {
 
   ul{
     list-style:none;
+  }
+.btn-done{
+    font-size: 16px;
+    width: 30%;
+    height: 65px;
+    border-radius: 19px;
+    background-color: #F3FCFE;
+    border: 1px solid #64DFFF;
+    margin: 5%;
   }
 </style>

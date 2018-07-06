@@ -5,8 +5,8 @@
         </v-btn>
         <v-card>
             <v-container class="v-container" text-xs-center>
-                <v-layout class="logo" row wrap justify-center>
-                         로고 영역
+                <v-layout row wrap justify-center>
+                    <v-card flat class="logo"></v-card>
                 </v-layout>
             </v-container>
             <v-container d-inline-flex class="v-container">
@@ -97,8 +97,12 @@ p {
     margin-left: 20px;
 }
 .logo {
-    margin-top: 40px;
-    margin-bottom: 20px;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    background-image: url("https://blogfiles.pstatic.net/MjAxODA3MDZfOTkg/MDAxNTMwODY2MzYxOTI4.o0wNSRT-qbulatHTt-TXwaYifTg3GaG_6sjavnVr4n0g.ikAyO_xrYEgaTVbFr5ZyzzDZZtS6yBS_evxV82cddHcg.PNG.rkdud410/project_detail_logo.png");
+    width: 300px;
+    margin-left: 40px;
+    height: 40px;
 }
 .button_content {
     margin-bottom: 50px;

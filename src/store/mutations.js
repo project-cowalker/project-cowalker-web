@@ -35,6 +35,9 @@ export const boardMutations = {
   writeSuccess (state) {
     console.log('writeFinish')
   },
+  recruitingSuccess (state) {
+    console.log('recruitFinish')
+  },
   setLoading (state, payload) {
     state.loading = payload
   },
