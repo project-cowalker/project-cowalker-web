@@ -149,8 +149,11 @@
         </v-flex>
       </v-layout>
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> develop
       <v-layout>
       <v-flex x12 sm10 md8 lg2 offset-sm1 offset-md1>
         <p class="p_title">필요역량 및 기술</p>
@@ -183,7 +186,10 @@
       </v-flex>
     </v-layout>
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> develop
     <v-layout>
       <v-flex x12 sm10 md8 lg2 offset-sm1 offset-md1>
         <p class="p_title" >&ensp;&emsp;&emsp;&emsp;코멘트</p>
@@ -203,7 +209,7 @@
     </v-layout>
 
       <ul class="list-group">
-        <li class="list-group-item" v-for="(question,index) in questions">
+        <li class="list-group-item" v-for="(question,index) in questions" :key="index">
           <v-flex x12 sm10 md8 lg11 offset-md2 >
             <form>
               <input type="text" class="plus">

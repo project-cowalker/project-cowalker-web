@@ -36,13 +36,8 @@ export const boardActions = {
       .then(response => {
         commit('setLoading', false)
         commit('signInSuccess', payload)
-        const newUser = {
-          id: payload.user_id,
-          registeredBoards: [],
-          fbKeys: {}
-        }
         console.log(payload)
-        commit('setUser', newUser) // newUser
+        commit('tokenSave', response)
         Router.push('/')
       }).catch(
         (error) => {
@@ -52,7 +47,28 @@ export const boardActions = {
         }
       )
   },
+<<<<<<< HEAD
 
+=======
+  uploadOpened ({ commit }, payload) {
+    axios.post('http://bghgu.tk:3000/api/project', payload,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          'authorization': localStorage.getItem('token')
+        }
+      }
+    )
+      .then(res => {
+        commit('writeSuccess')
+        console.log(res)
+        Router.push('/')
+        alert('개설완료')
+      }).catch(
+        (error) => console.log(error)
+      )
+  },
+>>>>>>> develop
   recruiting ({commit}, payload) {
     commit('setLoading', true)
     commit('clearError')

@@ -46,7 +46,11 @@ export default new Router({
       component: Recruit
     },
     {
+<<<<<<< HEAD
       path: '/Apply',
+=======
+      path: '/apply',
+>>>>>>> develop
       name: 'Apply',
       component: Apply
     },

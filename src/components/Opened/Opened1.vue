@@ -7,7 +7,12 @@
         </v-flex>
       </v-layout>
 
+<<<<<<< HEAD
       <v-layout row wrap>
+=======
+    <form @submit.prevent="onUploadOpened">
+      <v-layout row wrap >
+>>>>>>> develop
         <v-flex x12 sm10 md8 lg10 offset-sm1 offset-md2>
           <p class="p_title">프로젝트 제목</p>
         </v-flex>
@@ -15,7 +20,7 @@
 
       <v-layout row wrap>
         <v-flex x12 sm10 md8 lg12 offset-sm1 offset-md2>
-          <input class="input_p" type="text"/>
+          <input class="input_p" type="text" v-model="title"/>
         </v-flex>
       </v-layout>
 
@@ -27,7 +32,11 @@
 
       <v-layout row wrap>
         <v-flex x12 sm10 md8 lg10 offset-sm1 offset-md3>
+<<<<<<< HEAD
           <textarea class="textarea" cols="30" rows="5"></textarea>
+=======
+          <textarea class="textarea" cols="30" rows="5" v-model="summary"></textarea>
+>>>>>>> develop
         </v-flex>
       </v-layout>
 
@@ -36,7 +45,11 @@
           <p class="p_title1">지역</p>
         </v-flex>
         <v-flex x12 sm10 md8 lg7>
+<<<<<<< HEAD
           <v-combobox v-model="select" :items="locations" class="combo"></v-combobox>
+=======
+          <v-combobox v-model="area" :items="locations" class="combo"></v-combobox>
+>>>>>>> develop
           <template class="combo" slot="selection" slot-scope="data">
             <v-chip :selected="data.selected" :disabled="data.disabled" :key="JSON.stringify(data.location)" class="v-chip--select-multi " @input="data.parent.selectItem(data.location)">
               <v-avatar class="accent white--text">
@@ -53,7 +66,11 @@
           <p class="p_title">목적</p>
         </v-flex>
         <v-flex x12 sm10 md8 lg7>
+<<<<<<< HEAD
           <v-combobox v-model="select" :items="purposes" class="combo"></v-combobox>
+=======
+          <v-combobox v-model="aim" :items="purposes" class="combo"></v-combobox>
+>>>>>>> develop
 
           <template class="combo" slot="selection" slot-scope="data">
             <v-chip :selected="data.selected" :disabled="data.disabled" :key="JSON.stringify(data.purpose)" class="v-chip--select-multi " @input="data.parent.selectItem(data.purpose)">
@@ -72,7 +89,11 @@
           <p class="p_title">분야</p>
         </v-flex>
         <v-flex x12 sm10 md8 lg7>
+<<<<<<< HEAD
           <v-combobox v-model="select" :items="departments" class="combo"></v-combobox>
+=======
+          <v-combobox v-model="department" :items="departments" class="combo"></v-combobox>
+>>>>>>> develop
 
           <template class="combo" slot="selection" slot-scope="data">
             <v-chip :selected="data.selected" :disabled="data.disabled" :key="JSON.stringify(data.field)" class="v-chip--select-multi " @input="data.parent.selectItem(data.field)">
@@ -100,6 +121,7 @@
         </form>
       </v-flex>
 
+<<<<<<< HEAD
       <v-flex x12 sm10 md8 lg10 offset-sm1 offset-md2>
         <form class="imgsize">
           <div class="dropbox" v-if="!image2">
@@ -112,16 +134,29 @@
 
       <v-flex x12 sm10 md8 lg10 offset-sm1 offset-md3>
         <textarea class="textarea" cols="70" rows="7" placeholder="  프로젝트에 대해 소개해주세요." ></textarea>
+=======
+      <v-flex x12 sm10 md8 lg10 offset-sm1 offset-md3>
+        <textarea class="textarea" cols="70" rows="7" placeholder="  프로젝트에 대해 소개해주세요."
+        v-model="explain"></textarea>
+>>>>>>> develop
       </v-flex>
 
       <v-container text-xs-center>
         <v-layout justify-center>
+<<<<<<< HEAD
           <button type="submit" class="btn-done">
             개설하기
           </button>
         </v-layout>
       </v-container>
 
+=======
+          <button type="submit" class="btn-done">개설하기</button>
+        </v-layout>
+      </v-container>
+
+      </form>
+>>>>>>> develop
 
       </v-container>
   </v-form>
@@ -132,7 +167,12 @@ export default {
   name: 'Opened1',
   data () {
     return {
-      select: '',
+      title: '',
+      summary: '',
+      explain: '',
+      area: '',
+      aim: '',
+      department: '',
       locations: [
         '전체',
         '서울',
@@ -167,6 +207,25 @@ export default {
     }
   },
   methods: {
+    onUploadOpened () {
+      const data = new FormData()
+      data.append('title', this.title)
+      data.append('summary', this.summary)
+      data.append('area', this.area)
+      data.append('department', this.department)
+      data.append('aim', this.aim)
+      data.append('explain', this.explain)
+      data.append('img', this.file)
+
+      /* let axiosConfig = {
+        headers: {
+          'Content-Type': 'application/json',
+          'authorization': this.$store.getters.token
+        }
+      } */
+
+      this.$store.dispatch('uploadOpened', data)
+    },
     getImage (file) {
       const fileReader = new FileReader()
       fileReader.onload = () => { // 파일리더가 뭔가를 로드해왔을 때 함수블록을 실행된다
@@ -178,7 +237,11 @@ export default {
     onFileChange (file) {
       // if ((event.target.files[0]['type']).split('/')[0] === 'image') {
 
+<<<<<<< HEAD
       this.file = file.target.files[0]
+=======
+      this.file = event.target.files[0]
+>>>>>>> develop
       this.getImage(this.file)
       // }
     },

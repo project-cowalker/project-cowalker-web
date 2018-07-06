@@ -26,6 +26,9 @@ export const boardGetters = {
   },
   error (state) {
     return state.error
+  },
+  token (state) {
+    return state.token // 토큰 값 가져오기
   }
 
 }

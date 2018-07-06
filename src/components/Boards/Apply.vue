@@ -49,7 +49,11 @@
       </v-layout>
 
       <ul class="list-group">
+<<<<<<< HEAD
         <li class="list-group-item" v-for="(question,index) in questions">
+=======
+        <li class="list-group-item" v-for="(question,index) in questions" :key="index">
+>>>>>>> develop
           <v-flex x12 sm10 md8 lg11 offset-md3 >
             <form>
               <p>{{question}}</p>
