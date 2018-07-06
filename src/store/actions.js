@@ -58,7 +58,7 @@ export const boardActions = {
     )
       .then(res => {
         commit('writeSuccess')
-        console.log(res)
+        console.log(res.data.project_idx)
         Router.push('/')
         alert('개설완료')
       }).catch(
@@ -66,20 +66,15 @@ export const boardActions = {
       )
   },
   recruiting ({commit}, payload) {
-    commit('setLoading', true)
-    commit('clearError')
-    axios.post('http://bghgu.tk:3000/api/recruit', payload)
+    axios.post('http://bghgu.tk:3000/api/project/recruit', payload,
+      {
+        headers: {
+          'authorization': localStorage.getItem('token')
+        }
+      })
       .then(res => {
-        commit('setLoading', false)
         commit('recruitingSuccess')
       }
-      // console.log(payload)
-        // }).catch(
-        //   (error) => {
-        //     commit('setLoading', false)
-        //     commit('setError', error)
-        //     console.log(error)
-        // }
       )
   },
 

@@ -40,7 +40,10 @@
                   <app-board-recommend-dialog :id="board.id"></app-board-recommend-dialog>
                   <app-board-share-dialog :id="board.id"></app-board-share-dialog>
                     &ensp;
-                    <app-board-join-dialog :id="board.id"></app-board-join-dialog>
+                    <app-board-join-dialog :id="board.id"></app-board-join-dialog> <!--참여하기-->
+                    <v-btn class="register-btn" :to="'/boards/' + board.id + '/recruit'"
+                    large accent slot="activator" outline color="cyan lighten-4">
+                    <v-text class="register-text">모집하기</v-text></v-btn> <!--모집하기-->
             </v-flex>
             </v-layout> <!--모바일환경에서 제대로 작동하려면 layout안에 flex 선언하기-->
             </v-container>
