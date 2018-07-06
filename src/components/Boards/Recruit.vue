@@ -200,7 +200,7 @@
         <li class="list-group-item" v-for="(question,index) in questions" :key="index">
           <v-flex x12 sm10 md8 lg11 offset-md2 >
             <form>
-              <input type="text" class="plus">
+              <input type="text" class="plus" v-model="adx[index]"/>
             </form>
           </v-flex>
         </li>
@@ -208,7 +208,7 @@
 
       <v-container text-xs-center>
         <v-layout justify-center>
-          <button type="button" v-on:click="createBtn">
+          <button type="button" v-on:click="createBtn(adx,$event)">
               <img class="btn-img" src="https://blogfiles.pstatic.net/MjAxODA3MDRfMjY1/MDAxNTMwNzA2NjA1OTE3.6xxAPzQvc2DSHi4ws1LyT2eZPRLfaaHD3Jt16Pur5gEg.zwroeNnrRBffwvBFDNZNZgAI8IiSqbCmCt_VoDo4Fawg.PNG.peach404/plus_btn.png">
           </button>
         </v-layout>
@@ -252,7 +252,9 @@ export default {
         '기타'
       ],
       questions: [
-        '안녕'
+
+      ],
+      adx: [
       ]
     }
   },
@@ -286,15 +288,16 @@ export default {
       const [month, day, year] = date.split('/')
       return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`
     },
-    createBtn (numb) {
-      if (numb) {
-        this.questions.push({ numb: numb })
-        this.numb = null
+    createBtn (adx, event) {
+      if (event) {
+        this.adx = adx
+        this.adx.push({ adx: this.adx })
+        this.event = null
       }
     },
     onRecruit () {
       const object = {
-        project_idx: '5b3f3f28a989031a3ef84e3c',
+        project_idx: '5b3f3f28a989031a3ef84e3c', // project_idx를 props를 통해서 가져오기
         position: this.position,
         start_date: this.start_date,
         end_date: this.end_date,
@@ -307,7 +310,7 @@ export default {
         career: this.career,
         preference: this.preference,
         comment: this.comment,
-        question: [this.question]
+        question_list: this.adx
       }
       console.log(object)
       this.$store.dispatch('recruiting', object)
