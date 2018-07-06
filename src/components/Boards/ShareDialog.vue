@@ -6,7 +6,7 @@
                 <v-layout row wrap justify-center>
                          <v-card-title><h4>SNS 공유하기</h4></v-card-title>
                 </v-layout>
-                <v-divider></v-divider>
+                <hr color="#80DEEA">
                 <v-layout justify-center>
                 <v-card-title><h4>'user_id'</h4>님이 '코워커'프로젝트의 '개발자'파트를 추천합니다!</v-card-title>
                 </v-layout>
