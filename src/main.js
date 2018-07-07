@@ -11,6 +11,7 @@ import SigninDialog from './components/user/SigninDialog.vue' // 다이얼로그
 import SignupDialog from './components/user/SignupDialog.vue' // 다이얼로그
 import ShareDialog from './components/Boards/ShareDialog.vue' // 다이얼로그
 import RecommendDialog from './components/Boards/RecommendDialog.vue' // 다이얼로그
+import MypageDialog from './components/Boards/Dialog/MypageDialog.vue'
 import npVueBreadcrumbs from 'vue-breadcrumbs'
 import JoinDialog from './components/Boards/Dialog/JoinDialog.vue' // 다이얼로그
 import VueBreadcrumbs from 'vue-breadcrumbs'
@@ -25,6 +26,7 @@ Vue.component('app-board-signin-dialog', SigninDialog)
 Vue.component('app-board-signup-dialog', SignupDialog)
 Vue.component('app-board-share-dialog', ShareDialog)
 Vue.component('app-board-recommend-dialog', RecommendDialog)
+Vue.component('app-board-mypage-dialog',MypageDialog)
 
 Vue.use(VueBreadcrumbs)
 

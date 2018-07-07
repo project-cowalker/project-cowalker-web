@@ -26,7 +26,7 @@ export default new Router({
       component: Boards
     },
     {
-      path: '/Profile',
+      path: '/profile',
       name: 'Profile',
       component: Profile
     },

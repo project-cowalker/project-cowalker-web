@@ -281,12 +281,13 @@ export default {
     border: 1px solid #dbdbdb;
   }
   .newimg{
-    margin-left: 7%;
+    margin-left: 8%;
     max-width: 100%;
     margin-bottom: 5%;
     width: 630px;
     height: 350px;
     border-radius: 15px;
+    border: 1px solid #707070;
   }
 
   .btn-done{

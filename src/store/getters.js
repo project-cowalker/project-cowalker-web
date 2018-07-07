@@ -18,10 +18,9 @@ export const boardGetters = {
   registeredboards (state) {
     return state.registeredboards
   },
-
-  // stor/////////////e: (state, getters) {
-  //   re/'
-
+  allmypageView (state, getters) {
+    return state.profile
+  },
   user (state, getters) {
     return state.user
   },

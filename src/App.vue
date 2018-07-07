@@ -66,7 +66,7 @@ export default {
           { title: '스크랩', link: '/bag' },
           { title: '메세지', link: '/message' },
           { title: '알림', link: '/alert' },
-          { icon: 'face', link: '/Profile' }
+          { icon: 'face', link: '/profile' }
         ]
       }
       return menuItems

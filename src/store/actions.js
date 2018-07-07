@@ -65,6 +65,25 @@ export const boardActions = {
         (error) => console.log(error)
       )
   },
+  onUploadMypage({ commit }, payload) {
+    axios.put('http://bghgu.tk:3000/api/mypage', payload,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          'authorization': localStorage.getItem('token')
+        }
+      }
+    )
+      .then(res => {
+        commit('writeSuccess')
+        console.log(res.data)
+        Router.push('/profile')
+        alert('수정완료')
+      }).catch(
+      (error) => console.log(error)
+    )
+  }
+  ,
   recruiting ({commit}, payload) {
     axios.post('http://bghgu.tk:3000/api/project/recruit', payload,
       {
@@ -77,17 +96,23 @@ export const boardActions = {
       }
       )
   },
-<<<<<<< HEAD
-=======
-
   recruitingView ({commit}) {
     axios.get('http://bghgu.tk:3000/api/project/5b3dd2387172d402215033d2/recruit').then(response => {
       commit('getRecruitSuccess', response.data)
       // http://18.191.14.154:8080/reviews
     })
   },
-
->>>>>>> develop
+  mypageView ({commit}) {
+    axios.get('http://bghgu.tk:3000/api/mypage',
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          'authorization': localStorage.getItem('token')
+        }
+      }).then(response => {
+      commit('getMypageSuccess', response.data)
+    })
+  },
   writeBoards ({ commit }, payload) {
     axios.post('http://18.191.14.154:8080/reviews/write', payload)
       .then(res => {

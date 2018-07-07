@@ -43,6 +43,11 @@ export const boardMutations = {
     state.recruits = payload.result
     console.log(payload.result)
   },
+  getMypageSuccess (state, payload) {
+    console.log('all getMypageSuccess')
+    state.mypages = payload.result
+    console.log(payload.result)
+  },
   setLoading (state, payload) {
     state.loading = payload
   },
