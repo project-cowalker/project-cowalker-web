@@ -6,7 +6,7 @@
           <p>참여신청</p>
         </v-flex>
       </v-layout>
-
+      <form @submit.prevent="onUploadApply">
       <v-layout d-line-flex>
         <v-flex x12 sm10 md8 lg1 offset-sm1 offset-md2>
           <p class="p_title">소개</p>
@@ -31,7 +31,7 @@
           <v-flex x12 sm10 md8 lg2 offset-sm1 offset-md1>
             <p class="p_title">&emsp;&emsp;&emsp;&emsp;&ensp;이력서</p>
           </v-flex>
-            <form lg12>
+            <form style="width: 50%">
               <v-flex>
                 <input v-model="portfolio_url" class="input_p" type="text" placeholder="이메일 또는 웹사이트" />
               </v-flex>
@@ -63,8 +63,7 @@
         </v-layout>
       </v-container>
 
-      <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&layout=button&size=small&mobile_iframe=true&width=67&height=20&appId" width="67" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
-
+      </form>
     </v-container>
   </v-form>
 </template>
@@ -129,7 +128,6 @@ export default {
     border: 1px solid #dbdbdb;
   }
   .input_p {
-    width: 50%;
     height: 40px;
     border-radius: 8px;
     background-color: #fcfcfc;

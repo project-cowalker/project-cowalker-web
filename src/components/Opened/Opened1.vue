@@ -164,7 +164,7 @@ export default {
       ],
       file: null,
       image: null, // 처음엔 null
-      image2:null,
+      image2: null
     }
   },
   methods: {
@@ -191,7 +191,7 @@ export default {
       const fileReader = new FileReader()
       fileReader.onload = () => { // 파일리더가 뭔가를 로드해왔을 때 함수블록을 실행된다
         this.image = fileReader.result
-        //this.image1 = fileReader.result
+        // this.image1 = fileReader.result
       }
       fileReader.readAsDataURL(file) // 데이터에서 url을 끌고 오는 것
     },
@@ -205,7 +205,7 @@ export default {
       const fileReader = new FileReader()
       fileReader.onload = () => { // 파일리더가 뭔가를 로드해왔을 때 함수블록을 실행된다
         this.image2 = fileReader.result
-        //this.image1 = fileReader.result
+        // this.image1 = fileReader.result
       }
       fileReader.readAsDataURL(file) // 데이터에서 url을 끌고 오는 것
     },

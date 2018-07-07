@@ -77,8 +77,6 @@ export const boardActions = {
       }
       )
   },
-
-
   writeBoards ({ commit }, payload) {
     axios.post('http://18.191.14.154:8080/reviews/write', payload)
       .then(res => {

@@ -193,7 +193,6 @@
       <v-flex x12 sm10 md8 lg2 offset-sm1 offset-md1>
         <p class="p_title">&emsp;&emsp;&emsp;&emsp;&emsp;질문</p>
       </v-flex>
-
     </v-layout>
 
       <ul class="list-group">
@@ -252,16 +251,11 @@ export default {
         '기타'
       ],
       questions: [
-<<<<<<< HEAD
-        null
-      ],
-      adxs: [
-=======
-
+        ' ',
       ],
       adx: [
->>>>>>> develop
-      ]
+
+      ],
     }
   },
   computed: {
@@ -294,19 +288,11 @@ export default {
       const [month, day, year] = date.split('/')
       return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`
     },
-<<<<<<< HEAD
-    createBtn (adx,event) {
-      if (event) {
-        this.adx = adx
-        this.adx.push({ adx: this.adx })
-        this.event= null
-=======
     createBtn (adx, event) {
       if (event) {
         this.adx = adx
-        this.adx.push({ adx: this.adx })
+        this.questions.push({ questions: this.adx })
         this.event = null
->>>>>>> develop
       }
     },
     onRecruit () {
@@ -326,6 +312,7 @@ export default {
         comment: this.comment,
         question_list: this.adx
       }
+
       console.log(object)
       this.$store.dispatch('recruiting', object)
     }

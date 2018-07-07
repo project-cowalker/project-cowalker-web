@@ -36,7 +36,7 @@ export default new Router({
       component: Opened1
     },
     {
-      path: '/boards/:id/recruit',
+      path: '/recruit/id',
       name: 'Recruit',
       component: Recruit
     },
