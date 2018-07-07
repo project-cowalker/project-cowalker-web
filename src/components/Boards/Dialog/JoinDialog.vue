@@ -37,7 +37,8 @@
             <v-container class="v-container" text-xs-center>
              <v-layout  row wrap justify-center>
                 <v-flex xs12>
-                    <v-btn class="signup" type="submit" @click.native="dialog = false">참여하기</v-btn>
+                    <v-btn class="signup" type="submit"
+                    :to="'/boards/' + board.id + '/apply'" >참여하기</v-btn>
                 </v-flex>
                 <v-flex xs12>
                 </v-flex>
@@ -52,19 +53,23 @@
 // import RegisterDialog from './components/Board/Registration/RegisterDialog.vue'
 // main.js에 추가해줌
 
+import {mapGetters} from 'vuex'
+
 export default {
-  props: ['id'], // board 데이터가 가진 id
-  data () {
-    return {
-      JoinDialog: false
-    }
-  },
+  props: ['id'], // board id
+  data: () => ({
+  }),
   computed: {
-  },
-  methods: {
+    ...mapGetters({
+      boards: 'allBoards',
+      user: 'user'
+    }),
+
+    board () { // 해당 id를 가진 게시글을 보여줌
+      return this.$store.getters.loadedBoard(this.id)
+    }
   }
 }
-
 </script>
 
 <style scoped>

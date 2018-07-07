@@ -78,6 +78,13 @@ export const boardActions = {
       )
   },
 
+  recruitingView ({commit}) {
+    axios.get('http://bghgu.tk:3000/api/project/5b3dd2387172d402215033d2/recruit').then(response => {
+      commit('getRecruitSuccess', response.data)
+      // http://18.191.14.154:8080/reviews
+    })
+  },
+
   writeBoards ({ commit }, payload) {
     axios.post('http://18.191.14.154:8080/reviews/write', payload)
       .then(res => {

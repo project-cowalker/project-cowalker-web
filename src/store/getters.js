@@ -11,6 +11,10 @@ export const boardGetters = {
     }
   },
 
+  allrecruitView (state, getters) {
+    return state.recruits
+  },
+
   registeredboards (state) {
     return state.registeredboards
   },

@@ -46,7 +46,7 @@ export default new Router({
       component: Recruit
     },
     {
-      path: '/apply',
+      path: '/boards/:id/apply',
       name: 'Apply',
       component: Apply
     },
