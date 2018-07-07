@@ -41,19 +41,19 @@ export default new Router({
       component: Opened2
     },
     {
-      path: '/boards/:id/recruit',
+      path: '/boards/:project_idx/recruit',
       name: 'Recruit',
       component: Recruit
     },
     {
-      path: '/boards/:id/apply',
+      path: '/boards/:project_idx/apply',
       name: 'Apply',
       component: Apply
     },
     {
-      path: '/boards/:id',
+      path: '/boards/:project_idx',
       name: 'Boards',
-      props: true,
+      props: true, // 이렇게 설정해줘야 props에 url에서 project_dix 받아올 수 있음
       component: Board,
       children: [
         {

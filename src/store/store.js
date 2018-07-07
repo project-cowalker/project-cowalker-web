@@ -16,6 +16,7 @@ export const store = new Vuex.Store({
     loading: false,
     registeredboards: [],
     store: [],
+    detailboard: [],
     recruits: []
   }, /* vuex는 페이지를 리로드하면 토큰 값을 다 떨구기 때문에
 localstorage를 사용해서 토큰값을 저장하거나 쿠키값 사용 */

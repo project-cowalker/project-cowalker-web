@@ -6,8 +6,8 @@ export const boardMutations = {
   },
   allBoardsSuccess (state, payload) {
     console.log('all boards success')
-    state.boards = payload.data
-    console.log(payload.data)
+    state.boards = payload.result
+    console.log(payload.result)
   },
   signUp (state, payload) {
     console.log('')
@@ -38,9 +38,14 @@ export const boardMutations = {
   recruitingSuccess (state) {
     console.log('recruitFinish')
   },
+  getDetailViewSuccess (state, payload) {
+    state.detailboard = payload.result
+    console.log('all getDetailView success')
+    console.log(state.detailboard[0].title)
+  },
   getRecruitSuccess (state, payload) {
-    console.log('all getRecruit success')
     state.recruits = payload.result
+    console.log('all getRecruit success')
     console.log(payload.result)
   },
   setLoading (state, payload) {
