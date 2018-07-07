@@ -15,7 +15,7 @@
          @click.stop="sideNav = !sideNav"
          class="hidden-sm-and-up "></v-toolbar-side-icon>
        <v-toolbar-title>
-         <router-link to="/" tag="span" style="cursor: pointer">co-walker</router-link>
+         <router-link to="/" tag="span" style="cursor: pointer"><img src="https://blogfiles.pstatic.net/MjAxODA3MDZfOSAg/MDAxNTMwODY1OTUyNjM0.a54qvSXJDJUN6DxX_wvGyqctAkOooC6j1qYog79TeNQg.5butz1x590kUqjTR7rbnr7gPlXKmLt04k19yatjpH40g.PNG.rkdud410/hometap_logo.png"></router-link>
        </v-toolbar-title>
        &emsp;
          <v-toolbar-items class="toolbar_item_left">

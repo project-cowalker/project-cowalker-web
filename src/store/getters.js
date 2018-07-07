@@ -10,6 +10,9 @@ export const boardGetters = {
       })
     }
   },
+  allDetailView (state, getters) {
+    return state.detailboard[0]
+  },
 
   allrecruitView (state, getters) {
     return state.recruits
