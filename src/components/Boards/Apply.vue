@@ -76,6 +76,7 @@
 <script>
 export default {
   name: 'Apply',
+  props: ['project_idx'],
   data () {
     return {
       questions: [

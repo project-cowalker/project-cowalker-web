@@ -8,16 +8,16 @@
             <v-container d-inline-flex class="filter"  fluid grid-list-xl>
                 <v-layout justify-center>
                 <v-flex xs12 sm6 d-flex>
-                <v-select :items="items" label="목적"></v-select>
+                <v-select :items="items" label="목적" v-model="aim"></v-select>
                 </v-flex>
                 <v-flex xs12 sm6 d-flex>
-                <v-select :items="fields" label="분야"></v-select>
+                <v-select :items="fields" label="분야" v-model="department"></v-select>
                 </v-flex>
                 <v-flex xs12 sm6 d-flex>
-                <v-select :items="rules" label="역할"></v-select>
+                <v-select :items="rules" label="역할" v-model="position"></v-select>
                 </v-flex>
                 <v-flex xs12 sm6 d-flex>
-                <v-select :items="areas" label="지역"></v-select>
+                <v-select :items="areas" label="지역" v-model="area"></v-select>
                 </v-flex>
                 </v-layout>
             </v-container>
@@ -28,7 +28,7 @@
          </v-layout>
          </v-container>
 
-        <v-layout d-inline-flex v-for="board in boards" :key="board.id">
+        <v-layout d-inline-flex v-for="board in filteredList" :key="board.id">
             <v-flex x12 sm10 md8 lg10 offset-sm1 offset-md2>
                 <v-card flat :to="'/boards/' + board.project_idx" class="v-card" width="260px">
                     <v-container fluid>
@@ -61,7 +61,11 @@ export default {
       items: ['전체', '창업', '공모전 참여', '스터디', '사이드 프로젝트', '창작', '기타'],
       fields: ['전체', '블록체인', 'IOT'],
       rules: ['전체', 'PM', '기획자', '디자이너'],
-      areas: ['전체', '서울', '경기도', '인천']
+      areas: ['전체', '서울', '경기도', '인천'],
+      aim: '',
+      department: '',
+      position: '',
+      area: ''
     }
   },
   computed: { // state에 있는 값 가져오기
@@ -71,7 +75,7 @@ export default {
     filteredList () { // search filter
       return this.boards.filter(post => {
         return post.title.toLowerCase().includes(this.search.toLowerCase()) ||
-        post.date.toLowerCase().includes(this.search.toLowerCase())
+        post.department.toLowerCase().includes(this.search.toLowerCase())
       })
     }
   },

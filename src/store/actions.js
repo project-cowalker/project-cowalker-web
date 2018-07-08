@@ -75,21 +75,22 @@ export const boardActions = {
       .then(res => {
         commit('recruitingSuccess')
       }
+      ).catch(
+        (error) => console.log(error)
       )
   },
 
   getDetailView ({commit}, payload) {
     axios.get('http://bghgu.tk:3000/api/project/' + payload).then(response => {
       commit('getDetailViewSuccess', response.data)
-      // http://18.191.14.154:8080/reviews
       console.log(payload)
     })
   },
 
-  recruitingView ({commit}) {
-    axios.get('http://bghgu.tk:3000/api/project/5b3dd2387172d402215033d2/recruit').then(response => {
+  recruitingView ({commit}, payload) {
+    axios.get('http://bghgu.tk:3000/api/project/' + payload + '/recruit').then(response => {
       commit('getRecruitSuccess', response.data)
-      // http://18.191.14.154:8080/reviews
+      console.log(payload)
     })
   },
 

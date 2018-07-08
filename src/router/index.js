@@ -43,17 +43,19 @@ export default new Router({
     {
       path: '/boards/:project_idx/recruit',
       name: 'Recruit',
+      props: true,
       component: Recruit
     },
     {
       path: '/boards/:project_idx/apply',
       name: 'Apply',
+      props: true,
       component: Apply
     },
     {
       path: '/boards/:project_idx',
       name: 'Boards',
-      props: true, // 이렇게 설정해줘야 props에 url에서 project_dix 받아올 수 있음
+      props: true, // 이렇게 설정해줘야 props에 url에서 project_idx 받아올 수 있음
       component: Board,
       children: [
         {
@@ -62,10 +64,12 @@ export default new Router({
         },
         {
           path: 'history',
+          props: true,
           component: history
         },
         {
           path: 'subrecruit',
+          props: true,
           component: SubRecruit
         }
 
