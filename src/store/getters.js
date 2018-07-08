@@ -22,7 +22,7 @@ export const boardGetters = {
     return state.registeredboards
   },
   allmypageView (state, getters) {
-    return state.profile
+    return state.mypages
   },
   user (state, getters) {
     return state.user

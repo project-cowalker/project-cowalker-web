@@ -39,6 +39,7 @@
                             <app-board-signup-dialog></app-board-signup-dialog>
                           </v-flex>
                         </v-layout>
+
                       </form>
                     </v-container>
                   </v-layout>
@@ -95,11 +96,8 @@ export default {
     },
     error () {
       return this.$store.getters.error
-<<<<<<< HEAD
     },
-=======
-    }
->>>>>>> develop
+
   },
   methods: {
     guard () { // 홈화면 프로젝트 보기에서 로그인 되어있는 경우는 /boards로 이동
@@ -131,20 +129,12 @@ export default {
     border: white 2px solid;
     opacity: 0.8;
   }
-<<<<<<< HEAD
-
-=======
->>>>>>> develop
   .log {
     width: 116.86px;
     height: 40.64px;
     box-shadow: none;
     background: url("https://blogfiles.pstatic.net/MjAxODA3MDFfMzgg/MDAxNTMwNDUyNjQxNDM5.mKX989lzYykQU5ALcT3_SQP-J1VwLAmf29GEYo3bV2Yg.leHoFt4jmF-m96MXXCYj33BOMaMAEKs1HusK6LtD1mcg.PNG.rkdud410/sign_blue_btn.png");
   }
-<<<<<<< HEAD
-
-=======
->>>>>>> develop
   .input {
     width: 262.08px;
     height: 40.64px;
@@ -154,10 +144,7 @@ export default {
     border: 1px solid #ccc;
     border-radius: 25px;
   }
-<<<<<<< HEAD
 
-=======
->>>>>>> develop
   .inputpw {
     width: 262.08px;
     height: 40.64px;
@@ -170,25 +157,7 @@ export default {
     background: url("https://postfiles.pstatic.net/MjAxODA3MDJfODYg/MDAxNTMwNDYwMjk1NTg3.jYhRgBcl9sAWliY26EK-EPfVhLYTQBzws41bRejER9sg.jQGG20bRIw6h5f4eMSftzxsNicGPNd03gE3phqsuXUYg.PNG.rkdud410/password_eye_preview_see.png?type=w966");
     background-repeat: no-repeat;
   }
-<<<<<<< HEAD
 
-  .top {
-    margin-top: 120px;
-  }
-
-  .pw {
-    margin-top: 10px;
-  }
-
-  .log_signup {
-    margin-top: 10px;
-  }
-
-  .v-container {
-    background-image: url("https://blogfiles.pstatic.net/MjAxODA3MDFfMjIx/MDAxNTMwNDU2NzY5MzU3.QJYd3SZYqQ7VsFnzlfMNBYHP0E5Mk1hsxaNtiHKAzE8g.l4TOp5kUPfXXW4pJ9S3IHiKFxH97so9U93_Uk2oZx7cg.PNG.rkdud410/sign_illust.png");
-  }
-
-=======
   .top {
     margin-top: 120px;
   }
@@ -201,5 +170,4 @@ export default {
   .v-container {
     background-image: url("https://blogfiles.pstatic.net/MjAxODA3MDFfMjIx/MDAxNTMwNDU2NzY5MzU3.QJYd3SZYqQ7VsFnzlfMNBYHP0E5Mk1hsxaNtiHKAzE8g.l4TOp5kUPfXXW4pJ9S3IHiKFxH97so9U93_Uk2oZx7cg.PNG.rkdud410/sign_illust.png");
   }
->>>>>>> develop
 </style>

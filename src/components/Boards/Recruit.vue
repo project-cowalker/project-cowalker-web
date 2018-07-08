@@ -253,11 +253,7 @@ export default {
         '기타'
       ],
       questions: [
-<<<<<<< HEAD
-        ' ',
-=======
         ' '
->>>>>>> develop
       ],
       adx: [
 

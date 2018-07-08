@@ -73,11 +73,7 @@
 
 export default {
   name: 'Apply',
-<<<<<<< HEAD
-  props: ['id'],
-=======
   props: ['project_idx'],
->>>>>>> develop
   data () {
     return {
       answers: [

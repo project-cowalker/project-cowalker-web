@@ -50,8 +50,8 @@ export const boardMutations = {
   },
   getMypageSuccess (state, payload) {
     console.log('all getMypageSuccess')
-    state.mypages = payload.result
-    console.log(payload.result)
+    state.mypages = payload.data[0]
+    console.log(state.mypages)
   },
   setLoading (state, payload) {
     state.loading = payload

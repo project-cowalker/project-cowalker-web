@@ -10,55 +10,54 @@
     <v-flex xs12 sm10 md10 lg10 xl10 offset-sm1 offset-md1> <!--v-card 안에서-->
       <v-container d-inline-flex class="v-container">
         <v-card class="hidden-xs-only" width="350px"> <!--v-card만 width 조정가능 그래서 이미지 감싸줌-->
-          <v-card-media height="450px"></v-card-media>
+          <v-card-media height="370px"></v-card-media>
         </v-card>
+
+
         <div> <!--사진 옆 설명부분-->
-          <v-layout class="dk">
-            <v-flex class="private">
-              <v-card-title class="title">
-                <v-flex justify-center>
-                  <!--<v-card-media :src="profile.profile_url" v-if="profile_url" alt="" class="mainImg"></v-card-media>-->
-                </v-flex>
-              </v-card-title>
-            </v-flex>
-          </v-layout>
+          <v-container fluid>
+              <v-card width="90px" class="title" flat>
+                <v-card-media :src="allmypageView.profile_url" class="mainImg" height="90px"></v-card-media>
+              </v-card>
+          </v-container>
 
           <v-layout row wrap>
-            <!--<v-text class=namebg>{{profile.name}}}</v-text>-->
+            <v-text class=namebg>{{allmypageView.name}}</v-text>
             <img class="memoImg"
                  src="https://blogfiles.pstatic.net/MjAxODA3MDdfMTAg/MDAxNTMwOTQ2MzMzNDA3.u36ldwOCzFflZ059tjEB2VEvndo3bULeRG4RakT4vsAg.iw-Au5shR6dxmQjzJaCIlB16Qz7xVfU-NDkNOukkHcYg.PNG.peach404/my_letter.png"
                  alt="">
           </v-layout>
-          <v-layout justify-center class="total">
+
+          <v-layout justify-center class="total" >
             <table class="tb">
               <tr><br></tr>
               <tr>
-                <th><p>씨앗&emsp;&emsp;</p></th>
-                <!--<th><p>{{profile.point}}}</p></th>-->
+                <th><p>&ensp;&emsp;씨앗</p></th>
+                <th><p>&emsp;&emsp;&emsp;&emsp;&emsp;{{allmypageView.point}} 포인트</p></th>
                 <th><img class="bagImg"
                          src="https://blogfiles.pstatic.net/MjAxODA3MDdfMjg4/MDAxNTMwOTQ2Mjk5ODQx.pGRet3IouXfl5l92dNA4Z4x3iIkz-h8cfPDayiS-JWIg.baYrTBjRPGKRSBGJc-HLFWt_65OAnCTLpFrixQaLjCAg.PNG.peach404/my_backpack_nothing.png"
                          alt=""></th>
               </tr>
               <tr>
-                <th><p>이메일 및 웹사이트</p></th>
-                <!--<th><p>{profile.email}}}</p></th>-->
+                <th><p>웹 사이트</p></th>
+                <th><p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;{{allmypageView.portfolio_url}}</p></th>
               </tr>
               <tr>
                 <th><p>한줄소개</p></th>
-                <!--<th><p>{{profile.introduce}}}</p></th>-->
+                <th><p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;{{allmypageView.introduce}}</p></th>
               </tr>
               <tr><br></tr>
             </table>
           </v-layout>
           <v-layout justify-center>
-            <table class="sub" justify-center>
+            <table class="sub">
               <tr>
                 <th><p class="se">목적</p></th><th>&emsp;</th>
-                <!--<th><p>{{profile.aim}}}</p></th><th>&emsp;&emsp;&emsp;</th>-->
+                <th><p>{{allmypageView.aim}}</p></th><th>&emsp;&emsp;&emsp;</th>
                 <th><p class="se">분야</p></th><th>&ensp;</th>
-                <!--<th><p>{{profile.department}}}</p></th><th>&emsp;&emsp;&emsp;</th>-->
+                <th><p>{{allmypageView.department}}</p></th><th>&emsp;&emsp;&emsp;</th>
                 <th><p class="se">지역</p></th><th>&ensp;</th>
-                <!--<th><p>{{profile.area}}}</p></th>-->
+                <th><p>{{allmypageView.area}}</p></th>
               </tr>
             </table>
           </v-layout>
@@ -89,7 +88,6 @@
 import {mapGetters} from 'vuex'
 
 export default {
-  props: ['id'],
   data: () => ({}),
   computed: {
     ...mapGetters({
@@ -123,21 +121,11 @@ export default {
   }
 
   .title {
-    text-align: center;
-    margin-left: 30px;
-  }
-
-  .private {
-    margin-left: 33%;
-    margin-top: 7%;
-
+    margin-left: 42%;
   }
 
   .mainImg {
-    width: 90px;
-    height: 90px;
     margin-left: 10px;
-    background-color: violet;
   }
 
   .namebg {
@@ -164,4 +152,5 @@ export default {
   .memoImg {
     margin-left: 15px;
   }
+
 </style>
