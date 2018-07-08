@@ -83,6 +83,21 @@ export const boardActions = {
         (error) => console.log(error)
       )
   },
+  sendFilter ({ commit }, payload) {
+    axios.get('http://bghgu.tk:3000/api/search',
+      {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }
+    ).then(res => {
+      commit('sendFilterSuccess')
+      console.log(res.data)
+    }).catch(
+      (error) => console.log(error)
+    )
+  },
+
   recruiting ({commit}, payload) {
     axios.post('http://bghgu.tk:3000/api/project/recruit', payload,
       {
