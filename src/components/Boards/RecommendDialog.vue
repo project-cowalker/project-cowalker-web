@@ -61,7 +61,7 @@ export default {
 .share {
     color : gray;
     width: 20px;
-     background-image: url("https://blogfiles.pstatic.net/MjAxODA3MDNfMjQy/MDAxNTMwNjIzMDg1NTIx.I6yBBRZe4C_AHUGHnY7lGuIevbhSsHePLtmIq5XmE6cg.YySvVav0B9Uevaayu57NXPtLP0Nb22HupGCVy7JvZh4g.PNG.rkdud410/intro_recommend.png")
+     background-image: url("https://postfiles.pstatic.net/MjAxODA3MDNfMjQy/MDAxNTMwNjIzMDg1NTIx.I6yBBRZe4C_AHUGHnY7lGuIevbhSsHePLtmIq5XmE6cg.YySvVav0B9Uevaayu57NXPtLP0Nb22HupGCVy7JvZh4g.PNG.rkdud410/intro_recommend.png?type=w966")
 }
 
 .share_card {

@@ -5,8 +5,8 @@ export const boardActions = {
 
   getAllboards ({commit}) {
     commit('allBoards') // 네트워킹 시작을 알림(commit으로 mutation 호출)
-    axios.get('http://localhost:4000/results').then(res => {
-      commit('allBoardsSuccess', res)
+    axios.get('http://bghgu.tk:3000/api/search').then(response => {
+      commit('allBoardsSuccess', response.data)
       // http://18.191.14.154:8080/reviews
     })
   },
@@ -94,12 +94,27 @@ export const boardActions = {
       .then(res => {
         commit('recruitingSuccess')
       }
+      ).catch(
+        (error) => console.log(error)
       )
   },
+<<<<<<< HEAD
   recruitingView ({commit}) {
     axios.get('http://bghgu.tk:3000/api/project/5b3dd2387172d402215033d2/recruit').then(response => {
+=======
+
+  getDetailView ({commit}, payload) {
+    axios.get('http://bghgu.tk:3000/api/project/' + payload).then(response => {
+      commit('getDetailViewSuccess', response.data)
+      console.log(payload)
+    })
+  },
+
+  recruitingView ({commit}, payload) {
+    axios.get('http://bghgu.tk:3000/api/project/' + payload + '/recruit').then(response => {
+>>>>>>> develop
       commit('getRecruitSuccess', response.data)
-      // http://18.191.14.154:8080/reviews
+      console.log(payload)
     })
   },
   mypageView ({commit}) {

@@ -208,7 +208,7 @@
       <v-container text-xs-center>
         <v-layout justify-center>
           <button type="button" v-on:click="createBtn(adx,$event)">
-              <img class="btn-img" src="https://blogfiles.pstatic.net/MjAxODA3MDRfMjY1/MDAxNTMwNzA2NjA1OTE3.6xxAPzQvc2DSHi4ws1LyT2eZPRLfaaHD3Jt16Pur5gEg.zwroeNnrRBffwvBFDNZNZgAI8IiSqbCmCt_VoDo4Fawg.PNG.peach404/plus_btn.png">
+              <img class="btn-img" src="@/assets/plus_btn.png">
           </button>
         </v-layout>
       </v-container>
@@ -226,7 +226,9 @@
 </template>
 
 <script>
+import Router from '@/router/index'
 export default {
+  props: ['project_idx'], // project_idx 값 넘기기
   data () {
     return {
       position: '', // 모집역할
@@ -251,7 +253,11 @@ export default {
         '기타'
       ],
       questions: [
+<<<<<<< HEAD
         ' ',
+=======
+        ' '
+>>>>>>> develop
       ],
       adx: [
 
@@ -266,7 +272,6 @@ export default {
       return this.formatDate(this.end_date)
     }
   },
-
   watch: {
     start_date (val) {
       this.dateFormatted_start = this.formatDate(this.start_date)
@@ -278,13 +283,11 @@ export default {
   methods: {
     formatDate (date) {
       if (!date) return null
-
       const [year, month, day] = date.split('-')
       return `${month}/${day}/${year}`
     },
     parseDate (date) {
       if (!date) return null
-
       const [month, day, year] = date.split('/')
       return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`
     },
@@ -297,7 +300,7 @@ export default {
     },
     onRecruit () {
       const object = {
-        project_idx: '5b3f3f28a989031a3ef84e3c', // project_idx를 props를 통해서 가져오기
+        project_idx: this.project_idx, // project_idx를 props를 통해서 가져오기
         position: this.position,
         start_date: this.start_date,
         end_date: this.end_date,
@@ -315,6 +318,8 @@ export default {
 
       console.log(object)
       this.$store.dispatch('recruiting', object)
+      alert('모집하기 완료')
+      Router.push('/boards')
     }
   }
 }
@@ -379,7 +384,6 @@ export default {
     border-bottom: 1px solid #999;
     margin-left: 5%;
   }
-
   ul{
     list-style:none;
   }

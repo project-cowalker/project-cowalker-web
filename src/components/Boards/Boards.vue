@@ -1,23 +1,23 @@
 <template>
 
    <v-container class="v-container">
-       <v-container text-xs-center>
+       <v-container >
         <v-layout justify-center>
-         <v-flex class="search_space"  x12 sm10 md8 lg10 offset-sm1 offset-md2>
+         <v-flex class="search_space"  x12 sm10 md8 lg10 offset-sm1>
           <input class="search-wrapper" type="text" v-model="search" placeholder="검색" />
             <v-container d-inline-flex class="filter"  fluid grid-list-xl>
                 <v-layout justify-center>
                 <v-flex xs12 sm6 d-flex>
-                <v-select :items="items" label="목적"></v-select>
+                <v-select :items="items" label="목적" v-model="aim"></v-select>
                 </v-flex>
                 <v-flex xs12 sm6 d-flex>
-                <v-select :items="fields" label="분야"></v-select>
+                <v-select :items="fields" label="분야" v-model="department"></v-select>
                 </v-flex>
                 <v-flex xs12 sm6 d-flex>
-                <v-select :items="rules" label="역할"></v-select>
+                <v-select :items="rules" label="역할" v-model="position"></v-select>
                 </v-flex>
                 <v-flex xs12 sm6 d-flex>
-                <v-select :items="areas" label="지역"></v-select>
+                <v-select :items="areas" label="지역" v-model="area"></v-select>
                 </v-flex>
                 </v-layout>
             </v-container>
@@ -30,13 +30,13 @@
 
         <v-layout d-inline-flex v-for="board in filteredList" :key="board.id">
             <v-flex x12 sm10 md8 lg10 offset-sm1 offset-md2>
-                <v-card flat :to="'/boards/' + board.id" class="v-card" width="260px">
+                <v-card flat :to="'/boards/' + board.project_idx" class="v-card" width="260px">
                     <v-container fluid>
-                        <v-card-media v-if="board.image" height="160px" width="260px" :src="board.image"></v-card-media>
+                        <v-card-media  class="card_image" v-if="board.img_url" height="160px" width="260px" :src="board.img_url"></v-card-media>
                         <v-card-title primary-title>
                             <v-flex class="v-card-content">
                                 <h4>{{board.title}}</h4> <!--class="headline mb-0"-->
-                                <div class="date">{{board.date}}</div>
+                                <h6 class="date">{{board.area}} · {{board.department}} · {{board.aim}}</h6>
                             </v-flex>
                         </v-card-title>
                         <v-divider></v-divider> <!--선긋기-->
@@ -58,10 +58,14 @@ export default {
     return {
       show: false,
       search: '',
-      items: ['창업', '공모전 참여', '스터디', '사이드 프로젝트', '창작', '기타'],
-      fields: ['블록체인', 'IOT'],
-      rules: ['PM', '기획자', '디자이너'],
-      areas: ['서울', '경기도', '인천']
+      items: ['전체', '창업', '공모전 참여', '스터디', '사이드 프로젝트', '창작', '기타'],
+      fields: ['전체', '블록체인', 'IOT'],
+      rules: ['전체', 'PM', '기획자', '디자이너'],
+      areas: ['전체', '서울', '경기도', '인천'],
+      aim: '',
+      department: '',
+      position: '',
+      area: ''
     }
   },
   computed: { // state에 있는 값 가져오기
@@ -71,7 +75,7 @@ export default {
     filteredList () { // search filter
       return this.boards.filter(post => {
         return post.title.toLowerCase().includes(this.search.toLowerCase()) ||
-        post.date.toLowerCase().includes(this.search.toLowerCase())
+        post.department.toLowerCase().includes(this.search.toLowerCase())
       })
     }
   },
@@ -103,17 +107,24 @@ header{
     margin:auto;
 
 }
-
 .v-card {
     margin: auto;
     width: 300px;
     margin: 5px;
     border:thistle 0.8px solid;
+    border-radius: 8px;
 }
-h4 {
-    margin-top: 30px;
-    text-align: center;
+.card_iamge {
+    border-radius: 8px;
+}
 
+h4 {
+
+    text-align: center;
+    border: 1px solid #64DFFF;
+    width: 75%;
+    margin: auto;
+    margin-top: 20px;
 }
 .date
 {
@@ -142,7 +153,7 @@ h4 {
     margin-top: 10px;
     margin-bottom: 90px;
     width: 70%;
-    margin-left: 20px;
+    margin-left: 12%;
     border-radius: 4px;
 
 }
@@ -159,14 +170,12 @@ h4 {
     background-repeat: no-repeat;
     margin-right: 50px;
 }
-.search_space {
-     margin-right: 150px;
-}
 .fdfd {
     width: 30px;
 }
 .filter {
-    margin-left: 70px;
+    width: 400px;
+
 }
 
 </style>

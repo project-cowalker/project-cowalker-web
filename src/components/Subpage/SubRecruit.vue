@@ -1,8 +1,9 @@
-<template>
+<template> <!--이 화면 자체에 다이얼로그 띄우기-->
    <v-container  class="v-container">
         <v-layout v-for="recruit in allrecruitview" :key="recruit.recruit_idx">
             <v-flex x12 sm10 md8 lg7 offset-sm1 offset-md2>
-                <v-card flat class="left_card" width="90%"> <!--flat :to="'/boards/' + board.id" class="v-card"-->
+                <v-card flat class="left_card" width="90%"
+                :to="'@/subrecruit/' + recruit.recruit_idx">
 
                         <v-card-title primary-title>
                             <v-card flat class="position" width="120px"><h3 class="positon">{{recruit.position}}</h3></v-card>
@@ -26,18 +27,17 @@
 <script>
 import {mapGetters} from 'vuex'
 export default {
-  props: ['id'], // board id
+  props: ['project_idx'],
   data: () => ({
   }),
   computed: {
     ...mapGetters({
-      allrecruitview: 'allrecruitView',
-      user: 'user'
+      allrecruitview: 'allrecruitView'
     })
 
   },
   created () {
-    this.$store.dispatch('recruitingView') // 서버로부터 게시글 다 받아오기
+    this.$store.dispatch('recruitingView', this.project_idx) // 서버로부터 게시글 다 받아오기
   }
 }
 </script>
