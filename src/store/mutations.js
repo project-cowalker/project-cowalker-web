@@ -38,6 +38,9 @@ export const boardMutations = {
   recruitingSuccess (state) {
     console.log('recruitFinish')
   },
+  sendFilterSuccess (state) {
+    console.log('sendFilterSuccess')
+  },
   getDetailViewSuccess (state, payload) {
     state.detailboard = payload.result
     console.log('all getDetailView success')

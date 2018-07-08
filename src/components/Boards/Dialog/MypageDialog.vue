@@ -7,31 +7,37 @@
     <form @submit.prevent="onUploadMypage">
     <v-card>
       <v-container class="v-container">
-        <v-layout class="content_title" row wrap>
+        <v-layout class="content_title" row wrap >
 
-          <v-flex x12 sm10 md8 lg10 offset-md5>
+          <v-layout justify-center>
             <form class="imgsize">
               <div class="dropbox" v-if="!image">
-                <input class="input-image" type="file" :multiple="false" @change="onFileChange" accept="image/*"/>
+                <input class="back-image" type="file" :multiple="false" @change="onFileChange" accept="image/*"/>
                 <!--이미지만 선택가능-->
               </div>
 
               <img :src="image" v-if="image" alt="" class="newimg">
             </form>
-          </v-flex>
-
-          <v-flex x12 sm10 md8 lg12 text-xs-center>
-            <form>
-              <input type="text" class="regular" v-model="name" placeholder="이름"/>
+            <form class="imgsize">
+              <div class="dropbox" v-if="!image2">
+                <input class="input-image" type="file" :multiple="false" @change="onFileChange2" accept="image/*"/>
+                <!--이미지만 선택가능-->
+              </div>
+              <img :src="image2" v-if="image2" alt="" class="newimg"><!--이미지가 있으면 뜨도록-->
             </form>
-          </v-flex>
+          </v-layout>
+        </v-layout>
+        <v-layout d-line-flex justify-center>
+          <p style="margin-top: -20px; color:#707070;">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;커버이미지</p>
+          <p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</p>
+          <p style="margin-top: -20px; color:#707070;">프로젝트 이미지</p>
         </v-layout>
         <v-layout row wrap>
           <v-flex x12 sm10 md8 lg10 offset-sm1 offset-md2>
-            <p>이메일</p>
+            <p>이름</p>
           </v-flex>
           <v-flex x12 sm10 md8 lg12 offset-md2>
-            <input class="input_p" type="text" v-model="email"/>
+            <input class="input_p1" type="text" v-model="name"/>
           </v-flex>
         </v-layout>
         <v-layout row wrap>
@@ -143,7 +149,6 @@ export default {
   name: 'MypageDialog',
   data () {
     return {
-      background_img: null,
       email: '',
       name: '',
       point: 0,
@@ -155,6 +160,7 @@ export default {
       area: '',
       file: null,
       image: null,
+      image2: null,
       locations: [
         '전체',
         '서울',
@@ -190,15 +196,14 @@ export default {
         '디자이너',
         '개발자',
         '기타'
-      ],
+      ]
     }
   },
   methods: {
     onUploadMypage () {
       const data = new FormData()
       data.append('profile_img', this.file)
-      data.append('background_img',this.background_img)
-      data.append('email', this.email)
+      data.append('background_img', this.background)
       data.append('name', this.name)
       data.append('point', this.point)
       data.append('introduce', this.introduce)
@@ -214,15 +219,23 @@ export default {
       const fileReader = new FileReader()
       fileReader.onload = () => { // 파일리더가 뭔가를 로드해왔을 때 함수블록을 실행된다
         this.image = fileReader.result
-        // this.image1 = fileReader.result
       }
       fileReader.readAsDataURL(file) // 데이터에서 url을 끌고 오는 것
     },
     onFileChange (file) {
-      // if ((event.target.files[0]['type']).split('/')[0] === 'image') {
       this.file = file.target.files[0]
       this.getImage(this.file)
-      // }
+    },
+    getImage2 (background) {
+      const fileReader = new FileReader()
+      fileReader.onload = () => { // 파일리더가 뭔가를 로드해왔을 때 함수블록을 실행된다
+        this.image2 = fileReader.result
+      }
+      fileReader.readAsDataURL(background) // 데이터에서 url을 끌고 오는 것
+    },
+    onFileChange2 (background) {
+      this.background = background.target.files[0]
+      this.getImage2(this.background)
     }
   }
 }
@@ -266,8 +279,21 @@ export default {
     height: 180px;
     opacity: 0.4%;
     background-color: lightgray;
-    margin-top: 10%
+    margin-top: 100px;
+    margin-left: 20%;
+    margin-bottom: 40px;
 
+  }
+  .back-image{
+    margin-right: 60px;
+    max-width: 100%;
+    display: flex;
+    color: transparent;
+    width: 300px;
+    height: 250px;
+    opacity: 0.4%;
+    background-color: lightgray;
+    margin-top: 10%
   }
 
   .newimg {
@@ -291,6 +317,16 @@ export default {
   .combo {
     width: 35%;
     margin-left: -3%;
+  }
+  .input_p1{
+    margin-top: -20px;
+    margin-left: 8%;
+    max-width: 100%;
+    height: 40px;
+    width: 20%;
+    border-radius: 8px;
+    background-color: #fcfcfc;
+    border: 1px solid #dbdbdb;
   }
 
   .input_p {

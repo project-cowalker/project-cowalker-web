@@ -84,7 +84,7 @@ export const boardActions = {
       )
   },
   sendFilter ({ commit }, payload) {
-    axios.get('http://bghgu.tk:3000/api/search',
+    axios.get('http://bghgu.tk:3000/api/search?', payload[0],
       {
         headers: {
           'Content-Type': 'application/json'
@@ -97,7 +97,6 @@ export const boardActions = {
       (error) => console.log(error)
     )
   },
-
   recruiting ({commit}, payload) {
     axios.post('http://bghgu.tk:3000/api/project/recruit', payload,
       {
@@ -112,14 +111,12 @@ export const boardActions = {
         (error) => console.log(error)
       )
   },
-
   getDetailView ({commit}, payload) {
     axios.get('http://bghgu.tk:3000/api/project/' + payload).then(response => {
       commit('getDetailViewSuccess', response.data)
       console.log(payload)
     })
   },
-
   recruitingView ({commit}, payload) {
     axios.get('http://bghgu.tk:3000/api/project/' + payload + '/recruit').then(response => {
       commit('getRecruitSuccess', response.data)

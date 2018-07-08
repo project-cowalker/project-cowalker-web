@@ -2,11 +2,11 @@
 
   <v-container class="v-container">
     <v-container >
+      <form @submit.prevent="onSendfilter">
       <v-layout justify-center>
         <v-flex class="search_space"  x12 sm10 md8 lg10 offset-sm1>
             <input class="search-wrapper" type="text" v-model="search" placeholder="검색" />
             <button type="submit" class="btncss">검색</button>
-          <form @submit.prevent="onSendfilter">
           <v-container d-inline-flex class="filter"  fluid grid-list-xl>
             <v-layout justify-center>
               <v-flex xs12 sm6 d-flex>
@@ -23,11 +23,11 @@
               </v-flex>
             </v-layout>
           </v-container>
-          </form>
         </v-flex>
         <v-flex >
         </v-flex>
       </v-layout>
+      </form>
     </v-container>
 
     <v-layout d-inline-flex v-for="board in filteredList" :key="board.id">
@@ -82,22 +82,19 @@ export default {
     }
   },
   methods: {
-    onPopoverOpen () {
-      console.log('popover open')
-    },
     onSendfilter () {
       const data = new FormData()
-
-      if (this.aim != null) {
+      if (this.aim) {
+        console.log(this.aim)
         data.append('aim', this.aim)
       }
-      if (this.area != null) {
+      if (this.area) {
         data.append('area', this.area)
       }
-      if (this.position != null) {
+      if (this.position) {
         data.append('position', this.position)
       }
-      if (this.department != null) {
+      if (this.department) {
         data.append('department', this.department)
       }
       this.$store.dispatch('sendFilter', data)

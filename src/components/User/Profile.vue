@@ -9,10 +9,12 @@
 
     <v-flex xs12 sm10 md10 lg10 xl10 offset-sm1 offset-md1> <!--v-card 안에서-->
       <v-container d-inline-flex class="v-container">
-        <v-card class="hidden-xs-only" width="350px"> <!--v-card만 width 조정가능 그래서 이미지 감싸줌-->
-          <v-card-media height="370px"></v-card-media>
-        </v-card>
 
+        <v-container fluid>
+          <v-card class="hidden-xs-only" width="350px"> <!--v-card만 width 조정가능 그래서 이미지 감싸줌-->
+            <v-card-media :src="allmypageView.background_url" height="370px"></v-card-media>
+          </v-card>
+        </v-container>
 
         <div> <!--사진 옆 설명부분-->
           <v-container fluid>
@@ -27,7 +29,6 @@
                  src="https://blogfiles.pstatic.net/MjAxODA3MDdfMTAg/MDAxNTMwOTQ2MzMzNDA3.u36ldwOCzFflZ059tjEB2VEvndo3bULeRG4RakT4vsAg.iw-Au5shR6dxmQjzJaCIlB16Qz7xVfU-NDkNOukkHcYg.PNG.peach404/my_letter.png"
                  alt="">
           </v-layout>
-
           <v-layout justify-center class="total" >
             <table class="tb">
               <tr><br></tr>

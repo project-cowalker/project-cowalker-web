@@ -178,13 +178,6 @@ export default {
       data.append('explain', this.explain)
       data.append('img', this.file)
 
-      /* let axiosConfig = {
-        headers: {
-          'Content-Type': 'application/json',
-          'authorization': this.$store.getters.token
-        }
-      } */
-
       this.$store.dispatch('uploadOpened', data)
     },
     getImage (file) {
