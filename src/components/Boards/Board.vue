@@ -14,8 +14,8 @@
                       <div>
                       <button class="title_btn" disabled depressed><h5>{{ allDetailView.title }}</h5></button> <!--class="headline mb-0"-->
                       <div class="scrap" style="display:inline;">
-                      <img src="https://blogfiles.pstatic.net/MjAxODA3MDJfMTA3/MDAxNTMwNTQwMDc3NTkx.FGcNarP2KwAT7-2lc4R5_DgibImcmSkspH10bnPxtlcg.T4zw1gEry1_weCEdc4Otd4hNUGUaIFdNTvlccexJ2ywg.PNG.rkdud410/intro_scrap_click.png"
-                      class="memo"/></div>
+                      <img src="@/assets/intro_scrap_unclick.png">
+                      </div>
                       </div>
                       </v-flex>
 
@@ -25,7 +25,7 @@
             <v-layout> <!--추천공유참여하기 가운데로 모으기-->
             <v-flex class="user_name" d-inline-flex  xs5 sm8 md5 lg3 xl3>
                  <div><img :src="allDetailView.project_user_profile_url" width="33px" height="33px" class="user_img"></div>
-              <div>  with <h3>{{allDetailView.project_user_name}}</h3> <img src="https://blogfiles.pstatic.net/MjAxODA3MDJfMjg1/MDAxNTMwNTQxNjg0MjU0.1Ysslob8AQNbBrvtunTvD8AJl1Uqm6kh1vz8tGqdacog.Me0encEJSv6aSOGrIwG3g72LPSEmkS1rd2W7o_k_Zyog.PNG.rkdud410/intro_facin.png"/></div>
+              <div>  with <h3>{{allDetailView.project_user_name}}</h3> <img src="@/assets/intro_facin.png"></div>
 
             </v-flex>
             </v-layout> <!--모바일환경에서 제대로 작동하려면 layout안에 flex 선언하기-->
@@ -46,10 +46,10 @@
                   <app-board-recommend-dialog></app-board-recommend-dialog> <!--:id="allDetailView.project_idx"-->
                   <app-board-share-dialog ></app-board-share-dialog>
                     &ensp;
-                    <v-btn class="register-btn" :to="'/boards/' + allDetailView.project_idx + '/apply'"
+                    <v-btn class="register-btn" :to="'/boards/' + this.project_idx + '/apply'"
                     large accent slot="activator" outline color="cyan lighten-4">
                     <v-text class="register-text">참여하기</v-text></v-btn> <!--참여하기-->
-                    <v-btn class="register-btn" :to="'/boards/' + allDetailView.project_idx + '/recruit'"
+                    <v-btn class="register-btn" :to="'/boards/' + this.project_idx + '/recruit'"
                     large accent slot="activator" outline color="cyan lighten-4">
                     <v-text class="register-text">모집하기</v-text></v-btn> <!--모집하기-->
             </v-flex>
@@ -61,9 +61,9 @@
         <v-divider></v-divider>
             <div id="v-tab">
               <v-tabs v-model="active" slider-color="cyan lighten-4">
-                <v-tab :to="'/boards/' + allDetailView.project_idx + '/'">소개</v-tab>
-                <v-tab :to="'/boards/' + allDetailView.project_idx + '/history'">연혁</v-tab>
-                <v-tab :to="'/boards/' + allDetailView.project_idx + '/subrecruit'">모집</v-tab>
+                <v-tab :to="'/boards/' + this.project_idx + '/'">소개</v-tab>
+                <v-tab :to="'/boards/' + this.project_idx + '/history'">연혁</v-tab>
+                <v-tab :to="'/boards/' + this.project_idx + '/subrecruit'">모집</v-tab>
               </v-tabs>
               <router-view></router-view>
             </div>

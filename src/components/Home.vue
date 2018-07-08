@@ -1,6 +1,6 @@
 <template>
 <main>
-     <v-jumbotron  src='http://www.earlyadopter.co.kr/wp-content/uploads/2017/01/Q_Dock_00.jpg' contain height="700px">
+     <v-jumbotron  src='http://www.earlyadopter.co.kr/wp-content/uploads/2017/01/Q_Dock_00.jpg' contain height="500px">
           <v-container fill-height>
           <v-layout align-center>
              <v-flex x12 sm8 md7 lg7  align-content-center class="text-xs-center text-sm-right"> <!--버튼 중앙으로-->
