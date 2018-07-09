@@ -84,11 +84,15 @@ export const boardActions = {
       )
   },
   sendFilter ({ commit }, payload) {
-    axios.get('http://bghgu.tk:3000/api/search?',
+    axios.get('http://bghgu.tk:3000/api/search',
       {
         params: {
-          payload
+          aim : payload.aim,
+          area : payload.area,
+          department : payload.department,
+          position : payload.position
         }
+
       }
     ).then(res => {
       commit('sendFilterSuccess')

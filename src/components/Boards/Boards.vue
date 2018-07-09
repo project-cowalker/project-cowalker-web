@@ -86,19 +86,10 @@ export default {
   methods: {
     onSendfilter () {
       const object = {
-        // if(this.aim)
-        // {
         aim: this.aim,
-        // }
-        // if (this.area) {
         area: this.area,
-        // }
-        // if (this.position) {
         position: this.position,
-        // }
-        // if (this.department) {
         department: this.department
-        // }
       }
       console.log(object)
       this.$store.dispatch('sendFilter', object)
