@@ -61,9 +61,9 @@ export default {
       show: false,
       search: '',
       items: ['전체', '창업', '공모전 참여', '스터디', '사이드 프로젝트', '창작', '기타'],
-      fields: ['전체', '블록체인', 'IOT'],
-      rules: ['전체', 'PM', '기획자', '디자이너'],
-      areas: ['전체', '서울', '경기도', '인천'],
+      fields: ['전체', '블록체인', 'IOT','인공지능','디자인','컨텐츠','기타'],
+      rules: ['전체', 'PM', '기획', '디자이너', '개발자', '기타'],
+      areas: ['전체', '서울', '경기도','충청도', '강원도', '전라도', '경상도', '제주도'],
       aim: '',
       department: '',
       position: '',
@@ -83,21 +83,23 @@ export default {
   },
   methods: {
     onSendfilter () {
-      const data = new FormData()
-      if (this.aim) {
-        console.log(this.aim)
-        data.append('aim', this.aim)
+      const object = {
+        // if(this.aim)
+        // {
+        aim: this.aim,
+        // }
+        // if (this.area) {
+        area: this.area,
+        // }
+        // if (this.position) {
+        position: this.position,
+        // }
+        // if (this.department) {
+        department: this.department
+        // }
       }
-      if (this.area) {
-        data.append('area', this.area)
-      }
-      if (this.position) {
-        data.append('position', this.position)
-      }
-      if (this.department) {
-        data.append('department', this.department)
-      }
-      this.$store.dispatch('sendFilter', data)
+      console.log(object)
+      this.$store.dispatch('sendFilter', object)
     }
   },
   created () {

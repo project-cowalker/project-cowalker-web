@@ -84,10 +84,10 @@ export const boardActions = {
       )
   },
   sendFilter ({ commit }, payload) {
-    axios.get('http://bghgu.tk:3000/api/search?', payload[0],
+    axios.get('http://bghgu.tk:3000/api/search?',
       {
-        headers: {
-          'Content-Type': 'application/json'
+        params: {
+          payload
         }
       }
     ).then(res => {
