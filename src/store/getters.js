@@ -17,6 +17,12 @@ export const boardGetters = {
   allrecruitView (state, getters) {
     return state.recruits
   },
+  allDetailrecruitView (state, getters) {
+    return state.recruitDetail
+  },
+  allgetrecommendproject (state, getters) {
+    return state.recommendboards
+  },
 
   registeredboards (state) {
     return state.registeredboards

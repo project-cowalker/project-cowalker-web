@@ -10,6 +10,11 @@ export const boardActions = {
       // http://18.191.14.154:8080/reviews
     })
   },
+  getrecommendproject ({commit}) {
+    axios.get('http://bghgu.tk:3000/api/home').then(response => {
+      commit('allgetrecommendproject', response.data)
+    })
+  },
   // this.$store.dispatch('signUp', object)
   signUp ({commit}, payload) {
     commit('setLoading', true)
@@ -83,7 +88,7 @@ export const boardActions = {
   getDetailView ({commit}, payload) {
     axios.get('http://bghgu.tk:3000/api/project/' + payload).then(response => {
       commit('getDetailViewSuccess', response.data)
-      console.log(payload)
+      console.log(payload + 'project_idx 값')
     })
   },
 
@@ -91,6 +96,16 @@ export const boardActions = {
     axios.get('http://bghgu.tk:3000/api/project/' + payload + '/recruit').then(response => {
       commit('getRecruitSuccess', response.data)
       console.log(payload)
+    })
+  },
+  recruitingDetailView ({commit}, payload) {
+    axios.get('http://bghgu.tk:3000/api/project/' + payload.project_idx + '/recruit/' + payload.recruit_idx, {
+      headers: {
+        'authorization': localStorage.getItem('token')
+      }
+    }).then(response => {
+      commit('getDetailRecruitSuccess', response.data)
+      console.log(payload + ' project_idx , recruit_idx')
     })
   },
 
