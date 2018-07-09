@@ -13,9 +13,6 @@
                       <v-flex align-center>
                       <div>
                       <button class="title_btn" disabled depressed><h5>{{ allDetailView.title }}</h5></button> <!--class="headline mb-0"-->
-                      <div class="scrap" style="display:inline;">
-                      <img src="@/assets/intro_scrap_unclick.png">
-                      </div>
                       </div>
                       </v-flex>
 

@@ -9,6 +9,11 @@ export const boardMutations = {
     state.boards = payload.result
     console.log(payload.result)
   },
+  allgetrecommendproject (state, payload) {
+    console.log('all recommendboards success')
+    state.recommendboards = payload.result
+    console.log(payload.result)
+  },
   signUp (state, payload) {
     console.log('')
     // state.user = payload.data
@@ -47,6 +52,11 @@ export const boardMutations = {
     state.recruits = payload.result
     console.log('all getRecruit success')
     console.log(payload.result)
+  },
+  getDetailRecruitSuccess (state, payload) {
+    state.recruitDetail = payload.result[0]
+    console.log('all getDetailRecruit success')
+    console.log(state.recruitDetail)
   },
   setLoading (state, payload) {
     state.loading = payload

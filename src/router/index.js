@@ -11,6 +11,8 @@ import Opened1 from '@/components/Opened/Opened1'
 import Opened2 from '@/components/Opened/Opened2'
 import Recruit from '@/components/Boards/Recruit'
 import Apply from '@/components/Boards/Apply'
+// import JoinDialog from '@/components/Boards/Dialog/JoinDialog'
+import JoinDetailView from '@/components/Boards/JoinDetailView'
 
 Vue.use(Router)
 
@@ -53,9 +55,15 @@ export default new Router({
       component: Apply
     },
     {
+      path: '/boards/:project_idx/subrecruit/:recruit_idx',
+      name: 'subrecruit',
+      props: true,
+      component: JoinDetailView
+    },
+    {
       path: '/boards/:project_idx',
       name: 'Boards',
-      props: true, // 이렇게 설정해줘야 props에 url에서 project_idx 받아올 수 있음
+      props: true,
       component: Board,
       children: [
         {
@@ -78,5 +86,5 @@ export default new Router({
     }
 
   ],
-  mode: 'history' // /#/ 삭제
+  mode: 'history'
 })
