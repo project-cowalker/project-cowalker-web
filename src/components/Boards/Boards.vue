@@ -5,8 +5,10 @@
       <form @submit.prevent="onSendfilter">
       <v-layout justify-center>
         <v-flex class="search_space"  x12 sm10 md8 lg10 offset-sm1>
+          <v-container>
             <input class="search-wrapper" type="text" v-model="search" placeholder="검색" />
             <button type="submit" class="btncss">검색</button>
+          </v-container>
           <v-container d-inline-flex class="filter"  fluid grid-list-xl>
             <v-layout justify-center>
               <v-flex xs12 sm6 d-flex>

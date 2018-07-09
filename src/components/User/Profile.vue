@@ -7,7 +7,7 @@
         </form>
       </v-layout>
 
-    <v-flex xs12 sm10 md10 lg10 xl10 offset-sm1 offset-md1> <!--v-card 안에서-->
+    <v-flex xs12 sm10 md10 lg10 xl10 offset-sm1> <!--v-card 안에서-->
       <v-container d-inline-flex class="v-container">
 
         <v-container fluid>
@@ -15,11 +15,11 @@
             <v-card-media :src="allmypageView.background_url" height="370px"></v-card-media>
           </v-card>
         </v-container>
-
+        <v-container>
         <div> <!--사진 옆 설명부분-->
-          <v-container fluid>
-              <v-card width="90px" class="title" flat>
-                <v-card-media :src="allmypageView.profile_url" class="mainImg" height="90px"></v-card-media>
+          <v-container class="profileImg" fluid>
+              <v-card width="95px" class="title" flat>
+                <v-card-media :src="allmypageView.profile_url" class="mainImg" height="100px"></v-card-media>
               </v-card>
           </v-container>
 
@@ -29,32 +29,33 @@
                  src="https://blogfiles.pstatic.net/MjAxODA3MDdfMTAg/MDAxNTMwOTQ2MzMzNDA3.u36ldwOCzFflZ059tjEB2VEvndo3bULeRG4RakT4vsAg.iw-Au5shR6dxmQjzJaCIlB16Qz7xVfU-NDkNOukkHcYg.PNG.peach404/my_letter.png"
                  alt="">
           </v-layout>
-          <v-layout justify-center class="total" >
+          <v-layout class="total" >
             <table class="tb">
               <tr><br></tr>
               <tr>
                 <th><p>&ensp;&emsp;씨앗</p></th>
-                <th><p>&emsp;&emsp;&emsp;&emsp;&emsp;{{allmypageView.point}} 포인트</p></th>
+                <th><p>{{allmypageView.point}} 포인트</p></th>
                 <th><img class="bagImg"
                          src="https://blogfiles.pstatic.net/MjAxODA3MDdfMjg4/MDAxNTMwOTQ2Mjk5ODQx.pGRet3IouXfl5l92dNA4Z4x3iIkz-h8cfPDayiS-JWIg.baYrTBjRPGKRSBGJc-HLFWt_65OAnCTLpFrixQaLjCAg.PNG.peach404/my_backpack_nothing.png"
                          alt=""></th>
               </tr>
               <tr>
                 <th><p>웹 사이트</p></th>
-                <th><p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;{{allmypageView.portfolio_url}}</p></th>
+                <th><p>{{allmypageView.portfolio_url}}</p></th>
               </tr>
               <tr>
                 <th><p>한줄소개</p></th>
-                <th><p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;{{allmypageView.introduce}}</p></th>
+                <th><p>{{allmypageView.introduce}}</p></th>
               </tr>
               <tr><br></tr>
             </table>
           </v-layout>
-          <v-layout justify-center>
+
+          <v-layout>
             <table class="sub">
               <tr>
                 <th><p class="se">목적</p></th><th>&emsp;</th>
-                <th><p>{{allmypageView.aim}}</p></th><th>&emsp;&emsp;&emsp;</th>
+                <th><p>{{allmypageView.aim}}</p></th><th>&emsp;&emsp;&emsp;&emsp;</th>
                 <th><p class="se">분야</p></th><th>&ensp;</th>
                 <th><p>{{allmypageView.department}}</p></th><th>&emsp;&emsp;&emsp;</th>
                 <th><p class="se">지역</p></th><th>&ensp;</th>
@@ -63,6 +64,7 @@
             </table>
           </v-layout>
         </div>
+      </v-container>
       </v-container>
       <v-divider></v-divider>
       <v-divider></v-divider>
@@ -120,18 +122,21 @@ export default {
     background-color: #fcfcfc;
     margin-left: 8px;
   }
-
+  .tb{
+    width: 90%;
+    max-width: 100%;
+  }
   .title {
-    margin-left: 42%;
+    margin-left: 30%;
   }
 
   .mainImg {
-    margin-left: 10px;
+    margin-left: -20px;
   }
 
   .namebg {
     background-color: #EEFBFF;
-    margin-left: 46%;
+    margin-left: 32%;
     font-size: 17px;
 
   }
@@ -144,6 +149,7 @@ export default {
 
   .sub {
     font-size: 12px;
+    width: 80%;
 
   }
   .bagImg {
