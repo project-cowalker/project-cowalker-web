@@ -29,14 +29,17 @@ export const boardGetters = {
   registeredboards (state) {
     return state.registeredboards
   },
-
-  store (state, getters) {
-    return state.store
+  allmypageView (state, getters) {
+    return state.mypages
   },
+
+  allmypageIntro (state) {
+    return state.mypageintros
+  }
+  ,
   allApplyMember (state, getters) {
     return state.applymembers
   },
-
   user (state, getters) {
     return state.user
   },

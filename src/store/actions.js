@@ -30,7 +30,6 @@ export const boardActions = {
           commit('setError', error)
           console.log(error)
         }
-
       )
   },
 
@@ -70,6 +69,48 @@ export const boardActions = {
         (error) => console.log(error)
       )
   },
+  onUploadMypage ({ commit }, payload) {
+    axios.put('http://bghgu.tk:3000/api/mypage', payload,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          'authorization': localStorage.getItem('token')
+        }
+      }
+    ).then(res => {
+      commit('writeSuccess')
+      console.log(res.data)
+      Router.push('/profile')
+      alert('수정완료')
+    }).catch(
+      (error) => console.log(error)
+    )
+  },
+  onloadIntro ({ commit }, payload) {
+    axios.put('http://bghgu.tk:3000/api/intro', payload,
+      {
+        headers: {
+          'authorization': localStorage.getItem('token')
+        }
+      }
+    ).then(res => {
+      commit('writeSuccess')
+      console.log(res.data)
+      Router.push('/profile')
+      alert('작성완료')
+    }).catch(
+      (error) => console.log(error)
+    )
+  },
+  sendFilter ({ commit }, payload) {
+    axios.get('http://bghgu.tk:3000/api/search?' + 'aim=' + payload.aim + '&area=' + payload.area + '&department=' + payload.department + '&position=' + payload.position)
+      .then(res => {
+        commit('sendFilterSuccess')
+        commit('allBoardsSuccess', res.data)
+      }).catch(
+        (error) => console.log(error)
+      )
+  },
   recruiting ({commit}, payload) {
     axios.post('http://bghgu.tk:3000/api/project/recruit', payload,
       {
@@ -84,18 +125,36 @@ export const boardActions = {
         (error) => console.log(error)
       )
   },
-
   getDetailView ({commit}, payload) {
     axios.get('http://bghgu.tk:3000/api/project/' + payload).then(response => {
       commit('getDetailViewSuccess', response.data)
       console.log(payload + 'project_idx 값')
     })
   },
-
   recruitingView ({commit}, payload) {
     axios.get('http://bghgu.tk:3000/api/project/' + payload + '/recruit').then(response => {
       commit('getRecruitSuccess', response.data)
       console.log(payload)
+    })
+  },
+  mypageView ({commit}) {
+    axios.get('http://bghgu.tk:3000/api/mypage',
+      {
+        headers: {
+          'authorization': localStorage.getItem('token')
+        }
+      }).then(response => {
+      commit('getMypageSuccess', response.data)
+    })
+  },
+  mypageIntro ({commit}) {
+    axios.get('http://bghgu.tk:3000/api/intro',
+      {
+        headers: {
+          'authorization': localStorage.getItem('token')
+        }
+      }).then(response => {
+      commit('getMypageIntroSuccess', response.data)
     })
   },
   recruitingDetailView ({commit}, payload) {
@@ -108,7 +167,6 @@ export const boardActions = {
       console.log(payload + ' project_idx , recruit_idx')
     })
   },
-
   getQuestion  ({commit}, payload) {
     axios.get('http://bghgu.tk:3000/api/question/' + payload).then(response => {
       commit('getQuestion', response.data)

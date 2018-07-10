@@ -43,6 +43,9 @@ export const boardMutations = {
   recruitingSuccess (state) {
     console.log('recruitFinish')
   },
+  sendFilterSuccess (state) {
+    console.log('sendFilterSuccess')
+  },
   getDetailViewSuccess (state, payload) {
     state.detailboard = payload.result
     console.log('all getDetailView success')
@@ -52,6 +55,16 @@ export const boardMutations = {
     state.recruits = payload.result
     console.log('all getRecruit success')
     console.log(payload.result)
+  },
+  getMypageIntroSuccess (state, payload) {
+    state.mypageintros = payload.result
+    console.log('all getMypage Intro Success')
+    console.log(payload.result)
+  },
+  getMypageSuccess (state, payload) {
+    console.log('all getMypageSuccess')
+    state.mypages = payload.data[0]
+    console.log(state.mypages)
   },
   getDetailRecruitSuccess (state, payload) {
     state.recruitDetail = payload.result[0]

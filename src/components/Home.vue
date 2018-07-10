@@ -39,6 +39,7 @@
                             <app-board-signup-dialog></app-board-signup-dialog>
                           </v-flex>
                         </v-layout>
+
                       </form>
                     </v-container>
                   </v-layout>
@@ -81,6 +82,7 @@
 <script>
 import {mapGetters} from 'vuex'
 import Router from '@/router/index'
+
 export default {
   props: ['id'], // board id
   data () {
@@ -104,6 +106,7 @@ export default {
     error () {
       return this.$store.getters.error
     }
+
   },
   methods: {
     guard () { // 홈화면 프로젝트 보기에서 로그인 되어있는 경우는 /boards로 이동
@@ -153,6 +156,7 @@ export default {
     border: 1px solid #ccc;
     border-radius: 25px;
   }
+
   .inputpw {
     width: 262.08px;
     height: 40.64px;
@@ -165,6 +169,7 @@ export default {
     background: url("https://postfiles.pstatic.net/MjAxODA3MDJfODYg/MDAxNTMwNDYwMjk1NTg3.jYhRgBcl9sAWliY26EK-EPfVhLYTQBzws41bRejER9sg.jQGG20bRIw6h5f4eMSftzxsNicGPNd03gE3phqsuXUYg.PNG.rkdud410/password_eye_preview_see.png?type=w966");
     background-repeat: no-repeat;
   }
+
   .top {
     margin-top: 120px;
   }
