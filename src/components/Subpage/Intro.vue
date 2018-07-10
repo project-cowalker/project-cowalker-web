@@ -12,7 +12,7 @@
   <v-flex>
     <v-card flat class="intro" width="100%" height="200px">
       <h3>소개</h3>
-      <h5>{{allDetailView.explain}}</h5>
+      <h4>{{allDetailView.explain}}</h4>
     </v-card>
   </v-flex>
 
@@ -57,5 +57,15 @@ export default {
   margin-top: 40px;
   border:rgb(218, 217, 217) 1px solid;
   border-radius: 10px;
+}
+h3 {
+  margin-left: 5%;
+  margin-top: 20px;
+  border-bottom: 2.5px solid #81D4FA;
+  width: 35px;
+}
+h4 {
+  margin-left: 10%;
+  margin-top: 3%;
 }
 </style>

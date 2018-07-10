@@ -26,7 +26,7 @@
 <script>
 import {mapGetters} from 'vuex'
 export default {
-  props: ['project_idx', 'recruit_idx'],
+  props: ['project_idx'],
   data: () => ({
   }),
   computed: {
@@ -37,10 +37,7 @@ export default {
 
   },
   created () {
-    this.$store.dispatch('recruitingDetailView', {
-      project_idx: this.project_idx,
-      recruit_idx: this.recruit_idx
-    })
+    this.$store.dispatch('recruitingView', this.project_idx) // 서버로부터 게시글 다 받아오기
   }
 }
 </script>

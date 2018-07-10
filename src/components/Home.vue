@@ -54,7 +54,7 @@
     </v-jumbotron>
 
       <v-container>
-        <p>추천 프로젝트</p>
+        <h3>추천 프로젝트</h3>
       <v-layout d-inline-flex v-for="board in allgetrecommendproject" :key="board.id">
             <v-flex x12 sm10 md8 lg10 offset-sm1 offset-md2>
                 <v-card flat :to="'/boards/' + board._id" class="v-card" width="260px" height="300px">
@@ -213,8 +213,9 @@ h4 {
 .v-card-content {
      margin: auto;
 }
-p {
+h3 {
   margin-left: 5%;
+  margin-bottom: 20px;
 }
 
 </style>

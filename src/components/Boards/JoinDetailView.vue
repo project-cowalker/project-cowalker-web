@@ -5,20 +5,20 @@
                     <v-card flat class="logo"><img src="@/assets/project_detail_logo.png"></v-card>
                 </v-layout>
             </v-container>
-            <v-container d-inline-flex class="v-container">
+            <v-container  d-inline-flex class="v-container">
                 <v-layout class="content_title" row wrap>
                      <v-flex xs12>
                         <v-text><p>모집역할</p></v-text> <v-text><p class="content_p"></p>{{allDetailrecruitView.position}}</v-text><br>
                         <v-text><p>모집기간</p></v-text><v-text><p class="content_p">{{allDetailrecruitView.start_date}}~{{allDetailrecruitView.start_date}}</p></v-text><br>
-                        <v-text><p>모집인원</p></v-text><v-text><p class="content_p">이더리움 기반 암호화폐 개발 역량</p></v-text><br>
-                        <v-text><p>활동</p></v-text><v-text><p class="content_p">&emsp;&emsp;이더리움 기반 암호화폐 개발 역량</p></v-text><br>
-                        <v-text><p>필요역량 및 기술</p></v-text><v-text><p class="content_p" id="left_space">이더리움 기반 암호화폐 개발 역량</p></v-text><br>
-                        <v-text><p>요구경력 및 경험</p></v-text><v-text><p class="content_p" id="left_space">이더리움 기반 암호화폐 개발 역량</p></v-text><br>
-                        <v-text><p>우대사항</p></v-text><v-text><p class="content_p">이더리움 기반 암호화폐 개발 역량</p></v-text><br>
-                        <v-text><p>활동기간 및 시간</p></v-text><v-text><p class="content_p" id="left_space">이더리움 기반 암호화폐 개발 역량</p></v-text><br>
-                        <v-text><p>혜택 및 보상</p></v-text><v-text><p class="content_p" id="left">이더리움 기반 암호화폐 개발 역량</p></v-text><br>
-                        <v-text><p>위치</p></v-text><v-text><p class="content_p">&emsp;&emsp;이더리움 기반 암호화폐 개발 역량</p></v-text><br>
-                        <v-text><p>코멘트</p></v-text><v-text><p class="content_p">&ensp;&ensp;이더리움 기반 암호화폐 개발 역량</p></v-text><br>
+                        <v-text><p>모집인원</p></v-text><v-text><p class="content_p">{{allDetailrecruitView.number}}</p></v-text><br>
+                        <v-text><p>활동</p></v-text><v-text><p class="content_p">&emsp;&ensp;{{allDetailrecruitView.task}}</p></v-text><br>
+                        <v-text><p>필요역량 및 기술</p></v-text><v-text><p class="content_p" id="left_space">{{allDetailrecruitView.ability}}</p></v-text><br>
+                        <v-text><p>요구경력 및 경험</p></v-text><v-text><p class="content_p" id="left_space">{{allDetailrecruitView.career}}</p></v-text><br>
+                        <v-text><p>우대사항</p></v-text><v-text><p class="content_p">{{allDetailrecruitView.preference}}</p></v-text><br>
+                        <v-text><p>활동기간 및 시간</p></v-text><v-text><p class="content_p" id="left_space">{{allDetailrecruitView.activity}}</p></v-text><br>
+                        <v-text><p>혜택 및 보상</p></v-text><v-text><p class="content_p" id="left">{{allDetailrecruitView.reward}}</p></v-text><br>
+                        <v-text><p>위치</p></v-text><v-text><p class="content_p">&emsp;&emsp;{{allDetailrecruitView.area}}</p></v-text><br>
+                        <v-text><p>코멘트</p></v-text><v-text><p class="content_p">&ensp;&ensp;{{allDetailrecruitView.comment}}</p></v-text><br>
                     </v-flex>
                 </v-layout>
 
@@ -33,8 +33,8 @@
             <v-container class="v-container" text-xs-center>
              <v-layout  row wrap justify-center>
                 <v-flex xs12>
-                    <v-btn class="signup" type="submit"
-                    :to="'/boards/' +  '/apply'" >참여하기</v-btn>
+                    <v-btn class="apply" type="submit"
+                    :to="'/boards/' + this.project_idx +'/' + this.recruit_idx + '/apply'" >참여하기</v-btn>
                 </v-flex>
                 <v-flex xs12>
                 </v-flex>
@@ -59,7 +59,10 @@ export default {
 
   },
   created () {
-    this.$store.dispatch('recruitingDetailView', this.project_idx, this.recruit_idx)
+    this.$store.dispatch('recruitingDetailView', {
+      project_idx: this.project_idx,
+      recruit_idx: this.recruit_idx
+    })
   }
 }
 </script>
@@ -112,7 +115,7 @@ p {
 #left {
     margin-left: 76px;
 }
-.signup {
+.apply {
   width: 250px;
   height: 60px;
   margin-top: 30px;
@@ -120,5 +123,7 @@ p {
   border:#81D4FA 2px solid;
   margin-bottom: 60px;
 }
-
+.v-container {
+    margin-left: 10%;
+}
 </style>

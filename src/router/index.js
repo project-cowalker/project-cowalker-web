@@ -49,7 +49,7 @@ export default new Router({
       component: Recruit
     },
     {
-      path: '/boards/:project_idx/apply',
+      path: '/boards/:project_idx/:recruit_idx/apply',
       name: 'Apply',
       props: true,
       component: Apply
