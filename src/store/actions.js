@@ -137,7 +137,6 @@ export const boardActions = {
       console.log(payload)
     })
   },
-<<<<<<< HEAD
   mypageView ({commit}) {
     axios.get('http://bghgu.tk:3000/api/mypage',
       {
@@ -158,9 +157,6 @@ export const boardActions = {
       commit('getMypageIntroSuccess', response.data)
     })
   },
-  writeBoards ({ commit }, payload) {
-    axios.post('http://18.191.14.154:8080/reviews/write', payload)
-=======
   recruitingDetailView ({commit}, payload) {
     axios.get('http://bghgu.tk:3000/api/project/' + payload.project_idx + '/recruit/' + payload.recruit_idx, {
       headers: {
@@ -171,7 +167,6 @@ export const boardActions = {
       console.log(payload + ' project_idx , recruit_idx')
     })
   },
-
   getQuestion  ({commit}, payload) {
     axios.get('http://bghgu.tk:3000/api/question/' + payload).then(response => {
       commit('getQuestion', response.data)
@@ -187,7 +182,6 @@ export const boardActions = {
         }
       }
     )
->>>>>>> develop
       .then(res => {
         commit('writeApplySuccess')
       }).catch(

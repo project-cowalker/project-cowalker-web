@@ -56,7 +56,6 @@ export const boardMutations = {
     console.log('all getRecruit success')
     console.log(payload.result)
   },
-<<<<<<< HEAD
   getMypageIntroSuccess (state, payload) {
     state.mypageintros = payload.result
     console.log('all getMypage Intro Success')
@@ -66,7 +65,7 @@ export const boardMutations = {
     console.log('all getMypageSuccess')
     state.mypages = payload.data[0]
     console.log(state.mypages)
-=======
+  },
   getDetailRecruitSuccess (state, payload) {
     state.recruitDetail = payload.result[0]
     console.log('all getDetailRecruit success')
@@ -78,7 +77,6 @@ export const boardMutations = {
   },
   writeApplySuccess (state, payload) {
     state.applys = payload
->>>>>>> develop
   },
   setLoading (state, payload) {
     state.boards = payload

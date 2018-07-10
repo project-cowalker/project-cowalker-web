@@ -53,21 +53,12 @@ export default {
   computed: {
     ...mapGetters({
       boards: 'allBoards',
-<<<<<<< HEAD
-      user: 'user'
-    }),
-    board () { // 해당 id를 가진 게시글을 보여줌
-      return this.$store.getters.loadedBoard(this.id)
-    }
-=======
       allrecruitview: 'allrecruitView',
       allDetailrecruitView: 'allDetailrecruitView'
     })
-
   },
   created () {
     this.$store.dispatch('recruitingDetailView', this.project_idx, this.recruit_idx)
->>>>>>> develop
   }
 }
 </script>
