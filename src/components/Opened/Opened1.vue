@@ -55,7 +55,6 @@
         </v-flex>
         <v-flex x12 sm10 md8 lg7>
           <v-combobox v-model="aim" :items="purposes" class="combo"></v-combobox>
-
           <template class="combo" slot="selection" slot-scope="data">
             <v-chip :selected="data.selected" :disabled="data.disabled" :key="JSON.stringify(data.purpose)" class="v-chip--select-multi " @input="data.parent.selectItem(data.purpose)">
               <v-avatar class="accent white--text">
@@ -74,7 +73,6 @@
         </v-flex>
         <v-flex x12 sm10 md8 lg7>
           <v-combobox v-model="department" :items="departments" class="combo"></v-combobox>
-
           <template class="combo" slot="selection" slot-scope="data">
             <v-chip :selected="data.selected" :disabled="data.disabled" :key="JSON.stringify(data.field)" class="v-chip--select-multi " @input="data.parent.selectItem(data.field)">
               <v-avatar class="accent white--text">
@@ -101,20 +99,27 @@
         </form>
       </v-flex>
 
+      <v-flex x12 sm10 md8 lg10 offset-sm1 offset-md2>
+        <form class="imgsize">
+          <div class="dropbox" v-if="!image2">
+            <input class="input-image" type="file" :multiple="false" @change="onFileChange2" accept="image/*" /> <!--이미지만 선택가능-->
+          </div>
+
+          <img :src="image2" v-if="image2" alt="" class="newimg"><!--이미지가 있으면 뜨도록-->
+        </form>
+      </v-flex>
       <v-flex x12 sm10 md8 lg10 offset-sm1 offset-md3>
         <textarea class="textarea" cols="70" rows="7" placeholder="  프로젝트에 대해 소개해주세요."
         v-model="explain"></textarea>
       </v-flex>
 
-      <v-container text-xs-center>
+      <v-container -center>
         <v-layout justify-center>
           <button type="submit" class="btn-done">개설하기</button>
         </v-layout>
       </v-container>
-
       </form>
-
-      </v-container>
+    </v-container>
   </v-form>
 </template>
 
@@ -158,7 +163,8 @@ export default {
         '기타'
       ],
       file: null,
-      image: null // 처음엔 null
+      image: null, // 처음엔 null
+      image2: null
     }
   },
   methods: {
@@ -172,27 +178,35 @@ export default {
       data.append('explain', this.explain)
       data.append('img', this.file)
 
-      /* let axiosConfig = {
-        headers: {
-          'Content-Type': 'application/json',
-          'authorization': this.$store.getters.token
-        }
-      } */
-
       this.$store.dispatch('uploadOpened', data)
     },
     getImage (file) {
       const fileReader = new FileReader()
       fileReader.onload = () => { // 파일리더가 뭔가를 로드해왔을 때 함수블록을 실행된다
         this.image = fileReader.result
+        // this.image1 = fileReader.result
       }
       fileReader.readAsDataURL(file) // 데이터에서 url을 끌고 오는 것
     },
-    onFileChange (event) {
+    onFileChange (file) {
+      // if ((event.target.files[0]['type']).split('/')[0] === 'image') {
+      this.file = file.target.files[0]
+      this.getImage(this.file)
+      // }
+    },
+    getImage2 (file) {
+      const fileReader = new FileReader()
+      fileReader.onload = () => { // 파일리더가 뭔가를 로드해왔을 때 함수블록을 실행된다
+        this.image2 = fileReader.result
+        // this.image1 = fileReader.result
+      }
+      fileReader.readAsDataURL(file) // 데이터에서 url을 끌고 오는 것
+    },
+    onFileChange2 (file) {
       // if ((event.target.files[0]['type']).split('/')[0] === 'image') {
 
-      this.file = event.target.files[0]
-      this.getImage(this.file)
+      this.file = file.target.files[0]
+      this.getImage2(this.file)
       // }
     }
   }
@@ -260,12 +274,13 @@ export default {
     border: 1px solid #dbdbdb;
   }
   .newimg{
-    margin-left: 7%;
+    margin-left: 8%;
     max-width: 100%;
     margin-bottom: 5%;
     width: 630px;
     height: 350px;
     border-radius: 15px;
+    border: 1px solid #707070;
   }
 
   .btn-done{

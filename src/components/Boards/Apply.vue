@@ -42,7 +42,7 @@
           <v-flex x12 sm10 md8 lg2 offset-sm1 offset-md1>
             <p class="p_title">&emsp;&emsp;&emsp;&emsp;&ensp;이력서</p>
           </v-flex>
-            <form>
+            <form style="width: 50%">
               <v-flex>
                 <input class="input_p" type="text" v-model="portfolio_url" placeholder="이메일 또는 웹사이트" />
               </v-flex>
@@ -58,7 +58,6 @@
           <p class="p_title1">질문</p>
         </v-flex>
       </v-layout>
-
        <ul class="list-group">
         <li class="list-group-item">
           <v-flex x12 sm10 md8 lg11 offset-md3 >
@@ -81,9 +80,6 @@
       </v-container>
 
       </form>
-
-      <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&layout=button&size=small&mobile_iframe=true&width=67&height=20&appId" width="67" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
-
     </v-container>
   </v-form>
 </template>
@@ -155,7 +151,6 @@ export default {
     border: 1px solid #dbdbdb;
   }
   .input_p {
-    width: 50%;
     height: 40px;
     border-radius: 8px;
     background-color: #fcfcfc;

@@ -256,7 +256,8 @@ export default {
         ' '
       ],
       adx: [
-      ]
+
+      ],
     }
   },
   computed: {
@@ -310,6 +311,7 @@ export default {
         comment: this.comment,
         question_list: this.adx
       }
+
       console.log(object)
       this.$store.dispatch('recruiting', object)
       alert('모집하기 완료')
