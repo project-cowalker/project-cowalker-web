@@ -28,7 +28,7 @@
          </v-layout>
          </v-container>
 
-        <v-layout d-inline-flex v-for="board in filteredList" :key="board.id">
+        <v-layout d-inline-flex v-for="board in boards" :key="board.id">
             <v-flex x12 sm10 md8 lg10 offset-sm1 offset-md2>
                 <v-card flat :to="'/boards/' + board.project_idx" class="v-card" width="260px">
                     <v-container fluid>
