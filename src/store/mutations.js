@@ -9,6 +9,11 @@ export const boardMutations = {
     state.boards = payload.result
     console.log(payload.result)
   },
+  allgetrecommendproject (state, payload) {
+    console.log('all recommendboards success')
+    state.recommendboards = payload.result
+    console.log(payload.result)
+  },
   signUp (state, payload) {
     console.log('')
     // state.user = payload.data
@@ -51,6 +56,7 @@ export const boardMutations = {
     console.log('all getRecruit success')
     console.log(payload.result)
   },
+<<<<<<< HEAD
   getMypageIntroSuccess (state, payload) {
     state.mypageintros = payload.result
     console.log('all getMypage Intro Success')
@@ -60,9 +66,22 @@ export const boardMutations = {
     console.log('all getMypageSuccess')
     state.mypages = payload.data[0]
     console.log(state.mypages)
+=======
+  getDetailRecruitSuccess (state, payload) {
+    state.recruitDetail = payload.result[0]
+    console.log('all getDetailRecruit success')
+    console.log(state.recruitDetail)
+  },
+  getQuestion (state, payload) {
+    state.questions = payload.result
+    console.log(state.questions)
+  },
+  writeApplySuccess (state, payload) {
+    state.applys = payload
+>>>>>>> develop
   },
   setLoading (state, payload) {
-    state.loading = payload
+    state.boards = payload
   },
   setError (state, payload) {
     state.error = payload
@@ -96,5 +115,9 @@ export const boardMutations = {
     console.log('all store success')
     state.store = payload.data
     console.log(payload.data)
+  },
+  allapplyMember (state, payload) {
+    state.applymembers = payload.result
+    console.log(state.applymembers)
   }
 }

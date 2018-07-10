@@ -1,9 +1,8 @@
 <template> <!--이 화면 자체에 다이얼로그 띄우기-->
    <v-container  class="v-container">
         <v-layout v-for="recruit in allrecruitview" :key="recruit.recruit_idx">
-            <v-flex x12 sm10 md8 lg7 offset-sm1 offset-md2>
-                <v-card flat class="left_card" width="90%"
-                :to="'@/subrecruit/' + recruit.recruit_idx">
+            <v-flex x12 sm10 md8 lg7 offset-sm1 offset-md2>     <!--v-for="" recruit로 해줄 것-->
+                <v-card flat class="left_card" width="90%" :to="'/boards/' + project_idx + '/subrecruit/' + recruit.recruit_idx">
 
                         <v-card-title primary-title>
                             <v-card flat class="position" width="120px"><h3 class="positon">{{recruit.position}}</h3></v-card>
@@ -32,6 +31,7 @@ export default {
   }),
   computed: {
     ...mapGetters({
+      boards: 'allBoards',
       allrecruitview: 'allrecruitView'
     })
   },

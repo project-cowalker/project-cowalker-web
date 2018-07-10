@@ -17,17 +17,32 @@ export const boardGetters = {
   allrecruitView (state, getters) {
     return state.recruits
   },
-
+  allDetailrecruitView (state, getters) {
+    return state.recruitDetail
+  },
+  allgetrecommendproject (state, getters) {
+    return state.recommendboards
+  },
+  allQuestion (state, getters) {
+    return state.questions
+  },
   registeredboards (state) {
     return state.registeredboards
   },
   allmypageView (state, getters) {
     return state.mypages
   },
+<<<<<<< HEAD
   allmypageIntro (state) {
     return state.mypageintros
   }
   ,
+=======
+  allApplyMember (state, getters) {
+    return state.applymembers
+  },
+
+>>>>>>> develop
   user (state, getters) {
     return state.user
   },

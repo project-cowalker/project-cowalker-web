@@ -54,19 +54,27 @@
       </v-container>
     </v-jumbotron>
 
-    <v-jumbotron
-      src='http://momsmagazine.co.kr/worp/wp-content/uploads/2015/12/%EC%8A%A4%ED%8B%B0%EB%B8%8C%EC%9E%A1%EC%8A%A4-768x460.png'
-      contain height="580px">
-      <v-container fill-height>
-        <v-layout align-center>
-          <v-flex x12 sm8 md7 lg7 align-content-center class="text-xs-center text-sm-right"> <!--버튼 중앙으로-->
-
-            <v-btn class="button" dark @click.native.stop="dialog = true" @click="guard">프로젝트 보기</v-btn>
-
-          </v-flex>
+      <v-container>
+        <h3>추천 프로젝트</h3>
+      <v-layout d-inline-flex v-for="board in allgetrecommendproject" :key="board.id">
+            <v-flex x12 sm10 md8 lg10 offset-sm1 offset-md2>
+                <v-card flat :to="'/boards/' + board._id" class="v-card" width="260px" height="300px">
+                    <v-container fluid>
+                        <v-card-media  class="card_image" v-if="board.img_url" height="160px" width="260px" :src="board.img_url"></v-card-media>
+                        <v-card-title primary-title>
+                            <v-flex class="v-card-content">
+                                <h4>{{board.title}}</h4> <!--class="headline mb-0"-->
+                                <h6 class="date">{{board.area}} · {{board.department}} · {{board.aim}}</h6>
+                            </v-flex>
+                        </v-card-title>
+                <v-card-actions>
+                  <v-spacer></v-spacer> <!--아이콘들 오른쪽 정렬-->
+                </v-card-actions>
+                    </v-container>
+                </v-card>
+            </v-flex>
         </v-layout>
-      </v-container>
-    </v-jumbotron>
+        </v-container>
   </main>
 
 </template>
@@ -86,7 +94,8 @@ export default {
   },
   computed: {
     ...mapGetters({
-      boards: 'allBoards'
+      boards: 'allBoards',
+      allgetrecommendproject: 'allgetrecommendproject'
     }),
     board () {
       return this.$store.getters.loadedBoard(this.id)
@@ -118,6 +127,9 @@ export default {
     logout: function () {
       this.$store.dispatch('logout')
     }
+  },
+  created () {
+    this.$store.dispatch('getrecommendproject') // 서버로부터 게시글 다 받아오기
   }
 }
 </script>
@@ -169,5 +181,46 @@ export default {
   }
   .v-container {
     background-image: url("https://blogfiles.pstatic.net/MjAxODA3MDFfMjIx/MDAxNTMwNDU2NzY5MzU3.QJYd3SZYqQ7VsFnzlfMNBYHP0E5Mk1hsxaNtiHKAzE8g.l4TOp5kUPfXXW4pJ9S3IHiKFxH97so9U93_Uk2oZx7cg.PNG.rkdud410/sign_illust.png");
-  }
+  }.v-card {
+    margin: auto;
+    width: 300px;
+    margin: 5px;
+    border:thistle 0.8px solid;
+    border-radius: 8px;
+}
+.card_iamge {
+    border-radius: 8px;
+}
+
+h4 {
+    text-align: center;
+    border: 1px solid #64DFFF;
+    width: 75%;
+    margin: auto;
+    margin-top: 20px;
+}
+.date
+{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+#item_list{
+    margin-top: 10vh;
+
+}
+.store{
+    margin-right: .5vw;
+}
+.lookbtn{
+    padding-left: 60px;
+}
+.v-card-content {
+     margin: auto;
+}
+h3 {
+  margin-left: 5%;
+  margin-bottom: 20px;
+}
+
 </style>

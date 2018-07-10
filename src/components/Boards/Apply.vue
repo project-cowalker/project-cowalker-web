@@ -6,13 +6,31 @@
           <p>참여신청</p>
         </v-flex>
       </v-layout>
+<<<<<<< HEAD
       <form @submit.prevent="onUploadApply">
+=======
+    <form @submit.prevent="onApply">
+>>>>>>> develop
       <v-layout d-line-flex>
         <v-flex x12 sm10 md8 lg1 offset-sm1 offset-md2>
           <p class="p_title">소개</p>
         </v-flex>
         <v-flex x12 sm10 md8 lg10>
           <textarea class="textarea" cols="70" rows="7" placeholder="  자기소개" v-model="introduce"></textarea>
+<<<<<<< HEAD
+=======
+        </v-flex>
+      </v-layout>
+
+      <v-layout d-line-flex>
+        <v-flex x12 sm10 md8 lg2 offset-sm1 offset-md1>
+          <p class="p_title">&emsp;&emsp;&emsp;&emsp;&ensp;모집역할</p>
+        </v-flex>
+        <v-flex x12 sm10 md8 lg10>
+          <form>
+            <input type="text" class="regular" v-model="position">
+          </form>
+>>>>>>> develop
         </v-flex>
       </v-layout>
 
@@ -33,7 +51,15 @@
           </v-flex>
             <form style="width: 50%">
               <v-flex>
+<<<<<<< HEAD
                 <input v-model="portfolio_url" class="input_p" type="text" placeholder="이메일 또는 웹사이트" />
+=======
+                <input class="input_p" type="text" v-model="portfolio_url" placeholder="이메일 또는 웹사이트" />
+              </v-flex>
+              <v-flex>
+                <button type="button"><img src="https://blogfiles.pstatic.net/MjAxODA3MDVfNzAg/MDAxNTMwNzg2Mjk4MDQy.ww-axj12lCFQavSp_GtEAn3GQg_oD03bBVLQg7V9bvIg.LQEXNcznuEDgWU-0gmvx8Ju-oT-Bo0l4xmBBP8JMCXAg.PNG.peach404/dropbox_application_btn.png" alt=""></button>
+                <input type="file" class="fileBtn" multiple>
+>>>>>>> develop
               </v-flex>
             </form>
       </v-layout>
@@ -44,6 +70,7 @@
         </v-flex>
       </v-layout>
 
+<<<<<<< HEAD
       <ul class="list-group">
         <li class="list-group-item" v-for="(answer,index) in answers" :key="index">
           <v-flex x12 sm10 md8 lg11 offset-md3 >
@@ -51,6 +78,17 @@
               <p>{{answer}}</p>
               <input type="text" class="plus">
             </form>
+=======
+       <ul class="list-group">
+        <li class="list-group-item">
+          <v-flex x12 sm10 md8 lg11 offset-md3 >
+              <p>질문1. &ensp; {{questions[0]}}</p>
+              <input type="text" class="plus" v-model="qeustion1">
+          </v-flex>
+          <v-flex x12 sm10 md8 lg11 offset-md3 >
+              <p>질문2. &ensp; {{questions[1]}}</p>
+              <input type="text" class="plus" v-model="qeustion2">
+>>>>>>> develop
           </v-flex>
         </li>
       </ul>
@@ -64,18 +102,30 @@
       </v-container>
 
       </form>
+<<<<<<< HEAD
+=======
+
+      <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&layout=button&size=small&mobile_iframe=true&width=67&height=20&appId" width="67" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+
+>>>>>>> develop
     </v-container>
   </v-form>
 </template>
 
 <script>
+<<<<<<< HEAD
   import {mapGetters} from 'vuex'
 
+=======
+import {mapGetters} from 'vuex'
+import Router from '@/router/index'
+>>>>>>> develop
 export default {
   name: 'Apply',
-  props: ['project_idx'],
+  props: ['project_idx', 'recruit_idx'],
   data () {
     return {
+<<<<<<< HEAD
       answers: [
         '질문1.'
       ],
@@ -100,6 +150,39 @@ export default {
       const data = new FormData()
       data.append('introduce', this.introduce)
 
+=======
+      introduce: '',
+      portfolio_url: '',
+      phone: '',
+      position: '',
+      qeustion1: '',
+      qeustion2: ''
+    }
+  },
+  computed: {
+    ...mapGetters({
+      questions: 'allQuestion'
+    })
+
+  },
+  created () {
+    this.$store.dispatch('getQuestion', this.recruit_idx)
+  },
+  methods: {
+    onApply () {
+      const object = {
+        introduce: this.introduce,
+        portfolio_url: this.portfolio_url,
+        phone: this.phone,
+        recruit_idx: this.recruit_idx,
+        project_idx: this.project_idx,
+        position: this.position,
+        answers: [this.question1, this.question2]
+      }
+      this.$store.dispatch('writeApply', object)
+      alert('지원서 작성 완료')
+      Router.push('/boards' + '/' + this.project_idx)
+>>>>>>> develop
     }
   }
 }

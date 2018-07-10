@@ -56,13 +56,19 @@ export default {
     menuItems () {
       let menuItems = [
         { title: '개설', link: '/opened1' },
+<<<<<<< HEAD
         { title: '메세지', link: '/message' },
+=======
+>>>>>>> develop
         { title: '로그인', link: '/login' }
       ]
       if (this.userIsAuthenticated) {
         menuItems = [
           { title: '개설', link: '/opened1' },
+<<<<<<< HEAD
           { title: '메세지', link: '/message' },
+=======
+>>>>>>> develop
           { title: '알림', link: '/alert' },
           { icon: 'face', link: '/profile' }
         ]

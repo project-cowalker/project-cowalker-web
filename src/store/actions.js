@@ -10,6 +10,11 @@ export const boardActions = {
       // http://18.191.14.154:8080/reviews
     })
   },
+  getrecommendproject ({commit}) {
+    axios.get('http://bghgu.tk:3000/api/home').then(response => {
+      commit('allgetrecommendproject', response.data)
+    })
+  },
   // this.$store.dispatch('signUp', object)
   signUp ({commit}, payload) {
     commit('setLoading', true)
@@ -123,7 +128,7 @@ export const boardActions = {
   getDetailView ({commit}, payload) {
     axios.get('http://bghgu.tk:3000/api/project/' + payload).then(response => {
       commit('getDetailViewSuccess', response.data)
-      console.log(payload)
+      console.log(payload + 'project_idx 값')
     })
   },
   recruitingView ({commit}, payload) {
@@ -132,6 +137,7 @@ export const boardActions = {
       console.log(payload)
     })
   },
+<<<<<<< HEAD
   mypageView ({commit}) {
     axios.get('http://bghgu.tk:3000/api/mypage',
       {
@@ -154,12 +160,52 @@ export const boardActions = {
   },
   writeBoards ({ commit }, payload) {
     axios.post('http://18.191.14.154:8080/reviews/write', payload)
+=======
+  recruitingDetailView ({commit}, payload) {
+    axios.get('http://bghgu.tk:3000/api/project/' + payload.project_idx + '/recruit/' + payload.recruit_idx, {
+      headers: {
+        'authorization': localStorage.getItem('token')
+      }
+    }).then(response => {
+      commit('getDetailRecruitSuccess', response.data)
+      console.log(payload + ' project_idx , recruit_idx')
+    })
+  },
+
+  getQuestion  ({commit}, payload) {
+    axios.get('http://bghgu.tk:3000/api/question/' + payload).then(response => {
+      commit('getQuestion', response.data)
+      console.log(payload + ' recruit_idx 값')
+    })
+  },
+  writeApply ({ commit }, payload) {
+    axios.post('http://bghgu.tk:3000/api/apply', payload,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          'authorization': localStorage.getItem('token')
+        }
+      }
+    )
+>>>>>>> develop
       .then(res => {
-        commit('writeSuccess')
-        console.log(res)// 게시판 글 조회는 get방식 등록은 post방식
+        commit('writeApplySuccess')
       }).catch(
         (error) => console.log(error)
       )
+  },
+  getapplyMember ({commit}, payload) {
+    console.log('recruit_idx값 ' + payload, '토큰값' + localStorage.getItem('token'))
+    axios.get('http://bghgu.tk:3000/api/apply/' + payload, payload, {
+      headers: {
+        'authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjozLCJpYXQiOjE1MzEyNDM1MzUsImV4cCI6MTUzMzgzNTUzNX0.Oato5hUiZre3cSRw1vjM1dQwxtzcQpwaJgpp6_tWsU0'
+      }
+    }).then(response => {
+      commit('allapplyMember', response.data)
+      console.log(payload + '.. recruit_idx 조회')
+      console.log(localStorage.getItem('token'))
+      // http://18.191.14.154:8080/reviews
+    })
   },
   clearError ({commit}) {
     commit('clearError')

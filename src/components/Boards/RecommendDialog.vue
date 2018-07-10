@@ -1,6 +1,6 @@
 <template>
     <v-dialog v-model="RecommendDialog" max-width="450">
-        <v-btn flat class="share" accent slot="activator">추천</v-btn> <!-- flat 버튼 뒷배경 삭제-->
+        <v-btn flat accent slot="activator"><img src="@/assets/intro_recommend.png">추천</v-btn> <!-- flat 버튼 뒷배경 삭제-->
         <v-card>
             <v-container class="v-container" text-xs-center>
                 <v-layout row wrap justify-center>

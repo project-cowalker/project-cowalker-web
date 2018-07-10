@@ -1,8 +1,4 @@
 <template>
-    <v-dialog class="dialog_style" v-model="JoinDialog" max-width="950">
-        <v-btn class="register-btn" large accent slot="activator" outline color="cyan lighten-4">
-            <v-text class="register-text">참여하기</v-text>
-        </v-btn>
         <v-card>
             <v-container class="v-container" text-xs-center>
                 <v-layout row wrap justify-center>
@@ -12,8 +8,8 @@
             <v-container d-inline-flex class="v-container">
                 <v-layout class="content_title" row wrap>
                      <v-flex xs12>
-                        <v-text><p>모집역할</p></v-text> <v-text><p class="content_p">개발자</p></v-text><br>
-                        <v-text><p>모집기간</p></v-text><v-text><p class="content_p">모집기간</p></v-text><br>
+                        <v-text><p>모집역할</p></v-text> <v-text><p class="content_p"></p>{{allDetailrecruitView.position}}</v-text><br>
+                        <v-text><p>모집기간</p></v-text><v-text><p class="content_p">{{allDetailrecruitView.start_date}}~{{allDetailrecruitView.start_date}}</p></v-text><br>
                         <v-text><p>모집인원</p></v-text><v-text><p class="content_p">이더리움 기반 암호화폐 개발 역량</p></v-text><br>
                         <v-text><p>활동</p></v-text><v-text><p class="content_p">&emsp;&emsp;이더리움 기반 암호화폐 개발 역량</p></v-text><br>
                         <v-text><p>필요역량 및 기술</p></v-text><v-text><p class="content_p" id="left_space">이더리움 기반 암호화폐 개발 역량</p></v-text><br>
@@ -27,9 +23,9 @@
                 </v-layout>
 
                  <v-layout row wrap>
-                    <v-flex  class="hidden-xs-only" xs12  >
-                        <app-board-recommend-dialog></app-board-recommend-dialog>
-                        <app-board-share-dialog></app-board-share-dialog>
+                    <v-flex  class="recommend_share" >
+                        <app-board-recommend-dialog></app-board-recommend-dialog> <!--추천하기-->
+                        <app-board-share-dialog></app-board-share-dialog>   <!--공유하기-->
                     </v-flex>
                 </v-layout>
             </v-container>
@@ -38,7 +34,7 @@
              <v-layout  row wrap justify-center>
                 <v-flex xs12>
                     <v-btn class="signup" type="submit"
-                    :to="'/boards/' + board.id + '/apply'" >참여하기</v-btn>
+                    :to="'/boards/' +  '/apply'" >참여하기</v-btn>
                 </v-flex>
                 <v-flex xs12>
                 </v-flex>
@@ -46,27 +42,32 @@
             </v-container>
 
         </v-card>
-    </v-dialog>
 </template>
 
 <script>
-// import RegisterDialog from './components/Board/Registration/RegisterDialog.vue'
-// main.js에 추가해줌
-
 import {mapGetters} from 'vuex'
-
 export default {
-  props: ['id'], // board id
+  props: ['project_idx', 'recruit_idx'],
   data: () => ({
   }),
   computed: {
     ...mapGetters({
       boards: 'allBoards',
+<<<<<<< HEAD
       user: 'user'
     }),
     board () { // 해당 id를 가진 게시글을 보여줌
       return this.$store.getters.loadedBoard(this.id)
     }
+=======
+      allrecruitview: 'allrecruitView',
+      allDetailrecruitView: 'allDetailrecruitView'
+    })
+
+  },
+  created () {
+    this.$store.dispatch('recruitingDetailView', this.project_idx, this.recruit_idx)
+>>>>>>> develop
   }
 }
 </script>
@@ -82,6 +83,7 @@ export default {
 }
 .content_title {
     margin-left: 50px;
+    margin-left: 25%;
 }
 .content {
     margin-left: 15px;
@@ -97,8 +99,8 @@ p {
     margin-top: 25px;
     border-bottom: 2.5px solid #81D4FA;
 }
-.hidden-xs-only {
-    margin-left: 20px;
+.recommend_share {
+    margin-left: 30%;
 }
 .logo {
     margin-top: 50px;
