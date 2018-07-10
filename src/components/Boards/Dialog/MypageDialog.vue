@@ -5,141 +5,141 @@
     </button>
 
     <form @submit.prevent="onUploadMypage">
-    <v-card>
-      <v-container class="v-container">
-        <v-layout class="content_title" row wrap >
+      <v-card>
+        <v-container class="v-container">
+          <v-layout class="content_title" row wrap>
 
-          <v-layout justify-center>
-            <form class="imgsize">
-              <div class="dropbox" v-if="!image">
-                <input class="back-image" type="file" :multiple="false" @change="onFileChange" accept="image/*"/>
-                <!--이미지만 선택가능-->
-              </div>
+            <v-layout justify-center>
+              <form class="imgsize">
+                <div class="dropbox" v-if="!image">
+                  <input class="back-image" type="file" :multiple="false" @change="onFileChange" accept="image/*"/>
+                  <!--이미지만 선택가능-->
+                </div>
 
-              <img :src="image" v-if="image" alt="" class="newimg">
-            </form>
-            <form class="imgsize">
-              <div class="dropbox" v-if="!image2">
-                <input class="input-image" type="file" :multiple="false" @change="onFileChange2" accept="image/*"/>
-                <!--이미지만 선택가능-->
-              </div>
-              <img :src="image2" v-if="image2" alt="" class="newimg_pro"><!--이미지가 있으면 뜨도록-->
-            </form>
+                <img :src="image" v-if="image" alt="" class="newimg">
+              </form>
+              <form class="imgsize">
+                <div class="dropbox" v-if="!image2">
+                  <input class="input-image" type="file" :multiple="false" @change="onFileChange2" accept="image/*"/>
+                  <!--이미지만 선택가능-->
+                </div>
+                <img :src="image2" v-if="image2" alt="" class="newimg_pro"><!--이미지가 있으면 뜨도록-->
+              </form>
+            </v-layout>
           </v-layout>
-        </v-layout>
-        <v-layout d-line-flex justify-center>
-          <p style="margin-top: -20px; color:#707070;">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;커버이미지</p>
-          <p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</p>
-          <p style="margin-top: -20px; color:#707070;">프로젝트 이미지</p>
-        </v-layout>
-        <v-layout row wrap>
-          <v-flex x12 sm10 md8 lg10 offset-sm1 offset-md2>
-            <p>이름</p>
-          </v-flex>
-          <v-flex x12 sm10 md8 lg12 offset-md2>
-            <input class="input_p1" type="text" v-model="name"/>
-          </v-flex>
-        </v-layout>
-        <v-layout row wrap>
-          <v-flex x12 sm10 md8 lg10 offset-sm1 offset-md2>
-            <p>이력서</p>
-          </v-flex>
-          <v-flex x12 sm10 md8 lg12 offset-md2>
-            <input class="input_p" type="text" v-model="portfolio_url"/>
-          </v-flex>
-        </v-layout>
-
-        <v-layout row wrap>
-          <v-flex x12 sm10 md8 lg10 offset-sm1 offset-md2>
-            <p class="p_title">한줄 소개</p>
-          </v-flex>
-          <v-flex x12 sm10 md8 lg12 offset-md3>
-            <textarea class="textarea" cols="70" rows="5" v-model="introduce"></textarea>
-          </v-flex>
-        </v-layout>
-
-        <v-layout>
-          <v-flex x12 sm10 md8 lg1 offset-sm1 offset-md2>
-            <v-text class="p_title">역할</v-text>
-          </v-flex>
-          <v-flex x12 sm10 md8 lg7>
-            <v-combobox v-model="position" :items="positions" class="combo"></v-combobox>
-
-            <template class="combo" slot="selection" slot-scope="data">
-              <v-chip :selected="data.selected" :disabled="data.disabled" :key="JSON.stringify(data.job)"
-                      class="v-chip--select-multi " @input="data.parent.selectItem(data.job)"
-              >
-                <v-avatar class="accent white--text">
-                  {{ data.job.slice(0, 1).toUpperCase() }}
-                </v-avatar>
-                {{ data.job}}
-              </v-chip>
-            </template>
-          </v-flex>
-
-        </v-layout>
-        <v-layout>
-          <v-flex x12 sm10 md8 lg1 offset-sm1 offset-md2>
-            <p class="p_title">목적</p>
-          </v-flex>
-          <v-flex x12 sm10 md8 lg7>
-            <v-combobox v-model="aim" :items="purposes" class="combo"></v-combobox>
-            <template class="combo" slot="selection" slot-scope="data">
-              <v-chip :selected="data.selected" :disabled="data.disabled" :key="JSON.stringify(data.purpose)"
-                      class="v-chip--select-multi " @input="data.parent.selectItem(data.purpose)">
-                <v-avatar class="accent white--text">
-                  {{ data.purpose.slice(0, 1).toUpperCase() }}
-                </v-avatar>
-                {{ data.purpose }}
-              </v-chip>
-            </template>
-          </v-flex>
-        </v-layout>
-
-        <v-layout>
-          <v-flex x12 sm10 md8 lg1 offset-sm1 offset-md2>
-            <p class="p_title">분야</p>
-          </v-flex>
-          <v-flex x12 sm10 md8 lg7>
-            <v-combobox v-model="department" :items="departments" class="combo"></v-combobox>
-            <template class="combo" slot="selection" slot-scope="data">
-              <v-chip :selected="data.selected" :disabled="data.disabled" :key="JSON.stringify(data.field)"
-                      class="v-chip--select-multi " @input="data.parent.selectItem(data.field)">
-                <v-avatar class="accent white--text">
-                  {{ data.field.slice(0, 1).toUpperCase() }}
-                </v-avatar>
-                {{ data.field }}
-              </v-chip>
-            </template>
-          </v-flex>
-        </v-layout>
-
-        <v-layout>
-          <v-flex x12 sm10 md8 lg1 offset-sm1 offset-md2>
-            <p class="p_title">지역</p>
-          </v-flex>
-          <v-flex x12 sm10 md8 lg7>
-            <v-combobox v-model="area" :items="locations" class="combo"></v-combobox>
-            <template class="combo" slot="selection" slot-scope="data">
-              <v-chip :selected="data.selected" :disabled="data.disabled" :key="JSON.stringify(data.location)"
-                      class="v-chip--select-multi " @input="data.parent.selectItem(data.location)">
-                <v-avatar class="accent white--text">
-                  {{ data.location.slice(0, 1).toUpperCase() }}
-                </v-avatar>
-                {{ data.location }}
-              </v-chip>
-            </template>
-          </v-flex>
-        </v-layout>
-
-        <v-container text-xs-center>
-          <v-layout justify-center>
-            <button type="submit" class="btn-done">수정완료</button>
+          <v-layout d-line-flex justify-center>
+            <p style="margin-top: -20px; color:#707070;">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;커버이미지</p>
+            <p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</p>
+            <p style="margin-top: -20px; color:#707070;">프로젝트 이미지</p>
           </v-layout>
+          <v-layout row wrap>
+            <v-flex x12 sm10 md8 lg10 offset-sm1 offset-md2>
+              <p>이름</p>
+            </v-flex>
+            <v-flex x12 sm10 md8 lg12 offset-md2>
+              <input class="input_p1" type="text" v-model="name"/>
+            </v-flex>
+          </v-layout>
+          <v-layout row wrap>
+            <v-flex x12 sm10 md8 lg10 offset-sm1 offset-md2>
+              <p>이력서</p>
+            </v-flex>
+            <v-flex x12 sm10 md8 lg12 offset-md2>
+              <input class="input_p" type="text" v-model="portfolio_url"/>
+            </v-flex>
+          </v-layout>
+
+          <v-layout row wrap>
+            <v-flex x12 sm10 md8 lg10 offset-sm1 offset-md2>
+              <p class="p_title">한줄 소개</p>
+            </v-flex>
+            <v-flex x12 sm10 md8 lg12 offset-md3>
+              <textarea class="textarea" cols="70" rows="5" v-model="introduce"></textarea>
+            </v-flex>
+          </v-layout>
+
+          <v-layout>
+            <v-flex x12 sm10 md8 lg1 offset-sm1 offset-md2>
+              <v-text class="p_title">역할</v-text>
+            </v-flex>
+            <v-flex x12 sm10 md8 lg7>
+              <v-combobox v-model="position" :items="positions" class="combo"></v-combobox>
+
+              <template class="combo" slot="selection" slot-scope="data">
+                <v-chip :selected="data.selected" :disabled="data.disabled" :key="JSON.stringify(data.job)"
+                        class="v-chip--select-multi " @input="data.parent.selectItem(data.job)"
+                >
+                  <v-avatar class="accent white--text">
+                    {{ data.job.slice(0, 1).toUpperCase() }}
+                  </v-avatar>
+                  {{ data.job}}
+                </v-chip>
+              </template>
+            </v-flex>
+
+          </v-layout>
+          <v-layout>
+            <v-flex x12 sm10 md8 lg1 offset-sm1 offset-md2>
+              <p class="p_title">목적</p>
+            </v-flex>
+            <v-flex x12 sm10 md8 lg7>
+              <v-combobox v-model="aim" :items="purposes" class="combo"></v-combobox>
+              <template class="combo" slot="selection" slot-scope="data">
+                <v-chip :selected="data.selected" :disabled="data.disabled" :key="JSON.stringify(data.purpose)"
+                        class="v-chip--select-multi " @input="data.parent.selectItem(data.purpose)">
+                  <v-avatar class="accent white--text">
+                    {{ data.purpose.slice(0, 1).toUpperCase() }}
+                  </v-avatar>
+                  {{ data.purpose }}
+                </v-chip>
+              </template>
+            </v-flex>
+          </v-layout>
+
+          <v-layout>
+            <v-flex x12 sm10 md8 lg1 offset-sm1 offset-md2>
+              <p class="p_title">분야</p>
+            </v-flex>
+            <v-flex x12 sm10 md8 lg7>
+              <v-combobox v-model="department" :items="departments" class="combo"></v-combobox>
+              <template class="combo" slot="selection" slot-scope="data">
+                <v-chip :selected="data.selected" :disabled="data.disabled" :key="JSON.stringify(data.field)"
+                        class="v-chip--select-multi " @input="data.parent.selectItem(data.field)">
+                  <v-avatar class="accent white--text">
+                    {{ data.field.slice(0, 1).toUpperCase() }}
+                  </v-avatar>
+                  {{ data.field }}
+                </v-chip>
+              </template>
+            </v-flex>
+          </v-layout>
+
+          <v-layout>
+            <v-flex x12 sm10 md8 lg1 offset-sm1 offset-md2>
+              <p class="p_title">지역</p>
+            </v-flex>
+            <v-flex x12 sm10 md8 lg7>
+              <v-combobox v-model="area" :items="locations" class="combo"></v-combobox>
+              <template class="combo" slot="selection" slot-scope="data">
+                <v-chip :selected="data.selected" :disabled="data.disabled" :key="JSON.stringify(data.location)"
+                        class="v-chip--select-multi " @input="data.parent.selectItem(data.location)">
+                  <v-avatar class="accent white--text">
+                    {{ data.location.slice(0, 1).toUpperCase() }}
+                  </v-avatar>
+                  {{ data.location }}
+                </v-chip>
+              </template>
+            </v-flex>
+          </v-layout>
+
+          <v-container text-xs-center>
+            <v-layout justify-center>
+              <button type="submit" class="btn-done">수정완료</button>
+            </v-layout>
+          </v-container>
+
         </v-container>
-
-      </v-container>
-    </v-card>
+      </v-card>
     </form>
   </v-dialog>
 </template>
@@ -255,7 +255,8 @@ export default {
     margin-bottom: 40px;
 
   }
-  .back-image{
+
+  .back-image {
     margin-right: 60px;
     max-width: 100%;
     display: flex;
@@ -275,7 +276,8 @@ export default {
     width: 300px;
     height: 250px;
   }
-  .newimg_pro{
+
+  .newimg_pro {
     margin-top: 50px;
     max-width: 100%;
     margin-bottom: 5%;
@@ -297,7 +299,8 @@ export default {
     width: 35%;
     margin-left: -3%;
   }
-  .input_p1{
+
+  .input_p1 {
     margin-top: -20px;
     margin-left: 8%;
     max-width: 100%;

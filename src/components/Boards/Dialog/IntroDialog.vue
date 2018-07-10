@@ -3,8 +3,8 @@
     <button class="intro-btn" slot="activator">
       <v-text class="mypage-text">작성하기</v-text>
     </button>
-      <v-card>
-        <form @submit.prevent="onloadIntro">
+    <v-card>
+      <form @submit.prevent="onloadIntro">
         <v-container class="v-container">
           <v-layout>
             <v-flex class="title">
@@ -15,22 +15,22 @@
           <v-layout class="content_title" row wrap justify-center>
             <carousel :per-page="5" :mouse-drag="true" class="carousel">
               <slide>
-              <form class="imgsize">
-                <div class="dropbox" v-if="!image">
-                  <input class="input-image" type="file" :multiple="false" @change="onFileChange" accept="image/*"/>
-                  <!--이미지만 선택가능-->
-                </div>
-                <img :src="image" v-if="image" alt="" class="newimg">
-              </form>
+                <form class="imgsize">
+                  <div class="dropbox" v-if="!image">
+                    <input class="input-image" type="file" :multiple="false" @change="onFileChange" accept="image/*"/>
+                    <!--이미지만 선택가능-->
+                  </div>
+                  <img :src="image" v-if="image" alt="" class="newimg">
+                </form>
               </slide>
               <slide>
-              <form class="imgsize">
-                <div class="dropbox" v-if="!image2">
-                  <input class="input-image" type="file" :multiple="false" @change="onFileChange2" accept="image/*"/>
-                  <!--이미지만 선택가능-->
-                </div>
-                <img :src="image2" v-if="image2" alt="" class="newimg"><!--이미지가 있으면 뜨도록-->
-              </form>
+                <form class="imgsize">
+                  <div class="dropbox" v-if="!image2">
+                    <input class="input-image" type="file" :multiple="false" @change="onFileChange2" accept="image/*"/>
+                    <!--이미지만 선택가능-->
+                  </div>
+                  <img :src="image2" v-if="image2" alt="" class="newimg"><!--이미지가 있으면 뜨도록-->
+                </form>
               </slide>
               <slide>
                 <form class="imgsize">
@@ -42,7 +42,7 @@
                 </form>
               </slide>
             </carousel>
-            </v-layout>
+          </v-layout>
 
           <v-flex x12 sm10 md8 lg3 offset-sm1 offset-md1>
             <p class="p_title">프로젝트 상세소개</p>
@@ -57,8 +57,8 @@
             </v-layout>
           </v-container>
         </v-container>
-        </form>
-      </v-card>
+      </form>
+    </v-card>
   </v-dialog>
 </template>
 
@@ -95,7 +95,7 @@ export default {
         this.image = fileReader.result
       }
       fileReader.readAsDataURL(file)// 데이터에서 url을 끌고 오는 것
-      this.arrayimg.push({ arrayimg: this.file })
+      this.arrayimg.push({arrayimg: this.file})
     },
     onFileChange (file) {
       this.file = file.target.files[0]
@@ -109,7 +109,7 @@ export default {
         this.image2 = fileReader.result
       }
       fileReader.readAsDataURL(file2)// 데이터에서 url을 끌고 오는 것
-      this.arrayimg.push({ arrayimg: this.file2 })
+      this.arrayimg.push({arrayimg: this.file2})
     },
     onFileChange2 (file2) {
       this.file2 = file2.target.files[0]
@@ -121,7 +121,7 @@ export default {
         this.image3 = fileReader.result
       }
       fileReader.readAsDataURL(file3) // 데이터에서 url을 끌고 오는 것
-      this.arrayimg.push({ arrayimg: this.file3 })
+      this.arrayimg.push({arrayimg: this.file3})
     },
     onFileChange3 (file3) {
       this.file3 = file3.target.files[0]
@@ -142,15 +142,18 @@ export default {
     margin-top: 30px;
     margin-left: 50px;
   }
-  .p_title{
+
+  .p_title {
     margin-top: 20px;
     margin-left: 20px;
   }
-  .carousel{
+
+  .carousel {
     background-color: #fcfcfc;
     width: 80%;
   }
-  .textarea{
+
+  .textarea {
     resize: none;
     width: 92%;
     border-radius: 10px;
@@ -158,6 +161,7 @@ export default {
     border: 1px solid #dbdbdb;
     margin-left: 20px;
   }
+
   .input-image {
     max-width: 100%;
     color: transparent;
@@ -169,6 +173,7 @@ export default {
     margin-bottom: 30px;
     margin-left: 20px;
   }
+
   .newimg {
     max-width: 100%;
     width: 180px;
@@ -177,14 +182,16 @@ export default {
     margin-bottom: 30px;
     margin-left: 30px;
   }
-  .title{
+
+  .title {
     margin-top: 30px;
     margin-bottom: 10px;
     display: flex;
     justify-content: center;
     font-weight: bold;
   }
-  .btn-done{
+
+  .btn-done {
     font-size: 16px;
     width: 25%;
     height: 60px;
