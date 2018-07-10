@@ -113,7 +113,7 @@
         v-model="explain"></textarea>
       </v-flex>
 
-      <v-container text-xs-center>
+      <v-container -center>
         <v-layout justify-center>
           <button type="submit" class="btn-done">개설하기</button>
         </v-layout>

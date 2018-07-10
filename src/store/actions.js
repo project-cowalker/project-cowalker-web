@@ -25,7 +25,6 @@ export const boardActions = {
           commit('setError', error)
           console.log(error)
         }
-
       )
   },
 
