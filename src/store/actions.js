@@ -132,14 +132,9 @@ export const boardActions = {
   },
   getapplyMember ({commit}, payload) {
     console.log('recruit_idx값 ' + payload, '토큰값' + localStorage.getItem('token'))
-    axios.get('http://bghgu.tk:3000/api/apply/' + payload, {
-      params: {
-        recruit_idx: payload
-      }
-    }
-      , {
+    axios.get('http://bghgu.tk:3000/api/apply/' + payload, payload, {
       headers: {
-        'authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjozLCJpYXQiOjE1MzEyNDM1OTEsImV4cCI6MTUzMzgzNTU5MX0.G0It8kBcjK1QI2rVrJNamvLX8gRgmZBZZEeqJTRNZD0'
+        'authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjozLCJpYXQiOjE1MzEyNDM1MzUsImV4cCI6MTUzMzgzNTUzNX0.Oato5hUiZre3cSRw1vjM1dQwxtzcQpwaJgpp6_tWsU0'
       }
     }).then(response => {
       commit('allapplyMember', response.data)
