@@ -24,7 +24,7 @@
                     </v-card>
                 </v-layout>
 
-              <social-sharing url="http://localhost:8080/"
+              <social-sharing url="http://localhost:8080/boards/"
                               title="The Progressive JavaScript Framework"
                               description="Intuitive, Fast and Composable MVVM for building interactive interfaces."
                               quote="Vue is a progressive framework for building user interfaces."
