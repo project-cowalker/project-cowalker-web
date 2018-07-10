@@ -1,5 +1,5 @@
 <template >
-  <v-layout margin: auto grid-list-lg>
+  <v-layout grid-list-lg>
     <v-flex xs12 sm10 md10 lg10 xl10 offset-sm1 offset-md1> <!--v-card 안에서-->
     <v-card>
 
