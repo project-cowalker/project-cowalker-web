@@ -33,6 +33,9 @@ export const boardGetters = {
   store (state, getters) {
     return state.store
   },
+  allApplyMember (state, getters) {
+    return state.applymembers
+  },
 
   user (state, getters) {
     return state.user

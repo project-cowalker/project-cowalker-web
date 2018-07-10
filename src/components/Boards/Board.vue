@@ -30,7 +30,7 @@
 
             <v-container>
             <v-layout justify-center> <!--추천공유참여하기 가운데로 모으기-->
-            <v-flex>
+            <v-flex class="summary">
                 <p> &emsp; &emsp; 요약 소개:</p>
                 <p class="intro">{{ allDetailView.summary }}</p>
             </v-flex>
@@ -93,6 +93,7 @@ export default {
 
 .v-container {
     margin: auto;
+    margin-left: 7%;
 
 }
 .title {
@@ -137,5 +138,11 @@ h5 {
 }
 .scrap {
   margin-top: 10px;
+}
+.user_name {
+  margin-left: 5%;
+}
+.summary {
+  margin-left: 10%;
 }
 </style>
