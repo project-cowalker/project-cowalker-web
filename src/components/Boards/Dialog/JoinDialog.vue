@@ -64,7 +64,6 @@ export default {
       boards: 'allBoards',
       user: 'user'
     }),
-
     board () { // 해당 id를 가진 게시글을 보여줌
       return this.$store.getters.loadedBoard(this.id)
     }

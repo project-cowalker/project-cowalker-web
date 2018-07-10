@@ -24,6 +24,10 @@ export const boardGetters = {
   allmypageView (state, getters) {
     return state.mypages
   },
+  allmypageIntro (state) {
+    return state.mypageintros
+  }
+  ,
   user (state, getters) {
     return state.user
   },

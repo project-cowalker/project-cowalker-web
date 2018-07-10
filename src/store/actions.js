@@ -73,33 +73,39 @@ export const boardActions = {
           'authorization': localStorage.getItem('token')
         }
       }
-    )
-      .then(res => {
-        commit('writeSuccess')
-        console.log(res.data)
-        Router.push('/profile')
-        alert('수정완료')
-      }).catch(
-        (error) => console.log(error)
-      )
-  },
-  sendFilter ({ commit }, payload) {
-    axios.get('http://bghgu.tk:3000/api/search',
-      {
-        params: {
-          aim : payload.aim,
-          area : payload.area,
-          department : payload.department,
-          position : payload.position
-        }
-
-      }
     ).then(res => {
-      commit('sendFilterSuccess')
+      commit('writeSuccess')
       console.log(res.data)
+      Router.push('/profile')
+      alert('수정완료')
     }).catch(
       (error) => console.log(error)
     )
+  },
+  onloadIntro ({ commit }, payload) {
+    axios.put('http://bghgu.tk:3000/api/intro', payload,
+      {
+        headers: {
+          'authorization': localStorage.getItem('token')
+        }
+      }
+    ).then(res => {
+      commit('writeSuccess')
+      console.log(res.data)
+      Router.push('/profile')
+      alert('작성완료')
+    }).catch(
+      (error) => console.log(error)
+    )
+  },
+  sendFilter ({ commit }, payload) {
+    axios.get('http://bghgu.tk:3000/api/search?' + 'aim=' + payload.aim + '&area=' + payload.area + '&department=' + payload.department + '&position=' + payload.position)
+      .then(res => {
+        commit('sendFilterSuccess')
+        commit('allBoardsSuccess', res.data)
+      }).catch(
+        (error) => console.log(error)
+      )
   },
   recruiting ({commit}, payload) {
     axios.post('http://bghgu.tk:3000/api/project/recruit', payload,
@@ -135,6 +141,16 @@ export const boardActions = {
         }
       }).then(response => {
       commit('getMypageSuccess', response.data)
+    })
+  },
+  mypageIntro ({commit}) {
+    axios.get('http://bghgu.tk:3000/api/intro',
+      {
+        headers: {
+          'authorization': localStorage.getItem('token')
+        }
+      }).then(response => {
+      commit('getMypageIntroSuccess', response.data)
     })
   },
   writeBoards ({ commit }, payload) {

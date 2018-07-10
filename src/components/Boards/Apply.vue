@@ -98,7 +98,7 @@ export default {
   methods: {
     onUploadApply () {
       const data = new FormData()
-      data.append('introduce',this.introduce)
+      data.append('introduce', this.introduce)
 
     }
   }

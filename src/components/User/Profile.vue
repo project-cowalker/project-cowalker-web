@@ -11,8 +11,8 @@
       <v-container d-inline-flex class="v-container">
 
         <v-container fluid>
-          <v-card class="hidden-xs-only" width="350px"> <!--v-card만 width 조정가능 그래서 이미지 감싸줌-->
-            <v-card-media :src="allmypageView.background_url" height="370px"></v-card-media>
+          <v-card class="hidden-xs-only" width="450px"> <!--v-card만 width 조정가능 그래서 이미지 감싸줌-->
+            <v-card-media :src="allmypageView.background_url" height="400px"></v-card-media>
           </v-card>
         </v-container>
         <v-container>
@@ -23,28 +23,25 @@
               </v-card>
           </v-container>
 
-          <v-layout row wrap>
+          <v-layout row wrap >
             <v-text class=namebg>{{allmypageView.name}}</v-text>
-            <img class="memoImg"
-                 src="https://blogfiles.pstatic.net/MjAxODA3MDdfMTAg/MDAxNTMwOTQ2MzMzNDA3.u36ldwOCzFflZ059tjEB2VEvndo3bULeRG4RakT4vsAg.iw-Au5shR6dxmQjzJaCIlB16Qz7xVfU-NDkNOukkHcYg.PNG.peach404/my_letter.png"
-                 alt="">
           </v-layout>
           <v-layout class="total" >
             <table class="tb">
               <tr><br></tr>
               <tr>
-                <th><p>&ensp;&emsp;씨앗</p></th>
+                <th><p>&ensp;&emsp;&emsp;씨앗</p></th>
                 <th><p>{{allmypageView.point}} 포인트</p></th>
                 <th><img class="bagImg"
                          src="https://blogfiles.pstatic.net/MjAxODA3MDdfMjg4/MDAxNTMwOTQ2Mjk5ODQx.pGRet3IouXfl5l92dNA4Z4x3iIkz-h8cfPDayiS-JWIg.baYrTBjRPGKRSBGJc-HLFWt_65OAnCTLpFrixQaLjCAg.PNG.peach404/my_backpack_nothing.png"
                          alt=""></th>
               </tr>
               <tr>
-                <th><p>웹 사이트</p></th>
+                <th><p>&emsp;웹 사이트</p></th>
                 <th><p>{{allmypageView.portfolio_url}}</p></th>
               </tr>
               <tr>
-                <th><p>한줄소개</p></th>
+                <th><p>&emsp;한줄소개</p></th>
                 <th><p>{{allmypageView.introduce}}</p></th>
               </tr>
               <tr><br></tr>
@@ -78,7 +75,23 @@
           </v-tab>
           <v-tab-item><!--소개, 연혁, 모집 부분-->
             <v-card flat>
-              <v-card-text>본인 소개</v-card-text>
+              <app-board-Intro-dialog></app-board-Intro-dialog>
+              <v-container>
+                <v-card-media  class="carousel" height="320px" width="260px" :src="allmypageIntro.intro_img_url[1]"></v-card-media>
+                <!--<v-carousel class="carousel" hide-delimiters>-->
+                  <!--<v-carousel-item-->
+                    <!--v-for="(allmypageIntro, i) in allmypageIntro"-->
+                    <!--:src="allmypageIntro.intro_img_url[i]"-->
+                  <!--&gt;</v-carousel-item>-->
+                <!--</v-carousel>-->
+
+                <v-flex>
+                  <v-card flat class="intro" width="100%" height="200px">
+                    <h3>소개</h3>
+                    <p>{{allmypageIntro.intro_contents}}</p>
+                  </v-card>
+                </v-flex>
+              </v-container>
             </v-card>
           </v-tab-item>
         </v-tabs>
@@ -91,15 +104,21 @@
 import {mapGetters} from 'vuex'
 
 export default {
-  data: () => ({}),
+  data () {
+    return {
+
+    }
+  },
   computed: {
     ...mapGetters({
       user: 'user',
-      allmypageView: 'allmypageView'
+      allmypageView: 'allmypageView',
+      allmypageIntro: 'allmypageIntro'
     })
   },
   created () {
     this.$store.dispatch('mypageView')
+    this.$store.dispatch('mypageIntro')
   },
   methods: {
     logout: function () {
@@ -111,7 +130,15 @@ export default {
 </script>
 
 <style scoped>
-
+  .carousel {
+    /*height: 320px;*/
+    margin: 0;
+  }
+  .intro {
+    margin-top: 40px;
+    border:rgb(218, 217, 217) 1px solid;
+    border-radius: 10px;
+  }
   .btncss {
     width: 50px;
     height: 20px;
@@ -122,8 +149,11 @@ export default {
     background-color: #fcfcfc;
     margin-left: 8px;
   }
+  .profileImg{
+    margin-left: 20px;
+  }
   .tb{
-    width: 90%;
+    width: 100%;
     max-width: 100%;
   }
   .title {
@@ -136,7 +166,7 @@ export default {
 
   .namebg {
     background-color: #EEFBFF;
-    margin-left: 32%;
+    margin-left: 46%;
     font-size: 17px;
 
   }
@@ -149,7 +179,8 @@ export default {
 
   .sub {
     font-size: 12px;
-    width: 80%;
+    width: 100%;
+    max-width: 100%;
 
   }
   .bagImg {

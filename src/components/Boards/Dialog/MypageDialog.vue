@@ -23,7 +23,7 @@
                 <input class="input-image" type="file" :multiple="false" @change="onFileChange2" accept="image/*"/>
                 <!--이미지만 선택가능-->
               </div>
-              <img :src="image2" v-if="image2" alt="" class="newimg"><!--이미지가 있으면 뜨도록-->
+              <img :src="image2" v-if="image2" alt="" class="newimg_pro"><!--이미지가 있으면 뜨도록-->
             </form>
           </v-layout>
         </v-layout>
@@ -186,7 +186,6 @@ export default {
 
       this.$store.dispatch('onUploadMypage', data)
     },
-
     getImage (file) {
       const fileReader = new FileReader()
       fileReader.onload = () => { // 파일리더가 뭔가를 로드해왔을 때 함수블록을 실행된다
@@ -273,8 +272,16 @@ export default {
     margin-top: 50px;
     max-width: 100%;
     margin-bottom: 5%;
+    width: 300px;
+    height: 250px;
+  }
+  .newimg_pro{
+    margin-top: 50px;
+    max-width: 100%;
+    margin-bottom: 5%;
     width: 180px;
     height: 180px;
+
   }
 
   .regular {
