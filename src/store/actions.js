@@ -109,11 +109,23 @@ export const boardActions = {
     })
   },
 
-  writeBoards ({ commit }, payload) {
-    axios.post('http://18.191.14.154:8080/reviews/write', payload)
+  getQuestion  ({commit}, payload) {
+    axios.get('http://bghgu.tk:3000/api/question/' + payload).then(response => {
+      commit('getQuestion', response.data)
+      console.log(payload + ' recruit_idx 값')
+    })
+  },
+  writeApply ({ commit }, payload) {
+    axios.post('http://bghgu.tk:3000/api/apply', payload,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          'authorization': localStorage.getItem('token')
+        }
+      }
+    )
       .then(res => {
-        commit('writeSuccess')
-        console.log(res)// 게시판 글 조회는 get방식 등록은 post방식
+        commit('writeApplySuccess')
       }).catch(
         (error) => console.log(error)
       )

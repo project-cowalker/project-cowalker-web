@@ -23,7 +23,9 @@ export const boardGetters = {
   allgetrecommendproject (state, getters) {
     return state.recommendboards
   },
-
+  allQuestion (state, getters) {
+    return state.questions
+  },
   registeredboards (state) {
     return state.registeredboards
   },

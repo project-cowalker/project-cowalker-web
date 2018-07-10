@@ -58,8 +58,15 @@ export const boardMutations = {
     console.log('all getDetailRecruit success')
     console.log(state.recruitDetail)
   },
+  getQuestion (state, payload) {
+    state.questions = payload.result
+    console.log(state.questions)
+  },
+  writeApplySuccess (state, payload) {
+    state.applys = payload
+  },
   setLoading (state, payload) {
-    state.loading = payload
+    state.boards = payload
   },
   setError (state, payload) {
     state.error = payload
