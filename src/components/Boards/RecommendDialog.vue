@@ -8,17 +8,16 @@
                 </v-layout>
                 <hr color="#80DEEA">
                 <v-layout justify-center>
-                <v-card-title><h4>'user_id'</h4>님이 '코워커'프로젝트의 '개발자'파트를 추천합니다!</v-card-title>
+                <v-card-title><h4>멋진 동행을 추천해주세요!</h4></v-card-title>
                 </v-layout>
 
                 <v-layout justify-center>
-                <v-card-title><h3>추천하시면 추첨으로 <br>
-                스타벅스 쿠폰을 드립니다!</h3></v-card-title>
+                <v-card-title><h3>감사의 표시로 씨앗을 드립니다.</h3></v-card-title>
                 </v-layout>
                 <v-layout justify-center>
                     <v-card flat class="share_card" width="170px" height="60px">
-                        <button id="kakao" @click="sendLink()"></button>
-                        <button class="share_btn"></button>
+                        <button id="kakao" @click="sendLink()"><img src="@/assets/kakao_icon.png"></button>
+                        <button class="share_btn"><img class="share_btn" src="@/assets/link_icon.png"></button>
                     </v-card>
                 </v-layout>
 
@@ -48,9 +47,27 @@ export default {
   },
   methods: {
     sendLink () {
-      Kakao.Link.sendScrap({
-        requestUrl: "'http://localhost:8080/boards/' + board.id" //주소 변경해줘야 함
-      })
+      Kakao.Link.sendDefault({
+        objectType: 'feed',
+        content: {
+          title: '',
+          description: '우리의 팀이 되어주세요!                     공유를 해주시면 토큰을 드립니다!',
+          imageUrl: "https://blogfiles.pstatic.net/MjAxODA3MTFfMTUy/MDAxNTMxMjQ0MzQzODMz.4pSsbJR60g6IUHr5zC94MR7x2iyj8a74fiRnZdq0o4Eg.q8_oxogaXKoypRn8h-p_XwH1DnHmrtyQ3Bekopq5hFsg.PNG.peach404/sampleimg.png",
+          link: {
+            mobileWebUrl: 'http://localhost:8080/boards/' +'project_idx',
+            webUrl: 'http://localhost:8080/boards/'+'project_idx'
+          }
+        },
+        buttons: [
+          {
+            title: '코워커 웹으로 보기',
+            link: {
+              mobileWebUrl: 'http://localhost:8080/boards/' +'project_idx',
+              webUrl: 'http://localhost:8080/boards/'+'project_idx'
+            }
+          }
+        ]
+      });
     }
   }
 }
@@ -61,25 +78,23 @@ export default {
 .share {
     color : gray;
     width: 20px;
-     background-image: url("https://postfiles.pstatic.net/MjAxODA3MDNfMjQy/MDAxNTMwNjIzMDg1NTIx.I6yBBRZe4C_AHUGHnY7lGuIevbhSsHePLtmIq5XmE6cg.YySvVav0B9Uevaayu57NXPtLP0Nb22HupGCVy7JvZh4g.PNG.rkdud410/intro_recommend.png?type=w966")
 }
 
 .share_card {
-    margin-top: 35px;
-    background-image: url("https://postfiles.pstatic.net/MjAxODA3MDNfMjM0/MDAxNTMwNjIwMDgzOTQ3.d0YJ9sEaKGLloFD_vxpdvgGHvfKcCwfh5lB5jgZ8fTsg.YfaC4TWXy0HmdNMIW8emHpRnJGdAm2zgIzKzmfjQURkg.PNG.rkdud410/recommend_icon_box.png?type=w966")
+  margin-top: 35px;
+  border: 1px solid #64DFFF;
+  border-radius: 19px;
+
 }
 #kakao {
-    background-image: url("https://postfiles.pstatic.net/MjAxODA3MDNfMTQ3/MDAxNTMwNjIxMTE2MzEw.B7GnFeOH23r_O5pnVZgZ8ktfCfZ8PTrSIR-KUyDg5Xwg.rutC00XuvgY8N3ULRm9yQWVbBv0ZIYqFSkOYQ3Y_Cjgg.PNG.rkdud410/kakao_icon.png?type=w966");
     width: 38px;
     height: 38px;
-    margin-top: 12px;
     margin-right: 30px;
+    margin-top: 12px;
 }
 .share_btn {
-    background-image: url("https://postfiles.pstatic.net/MjAxODA3MDNfNTMg/MDAxNTMwNjIxMTE2MzE3.rsRx_OexLF2i4tISJgaRxFDo5kEjCw-KrklSJcXunT4g.b8B1_K_PeRFeQZy8kKeT7qXb7ku61CIL0JjWDbH3MWYg.PNG.rkdud410/link_icon.png?type=w966");
     width: 38px;
     height: 38px;
-    margin-top: 12px;
 }
 
 </style>

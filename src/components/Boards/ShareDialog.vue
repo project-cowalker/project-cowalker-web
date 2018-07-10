@@ -17,16 +17,29 @@
 
                 <v-layout justify-center>
                     <v-card flat class="share_card" width="230px" height="57px">
-                        <button class="kakao" @click="sendLink()"><img src="@/assets/kakao_icon.png"></button>
-                        <button ><img class="facebook" src="@/assets/facebook_icon.png"></button>
+                        <button class="kakao" @click="sendKakao()"><img src="@/assets/kakao_icon.png"></button>
+                        <button ><img class="facebook" @click="sendFacebook()" src="@/assets/facebook_icon.png"></button>
+
                         <button ><img class="share_btn" src="@/assets/link_icon.png"></button>
                     </v-card>
                 </v-layout>
 
+              <social-sharing url="http://localhost:8080/"
+                              title="The Progressive JavaScript Framework"
+                              description="Intuitive, Fast and Composable MVVM for building interactive interfaces."
+                              quote="Vue is a progressive framework for building user interfaces."
+                              hashtags="vuejs,javascript,framework"
+                              twitter-user="vuejs"
+                              inline-template>
+                <network network="facebook">
+                  <i class="fa fa-facebook"></i> Facebook
+                </network>
+              </social-sharing>
             </v-container>
         </v-card>
     </v-dialog>
 </template>
+<script src="/dist/vue-social-sharing.min.js"></script>
 
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 
@@ -62,7 +75,26 @@ export default {
     //   Router.push('/board')
     //
     // },
-    sendLink () {
+    // sendFacebook () {
+    //   window.fbAsyncInit = function() {
+    //     FB.init({
+    //       appId            : 'your-app-id',
+    //       autoLogAppEvents : true,
+    //       xfbml            : true,
+    //       version          : 'v3.0'
+    //     });
+    //   };
+    //
+    //   (function(d, s, id){
+    //     var js, fjs = d.getElementsByTagName(s)[0];
+    //     if (d.getElementById(id)) {return;}
+    //     js = d.createElement(s); js.id = id;
+    //     js.src = "https://connect.facebook.net/en_US/sdk.js";
+    //     fjs.parentNode.insertBefore(js, fjs);
+    //   }(document, 'script', 'facebook-jssdk'));
+    // },
+
+    sendKakao () {
       Kakao.Link.sendDefault({
         objectType: 'feed',
         content: {
