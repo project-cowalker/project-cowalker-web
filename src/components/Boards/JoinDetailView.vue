@@ -8,24 +8,111 @@
             <v-container  d-inline-flex class="v-container">
                 <v-layout class="content_title" row wrap>
                      <v-flex xs12>
-                        <v-text><p>모집역할</p></v-text> <v-text><p class="content_p"></p>{{allDetailrecruitView.position}}</v-text><br>
-                        <v-text><p>모집기간</p></v-text><v-text><p class="content_p">{{allDetailrecruitView.start_date}}~{{allDetailrecruitView.start_date}}</p></v-text><br>
-                        <v-text><p>모집인원</p></v-text><v-text><p class="content_p">{{allDetailrecruitView.number}}</p></v-text><br>
-                        <v-text><p>활동</p></v-text><v-text><p class="content_p">&emsp;&ensp;{{allDetailrecruitView.task}}</p></v-text><br>
-                        <v-text><p>필요역량 및 기술</p></v-text><v-text><p class="content_p" id="left_space">{{allDetailrecruitView.ability}}</p></v-text><br>
-                        <v-text><p>요구경력 및 경험</p></v-text><v-text><p class="content_p" id="left_space">{{allDetailrecruitView.career}}</p></v-text><br>
-                        <v-text><p>우대사항</p></v-text><v-text><p class="content_p">{{allDetailrecruitView.preference}}</p></v-text><br>
-                        <v-text><p>활동기간 및 시간</p></v-text><v-text><p class="content_p" id="left_space">{{allDetailrecruitView.activity}}</p></v-text><br>
-                        <v-text><p>혜택 및 보상</p></v-text><v-text><p class="content_p" id="left">{{allDetailrecruitView.reward}}</p></v-text><br>
-                        <v-text><p>위치</p></v-text><v-text><p class="content_p">&emsp;&emsp;{{allDetailrecruitView.area}}</p></v-text><br>
-                        <v-text><p>코멘트</p></v-text><v-text><p class="content_p">&ensp;&ensp;{{allDetailrecruitView.comment}}</p></v-text><br>
+                        <table>
+                            <tr>
+                                <td><h4 class="title">역할<hr class="underline1" color="#81D4FA" noshade/></h4></td>
+                                <td><h4 class="content">{{allDetailrecruitView.position}}</h4></td>
+                            </tr>
+                             <tr>
+                                <td><h4 class="title">모집기간<hr class="underline2" color="#81D4FA" noshade/></h4></td>
+                                <td><h4 class="content">{{allDetailrecruitView.position}}</h4></td>
+                            </tr>
+                             <tr>
+                                <td><h4 class="title">모집인원<hr class="underline2" color="#81D4FA" noshade/></h4></td>
+                                <td><h4 class="content">{{allDetailrecruitView.number}}명</h4></td>
+                            </tr>
+                             <tr>
+                                <td><h4 class="title">활동<hr class="underline1" color="#81D4FA" noshade/></h4></td>
+                                <td><h4 class="content">{{allDetailrecruitView.task}}</h4></td>
+                            </tr>
+                             <tr>
+                                <td><h4 class="title">활동기간 및 시간<hr class="underline3" color="#81D4FA" noshade/></h4></td>
+                                <td><h4 class="content">{{allDetailrecruitView.activity}}</h4></td>
+                            </tr>
+                            <tr>
+                                <td><h4 class="title">혜택 및 보상<hr class="underline4" color="#81D4FA" noshade/></h4></td>
+                                <td><h4 class="content">{{allDetailrecruitView.reward}}</h4></td>
+                            </tr>
+                            <tr>
+                                <td><h4 class="title">활동 위치<hr class="underline5" color="#81D4FA" noshade/></h4></td>
+                                <td><h4 class="content">{{allDetailrecruitView.area}}</h4></td>
+                            </tr>
+                            <tr>
+                                <td><h4 class="title">필요역량 및 기술<hr class="underline6" color="#81D4FA" noshade/></h4></td>
+                                <td><h4 class="content">{{allDetailrecruitView.ability}}</h4></td>
+                            </tr>
+                            <tr>
+                                <td><h4 class="title">경력 및 경험<hr class="underline7" color="#81D4FA" noshade/></h4></td>
+                                <td><h4 class="content">{{allDetailrecruitView.career}}</h4></td>
+                            </tr>
+                            <tr>
+                                <td><h4 class="title">우대사항<hr class="underline2" color="#81D4FA" noshade/></h4></td>
+                                <td><h4 class="content">{{allDetailrecruitView.preference}}</h4></td>
+                            </tr>
+                            <tr>
+                                <td><h4 class="title">코멘트<hr class="underline8" color="#81D4FA" noshade/></h4></td>
+                                <td><h4 class="content">{{allDetailrecruitView.comment}}</h4></td>
+                            </tr>
+                        </table>
+
                     </v-flex>
                 </v-layout>
 
                  <v-layout row wrap>
-                    <v-flex  class="recommend_share" >
-                        <app-board-recommend-dialog></app-board-recommend-dialog> <!--추천하기-->
-                        <app-board-share-dialog></app-board-share-dialog>   <!--공유하기-->
+                    <v-flex  class="recommend_share">
+
+                                    <div class="wrapper">
+                                        <div class="half">
+                                            <div class="tab blue">
+                                            <input id="tab-four" type="radio" name="tabs">
+                                            <label for="tab-four">지원 멤버</label>
+                                            <div class="tab-content">
+                                                    <v-container  class="member">
+                                                        <v-layout v-for="recruit in allrecruitview" :key="recruit.recruit_idx">
+                                                            <v-flex x12 sm10 md8 lg7>     <!--v-for="" recruit로 해줄 것-->
+                                                                <v-card flat class="left_card" width="130%">
+
+                                                                        <v-card-title primary-title>
+                                                                            <v-card flat class="position" width="120px"><h3 class="positon">{{recruit.position}}</h3></v-card>
+                                                                            <div class="number"><h3 class="number_h3">{{recruit.number}}명</h3></div>
+                                                                        </v-card-title>
+
+                                                                </v-card>
+                                                            </v-flex>
+
+                                                        </v-layout>
+                                                </v-container>
+                                            </div>
+                                            </div>
+                                            <div class="tab blue">
+                                            <input id="tab-five" type="radio" name="tabs">
+                                            <label for="tab-five">참여 멤버</label>
+                                            <div class="tab-content">
+                                                 <v-container  class="member">
+                                                        <v-layout v-for="recruit in allrecruitview" :key="recruit.recruit_idx">
+                                                            <v-flex x12 sm10 md8 lg7>     <!--v-for="" recruit로 해줄 것-->
+                                                                <v-card flat class="left_card" width="130%" :to="'/boards'">
+
+                                                                        <v-card-title primary-title>
+                                                                            <v-card flat class="position" width="120px"><h3 class="positon">{{recruit.position}}</h3></v-card>
+                                                                            <div class="number"><h3 class="number_h3">{{recruit.number}}명</h3></div>
+                                                                        </v-card-title>
+
+                                                                </v-card>
+                                                            </v-flex>
+
+                                                        </v-layout>
+                                                </v-container>
+                                            </div>
+                                            </div>
+                                                <div class="share_and_recommend">
+                                                    <app-board-recommend-dialog></app-board-recommend-dialog> <!--추천하기-->
+                                                    <app-board-share-dialog></app-board-share-dialog>   <!--공유하기-->
+                                                </div>
+                                        </div>
+
+                                        </div>
+
                     </v-flex>
                 </v-layout>
             </v-container>
@@ -52,68 +139,31 @@ export default {
   }),
   computed: {
     ...mapGetters({
-      boards: 'allBoards',
       allrecruitview: 'allrecruitView',
-      allDetailrecruitView: 'allDetailrecruitView'
+      allDetailrecruitView: 'allDetailrecruitView',
+      getapplyMember: 'getapplyMember'
     })
 
   },
   created () {
-    this.$store.dispatch('recruitingDetailView', {
-      project_idx: this.project_idx,
-      recruit_idx: this.recruit_idx
-    })
+    this.$store.dispatch('getapplyMember', this.recruit_idx)
   }
 }
 </script>
 
 <style scoped>
 
-.dialog_style{
-    border-radius: 25px;
-}
-.register-text {
-    color: black;
-    width: 120px;
-}
-.content_title {
-    margin-left: 50px;
-    margin-left: 25%;
-}
-.content {
-    margin-left: 15px;
-    margin-right: 60px;
-}
-
 h4 {
     margin-top: 30px;
+
 }
-p {
-    display: inline-block;
-    margin-left: 10px;
-    margin-top: 25px;
-    border-bottom: 2.5px solid #81D4FA;
-}
-.recommend_share {
-    margin-left: 30%;
-}
+
 .logo {
     margin-top: 50px;
     margin-bottom: 30px;
 }
 .button_content {
     margin-bottom: 50px;
-}
-.content_p {
-    border-bottom: none;
-    margin-top: 30px;
-    margin-left: 20%;
-}
-#left_space {
-    margin-left: 47px;
-}
-#left {
-    margin-left: 76px;
 }
 .apply {
   width: 250px;
@@ -124,6 +174,152 @@ p {
   margin-bottom: 60px;
 }
 .v-container {
+    margin-left: 12%;
+}
+.title {
+    text-align:right;
+}
+.content {
+    margin-left: 40%;
+}
+table {
+    width: 500px;
+}
+td {
+    width: 300px;
+}
+.underline1 {
+    margin-left: 100%;
+}
+.underline1 {
+    margin-left: 80%;
+    margin-top: 5px;
+}
+.underline2 {
+    margin-left: 66%;
+    margin-top: 5px;
+}
+.underline3 {
+    margin-left: 35%;
+    margin-top: 5px;
+}
+.underline4 {
+    margin-left: 53%;
+    margin-top: 5px;
+}
+.underline5 {
+    margin-left: 66%;
+    margin-top: 5px;
+}
+.underline6 {
+    margin-left: 38%;
+    margin-top: 5px;
+}
+.underline7 {
+    margin-left: 53%;
+    margin-top: 5px;
+}
+.underline8 {
+    margin-left: 75%;
+    margin-top: 5px;
+}
+
+body {
+  color: #2c3e50;
+  background: #ecf0f1;
+}
+h1 {
+  text-align: center;
+}
+.half {
+  float: left;
+  width: 50%;
+  padding: 0 1em;
+}
+/* Acordeon styles */
+.tab {
+  position: relative;
+  margin-bottom: 1px;
+  width: 100%;
+  color: black;
+  overflow: hidden;
+}
+input {
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+}
+label {
+  position: relative;
+  display: block;
+  padding: 0 0 0 1em;
+  font-weight: bold;
+  line-height: 3;
+  cursor: pointer;
+}
+.blue label {
+  background: white;
+  border: 1px solid #64DFFF;
+}
+.tab-content {
+  max-height: 0;
+  overflow: hidden;
+  background: white;
+  -webkit-transition: max-height .35s;
+  -o-transition: max-height .35s;
+  transition: max-height .35s;
+}
+.blue .tab-content {
+  background: white;
+}
+.tab-content p {
+  margin: 1em;
+}
+/* :checked */
+input:checked ~ .tab-content {
+  max-height: 100%;
+}
+/* Icon */
+label::after {
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: block;
+  width: 3em;
+  height: 3em;
+  line-height: 3;
+  text-align: center;
+  -webkit-transition: all .35s;
+  -o-transition: all .35s;
+  transition: all .35s;
+}
+input[type=checkbox] + label::after {
+  content: "+";
+}
+input[type=radio] + label::after {
+  content: "\25BC";
+}
+input[type=checkbox]:checked + label::after {
+  transform: rotate(315deg);
+}
+input[type=radio]:checked + label::after {
+  transform: rotateX(180deg);
+}
+
+.half {
+    width: 480px;
+    margin-top: 5%;
+}
+.left_card {
+    margin-right: 80px;
+    height: 60px;
+    border-bottom: 1px solid rgb(204, 204, 204);
+}
+.member {
+    border:#81D4FA 1px solid;
+}
+.share_and_recommend {
+    margin-top: 8%;
     margin-left: 10%;
 }
 </style>

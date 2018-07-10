@@ -100,5 +100,9 @@ export const boardMutations = {
     console.log('all store success')
     state.store = payload.data
     console.log(payload.data)
+  },
+  allapplyMember (state, payload) {
+    state.applymembers = payload.result
+    console.log(state.applymembers)
   }
 }

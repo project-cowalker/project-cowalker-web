@@ -130,6 +130,24 @@ export const boardActions = {
         (error) => console.log(error)
       )
   },
+  getapplyMember ({commit}, payload) {
+    console.log('recruit_idx값 ' + payload, '토큰값' + localStorage.getItem('token'))
+    axios.get('http://bghgu.tk:3000/api/apply/' + payload, {
+      params: {
+        recruit_idx: payload
+      }
+    }
+      , {
+      headers: {
+        'authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjozLCJpYXQiOjE1MzEyNDM1OTEsImV4cCI6MTUzMzgzNTU5MX0.G0It8kBcjK1QI2rVrJNamvLX8gRgmZBZZEeqJTRNZD0'
+      }
+    }).then(response => {
+      commit('allapplyMember', response.data)
+      console.log(payload + '.. recruit_idx 조회')
+      console.log(localStorage.getItem('token'))
+      // http://18.191.14.154:8080/reviews
+    })
+  },
   clearError ({commit}) {
     commit('clearError')
   },
