@@ -32,7 +32,9 @@ export const boardGetters = {
   allmypageView (state, getters) {
     return state.mypages
   },
-
+  alarmView (state, getters) {
+    return state.alarms
+  },
   allmypageIntro (state) {
     return state.mypageintros
   }

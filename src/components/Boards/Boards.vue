@@ -26,7 +26,7 @@
             </v-layout>
           </v-container>
         </v-flex>
-        <v-flex >
+        <v-flex>
         </v-flex>
       </v-layout>
       </form>
@@ -89,7 +89,8 @@ export default {
         aim: this.aim,
         area: this.area,
         position: this.position,
-        department: this.department
+        department: this.department,
+        keyword: this.search
       }
       console.log(object)
       this.$store.dispatch('sendFilter', object)

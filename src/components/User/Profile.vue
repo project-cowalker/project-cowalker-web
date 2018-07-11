@@ -6,7 +6,6 @@
           <button type="submit" class="btncss">로그아웃</button>
         </form>
       </v-layout>
-
     <v-flex xs12 sm10 md10 lg10 xl10 offset-sm1> <!--v-card 안에서-->
       <v-container d-inline-flex class="v-container">
 
@@ -77,14 +76,15 @@
             <v-card flat>
               <app-board-Intro-dialog></app-board-Intro-dialog>
               <v-container>
-                <v-card-media  class="carousel" height="320px" width="260px" :src="allmypageIntro.intro_img_url[1]"></v-card-media>
-                <!--<v-carousel class="carousel" hide-delimiters>-->
-                  <!--<v-carousel-item-->
-                    <!--v-for="(allmypageIntro, i) in allmypageIntro"-->
-                    <!--:src="allmypageIntro.intro_img_url[i]"-->
-                  <!--&gt;</v-carousel-item>-->
-                <!--</v-carousel>-->
-
+                <!--<v-card-media  class="carousel" height="320px" width="260px" :src="allmypageIntro.intro_img_url[1]"></v-card-media>-->
+                <v-carousel class="carousel" hide-delimiters>
+                  <v-carousel-item
+                    v-for="image in allmypageIntro.intro_img_url"
+                    :src="image"
+                    :key="image"
+                    v-if="allmypageIntro"
+                  ></v-carousel-item>
+                </v-carousel>
                 <v-flex>
                   <v-card flat class="intro" width="100%" height="200px">
                     <h3>소개</h3>
@@ -102,11 +102,9 @@
 
 <script>
 import {mapGetters} from 'vuex'
-
 export default {
   data () {
     return {
-
     }
   },
   computed: {
@@ -159,36 +157,29 @@ export default {
   .title {
     margin-left: 30%;
   }
-
   .mainImg {
     margin-left: -20px;
   }
-
   .namebg {
     background-color: #EEFBFF;
     margin-left: 46%;
     font-size: 17px;
 
   }
-
   .total {
     font-size: 13px;
     margin-left: -60px;
 
   }
-
   .sub {
     font-size: 12px;
     width: 100%;
     max-width: 100%;
-
   }
   .bagImg {
     width: 40px;
   }
-
   .memoImg {
     margin-left: 15px;
   }
-
 </style>

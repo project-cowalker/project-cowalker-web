@@ -74,12 +74,15 @@ export default new Router({
           path: 'subrecruit',
           props: true,
           component: SubRecruit
-        }
+        },
 
       ]
 
     }
 
   ],
-  mode: 'history'
+  mode: 'history',
+  scrollBehavior() {
+    return { x:0, y:0 }
+  }
 })

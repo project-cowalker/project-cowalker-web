@@ -39,12 +39,10 @@
         </v-card>
     </v-dialog>
 </template>
+
 <script src="/dist/vue-social-sharing.min.js"></script>
-
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
-
 <script src="https://connect.facebook.net/en_US/sdk.js"></script>
-
 <script>
 // import RegisterDialog from './components/Board/Registration/RegisterDialog.vue'
 // main.js에 추가해줌

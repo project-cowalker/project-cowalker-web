@@ -28,9 +28,9 @@
             </v-layout>
           </v-layout>
           <v-layout d-line-flex justify-center>
-            <p style="margin-top: -20px; color:#707070;">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;커버이미지</p>
+            <p style="margin-top: -20px; color:#707070;">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;프로젝트 이미지</p>
             <p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</p>
-            <p style="margin-top: -20px; color:#707070;">프로젝트 이미지</p>
+            <p style="margin-top: -20px; color:#707070;">프로필 이미지</p>
           </v-layout>
           <v-layout row wrap>
             <v-flex x12 sm10 md8 lg10 offset-sm1 offset-md2>

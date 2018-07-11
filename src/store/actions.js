@@ -80,7 +80,6 @@ export const boardActions = {
     ).then(res => {
       commit('writeSuccess')
       console.log(res.data)
-      Router.push('/profile')
       alert('수정완료')
     }).catch(
       (error) => console.log(error)
@@ -103,7 +102,7 @@ export const boardActions = {
     )
   },
   sendFilter ({ commit }, payload) {
-    axios.get('http://bghgu.tk:3000/api/search?' + 'aim=' + payload.aim + '&area=' + payload.area + '&department=' + payload.department + '&position=' + payload.position)
+    axios.get('http://bghgu.tk:3000/api/search?' + 'aim=' + payload.aim + '&area=' + payload.area + '&department=' + payload.department + '&position=' + payload.position + '&keyword=' + payload.keyword)
       .then(res => {
         commit('sendFilterSuccess')
         commit('allBoardsSuccess', res.data)
@@ -135,6 +134,16 @@ export const boardActions = {
     axios.get('http://bghgu.tk:3000/api/project/' + payload + '/recruit').then(response => {
       commit('getRecruitSuccess', response.data)
       console.log(payload)
+    })
+  },
+  sendAlarm ({commit}) {
+    axios.get('http://bghgu.tk:3000/api/alarm',
+      {
+        headers: {
+          'authorization': localStorage.getItem('token')
+        }
+      }).then(response => {
+      commit('getAlarmSuccess', response.data)
     })
   },
   mypageView ({commit}) {

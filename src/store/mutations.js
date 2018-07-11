@@ -51,6 +51,11 @@ export const boardMutations = {
     console.log('all getDetailView success')
     console.log(state.detailboard[0].title)
   },
+  getAlarmSuccess (state, payload) {
+    state.alarms = payload.result
+    console.log('all get Alarm success')
+    console.log(payload.result)
+  },
   getRecruitSuccess (state, payload) {
     state.recruits = payload.result
     console.log('all getRecruit success')
