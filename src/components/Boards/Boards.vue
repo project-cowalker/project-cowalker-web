@@ -51,8 +51,8 @@
         </v-card>
       </v-flex>
     </v-layout>
-  </v-container>
 
+  </v-container>
 </template>
 
 <script>
@@ -63,9 +63,9 @@ export default {
       show: false,
       search: '',
       items: ['창업', '공모전 참여', '스터디', '사이드 프로젝트', '창작', '기타'],
-      fields: ['블록체인', 'IOT','인공지능','디자인','컨텐츠','기타'],
+      fields: ['블록체인', 'IOT', '인공지능', '디자인', '컨텐츠', '기타'],
       rules: ['PM', '기획', '디자이너', '개발자', '기타'],
-      areas: ['서울', '경기도','충청도', '강원도', '전라도', '경상도', '제주도'],
+      areas: ['서울', '경기도', '충청도', '강원도', '전라도', '경상도', '제주도'],
       aim: '',
       department: '',
       position: '',

@@ -9,6 +9,12 @@ export const boardMutations = {
     state.boards = payload.result
     console.log(payload.result)
   },
+  userViewSuccess (state, payload) {
+    console.log('user View success')
+    console.log(payload.user)
+    state.divisions = payload.user
+    console.log(state.divisions)
+  },
   allgetrecommendproject (state, payload) {
     console.log('all recommendboards success')
     state.recommendboards = payload.result
