@@ -18,7 +18,7 @@
         <router-link to="/" tag="span" style="cursor: pointer"><img src="@/assets/hometap_logo.png"></router-link>
       </v-toolbar-title>
       <v-toolbar-items class="toolbar_item_left">
-        <v-btn flat v-for="item in leftMenu" :key="item.title" :to="item.link">
+        <v-btn class="toolbar_item_left" flat v-for="item in leftMenu" :key="item.title" :to="item.link">
           {{item.title}}
         </v-btn>
       </v-toolbar-items>
