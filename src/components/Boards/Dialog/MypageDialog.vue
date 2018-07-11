@@ -330,4 +330,3 @@ export default {
     border: 1px solid #64DFFF;
     margin: 5%;
   }
-</style>

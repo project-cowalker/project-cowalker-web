@@ -7,7 +7,7 @@
             <!--프로젝트 보기-->
             <v-btn class="button" dark @click.native.stop="dialog = true" @click="guard">프로젝트 보기</v-btn>
             <v-dialog id="dialog" v-model="dialog" width="480.77px">
-              <v-card height="484.55px">
+              <v-card height="508.55px">
                 <v-container class="v-container" text-xs-center> <!--가운데 정렬-->
 
                   <v-layout row wrap fill-height="300px">
@@ -105,7 +105,7 @@ export default {
     },
     error () {
       return this.$store.getters.error
-    },
+    }
 
   },
   methods: {
@@ -181,9 +181,10 @@ export default {
   }
   .v-container {
     background-image: url("https://blogfiles.pstatic.net/MjAxODA3MDFfMjIx/MDAxNTMwNDU2NzY5MzU3.QJYd3SZYqQ7VsFnzlfMNBYHP0E5Mk1hsxaNtiHKAzE8g.l4TOp5kUPfXXW4pJ9S3IHiKFxH97so9U93_Uk2oZx7cg.PNG.rkdud410/sign_illust.png");
-  }.v-card {
+  }
+  .v-card {
     margin: auto;
-    width: 300px;
+    width: 470px;
     margin: 5px;
     border:thistle 0.8px solid;
     border-radius: 8px;
