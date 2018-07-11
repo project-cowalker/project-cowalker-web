@@ -4,31 +4,47 @@
         <v-card>
             <v-container class="v-container" text-xs-center>
                 <v-layout row wrap justify-center>
-                         <v-card-title><h4>SNS 공유하기</h4></v-card-title>
+                         <v-card-title><h3>공유하기</h3></v-card-title>
                 </v-layout>
                 <hr color="#80DEEA">
                 <v-layout justify-center>
-                <v-card-title><h4>'user_id'</h4>님이 '코워커'프로젝트의 '개발자'파트를 추천합니다!</v-card-title>
+                <v-card-title><h3 class="mainfont">이 멋진 프로젝트를 널리 알리세요!</h3></v-card-title>
                 </v-layout>
 
                 <v-layout justify-center>
-                <v-card-title><h3>추천하시면 추첨으로 <br>
-                스타벅스 쿠폰을 드립니다!</h3></v-card-title>
+                <v-card-title><p class="subfont">감사의 표시로 씨앗을 드립니다.</p></v-card-title>
                 </v-layout>
-                <v-layout justify-center>
-                    <v-card flat class="share_card" width="170px" height="60px">
 
-                        <button class="kakao" @click="sendLink()"></button>
-                        <button class="share_btn"></button>
+                <v-layout justify-center>
+                    <v-card flat class="share_card" width="230px" height="57px">
+                        <button class="kakao" @click="sendKakao()"><img src="@/assets/kakao_icon.png"></button>
+                        <button ><img class="facebook" @click="sendFacebook()" src="@/assets/facebook_icon.png"></button>
+
+                        <button ><img class="share_btn" src="@/assets/link_icon.png"></button>
                     </v-card>
                 </v-layout>
+
+              <social-sharing url="http://localhost:8080/boards/"
+                              title="The Progressive JavaScript Framework"
+                              description="Intuitive, Fast and Composable MVVM for building interactive interfaces."
+                              quote="Vue is a progressive framework for building user interfaces."
+                              hashtags="vuejs,javascript,framework"
+                              twitter-user="vuejs"
+                              inline-template>
+                <network network="facebook">
+                  <i class="fa fa-facebook"></i> Facebook
+                </network>
+              </social-sharing>
             </v-container>
         </v-card>
     </v-dialog>
 </template>
+<script src="/dist/vue-social-sharing.min.js"></script>
 
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+
 <script src="https://connect.facebook.net/en_US/sdk.js"></script>
+
 <script>
 // import RegisterDialog from './components/Board/Registration/RegisterDialog.vue'
 // main.js에 추가해줌
@@ -36,7 +52,9 @@
 import {mapGetters} from 'vuex'
 
 export default {
-  props: ['id'], // board 데이터가 가진 id
+  props: ['project_idx',//프로젝트 공유
+          'recruit_idx' //모집공고 공유
+  ],
   data () {
     return {
       RecommendDialog: false
@@ -48,10 +66,57 @@ export default {
     })
   },
   methods: {
-    sendLink () {
-      Kakao.Link.sendScrap({
-        requestUrl: "'http://localhost:8080/boards/' + board.id"
-      })
+    // makeShareInfo () {
+    //   const object = {
+    //     project_idx : this.project_idx
+    //   }
+    //   console.log(object)
+    //   this.$store.dispatch('shareInfo', object)
+    //   Router.push('/board')
+    //
+    // },
+    // sendFacebook () {
+    //   window.fbAsyncInit = function() {
+    //     FB.init({
+    //       appId            : 'your-app-id',
+    //       autoLogAppEvents : true,
+    //       xfbml            : true,
+    //       version          : 'v3.0'
+    //     });
+    //   };
+    //
+    //   (function(d, s, id){
+    //     var js, fjs = d.getElementsByTagName(s)[0];
+    //     if (d.getElementById(id)) {return;}
+    //     js = d.createElement(s); js.id = id;
+    //     js.src = "https://connect.facebook.net/en_US/sdk.js";
+    //     fjs.parentNode.insertBefore(js, fjs);
+    //   }(document, 'script', 'facebook-jssdk'));
+    // },
+
+    sendKakao () {
+      Kakao.Link.sendDefault({
+        objectType: 'feed',
+        content: {
+          title: '',
+          description: '우리의 팀이 되어주세요!                     공유를 해주시면 토큰을 드립니다!',
+          imageUrl: "https://blogfiles.pstatic.net/MjAxODA3MTFfMTUy/MDAxNTMxMjQ0MzQzODMz.4pSsbJR60g6IUHr5zC94MR7x2iyj8a74fiRnZdq0o4Eg.q8_oxogaXKoypRn8h-p_XwH1DnHmrtyQ3Bekopq5hFsg.PNG.peach404/sampleimg.png",
+          link: {
+            mobileWebUrl: 'http://localhost:8080/boards/' +'project_idx',
+            webUrl: 'http://localhost:8080/boards/'+'project_idx'
+          }
+        },
+        buttons: [
+          {
+            title: '코워커 웹으로 보기',
+            link: {
+              mobileWebUrl: 'http://localhost:8080/boards/' +'project_idx',
+              webUrl: 'http://localhost:8080/boards/'+'project_idx'
+            }
+          }
+        ]
+      });
+        // requestUrl: "'http://localhost:8080/boards/' + board.project_idx"
     }
   }
 }
@@ -62,22 +127,34 @@ export default {
 .share {
     color : gray;
 }
+.mainfont{
+  margin-top: 20px;
+}
+.subfont{
+  margin-top: -10px;
+}
 
 .share_card {
-    margin-top: 35px;
-    background-image: url("https://postfiles.pstatic.net/MjAxODA3MDNfMjM0/MDAxNTMwNjIwMDgzOTQ3.d0YJ9sEaKGLloFD_vxpdvgGHvfKcCwfh5lB5jgZ8fTsg.YfaC4TWXy0HmdNMIW8emHpRnJGdAm2zgIzKzmfjQURkg.PNG.rkdud410/recommend_icon_box.png?type=w966")
+    margin-top: 15px;
+  border: 1px solid #64DFFF;
+  border-radius: 19px;
+
+}
+.facebook{
+  width: 35px;
+  height: 35px;
+  margin-top: 12px;
+  margin-right: 30px;
 }
 .kakao {
-    background-image: url("https://postfiles.pstatic.net/MjAxODA3MDNfMTQ3/MDAxNTMwNjIxMTE2MzEw.B7GnFeOH23r_O5pnVZgZ8ktfCfZ8PTrSIR-KUyDg5Xwg.rutC00XuvgY8N3ULRm9yQWVbBv0ZIYqFSkOYQ3Y_Cjgg.PNG.rkdud410/kakao_icon.png?type=w966");
     width: 38px;
     height: 38px;
     margin-top: 12px;
     margin-right: 30px;
 }
 .share_btn {
-    background-image: url("https://postfiles.pstatic.net/MjAxODA3MDNfNTMg/MDAxNTMwNjIxMTE2MzE3.rsRx_OexLF2i4tISJgaRxFDo5kEjCw-KrklSJcXunT4g.b8B1_K_PeRFeQZy8kKeT7qXb7ku61CIL0JjWDbH3MWYg.PNG.rkdud410/link_icon.png?type=w966");
-    width: 38px;
-    height: 38px;
+    width: 35px;
+    height: 35px;
     margin-top: 12px;
 }
 

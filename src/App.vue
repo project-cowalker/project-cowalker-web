@@ -15,7 +15,7 @@
          @click.stop="sideNav = !sideNav"
          class="hidden-sm-and-up "></v-toolbar-side-icon>
        <v-toolbar-title>
-         <router-link to="/" tag="span" style="cursor: pointer"><img src="@/assets/hometap_logo.png"></router-link>
+         <router-link to="/" tag="span" style="cursor: pointer"><img src="@/assets/hometap_logo.png" class="hometap_logo"></router-link>
        </v-toolbar-title>
        &emsp;
          <v-toolbar-items class="toolbar_item_left">
@@ -62,7 +62,7 @@ export default {
         menuItems = [
           { title: '개설', link: '/opened1' },
           { title: '알림', link: '/alert' },
-          { icon: 'face', link: '/Profile' }
+          { icon: 'face', link: '/profile' }
         ]
       }
       return menuItems
@@ -92,5 +92,16 @@ export default {
 .toolbar_item_right:hover {
   background-color: rgb(89, 233, 233);
 }
-
+.v-toolbar {
+  height: 48px;
+}
+.hometap_logo {
+  margin-bottom: 10px;
+}
+.hidden-xs-only {
+  margin-bottom: 15px;
+}
+.toolbar_item_left {
+  margin-bottom: 15px;
+}
 </style>

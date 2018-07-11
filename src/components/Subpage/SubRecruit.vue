@@ -34,7 +34,6 @@ export default {
       boards: 'allBoards',
       allrecruitview: 'allrecruitView'
     })
-
   },
   created () {
     this.$store.dispatch('recruitingView', this.project_idx) // 서버로부터 게시글 다 받아오기

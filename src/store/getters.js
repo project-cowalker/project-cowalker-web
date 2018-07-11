@@ -29,14 +29,16 @@ export const boardGetters = {
   registeredboards (state) {
     return state.registeredboards
   },
+  allmypageView (state, getters) {
+    return state.mypages
+  },
 
-  store (state, getters) {
-    return state.store
+  allmypageIntro (state) {
+    return state.mypageintros
   },
   allApplyMember (state, getters) {
     return state.applymembers
   },
-
   user (state, getters) {
     return state.user
   },
@@ -48,6 +50,9 @@ export const boardGetters = {
   },
   token (state) {
     return state.token // 토큰 값 가져오기
+  },
+  allApplyDetailView (state) {
+    return state.ApplyDetailView
   }
 
 }

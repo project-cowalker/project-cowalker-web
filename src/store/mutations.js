@@ -43,6 +43,9 @@ export const boardMutations = {
   recruitingSuccess (state) {
     console.log('recruitFinish')
   },
+  sendFilterSuccess (state) {
+    console.log('sendFilterSuccess')
+  },
   getDetailViewSuccess (state, payload) {
     state.detailboard = payload.result
     console.log('all getDetailView success')
@@ -53,10 +56,20 @@ export const boardMutations = {
     console.log('all getRecruit success')
     console.log(payload.result)
   },
+  getMypageIntroSuccess (state, payload) {
+    state.mypageintros = payload.result
+    console.log('all getMypage Intro Success')
+    console.log(payload.result)
+  },
+  getMypageSuccess (state, payload) {
+    console.log('all getMypageSuccess')
+    state.mypages = payload.data[0]
+    console.log(state.mypages)
+  },
   getDetailRecruitSuccess (state, payload) {
     state.recruitDetail = payload.result[0]
     console.log('all getDetailRecruit success')
-    console.log(state.recruitDetail)
+    console.log(payload.result[0] + ' 모집상세 내용')
   },
   getQuestion (state, payload) {
     state.questions = payload.result
@@ -104,5 +117,20 @@ export const boardMutations = {
   allapplyMember (state, payload) {
     state.applymembers = payload.result
     console.log(state.applymembers)
+  },
+  allApplyView (state, payload) {
+    state.applyview = payload.result
+    console.log(state.applymembers)
+  },
+  getApplyDetailView (state, payload) {
+    state.ApplyDetailView = payload.result[0]
+    console.log(state.ApplyDetailView)
+  },
+  PermitSuccess (state, payload) {
+    console.log('지원 수락 성공')
+  },
+  RejectSuccess (state, payload) {
+    console.log('지원 거절 성공')
   }
+
 }

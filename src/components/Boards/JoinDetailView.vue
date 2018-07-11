@@ -15,7 +15,7 @@
                             </tr>
                              <tr>
                                 <td><h4 class="title">모집기간<hr class="underline2" color="#81D4FA" noshade/></h4></td>
-                                <td><h4 class="content">{{allDetailrecruitView.position}}</h4></td>
+                                <td><h4 class="content">2018. 07. 01 ~ 2018. 08 .04</h4></td>
                             </tr>
                              <tr>
                                 <td><h4 class="title">모집인원<hr class="underline2" color="#81D4FA" noshade/></h4></td>
@@ -27,7 +27,7 @@
                             </tr>
                              <tr>
                                 <td><h4 class="title">활동기간 및 시간<hr class="underline3" color="#81D4FA" noshade/></h4></td>
-                                <td><h4 class="content">{{allDetailrecruitView.activity}}</h4></td>
+                                <td><h4 class="content">2018. 07. 01 ~ 2018. 09 .09 (주 3회 정기모임)</h4></td>
                             </tr>
                             <tr>
                                 <td><h4 class="title">혜택 및 보상<hr class="underline4" color="#81D4FA" noshade/></h4></td>
@@ -68,13 +68,17 @@
                                             <label for="tab-four">지원 멤버</label>
                                             <div class="tab-content">
                                                     <v-container  class="member">
-                                                        <v-layout v-for="recruit in allrecruitview" :key="recruit.recruit_idx">
+                                                        <v-layout v-for="recruit in allApplyMember" :key="recruit.apply_idx">
                                                             <v-flex x12 sm10 md8 lg7>     <!--v-for="" recruit로 해줄 것-->
                                                                 <v-card flat class="left_card" width="130%">
 
                                                                         <v-card-title primary-title>
-                                                                            <v-card flat class="position" width="120px"><h3 class="positon">{{recruit.position}}</h3></v-card>
-                                                                            <div class="number"><h3 class="number_h3">{{recruit.number}}명</h3></div>
+                                                                            <div><img :src="recruit.profile_url" width="33px" height="33px" class="user_img"></div>
+                                                                            <v-card flat class="position" width="120px"><h3 class="recruit_user_name">{{recruit.user_name}}</h3></v-card>
+
+                                                                            <router-link :to="'/boards/' + project_idx + '/subrecruit/' + recruit_idx + '/'+ recruit.apply_idx + '/' + recruit.applicant_idx"><img src="@/assets/dropbox_application_btn.png" width="33px" height="33px" class="appllcaiton">
+                                                                            </router-link>
+
                                                                         </v-card-title>
 
                                                                 </v-card>
@@ -88,14 +92,16 @@
                                             <input id="tab-five" type="radio" name="tabs">
                                             <label for="tab-five">참여 멤버</label>
                                             <div class="tab-content">
-                                                 <v-container  class="member">
-                                                        <v-layout v-for="recruit in allrecruitview" :key="recruit.recruit_idx">
+                                                    <v-container  class="member">
+                                                        <v-layout v-for="recruit in allApplyMember" :key="recruit.apply_idx">
                                                             <v-flex x12 sm10 md8 lg7>     <!--v-for="" recruit로 해줄 것-->
-                                                                <v-card flat class="left_card" width="130%" :to="'/boards'">
+                                                                <v-card flat class="left_card" width="130%">
 
                                                                         <v-card-title primary-title>
-                                                                            <v-card flat class="position" width="120px"><h3 class="positon">{{recruit.position}}</h3></v-card>
-                                                                            <div class="number"><h3 class="number_h3">{{recruit.number}}명</h3></div>
+                                                                            <div><img :src="recruit.profile_url" width="33px" height="33px" class="user_img"></div>
+                                                                            <v-card flat class="position" width="120px"><h3 class="recruit_user_name">{{recruit.user_name}}</h3></v-card>
+                                                                            <div class="number"><h3 class="number_h3">{{recruit.positon}}</h3></div>
+                                                                            <div><img src="@/assets/dropbox_application_btn.png" width="33px" height="33px" class="appllcaiton"></div>
                                                                         </v-card-title>
 
                                                                 </v-card>
@@ -120,8 +126,9 @@
             <v-container class="v-container" text-xs-center>
              <v-layout  row wrap justify-center>
                 <v-flex xs12>
-                    <v-btn class="apply" type="submit"
-                    :to="'/boards/' + this.project_idx +'/' + this.recruit_idx + '/apply'" >참여하기</v-btn>
+                    <v-btn flat class="apply" type="submit"
+                    :to="'/boards/' + this.project_idx +'/' + this.recruit_idx + '/apply'" >
+                    참여하기</v-btn>
                 </v-flex>
                 <v-flex xs12>
                 </v-flex>
@@ -141,12 +148,16 @@ export default {
     ...mapGetters({
       allrecruitview: 'allrecruitView',
       allDetailrecruitView: 'allDetailrecruitView',
-      getapplyMember: 'getapplyMember'
+      allApplyMember: 'allApplyMember'
     })
 
   },
   created () {
     this.$store.dispatch('getapplyMember', this.recruit_idx)
+    this.$store.dispatch('recruitingDetailView', {
+      project_idx: this.project_idx,
+      recruit_idx: this.recruit_idx
+    })
   }
 }
 </script>
@@ -155,7 +166,6 @@ export default {
 
 h4 {
     margin-top: 30px;
-
 }
 
 .logo {
@@ -166,13 +176,14 @@ h4 {
     margin-bottom: 50px;
 }
 .apply {
-  width: 250px;
-  height: 60px;
-  margin-top: 30px;
-  border-radius: 18px;
-  border:#81D4FA 2px solid;
-  margin-bottom: 60px;
-}
+    font-size: 16px;
+    width: 30%;
+    height: 65px;
+    border-radius: 19px;
+    background-color: #F3FCFE;
+    border: 1px solid #64DFFF;
+    margin: 5%;
+  }
 .v-container {
     margin-left: 12%;
 }
@@ -181,6 +192,7 @@ h4 {
 }
 .content {
     margin-left: 40%;
+    width: 110%;
 }
 table {
     width: 500px;
@@ -233,14 +245,14 @@ h1 {
 }
 .half {
   float: left;
-  width: 50%;
+  width: 10%;
   padding: 0 1em;
 }
 /* Acordeon styles */
 .tab {
   position: relative;
   margin-bottom: 1px;
-  width: 100%;
+  width: 80%;
   color: black;
   overflow: hidden;
 }
@@ -309,17 +321,30 @@ input[type=radio]:checked + label::after {
 .half {
     width: 480px;
     margin-top: 5%;
+    margin-left: 12%;
 }
 .left_card {
-    margin-right: 80px;
     height: 60px;
     border-bottom: 1px solid rgb(204, 204, 204);
+    margin-left: 15%;
+    margin-bottom: 3%;
 }
 .member {
     border:#81D4FA 1px solid;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
 }
 .share_and_recommend {
     margin-top: 8%;
-    margin-left: 10%;
+    margin-left: 13%;
+}
+.user_img {
+    border-radius: 80px;
+}
+.recruit_user_name {
+    margin-left: 13%;
+}
+.appllcaiton {
+    margin-left: 100%;
 }
 </style>
