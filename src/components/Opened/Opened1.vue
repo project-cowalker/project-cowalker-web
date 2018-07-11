@@ -89,29 +89,66 @@
         <p>프로젝트 소개</p>
       </v-flex>
 
-      <v-flex x12 sm10 md8 lg10 offset-sm1 offset-md2>
-        <form class="imgsize">
-          <div class="dropbox" v-if="!image">
-            <input class="input-image" type="file" :multiple="false" @change="onFileChange" accept="image/*" /> <!--이미지만 선택가능-->
-          </div>
+      <v-layout class="content_title" row wrap justify-center>
+        <carousel :per-page="5" :mouse-drag="true" class="carousel">
+          <slide>
+            <form class="imgsize">
+              <div class="dropbox" v-if="!image">
+                <input class="input-image" type="file" :multiple="false" @change="onFileChange" accept="image/*"/>
+                <!--이미지만 선택가능-->
+              </div>
+              <img :src="image" v-if="image" alt="" class="newimg">
+            </form>
+          </slide>
+          <slide>
+            <form class="imgsize">
+              <div class="dropbox" v-if="!image2">
+                <input class="input-image" type="file" :multiple="false" @change="onFileChange2" accept="image/*"/>
+                <!--이미지만 선택가능-->
+              </div>
+              <img :src="image2" v-if="image2" alt="" class="newimg"><!--이미지가 있으면 뜨도록-->
+            </form>
+          </slide>
+          <slide>
+            <form class="imgsize">
+              <div class="dropbox" v-if="!image3">
+                <input class="input-image" type="file" :multiple="false" @change="onFileChange3" accept="image/*"/>
+                <!--이미지만 선택가능-->
+              </div>
+              <img :src="image3" v-if="image3" alt="" class="newimg"><!--이미지가 있으면 뜨도록-->
+            </form>
+          </slide>
+        </carousel>
+      </v-layout>
+      <!--<v-flex x12 sm10 md8 lg10 offset-sm1 offset-md2>-->
+        <!--<form class="imgsize">-->
+          <!--<div class="dropbox" v-if="!image">-->
+            <!--<input class="input-image" type="file" :multiple="false" @change="onFileChange" accept="image/*" /> &lt;!&ndash;이미지만 선택가능&ndash;&gt;-->
+          <!--</div>-->
+          <!--<img :src="image" v-if="image" alt="" class="newimg">&lt;!&ndash;이미지가 있으면 뜨도록&ndash;&gt;-->
+        <!--</form>-->
+      <!--</v-flex>-->
 
-          <img :src="image" v-if="image" alt="" class="newimg"><!--이미지가 있으면 뜨도록-->
-        </form>
-      </v-flex>
+      <!--<v-flex x12 sm10 md8 lg10 offset-sm1 offset-md2>-->
+        <!--<form class="imgsize">-->
+          <!--<div class="dropbox" v-if="!image2">-->
+            <!--<input class="input-image" type="file" :multiple="false" @change="onFileChange2" accept="image/*" /> &lt;!&ndash;이미지만 선택가능&ndash;&gt;-->
+          <!--</div>-->
 
-      <v-flex x12 sm10 md8 lg10 offset-sm1 offset-md2>
-        <form class="imgsize">
-          <div class="dropbox" v-if="!image2">
-            <input class="input-image" type="file" :multiple="false" @change="onFileChange2" accept="image/*" /> <!--이미지만 선택가능-->
-          </div>
-
-          <img :src="image2" v-if="image2" alt="" class="newimg"><!--이미지가 있으면 뜨도록-->
-        </form>
-      </v-flex>
-      <v-flex x12 sm10 md8 lg10 offset-sm1 offset-md3>
-        <textarea class="textarea" cols="70" rows="7" placeholder="  프로젝트에 대해 소개해주세요."
-        v-model="explain"></textarea>
-      </v-flex>
+          <!--<img :src="image2" v-if="image2" alt="" class="newimg">&lt;!&ndash;이미지가 있으면 뜨도록&ndash;&gt;-->
+        <!--</form>-->
+      <!--</v-flex>-->
+      <!--<v-flex x12 sm10 md8 lg10 offset-sm1 offset-md3>-->
+        <!--<textarea class="textarea" cols="70" rows="7" placeholder="  프로젝트에 대해 소개해주세요."-->
+        <!--v-model="explain"></textarea>-->
+      <!--</v-flex>-->
+      <!--<form class="imgsize">-->
+        <!--<div class="dropbox" v-if="!image3">-->
+          <!--<input class="input-image" type="file" :multiple="false" @change="onFileChange3" accept="image/*"/>-->
+          <!--&lt;!&ndash;이미지만 선택가능&ndash;&gt;-->
+        <!--</div>-->
+        <!--<img :src="image3" v-if="image3" alt="" class="newimg">&lt;!&ndash;이미지가 있으면 뜨도록&ndash;&gt;-->
+      <!--</form>-->
 
       <v-container -center>
         <v-layout justify-center>
@@ -162,9 +199,13 @@ export default {
         '컨텐츠',
         '기타'
       ],
+      image: null,
+      image2: null,
+      image3: null,
+      arrayimg: [],
       file: null,
-      image: null, // 처음엔 null
-      image2: null
+      file2: null,
+      file3: null
     }
   },
   methods: {
@@ -177,6 +218,8 @@ export default {
       data.append('aim', this.aim)
       data.append('explain', this.explain)
       data.append('img', this.file)
+      data.append('img', this.file2)
+      data.append('img', this.file3)
 
       this.$store.dispatch('uploadOpened', data)
     },
@@ -184,30 +227,39 @@ export default {
       const fileReader = new FileReader()
       fileReader.onload = () => { // 파일리더가 뭔가를 로드해왔을 때 함수블록을 실행된다
         this.image = fileReader.result
-        // this.image1 = fileReader.result
       }
-      fileReader.readAsDataURL(file) // 데이터에서 url을 끌고 오는 것
+      fileReader.readAsDataURL(file)// 데이터에서 url을 끌고 오는 것
+      this.arrayimg.push({arrayimg: this.file})
     },
     onFileChange (file) {
-      // if ((event.target.files[0]['type']).split('/')[0] === 'image') {
       this.file = file.target.files[0]
       this.getImage(this.file)
-      // }
+      console.log(file)
     },
-    getImage2 (file) {
+
+    getImage2 (file2) {
       const fileReader = new FileReader()
       fileReader.onload = () => { // 파일리더가 뭔가를 로드해왔을 때 함수블록을 실행된다
         this.image2 = fileReader.result
-        // this.image1 = fileReader.result
       }
-      fileReader.readAsDataURL(file) // 데이터에서 url을 끌고 오는 것
+      fileReader.readAsDataURL(file2)// 데이터에서 url을 끌고 오는 것
+      this.arrayimg.push({arrayimg: this.file2})
     },
-    onFileChange2 (file) {
-      // if ((event.target.files[0]['type']).split('/')[0] === 'image') {
-
-      this.file = file.target.files[0]
-      this.getImage2(this.file)
-      // }
+    onFileChange2 (file2) {
+      this.file2 = file2.target.files[0]
+      this.getImage2(this.file2)
+    },
+    getImage3 (file3) {
+      const fileReader = new FileReader()
+      fileReader.onload = () => { // 파일리더가 뭔가를 로드해왔을 때 함수블록을 실행된다
+        this.image3 = fileReader.result
+      }
+      fileReader.readAsDataURL(file3) // 데이터에서 url을 끌고 오는 것
+      this.arrayimg.push({arrayimg: this.file3})
+    },
+    onFileChange3 (file3) {
+      this.file3 = file3.target.files[0]
+      this.getImage3(this.file3)
     }
   }
 }
@@ -258,8 +310,8 @@ export default {
     max-width: 100%;
     margin-bottom: 5%;
     color: transparent;
-    width: 70%;
-    height: 350px;
+    width: 80%;
+    height: 240px;
     opacity: 0.4;
     border-radius: 15px;
     border: 1px solid #707070;
@@ -277,8 +329,8 @@ export default {
     margin-left: 8%;
     max-width: 100%;
     margin-bottom: 5%;
-    width: 630px;
-    height: 350px;
+    width: 80%;
+    height: 240px;
     border-radius: 15px;
     border: 1px solid #707070;
   }
@@ -292,5 +344,8 @@ export default {
     border: 1px solid #64DFFF;
     margin: 5%;
   }
-
+  .carousel {
+    background-color: #fcfcfc;
+    width: 80%;
+  }
   </style>
