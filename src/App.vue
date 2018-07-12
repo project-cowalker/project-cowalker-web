@@ -10,7 +10,7 @@
         </v-list-tile>
       </v-list>
     </v-navigation-drawer>
-    <v-toolbar flat dark class="transparent" color="grey ligthen-4">
+    <v-toolbar flat dark class="transparent" color="grey ligthen-3">
 
       <v-toolbar-side-icon
         @click.stop="sideNav = !sideNav"
@@ -25,7 +25,6 @@
       </v-toolbar-items>
       <v-spacer></v-spacer>
       <v-toolbar-items flat class="hidden-xs-only"> <!--hidden-xs-only는 모바일 환경에서 사라짐-->
-<<<<<<< HEAD
         <!--개설-->
         <v-toolbar-items class="toolbar_item_right">
           <v-btn flat v-for="item in openedMenu" :key="item.title" :to="item.link">
@@ -39,22 +38,6 @@
             <v-list class="list">
               <div v-if="alarmView">
                 <v-list-tile  v-for="list in alarmView" :key="alarm">
-=======
-        <v-btn flat v-for="item in menuItems" :key="item.title" :to="item.link">
-          <div>{{ item.title }}</div>
-        </v-btn>
-
-        <dev v-if="this.userIsAuthenticated">
-          <v-menu offset-y>
-            <v-btn slot="activator" color="grey darken-1" depressed width="50px" style="margin-top: 22px">알림</v-btn>
-            <v-list class="list">
-              <div class="alarmback" v-if="!alarmView.result">
-                <img class="alarmImg" src="@/assets/alarm_photo_cowalker.png">
-                <v-list-title class="alarmText"> 프로젝트에 참여해보세요!</v-list-title>
-              </div>
-              <div v-else>
-                <v-list-tile v-for="list in alarmView" :key="list.alarm">
->>>>>>> develop
                   <img class="alarmImg" src="@/assets/alarm_photo_cowalker.png">
                   <v-list-tile-title class="alarmText">{{ list.contents }}</v-list-tile-title>
                 </v-list-tile>
@@ -65,19 +48,11 @@
               </div>
             </v-list>
           </v-menu>
-<<<<<<< HEAD
         </v-flex>
         <!--마이페이지-->
         <v-flex v-if="this.userIsAuthenticated">
           <v-toolbar-items class="toolbar_item_right" >
             <v-btn flat v-for="item in profileMenu"  :key="item.title" :to="item.link" style="margin-top: 20px">
-=======
-        </dev>
-
-        <dev v-if="this.userIsAuthenticated">
-          <v-toolbar-items class="toolbar_item_left">
-            <v-btn flat v-for="item in profileMenu" :key="item.title" :to="item.link" style="margin-top: 22px">
->>>>>>> develop
               {{item.title}}
             </v-btn>
           </v-toolbar-items>
@@ -87,14 +62,8 @@
     <main>
       <router-view></router-view>
     </main>
-<<<<<<< HEAD
-    <v-divider></v-divider>
-    <v-footer height="60" color="light gray">
-=======
-
     <v-divider></v-divider>
     <v-footer class="hidden-xs-only" height="60" color="light gray">
->>>>>>> develop
       <v-spacer>
       </v-spacer>
       <v-spacer>
@@ -104,10 +73,6 @@
         <span class="footer">Copyright © 2018 Cowalker.All Rights Reserved</span>
       </v-spacer>
     </v-footer>
-<<<<<<< HEAD
-=======
-
->>>>>>> develop
   </v-app>
 </template>
 
@@ -129,14 +94,9 @@ export default {
       let openedMenu = [
         {title: '개설', link: '/opened1'}
       ]
-<<<<<<< HEAD
       return openedMenu
     }
     ,
-=======
-      return menuItems
-    },
->>>>>>> develop
     leftMenu () {
       let leftMenu = [
         {title: '탐색', link: '/boards'}

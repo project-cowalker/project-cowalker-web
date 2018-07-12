@@ -44,50 +44,31 @@
                   <v-layout justify-center>
                   <app-board-recommend-dialog></app-board-recommend-dialog> <!--:id="allDetailView.project_idx"-->
                   <app-board-share-dialog></app-board-share-dialog>
-<<<<<<< HEAD
+
                   &ensp;
                   <div v-if="userView === '참여하기'">
-
                     <v-btn class="register-btn" :to="'/boards/' + this.project_idx + '/subrecruit'" large accent slot="activator" outline color="cyan lighten-4">
-                      <v-text class="register-text">참여하기</v-text>
-                    </v-btn> <!--참여하기-->
-                  </div>
-
-                  <div v-if="userView === '개설자'">
-=======
-                  &emsp; &emsp; &emsp;
-                  </v-layout>
-
-                  <v-layout justify-center v-if="userView === '참여하기'">
-                    <v-btn class="register-btn" large accent slot="activator" outline color="cyan lighten-4">
                       <v-text class="register-text"><h6>참여하기</h6></v-text>
                     </v-btn> <!--참여하기-->
-                  </v-layout>
-                  <v-layout justify-center v-else>
->>>>>>> develop
-                  <v-btn class="register-btn" :to="'/boards/' + this.project_idx + '/recruit'"
-                         large accent slot="activator" outline color="cyan lighten-4">
-                    <v-text class="register-text"><h6>모집하기</h6></v-text>
-                  </v-btn> <!--모집하기-->
-<<<<<<< HEAD
                   </div>
-
+                  <div v-if="userView === '개설자'">
+                    <v-btn class="register-btn" :to="'/boards/' + this.project_idx + '/recruit'"
+                           large accent slot="activator" outline color="cyan lighten-4">
+                      <v-text class="register-text"><h6>모집하기</h6></v-text>
+                    </v-btn> <!--모집하기-->
+                  </div>
                   <div v-if="userView === '참여대기'">
                     <v-btn class="register-btn" large accent slot="activator" outline color="cyan lighten-4">
                       <v-text class="register-text">참여대기</v-text>
                     </v-btn> <!--참여하기-->
                   </div>
-
                   <div v-if="userView === '참여완료'">
                     <v-btn class="register-btn" large accent slot="activator" outline color="cyan lighten-4">
                       <v-text class="register-text">참여완료</v-text>
                     </v-btn> <!--참여하기-->
                   </div>
-=======
                   </v-layout>
->>>>>>> develop
                 </v-flex>
-
               </v-layout> <!--모바일환경에서 제대로 작동하려면 layout안에 flex 선언하기-->
             </v-container>
           </v-flex>
