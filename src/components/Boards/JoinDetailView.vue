@@ -152,13 +152,12 @@ export default {
       allDetailrecruitView: 'allDetailrecruitView',
       allApplyMember: 'allApplyMember',
       allJoinMember: 'allJoinMember'
-
     })
 
   },
   created () {
-    this.$store.dispatch('getapplyMember', this.recruit_idx)
-    this.$store.dispatch('getjoinMember', this.project_idx)
+    this.$store.dispatch('getapplyMember', this.project_idx)
+    this.$store.dispatch('getjoinMember', this.recruit_idx)
     this.$store.dispatch('recruitingDetailView', {
       project_idx: this.project_idx,
       recruit_idx: this.recruit_idx
