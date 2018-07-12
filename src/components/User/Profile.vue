@@ -190,3 +190,5 @@ export default {
   .memoImg {
     margin-left: 15px;
   }
+
+</style>

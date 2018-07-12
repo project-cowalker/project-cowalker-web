@@ -17,7 +17,6 @@
                   <!--class="headline mb-0"-->
                 </div>
               </v-flex>
-
             </v-card-title>
 
             <v-container d-inline-flex>
@@ -76,21 +75,21 @@
   </v-layout>
 </template>
 <script>
-  import {mapGetters} from 'vuex'
+import {mapGetters} from 'vuex'
 
-  export default {
-    props: ['project_idx'], // project_idx 값 넘기기
-    data: () => ({}),
-    computed: {
-      ...mapGetters({
-        boards: 'allBoards',
-        allDetailView: 'allDetailView'
-      })
-    },
-    created() {
-      this.$store.dispatch('getDetailView', this.project_idx) // 서버로부터 게시글 다 받아오기
-    }
+export default {
+  props: ['project_idx'], // project_idx 값 넘기기
+  data: () => ({}),
+  computed: {
+    ...mapGetters({
+      boards: 'allBoards',
+      allDetailView: 'allDetailView'
+    })
+  },
+  created () {
+    this.$store.dispatch('getDetailView', this.project_idx) // 서버로부터 게시글 다 받아오기
   }
+}
 </script>
 
 <style scoped>
