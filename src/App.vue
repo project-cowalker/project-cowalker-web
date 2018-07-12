@@ -29,8 +29,8 @@
           <div>{{ item.title }}</div>
         </v-btn>
 
-        <dev v-if = "this.userIsAuthenticated" class="alarmBtn">
-        <v-menu offset-y>
+        <dev v-if = "this.userIsAuthenticated">
+        <v-menu offset-y >
           <v-btn  slot="activator" color="grey darken-1" depressed width="30px" style="margin-top: 20px">알림</v-btn>
           <v-list class="list" >
             <div class="alarmback" v-if = "!alarmView.result">
@@ -119,6 +119,7 @@ export default {
     background-color: #f1f1f196;
   }
   .alarmBtn{
+    background-color: #f1f1f196;
   }
   .alarmText{
     font-size: 13px;
