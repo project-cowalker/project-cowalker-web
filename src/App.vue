@@ -13,9 +13,9 @@
     <v-toolbar flat dark class="v-toolbar" color="grey darken-1">
       <v-toolbar-side-icon
         @click.stop="sideNav = !sideNav"
-        class="hidden-sm-and-up "></v-toolbar-side-icon>
+        class="hidden-sm-and-up"></v-toolbar-side-icon>
       <v-toolbar-title>
-        <router-link to="/" tag="span" style="cursor: pointer"><img src="@/assets/hometap_logo.png"></router-link>
+        <router-link to="/" tag="span" style="cursor: pointer"><img src="@/assets/hometap_logo.png" class="hometap_logo"></router-link>
       </v-toolbar-title>
       <v-toolbar-items class="toolbar_item_left">
         <v-btn class="toolbar_item_left" flat v-for="item in leftMenu" :key="item.title" :to="item.link">
@@ -25,20 +25,19 @@
       <v-spacer></v-spacer>
       <v-toolbar-items flat class="hidden-xs-only"> <!--hidden-xs-only는 모바일 환경에서 사라짐-->
         <v-btn flat v-for="item in menuItems" :key="item.title" :to="item.link">
-          <v-icon left dark>{{ item.icon }}</v-icon>
           <div>{{ item.title }}</div>
         </v-btn>
 
         <dev v-if="this.userIsAuthenticated">
           <v-menu offset-y>
-            <v-btn slot="activator" color="grey darken-1" depressed width="30px" style="margin-top: 20px">알림</v-btn>
+            <v-btn slot="activator" color="grey darken-1" depressed width="50px" style="margin-top: 22px">알림</v-btn>
             <v-list class="list">
               <div class="alarmback" v-if="!alarmView.result">
                 <img class="alarmImg" src="@/assets/alarm_photo_cowalker.png">
                 <v-list-title class="alarmText"> 프로젝트에 참여해보세요!</v-list-title>
               </div>
               <div v-else>
-                <v-list-tile v-for="list in alarmView" :key="alarm">
+                <v-list-tile v-for="list in alarmView" :key="list.alarm">
                   <img class="alarmImg" src="@/assets/alarm_photo_cowalker.png">
                   <v-list-tile-title class="alarmText">{{ list.contents }}</v-list-tile-title>
                 </v-list-tile>
@@ -49,7 +48,7 @@
 
         <dev v-if="this.userIsAuthenticated">
           <v-toolbar-items class="toolbar_item_left">
-            <v-btn flat v-for="item in profileMenu" :key="item.title" :to="item.link" style="margin-top: 20px">
+            <v-btn flat v-for="item in profileMenu" :key="item.title" :to="item.link" style="margin-top: 22px">
               {{item.title}}
             </v-btn>
           </v-toolbar-items>
@@ -59,6 +58,19 @@
     <main>
       <router-view></router-view>
     </main>
+
+    <v-divider></v-divider>
+    <v-footer class="hidden-xs-only" height="60" color="light gray">
+      <v-spacer>
+      </v-spacer>
+      <v-spacer>
+        <span class="footer">회사 소개&emsp;|&emsp;사업자 소개&emsp;|&emsp;이용약관&emsp;|&emsp;공지사항&emsp;|&emsp;처음오셨나요?</span>
+      </v-spacer>
+      <v-spacer>
+        <span class="footer">Copyright © 2018 Cowalker.All Rights Reserved</span>
+      </v-spacer>
+    </v-footer>
+
   </v-app>
 </template>
 
@@ -80,11 +92,6 @@ export default {
       let menuItems = [
         {title: '개설', link: '/opened1'}
       ]
-      if (this.userIsAuthenticated) {
-        menuItems = [
-          {title: '개설', link: '/opened1'}
-        ]
-      }
       return menuItems
     },
     leftMenu () {
@@ -164,5 +171,9 @@ export default {
 
   .toolbar_item_left {
     margin-bottom: 15px;
+  }
+  .footer{
+    color: grey;
+    font-size: 13px;
   }
 </style>

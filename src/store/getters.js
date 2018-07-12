@@ -12,13 +12,10 @@ export const boardGetters = {
   },
   allDetailView (state, getters) {
     return state.detailboard[0]
-  }
-  ,
+  },
   userView (state, getters) {
     return state.divisions
-  }
-  ,
-
+  },
   allrecruitView (state, getters) {
     return state.recruits
   },
@@ -45,6 +42,9 @@ export const boardGetters = {
   },
   allApplyMember (state, getters) {
     return state.applymembers
+  },
+  allJoinMember  (state, getters) {
+    return state.joinmembers
   },
   user (state, getters) {
     return state.user

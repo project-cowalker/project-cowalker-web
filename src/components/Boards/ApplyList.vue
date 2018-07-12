@@ -114,6 +114,7 @@ export default {
         applicant_idx: this.applicant_idx,
         join: 2
       })
+      Router.push('/boards/' + this.project_idx)
     }
   },
   created () {

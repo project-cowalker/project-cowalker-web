@@ -57,6 +57,7 @@ export default {
   margin-top: 40px;
   border:rgb(218, 217, 217) 1px solid;
   border-radius: 10px;
+  margin-bottom: 5%;
 }
 h3 {
   margin-left: 5%;
@@ -67,5 +68,6 @@ h3 {
 h4 {
   margin-left: 10%;
   margin-top: 3%;
+  margin-right: 5%;
 }
 </style>
