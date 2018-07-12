@@ -3,14 +3,14 @@
     <v-flex xs12 sm10 md10 lg10 xl10 offset-sm1 offset-md1> <!--v-card 안에서-->
       <div>
         <v-container d-inline-flex class="v-container">
-          <v-card flat class="hidden-xs-only" width="450px"> <!--v-card만 width 조정가능 그래서 이미지 감싸줌-->
-            <v-card-media :src="allDetailView.img_url[0]" height="380px"></v-card-media>
+          <v-card flat class="hidden-xs-only" width="280px"> <!--v-card만 width 조정가능 그래서 이미지 감싸줌-->
+            <v-card-media :src="allDetailView.img_url[0]" height="380px" class="card_media"></v-card-media>
             <div class="aim_de_area"><h5>목적 &ensp; {{allDetailView.aim}} &emsp; &emsp; 분야 &ensp;
               {{allDetailView.department}} &emsp; &emsp; 지역 &ensp; {{allDetailView.area}}</h5></div>
           </v-card>
-          <div> <!--사진 옆 설명부분-->
+          <v-flex> <!--사진 옆 설명부분-->
             <v-card-title class="title">
-              <v-flex align-center>
+              <v-flex align-center xs9 sm10 md10 lg10 xl10>
                 <div>
                   <!--<p>{{ allDetailrecruitView.user}}</p>-->
                   <button class="title_btn" disabled depressed><h5>{{ allDetailView.title }}</h5></button>
@@ -20,29 +20,31 @@
             </v-card-title>
             <v-container d-inline-flex>
               <v-layout> <!--추천공유참여하기 가운데로 모으기-->
-                <v-flex class="user_name" d-inline-flex xs5 sm8 md5 lg3 xl3>
+                <v-flex class="user_name" d-inline-flex xs6 sm8 md5 lg3 xl12>
                   <div><img :src="allDetailView.project_user_profile_url" width="33px" height="33px" class="user_img">
                   </div>
-                  <div> with <h3>{{allDetailView.project_user_name}}</h3> <img src="@/assets/intro_facin.png"></div>
-
+                  <div> <h3>with  {{allDetailView.project_user_name}}</h3></div>
                 </v-flex>
+
               </v-layout> <!--모바일환경에서 제대로 작동하려면 layout안에 flex 선언하기-->
             </v-container>
 
             <v-container>
               <v-layout justify-center> <!--추천공유참여하기 가운데로 모으기-->
-                <v-flex class="summary">
-                  <p> &emsp; &emsp; 요약 소개:</p>
-                  <p class="intro"> {{ allDetailView.summary }} </p>
+                <v-flex class="summary" xs12 sm10 md10 lg10 xl10>
+                  <p class="summary_intro"> &emsp; 요약 소개 :</p>
+                  <h5 class="intro" style="line-height:150%"> {{ allDetailView.summary }} </h5>
                 </v-flex>
               </v-layout> <!--모바일환경에서 제대로 작동하려면 layout안에 flex 선언하기-->
             </v-container>
 
             <v-container text-xs-center>
               <v-layout justify-center class="recommend_share"> <!--추천공유참여하기 가운데로 모으기-->
-                <v-flex>
+                <v-flex d-inline-flex xs12 sm10 md8 lg8 xl8>
+                  <v-layout justify-center>
                   <app-board-recommend-dialog></app-board-recommend-dialog> <!--:id="allDetailView.project_idx"-->
                   <app-board-share-dialog></app-board-share-dialog>
+<<<<<<< HEAD
                   &ensp;
                   <div v-if="userView === '참여하기'">
 
@@ -52,10 +54,22 @@
                   </div>
 
                   <div v-if="userView === '개설자'">
+=======
+                  &emsp; &emsp; &emsp;
+                  </v-layout>
+
+                  <v-layout justify-center v-if="userView === '참여하기'">
+                    <v-btn class="register-btn" large accent slot="activator" outline color="cyan lighten-4">
+                      <v-text class="register-text"><h6>참여하기</h6></v-text>
+                    </v-btn> <!--참여하기-->
+                  </v-layout>
+                  <v-layout justify-center v-else>
+>>>>>>> develop
                   <v-btn class="register-btn" :to="'/boards/' + this.project_idx + '/recruit'"
                          large accent slot="activator" outline color="cyan lighten-4">
-                    <v-text class="register-text">모집하기</v-text>
+                    <v-text class="register-text"><h6>모집하기</h6></v-text>
                   </v-btn> <!--모집하기-->
+<<<<<<< HEAD
                   </div>
 
                   <div v-if="userView === '참여대기'">
@@ -69,13 +83,16 @@
                       <v-text class="register-text">참여완료</v-text>
                     </v-btn> <!--참여하기-->
                   </div>
+=======
+                  </v-layout>
+>>>>>>> develop
                 </v-flex>
 
               </v-layout> <!--모바일환경에서 제대로 작동하려면 layout안에 flex 선언하기-->
             </v-container>
-          </div>
+          </v-flex>
         </v-container>
-
+        <hr class="underline1" color="#c0e6ff" noshade/>
         <v-divider></v-divider>
         <div id="v-tab">
           <v-tabs v-model="active" slider-color="cyan lighten-4">
@@ -121,7 +138,7 @@ export default {
   .v-container {
     margin: auto;
     margin-left: 7%;
-
+    line-height:0.5em
   }
 
   .title {
@@ -135,8 +152,8 @@ export default {
   }
 
   .recommend_share {
-    margin-top: 25px;
-
+    margin-top: 16%;
+    margin-right: 10%;
   }
 
   .back_color {
@@ -146,29 +163,33 @@ export default {
   .title_btn {
     width: 140px;
     height: 35px;
-    background: #E1F5FE;
+    background: #d1ecff;
   }
 
   .intro {
     margin-left: 70px;
+    font-size: 13px;
+    margin-top: 5%;
   }
 
   h3 {
     display: inline-block;
-    margin-top: 3px;
+    margin-top: 10%;
   }
 
   .user_img {
     border: gray 2px solid;
     border-radius: 80px;
+    margin-left: 10%;
   }
 
   h5 {
-    color: gray;
+    color: rgb(66, 66, 66);
   }
 
   .aim_de_area {
     float: right;
+    margin-top: 5%;
   }
 
   .scrap {
@@ -176,10 +197,25 @@ export default {
   }
 
   .user_name {
-    margin-left: 5%;
+    margin-left: 3%;
   }
-
   .summary {
-    margin-left: 10%;
+    margin-right: 10%;
+    margin-left: 5%;
+
+  }
+  h6 {
+   font-size: 12px;
+  }
+  .summary_intro {
+    color: rgb(94, 94, 94);
+  }
+  .card_media {
+    border: rgb(224, 224, 224) 1px solid;
+    border-radius: 7px;
+  }
+  .register-btn {
+     border: #d1ecff 2px solid;
+     border-radius: 5px;
   }
 </style>

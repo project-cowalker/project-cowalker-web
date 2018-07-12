@@ -223,6 +223,12 @@ export const boardActions = {
       console.log(localStorage.getItem('token'))
     })
   },
+  getjoinMember ({commit}, payload) {
+    axios.get('http://bghgu.tk:3000/api/project/team/' + payload).then(response => {
+      commit('alljoinMember', response.data)
+      console.log(payload + 'project_idx 값')
+    })
+  },
   clearError ({commit}) {
     commit('clearError')
   },
@@ -268,18 +274,15 @@ export const boardActions = {
     )
   },
   applyReject ({ commit }, payload) {
-    console.log(localStorage.getItem('token') + ' -- 토큰값')
-    axios.put('http://bghgu.tk:3000/api/apply/' + payload.apply_idx + '/' + payload.applicant_idx + '/join/' + payload.join,
-      {
-        headers: {
-          'Content-Type': 'application/json',
-          'authorization': localStorage.getItem('token')
-        }
+    axios({
+      method: 'PUT',
+      url: 'http://bghgu.tk:3000/api/apply/' + payload.apply_idx + '/' + payload.applicant_idx + '/join/' + payload.join,
+      headers: {
+        authorization: localStorage.getItem('token')
       }
-    ).then(response => {
-      commit('RejectSuccess')
+    }).then(response => {
+      commit('RejectSuccess', response.data)
       alert('거절완료')
-      Router.push('/boards/' + this.project_idx)
     }).catch(
       (error) => console.log(error)
     )
