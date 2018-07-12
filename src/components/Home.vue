@@ -13,7 +13,7 @@
             <!--프로젝트 보기-->
             <v-btn class="button" flat dark @click.native.stop="dialog = true" @click="guard">프로젝트 상세보기  ></v-btn>
 
-            <v-dialog id="dialog" v-model="dialog" width="480.75px">
+            <v-dialog id="dialog" v-model="dialog" width="480.77px">
               <v-card height="508.55%">
 
                 <v-container class="v-container" text-xs-center> <!--가운데 정렬-->
