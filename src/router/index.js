@@ -5,7 +5,6 @@ import Boards from '@/components/Boards/Boards'
 import Board from '@/components/Boards/Board'
 import Profile from '@/components/User/Profile'
 import Intro from '@/components/Subpage/Intro'
-import history from '@/components/Subpage/History'
 import SubRecruit from '@/components/Subpage/SubRecruit'
 import Opened1 from '@/components/Opened/Opened1'
 import Recruit from '@/components/Boards/Recruit'
@@ -71,11 +70,6 @@ export default new Router({
         {
           path: '',
           component: Intro
-        },
-        {
-          path: 'history',
-          props: true,
-          component: history
         },
         {
           path: 'subrecruit',

@@ -120,35 +120,6 @@
           </slide>
         </carousel>
       </v-layout>
-      <!--<v-flex x12 sm10 md8 lg10 offset-sm1 offset-md2>-->
-        <!--<form class="imgsize">-->
-          <!--<div class="dropbox" v-if="!image">-->
-            <!--<input class="input-image" type="file" :multiple="false" @change="onFileChange" accept="image/*" /> &lt;!&ndash;이미지만 선택가능&ndash;&gt;-->
-          <!--</div>-->
-          <!--<img :src="image" v-if="image" alt="" class="newimg">&lt;!&ndash;이미지가 있으면 뜨도록&ndash;&gt;-->
-        <!--</form>-->
-      <!--</v-flex>-->
-
-      <!--<v-flex x12 sm10 md8 lg10 offset-sm1 offset-md2>-->
-        <!--<form class="imgsize">-->
-          <!--<div class="dropbox" v-if="!image2">-->
-            <!--<input class="input-image" type="file" :multiple="false" @change="onFileChange2" accept="image/*" /> &lt;!&ndash;이미지만 선택가능&ndash;&gt;-->
-          <!--</div>-->
-
-          <!--<img :src="image2" v-if="image2" alt="" class="newimg">&lt;!&ndash;이미지가 있으면 뜨도록&ndash;&gt;-->
-        <!--</form>-->
-      <!--</v-flex>-->
-      <!--<v-flex x12 sm10 md8 lg10 offset-sm1 offset-md3>-->
-        <!--<textarea class="textarea" cols="70" rows="7" placeholder="  프로젝트에 대해 소개해주세요."-->
-        <!--v-model="explain"></textarea>-->
-      <!--</v-flex>-->
-      <!--<form class="imgsize">-->
-        <!--<div class="dropbox" v-if="!image3">-->
-          <!--<input class="input-image" type="file" :multiple="false" @change="onFileChange3" accept="image/*"/>-->
-          <!--&lt;!&ndash;이미지만 선택가능&ndash;&gt;-->
-        <!--</div>-->
-        <!--<img :src="image3" v-if="image3" alt="" class="newimg">&lt;!&ndash;이미지가 있으면 뜨도록&ndash;&gt;-->
-      <!--</form>-->
 
       <v-container -center>
         <v-layout justify-center>

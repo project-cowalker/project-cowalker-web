@@ -63,19 +63,10 @@
       <v-container>
         <h3>추천 프로젝트</h3>
       <v-layout d-inline-flex v-for="board in allgetrecommendproject" :key="board.id">
-<<<<<<< HEAD
-            <v-flex x12 sm10 md8 lg10 offset-sm1 offset-md2>
-                <v-card flat :to="'/boards/' + board._id" class="v-card" width="260px" height="300px">
-                    <v-container fluid>
-                        <v-card-media  class="card_image" v-if="board.img_url" height="160px" width="260px" :src="board.img_url[0]"></v-card-media>
-                        <v-card-title primary-title>
-=======
             <v-flex x12 sm10 md8 lg10 offset-sm1>
                 <v-card flat :to="'/boards/' + board._id" class="v-card" width="260px" height="310x">
 
                         <v-card-media  class="card_image" v-if="board.img_url" height="200px" width="260px" :src="board.img_url"></v-card-media>
-
->>>>>>> develop
                             <v-flex class="v-card-content">
                                 <h5>{{board.title}}</h5> <!--class="headline mb-0"-->
                                 <h6 class="date">{{board.area}} · {{board.department}} · {{board.aim}}</h6>
@@ -166,13 +157,9 @@ export default {
     border: 1px solid #ccc;
     border-radius: 25px;
   }
-<<<<<<< HEAD
   .input:focus {
     outline: none;
   }
-
-=======
->>>>>>> develop
   .inputpw {
     width: 262.08px;
     height: 40.64px;
@@ -185,14 +172,9 @@ export default {
     background: url("https://postfiles.pstatic.net/MjAxODA3MDJfODYg/MDAxNTMwNDYwMjk1NTg3.jYhRgBcl9sAWliY26EK-EPfVhLYTQBzws41bRejER9sg.jQGG20bRIw6h5f4eMSftzxsNicGPNd03gE3phqsuXUYg.PNG.rkdud410/password_eye_preview_see.png?type=w966");
     background-repeat: no-repeat;
   }
-<<<<<<< HEAD
-
   .inputpw:focus {
     outline: none;
   }
-
-=======
->>>>>>> develop
   .top {
     margin-top: 120px;
   }
