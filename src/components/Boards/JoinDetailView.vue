@@ -1,17 +1,21 @@
 <template>
         <v-card>
+          <v-flex xs10>
             <v-container class="v-container" text-xs-center>
                 <v-layout row wrap justify-center>
                     <v-card flat class="logo"><img src="@/assets/project_detail_logo.png"></v-card>
                 </v-layout>
             </v-container>
+            </v-flex>
             <v-container  d-inline-flex class="v-container">
                 <v-layout class="content_title" row wrap>
-                     <v-flex xs12>
+                     <v-flex>
                         <table>
+                          <v-flex xs5 lg12 xl12>
                             <tr>
                                 <td><h4 class="title">역할<hr class="underline1" color="#81D4FA" noshade/></h4></td>
                                 <td><h4 class="content">{{allDetailrecruitView.position}}</h4></td>
+
                             </tr>
                              <tr>
                                 <td><h4 class="title">모집기간<hr class="underline2" color="#81D4FA" noshade/></h4></td>
@@ -53,6 +57,7 @@
                                 <td><h4 class="title">코멘트<hr class="underline8" color="#81D4FA" noshade/></h4></td>
                                 <td><h4 class="content">{{allDetailrecruitView.comment}}</h4></td>
                             </tr>
+                            </v-flex>
                         </table>
 
                     </v-flex>
@@ -61,7 +66,7 @@
                  <v-layout row wrap>
                     <v-flex  class="recommend_share">
 
-                                    <div class="wrapper">
+                                    <div class="hidden-xs-only">
                                         <div class="half">
                                             <div class="tab blue">
                                             <input id="tab-four" type="radio" name="tabs">
@@ -75,10 +80,8 @@
                                                                         <v-card-title primary-title>
                                                                             <div><img :src="recruit.profile_url" width="33px" height="33px" class="user_img"></div>
                                                                             <v-card flat class="position" width="120px"><h3 class="recruit_user_name">{{recruit.user_name}}</h3></v-card>
-
                                                                             <router-link :to="'/boards/' + project_idx + '/subrecruit/' + recruit_idx + '/'+ recruit.apply_idx + '/' + recruit.applicant_idx"><img src="@/assets/dropbox_application_btn.png" width="33px" height="33px" class="appllcaiton">
                                                                             </router-link>
-
                                                                         </v-card-title>
 
                                                                 </v-card>
@@ -93,13 +96,13 @@
                                             <label for="tab-five">참여 멤버</label>
                                             <div class="tab-content">
                                                     <v-container  class="member">
-                                                        <v-layout v-for="recruit in allApplyMember" :key="recruit.apply_idx">
+                                                        <v-layout v-for="recruit in allJoinMember" :key="recruit.member_idx">
                                                             <v-flex x12 sm10 md8 lg7>     <!--v-for="" recruit로 해줄 것-->
                                                                 <v-card flat class="left_card" width="130%">
 
                                                                         <v-card-title primary-title>
                                                                             <div><img :src="recruit.profile_url" width="33px" height="33px" class="user_img"></div>
-                                                                            <v-card flat class="position" width="120px"><h3 class="recruit_user_name">{{recruit.user_name}}</h3></v-card>
+                                                                            <v-card flat class="position" width="120px"><h3 class="recruit_user_name">{{recruit.name}}</h3></v-card>
                                                                             <div class="number"><h3 class="number_h3">{{recruit.positon}}</h3></div>
                                                                             <div><img src="@/assets/dropbox_application_btn.png" width="33px" height="33px" class="appllcaiton"></div>
                                                                         </v-card-title>
@@ -116,7 +119,6 @@
                                                     <app-board-share-dialog></app-board-share-dialog>   <!--공유하기-->
                                                 </div>
                                         </div>
-
                                         </div>
 
                     </v-flex>
@@ -124,8 +126,8 @@
             </v-container>
 
             <v-container class="v-container" text-xs-center>
-             <v-layout  row wrap justify-center>
-                <v-flex xs12>
+             <v-layout  row wrap>
+                <v-flex xs9 sm5 md10 lg12 xl12>
                     <v-btn flat class="apply" type="submit"
                     :to="'/boards/' + this.project_idx +'/' + this.recruit_idx + '/apply'" >
                     참여하기</v-btn>
@@ -148,12 +150,15 @@ export default {
     ...mapGetters({
       allrecruitview: 'allrecruitView',
       allDetailrecruitView: 'allDetailrecruitView',
-      allApplyMember: 'allApplyMember'
+      allApplyMember: 'allApplyMember',
+      allJoinMember: 'allJoinMember'
+
     })
 
   },
   created () {
     this.$store.dispatch('getapplyMember', this.recruit_idx)
+    this.$store.dispatch('getjoinMember', this.project_idx)
     this.$store.dispatch('recruitingDetailView', {
       project_idx: this.project_idx,
       recruit_idx: this.recruit_idx
@@ -176,12 +181,12 @@ h4 {
     margin-bottom: 50px;
 }
 .apply {
-    font-size: 16px;
-    width: 30%;
+    font-size: 15px;
+    width: 22%;
     height: 65px;
-    border-radius: 19px;
+    border-radius: 20px;
     background-color: #F3FCFE;
-    border: 1px solid #64DFFF;
+    border: 2px solid rgb(106, 213, 240);
     margin: 5%;
   }
 .v-container {
