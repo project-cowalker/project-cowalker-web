@@ -1,7 +1,7 @@
 <template>
     <v-dialog v-model="SignupDialog" max-width="480.77px">
-        <v-btn flat accent slot="activator" >회원가입</v-btn>
-        <v-card height="484.55px">
+        <v-btn flat accent slot="activator">회원가입</v-btn>
+        <v-card height="508.55px">
                                 <v-container class="v-container" text-xs-center> <!--가운데 정렬-->
                 <v-layout row wrap class="top">
                     <v-flex xs12>

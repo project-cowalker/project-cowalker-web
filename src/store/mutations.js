@@ -6,8 +6,19 @@ export const boardMutations = {
   },
   allBoardsSuccess (state, payload) {
     console.log('all boards success')
-    state.boards = payload.data
-    console.log(payload.data)
+    state.boards = payload.result
+    console.log(payload.result)
+  },
+  userViewSuccess (state, payload) {
+    console.log('user View success')
+    console.log(payload.user)
+    state.divisions = payload.user
+    console.log(state.divisions)
+  },
+  allgetrecommendproject (state, payload) {
+    console.log('all recommendboards success')
+    state.recommendboards = payload.result
+    console.log(payload.result)
   },
   signUp (state, payload) {
     console.log('')
@@ -35,8 +46,51 @@ export const boardMutations = {
   writeSuccess (state) {
     console.log('writeFinish')
   },
+  recruitingSuccess (state) {
+    console.log('recruitFinish')
+  },
+  sendFilterSuccess (state) {
+    console.log('sendFilterSuccess')
+  },
+  getDetailViewSuccess (state, payload) {
+    state.detailboard = payload.result
+    console.log('all getDetailView success')
+    console.log(state.detailboard[0].title)
+  },
+  getAlarmSuccess (state, payload) {
+    state.alarms = payload.result
+    console.log('all get Alarm success')
+    console.log(payload.result)
+  },
+  getRecruitSuccess (state, payload) {
+    state.recruits = payload.result
+    console.log('all getRecruit success')
+    console.log(payload.result)
+  },
+  getMypageIntroSuccess (state, payload) {
+    state.mypageintros = payload.result
+    console.log('all getMypage Intro Success')
+    console.log(payload.result)
+  },
+  getMypageSuccess (state, payload) {
+    console.log('all getMypageSuccess')
+    state.mypages = payload.data[0]
+    console.log(state.mypages)
+  },
+  getDetailRecruitSuccess (state, payload) {
+    state.recruitDetail = payload.result[0]
+    console.log('all getDetailRecruit success')
+    console.log(payload.result[0] + ' 모집상세 내용')
+  },
+  getQuestion (state, payload) {
+    state.questions = payload.result
+    console.log(state.questions)
+  },
+  writeApplySuccess (state, payload) {
+    state.applys = payload
+  },
   setLoading (state, payload) {
-    state.loading = payload
+    state.boards = payload
   },
   setError (state, payload) {
     state.error = payload
@@ -70,5 +124,24 @@ export const boardMutations = {
     console.log('all store success')
     state.store = payload.data
     console.log(payload.data)
+  },
+  allapplyMember (state, payload) {
+    state.applymembers = payload.result
+    console.log(state.applymembers)
+  },
+  allApplyView (state, payload) {
+    state.applyview = payload.result
+    console.log(state.applymembers)
+  },
+  getApplyDetailView (state, payload) {
+    state.ApplyDetailView = payload.result[0]
+    console.log(state.ApplyDetailView)
+  },
+  PermitSuccess (state, payload) {
+    console.log('지원 수락 성공')
+  },
+  RejectSuccess (state, payload) {
+    console.log('지원 거절 성공')
   }
+
 }

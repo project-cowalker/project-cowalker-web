@@ -1,68 +1,82 @@
 <template>
-<main>
-     <v-jumbotron  src='http://www.earlyadopter.co.kr/wp-content/uploads/2017/01/Q_Dock_00.jpg' contain height="700px">
-          <v-container fill-height>
-          <v-layout align-center>
-             <v-flex x12 sm8 md7 lg7  align-content-center class="text-xs-center text-sm-right"> <!--버튼 중앙으로-->
-                <!--프로젝트 보기-->
-                <v-btn class="button" dark @click.native.stop="dialog = true" @click="guard">프로젝트 보기</v-btn>
-          <v-dialog id="dialog" v-model="dialog" width="480.77px">
-                  <v-card height="484.55px">
-                     <v-container class="v-container" text-xs-center> <!--가운데 정렬-->
+  <main>
+    <v-jumbotron src='http://www.earlyadopter.co.kr/wp-content/uploads/2017/01/Q_Dock_00.jpg' contain height="710px">
+      <v-container fill-height>
+        <v-layout align-center>
+          <v-flex  class="hidden-xs-only">
+            <p class="recommend_project">이번주 추천 프로젝트는 <br> 무엇일까?</p>
+            <hr class="underline5" color=white nosthade/>
+            <p class="recommend_project">없이 산다</p>
+            <p class="recommend_project">자발적 결핍 프로젝트</p>
+          </v-flex>
+          <v-flex x12 sm8 md7 lg7 align-content-center class="text-xs-center text-sm-right"> <!--버튼 중앙으로-->
+            <!--프로젝트 보기-->
+            <v-btn class="button" flat dark @click.native.stop="dialog = true" @click="guard">프로젝트 상세보기  ></v-btn>
 
-                <v-layout row wrap fill-height="300px">
-                  <v-layout class="top">
-                    <v-flex xs12 >
+            <v-dialog id="dialog" v-model="dialog" width="480.77px">
+              <v-card height="508.55%">
+                <v-container class="v-container" text-xs-center> <!--가운데 정렬-->
+
+                  <v-layout row wrap fill-height="300px">
+                    <v-layout class="top">
+                      <v-flex xs12>
                         <v-card-text><h2>코워커와 함께 새로운 여정을 떠나볼까요?</h2></v-card-text>
-                    </v-flex>
+                      </v-flex>
                     </v-layout>
 
-                     <v-container fluid>
-                            <form @submit.prevent="onSignIn"> <!--제출 이벤트가 페이지를 다시 로드 X -->
-                                <v-layout row wrap>
-                                    <v-flex xs12>
-                                        <input class="input" name="email" label="Email" id="email" type="email" v-model="email" required placeholder="이메일">
-                                    </v-flex>
-                                </v-layout>
-                                <v-layout row wrap>
-                                    <v-flex xs12 class="pw">
-                                        <input class="inputpw" name="password" label="Password" id="password" type="password" v-model="password" required placeholder="비밀번호">
-                                    </v-flex>
-                                </v-layout>
-                                <v-layout row wrap class="log_signup">
-                                    <v-flex xs12>
-                                        <v-btn class="log" type="submit" round @click.native="dialog = false">로그인</v-btn>
-                                    </v-flex>
-                                     <v-flex xs12>
-                                     <app-board-signup-dialog></app-board-signup-dialog>
-                                     </v-flex>
-                                </v-layout>
-                            </form>
-                        </v-container>
-                </v-layout>
-                 <v-layout row wrap>
-                </v-layout>
-            </v-container>
-        </v-card>
-    </v-dialog>
+                    <v-container fluid>
+                      <form @submit.prevent="onSignIn"> <!--제출 이벤트가 페이지를 다시 로드 X -->
+                        <v-layout row wrap>
+                          <v-flex xs12>
+                            <input class="input" name="email" label="Email" id="email" type="email" v-model="email"
+                                   required placeholder="이메일">
+                          </v-flex>
+                        </v-layout>
+                        <v-layout row wrap>
+                          <v-flex xs12 class="pw">
+                            <input class="inputpw" name="password" label="Password" id="password" type="password"
+                                   v-model="password" required placeholder="비밀번호">
+                          </v-flex>
+                        </v-layout>
+                        <v-layout row wrap class="log_signup">
+                          <v-flex xs12>
+                            <v-btn class="log" type="submit" round @click.native="dialog = false">로그인</v-btn>
+                          </v-flex>
+                          <v-flex xs12>
+                            <app-board-signup-dialog></app-board-signup-dialog>
+                          </v-flex>
+                        </v-layout>
+                      </form>
+                    </v-container>
+                  </v-layout>
+                  <v-layout row wrap>
+                  </v-layout>
+                </v-container>
+              </v-card>
+            </v-dialog>
 
-             </v-flex>
-          </v-layout>
+          </v-flex>
+        </v-layout>
+      </v-container>
+    </v-jumbotron>
+
+      <v-container>
+        <h3>추천 프로젝트</h3>
+      <v-layout d-inline-flex v-for="board in allgetrecommendproject" :key="board.id">
+            <v-flex x12 sm10 md8 lg10 offset-sm1>
+                <v-card flat :to="'/boards/' + board._id" class="v-card" width="260px" height="310x">
+
+                        <v-card-media  class="card_image" v-if="board.img_url" height="200px" width="260px" :src="board.img_url"></v-card-media>
+                            <v-flex class="v-card-content">
+                                <h5>{{board.title}}</h5> <!--class="headline mb-0"-->
+                                <h6 class="date">{{board.area}} · {{board.department}} · {{board.aim}}</h6>
+                            </v-flex>
+
+                </v-card>
+            </v-flex>
+        </v-layout>
         </v-container>
-        </v-jumbotron>
-
-         <v-jumbotron  src='http://momsmagazine.co.kr/worp/wp-content/uploads/2015/12/%EC%8A%A4%ED%8B%B0%EB%B8%8C%EC%9E%A1%EC%8A%A4-768x460.png' contain height="580px">
-          <v-container fill-height>
-          <v-layout align-center>
-             <v-flex x12 sm8 md7 lg7  align-content-center class="text-xs-center text-sm-right"> <!--버튼 중앙으로-->
-
-                 <v-btn class="button" dark @click.native.stop="dialog = true" @click="guard">프로젝트 보기</v-btn>
-
-             </v-flex>
-          </v-layout>
-        </v-container>
-        </v-jumbotron>
-</main>
+  </main>
 
 </template>
 
@@ -80,7 +94,8 @@ export default {
   },
   computed: {
     ...mapGetters({
-      boards: 'allBoards'
+      boards: 'allBoards',
+      allgetrecommendproject: 'allgetrecommendproject'
     }),
     board () {
       return this.$store.getters.loadedBoard(this.id)
@@ -90,9 +105,6 @@ export default {
     },
     error () {
       return this.$store.getters.error
-    },
-    loading () {
-      return this.$store.getters.loading
     }
   },
   methods: {
@@ -110,38 +122,47 @@ export default {
     },
     onDismissed () {
       this.$store.dispatch('clearError')
+    },
+    logout: function () {
+      this.$store.dispatch('logout')
     }
+  },
+  created () {
+    this.$store.dispatch('getrecommendproject') // 서버로부터 게시글 다 받아오기
   }
 }
 </script>
 
 <style scoped>
-.button {
-  margin-right: 50px;
-  color: #212121;
-  border :white 2px solid;
-  opacity: 0.8;
-}
-
-.log {
-  width: 116.86px;
-  height: 40.64px;
-  box-shadow: none;
-  background: url("https://blogfiles.pstatic.net/MjAxODA3MDFfMzgg/MDAxNTMwNDUyNjQxNDM5.mKX989lzYykQU5ALcT3_SQP-J1VwLAmf29GEYo3bV2Yg.leHoFt4jmF-m96MXXCYj33BOMaMAEKs1HusK6LtD1mcg.PNG.rkdud410/sign_blue_btn.png");
-}
-
-.input {
+  .button {
+    margin-right: 50px;
+    color: white;
+    opacity: 0.8;
+    font-size: 20px;
+    margin-top: 65%;
+    margin-left: 45%;
+  }
+  .log {
+    width: 116.86px;
+    height: 40.64px;
+    box-shadow: none;
+    background: url("https://blogfiles.pstatic.net/MjAxODA3MDFfMzgg/MDAxNTMwNDUyNjQxNDM5.mKX989lzYykQU5ALcT3_SQP-J1VwLAmf29GEYo3bV2Yg.leHoFt4jmF-m96MXXCYj33BOMaMAEKs1HusK6LtD1mcg.PNG.rkdud410/sign_blue_btn.png");
+  }
+  .input {
     width: 262.08px;
-    height:  40.64px;
+    height: 40.64px;
     padding: 12px 20px;
     margin: 0;
     display: inline-block;
     border: 1px solid #ccc;
     border-radius: 25px;
-}
-.inputpw {
-   width: 262.08px;
-    height:  40.64px;
+  }
+  .input:focus {
+    outline: none;
+  }
+  .inputpw {
+    width: 262.08px;
+    height: 40.64px;
     padding: 12px 20px;
     margin: 0;
     display: inline-block;
@@ -150,19 +171,70 @@ export default {
     border-radius: 25px;
     background: url("https://postfiles.pstatic.net/MjAxODA3MDJfODYg/MDAxNTMwNDYwMjk1NTg3.jYhRgBcl9sAWliY26EK-EPfVhLYTQBzws41bRejER9sg.jQGG20bRIw6h5f4eMSftzxsNicGPNd03gE3phqsuXUYg.PNG.rkdud410/password_eye_preview_see.png?type=w966");
     background-repeat: no-repeat;
+  }
+  .inputpw:focus {
+    outline: none;
+  }
+  .top {
+    margin-top: 120px;
+  }
+  .pw {
+    margin-top: 10px;
+  }
+  .log_signup {
+    margin-top: 10px;
+  }
+  .v-container {
+    background-image: url("https://blogfiles.pstatic.net/MjAxODA3MDFfMjIx/MDAxNTMwNDU2NzY5MzU3.QJYd3SZYqQ7VsFnzlfMNBYHP0E5Mk1hsxaNtiHKAzE8g.l4TOp5kUPfXXW4pJ9S3IHiKFxH97so9U93_Uk2oZx7cg.PNG.rkdud410/sign_illust.png");
+  }
+  .v-card {
+    margin: auto;
+    width: 470px;
+    margin: 5px;
+    border:thistle 0.8px solid;
+    border-radius: 8px;
 }
 
-.top {
-  margin-top : 120px;
+h5 {
+    text-align: center;
+    border: 1px solid #64DFFF;
+    width: 50%;
+    margin: auto;
+    margin-top: 20px;
 }
-.pw {
-  margin-top : 10px;
+.date
+{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    text-align: center;
 }
-.log_signup {
-  margin-top : 10px;
-}
-.v-container {
-  background-image: url("https://blogfiles.pstatic.net/MjAxODA3MDFfMjIx/MDAxNTMwNDU2NzY5MzU3.QJYd3SZYqQ7VsFnzlfMNBYHP0E5Mk1hsxaNtiHKAzE8g.l4TOp5kUPfXXW4pJ9S3IHiKFxH97so9U93_Uk2oZx7cg.PNG.rkdud410/sign_illust.png");
-}
+#item_list{
+    margin-top: 10vh;
 
+}
+.store{
+    margin-right: .5vw;
+}
+.lookbtn{
+    padding-left: 60px;
+}
+h3 {
+  margin-left: 5%;
+  margin-bottom: 20px;
+}
+h2 {
+  font-size: 20px;
+}
+.recommend_project {
+  color: white;
+  font-size: 220%;
+  margin-bottom: 10%;
+  margin-top: 5%;
+}
+.underline5 {
+  width: 130%;
+}
+.hidden-xs-only {
+  margin-bottom: 15%;
+}
 </style>

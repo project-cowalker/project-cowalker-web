@@ -5,9 +5,15 @@ export const boardActions = {
 
   getAllboards ({commit}) {
     commit('allBoards') // 네트워킹 시작을 알림(commit으로 mutation 호출)
-    axios.get('http://localhost:4000/results').then(res => {
-      commit('allBoardsSuccess', res)
+    axios.get('http://bghgu.tk:3000/api/search').then(response => {
+      commit('allBoardsSuccess', response.data)
+      console.log(response.data)
       // http://18.191.14.154:8080/reviews
+    })
+  },
+  getrecommendproject ({commit}) {
+    axios.get('http://bghgu.tk:3000/api/home').then(response => {
+      commit('allgetrecommendproject', response.data)
     })
   },
   // this.$store.dispatch('signUp', object)
@@ -25,7 +31,6 @@ export const boardActions = {
           commit('setError', error)
           console.log(error)
         }
-
       )
   },
 
@@ -58,39 +63,163 @@ export const boardActions = {
     )
       .then(res => {
         commit('writeSuccess')
-        console.log(res)
+        console.log(res.data.project_idx)
         Router.push('/')
         alert('개설완료')
       }).catch(
         (error) => console.log(error)
       )
   },
-  recruiting ({commit}, payload) {
-    commit('setLoading', true)
-    commit('clearError')
-    axios.post('http://bghgu.tk:3000/api/recruit', payload)
-      .then(res => {
-        commit('setLoading', false)
-        commit('recruitingSuccess')
+  onUploadMypage ({ commit }, payload) {
+    axios.put('http://bghgu.tk:3000/api/mypage', payload,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          'authorization': localStorage.getItem('token')
+        }
       }
-      // console.log(payload)
-        // }).catch(
-        //   (error) => {
-        //     commit('setLoading', false)
-        //     commit('setError', error)
-        //     console.log(error)
-        // }
-      )
+    ).then(res => {
+      commit('writeSuccess')
+      console.log(res.data)
+      alert('수정완료')
+    }).catch(
+      (error) => console.log(error)
+    )
   },
-
-  writeBoards ({ commit }, payload) {
-    axios.post('http://18.191.14.154:8080/reviews/write', payload)
+  onloadIntro ({ commit }, payload) {
+    axios.put('http://bghgu.tk:3000/api/intro', payload,
+      {
+        headers: {
+          'authorization': localStorage.getItem('token')
+        }
+      }
+    ).then(res => {
+      commit('writeSuccess')
+      console.log(res.data)
+      Router.push('/profile')
+      alert('작성완료')
+    }).catch(
+      (error) => console.log(error)
+    )
+  },
+  sendFilter ({ commit }, payload) {
+    axios.get('http://bghgu.tk:3000/api/search?' + 'aim=' + payload.aim + '&area=' + payload.area + '&department=' + payload.department + '&position=' + payload.position + '&keyword=' + payload.keyword)
       .then(res => {
-        commit('writeSuccess')
-        console.log(res)// 게시판 글 조회는 get방식 등록은 post방식
+        commit('sendFilterSuccess')
+        commit('allBoardsSuccess', res.data)
       }).catch(
         (error) => console.log(error)
       )
+  },
+  recruiting ({commit}, payload) {
+    axios.post('http://bghgu.tk:3000/api/project/recruit', payload,
+      {
+        headers: {
+          'authorization': localStorage.getItem('token')
+        }
+      })
+      .then(res => {
+        commit('recruitingSuccess')
+      }
+      ).catch(
+        (error) => console.log(error)
+      )
+  },
+  getDetailView ({commit}, payload) {
+    axios.get('http://bghgu.tk:3000/api/project/' + payload).then(response => {
+      commit('getDetailViewSuccess', response.data)
+      console.log(payload + 'project_idx 값')
+    })
+  },
+  getuserView ({commit}, payload) {
+    axios.get('http://bghgu.tk:3000/api/project/' + payload,
+      {
+        headers: {
+          'Authorization': localStorage.getItem('token')
+        }
+      }).then(response => {
+      commit('userViewSuccess', response.data)
+      console.log(response.data)
+    })
+  },
+  recruitingView ({commit}, payload) {
+    axios.get('http://bghgu.tk:3000/api/project/' + payload + '/recruit').then(response => {
+      commit('getRecruitSuccess', response.data)
+      console.log(payload)
+    })
+  },
+  sendAlarm ({commit}) {
+    axios.get('http://bghgu.tk:3000/api/alarm',
+      {
+        headers: {
+          'authorization': localStorage.getItem('token')
+        }
+      }).then(response => {
+      commit('getAlarmSuccess', response.data)
+    })
+  },
+  mypageView ({commit}) {
+    axios.get('http://bghgu.tk:3000/api/mypage',
+      {
+        headers: {
+          'authorization': localStorage.getItem('token')
+        }
+      }).then(response => {
+      commit('getMypageSuccess', response.data)
+    })
+  },
+  mypageIntro ({commit}) {
+    axios.get('http://bghgu.tk:3000/api/intro',
+      {
+        headers: {
+          'authorization': localStorage.getItem('token')
+        }
+      }).then(response => {
+      commit('getMypageIntroSuccess', response.data)
+    })
+  },
+  recruitingDetailView ({commit}, payload) {
+    axios.get('http://bghgu.tk:3000/api/project/' + payload.project_idx + '/recruit/' + payload.recruit_idx, {
+      headers: {
+        'authorization': localStorage.getItem('token')
+      }
+    }).then(response => {
+      commit('getDetailRecruitSuccess', response.data)
+      console.log(payload + ' project_idx , recruit_idx')
+    })
+  },
+  getQuestion  ({commit}, payload) {
+    axios.get('http://bghgu.tk:3000/api/question/' + payload).then(response => {
+      commit('getQuestion', response.data)
+      console.log(payload + ' recruit_idx 값')
+    })
+  },
+  writeApply ({ commit }, payload) {
+    axios.post('http://bghgu.tk:3000/api/apply', payload,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          'authorization': localStorage.getItem('token')
+        }
+      }
+    )
+      .then(res => {
+        commit('writeApplySuccess')
+      }).catch(
+        (error) => console.log(error)
+      )
+  },
+  getapplyMember ({commit}, payload) {
+    console.log('recruit_idx값 ' + payload, '토큰값' + localStorage.getItem('token'))
+    axios.get('http://bghgu.tk:3000/api/apply/' + payload, {
+      headers: {
+        'authorization': localStorage.getItem('token')
+      }
+    }).then(response => {
+      commit('allapplyMember', response.data)
+      console.log(payload + '.. recruit_idx 조회')
+      console.log(localStorage.getItem('token'))
+    })
   },
   clearError ({commit}) {
     commit('clearError')
@@ -107,7 +236,50 @@ export const boardActions = {
   getstore ({commit}) {
     axios.get('http://18.191.14.154:8080/stores/list').then(res => {
       commit('allstoreSuccess', res)
-    // http://18.191.14.154:8080/reviews
     })
+  },
+  getApplyView ({commit}, payload) {
+    console.log(payload.apply_idx + ': ---apply_idx', payload.applicant_idx + ' : applicant_idx')
+    console.log(localStorage.getItem('token') + ': 토큰값')
+    axios.get('http://bghgu.tk:3000/api/apply/' + payload.apply_idx + '/' + payload.applicant_idx,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          'authorization': localStorage.getItem('token')
+        }
+      }).then(response => {
+      commit('getApplyDetailView', response.data)
+    })
+  },
+  applyPermit ({ commit }, payload) {
+    axios({
+      method: 'PUT',
+      url: 'http://bghgu.tk:3000/api/apply/' + payload.apply_idx + '/' + payload.applicant_idx + '/join/' + payload.join,
+      headers: {
+        authorization: localStorage.getItem('token')
+      }
+    }).then(response => {
+      commit('PermitSuccess', response.data)
+      alert('수락완료')
+    }).catch(
+      (error) => console.log(error)
+    )
+  },
+  applyReject ({ commit }, payload) {
+    console.log(localStorage.getItem('token') + ' -- 토큰값')
+    axios.put('http://bghgu.tk:3000/api/apply/' + payload.apply_idx + '/' + payload.applicant_idx + '/join/' + payload.join,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          'authorization': localStorage.getItem('token')
+        }
+      }
+    ).then(response => {
+      commit('RejectSuccess')
+      alert('거절완료')
+      Router.push('/boards/' + this.project_idx)
+    }).catch(
+      (error) => console.log(error)
+    )
   }
 }

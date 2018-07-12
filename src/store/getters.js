@@ -10,15 +10,42 @@ export const boardGetters = {
       })
     }
   },
+  allDetailView (state, getters) {
+    return state.detailboard[0]
+  }
+  ,
+  userView (state, getters) {
+    return state.divisions
+  }
+  ,
 
+  allrecruitView (state, getters) {
+    return state.recruits
+  },
+  allDetailrecruitView (state, getters) {
+    return state.recruitDetail
+  },
+  allgetrecommendproject (state, getters) {
+    return state.recommendboards
+  },
+  allQuestion (state, getters) {
+    return state.questions
+  },
   registeredboards (state) {
     return state.registeredboards
   },
-
-  store (state, getters) {
-    return state.store
+  allmypageView (state, getters) {
+    return state.mypages
   },
-
+  alarmView (state, getters) {
+    return state.alarms
+  },
+  allmypageIntro (state) {
+    return state.mypageintros
+  },
+  allApplyMember (state, getters) {
+    return state.applymembers
+  },
   user (state, getters) {
     return state.user
   },
@@ -30,6 +57,9 @@ export const boardGetters = {
   },
   token (state) {
     return state.token // 토큰 값 가져오기
+  },
+  allApplyDetailView (state) {
+    return state.ApplyDetailView
   }
 
 }

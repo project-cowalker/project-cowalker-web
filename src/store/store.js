@@ -15,7 +15,19 @@ export const store = new Vuex.Store({
     error: null,
     loading: false,
     registeredboards: [],
-    store: []
+    store: [],
+    mypages: [],
+    mypageintros: [],
+    detailboard: [],
+    recruitDetail: [],
+    recommendboards: [],
+    questions: [],
+    applys: [],
+    alarms: [],
+    applymembers: [],
+    divisions: [],
+    applyview: [],
+    ApplyDetailView: []
   }, /* vuex는 페이지를 리로드하면 토큰 값을 다 떨구기 때문에
 localstorage를 사용해서 토큰값을 저장하거나 쿠키값 사용 */
   mutations: Object.assign({}, boardMutations),
@@ -23,14 +35,6 @@ localstorage를 사용해서 토큰값을 저장하거나 쿠키값 사용 */
   actions: Object.assign({}, boardActions),
 
   plugins: [
-    createPersistedState({
-      storage: {
-        getItem: key => Cookies.get(key),
-        // Please see https://github.com/js-cookie/js-cookie#json, on how to handle JSON.
-        setItem: (key, value) =>
-          Cookies.set(key, value, { expires: 3 }),
-        removeItem: key => Cookies.remove(key)
-      }
-    })
+    createPersistedState()
   ]
 })

@@ -3,7 +3,7 @@
     <v-container>
       <v-layout>
         <v-flex class="title">
-          <p>참여신청</p>
+          <p>지원서 조회</p>
         </v-flex>
       </v-layout>
     <form @submit.prevent="onApply">
@@ -12,18 +12,8 @@
           <p class="p_title">소개</p>
         </v-flex>
         <v-flex x12 sm10 md8 lg10>
-          <textarea class="textarea" cols="70" rows="7" placeholder="  자기소개" v-model="introduce"></textarea>
-        </v-flex>
-      </v-layout>
-
-      <v-layout d-line-flex>
-        <v-flex x12 sm10 md8 lg2 offset-sm1 offset-md1>
-          <p class="p_title">&emsp;&emsp;&emsp;&emsp;&ensp;모집역할</p>
-        </v-flex>
-        <v-flex x12 sm10 md8 lg10>
-          <form>
-            <input type="text" class="regular" v-model="position">
-          </form>
+          <div class="textarea">
+              <h5>{{ allApplyDetailView.introduce }}</h5></div>
         </v-flex>
       </v-layout>
 
@@ -32,9 +22,9 @@
           <p class="p_title">&emsp;&emsp;&emsp;&emsp;&ensp;연락처</p>
         </v-flex>
         <v-flex x12 sm10 md8 lg10>
-          <form>
-            <input type="text" class="regular" v-model="phone" placeholder="[-없이 작성]">
-          </form>
+          <div class="regular">
+            <h5>{{ allApplyDetailView.phone }}</h5>
+          </div>
         </v-flex>
       </v-layout>
 
@@ -42,15 +32,10 @@
           <v-flex x12 sm10 md8 lg2 offset-sm1 offset-md1>
             <p class="p_title">&emsp;&emsp;&emsp;&emsp;&ensp;이력서</p>
           </v-flex>
-            <form style="width: 50%">
-              <v-flex>
-                <input class="input_p" type="text" v-model="portfolio_url" placeholder="이메일 또는 웹사이트" />
-              </v-flex>
-              <v-flex>
-                <button type="button"><img src="https://blogfiles.pstatic.net/MjAxODA3MDVfNzAg/MDAxNTMwNzg2Mjk4MDQy.ww-axj12lCFQavSp_GtEAn3GQg_oD03bBVLQg7V9bvIg.LQEXNcznuEDgWU-0gmvx8Ju-oT-Bo0l4xmBBP8JMCXAg.PNG.peach404/dropbox_application_btn.png" alt=""></button>
-                <input type="file" class="fileBtn" multiple>
-              </v-flex>
-            </form>
+              <v-flex x12 sm10 md8 lg10>
+          <div class="textarea2">
+              <h5>{{ allApplyDetailView.portfolio_url }}</h5></div>
+        </v-flex>
       </v-layout>
 
       <v-layout>
@@ -62,20 +47,32 @@
         <li class="list-group-item">
           <v-flex x12 sm10 md8 lg11 offset-md3 >
               <p>질문1. &ensp; {{questions[0]}}</p>
-              <input type="text" class="plus" v-model="qeustion1">
+              <v-flex x12 sm10 md8 lg10>
+                 <div class="questions">
+                 <h5>{{ allApplyDetailView.answers[0] }}</h5>
+                 </div>
+              </v-flex>
           </v-flex>
           <v-flex x12 sm10 md8 lg11 offset-md3 >
               <p>질문2. &ensp; {{questions[1]}}</p>
-              <input type="text" class="plus" v-model="qeustion2">
+               <v-flex x12 sm10 md8 lg10>
+                 <div class="questions">
+                 <h5>{{ allApplyDetailView.answers[1] }}</h5>
+                 </div>
+              </v-flex>
           </v-flex>
         </li>
       </ul>
 
       <v-container text-xs-center>
         <v-layout justify-center>
-          <button type="submit" class="btn-done">
-            참여 신청완료
-          </button>
+
+          <form @submit.prevent="permit" class="btn-done">
+                <button type="submit" ><h4>수락</h4></button>
+         </form>
+         <form @submit.prevent="reject" class="btn-done2">
+                <button type="submit"><h4>거절</h4></button>
+         </form>
         </v-layout>
       </v-container>
 
@@ -87,43 +84,43 @@
 <script>
 import {mapGetters} from 'vuex'
 import Router from '@/router/index'
+
 export default {
   name: 'Apply',
-  props: ['project_idx', 'recruit_idx'],
+  props: ['project_idx', 'recruit_idx', 'apply_idx', 'applicant_idx'],
   data () {
     return {
-      introduce: '',
-      portfolio_url: '',
-      phone: '',
-      position: '',
-      qeustion1: '',
-      qeustion2: ''
     }
   },
   computed: {
     ...mapGetters({
-      questions: 'allQuestion'
+      questions: 'allQuestion',
+      allApplyDetailView: 'allApplyDetailView'
     })
 
   },
-  created () {
-    this.$store.dispatch('getQuestion', this.recruit_idx)
-  },
   methods: {
-    onApply () {
-      const object = {
-        introduce: this.introduce,
-        portfolio_url: this.portfolio_url,
-        phone: this.phone,
-        recruit_idx: this.recruit_idx,
-        project_idx: this.project_idx,
-        position: this.position,
-        answers: [this.question1, this.question2]
-      }
-      this.$store.dispatch('writeApply', object)
-      alert('지원서 작성 완료')
-      Router.push('/boards' + '/' + this.project_idx)
+    permit () {
+      this.$store.dispatch('applyPermit', {
+        apply_idx: this.apply_idx,
+        applicant_idx: this.applicant_idx,
+        join: 1
+      })
+      Router.push('/boards/' + this.project_idx)
+    },
+    reject () {
+      this.$store.dispatch('applyReject', {
+        apply_idx: this.apply_idx,
+        applicant_idx: this.applicant_idx,
+        join: 2
+      })
     }
+  },
+  created () {
+    this.$store.dispatch('getApplyView', {
+      apply_idx: this.apply_idx,
+      applicant_idx: this.applicant_idx
+    })
   }
 }
 </script>
@@ -133,8 +130,8 @@ export default {
     margin-top: 30px;
     margin-bottom: 5%;
     display: flex;
-    justify-content: center;
     font-weight: bold;
+    margin-left: 5%;
   }
   .p_title{
     font-size: 17px;
@@ -144,11 +141,11 @@ export default {
   .textarea{
     margin-bottom: 15%;
     resize: none;
-    margin-left: -3%;
     width: 73%;
     border-radius: 10px;
     background-color: #fcfcfc;
     border: 1px solid #dbdbdb;
+    height: 50%;
   }
   .input_p {
     height: 40px;
@@ -165,12 +162,21 @@ export default {
   }
   .btn-done{
     font-size: 16px;
-    width: 30%;
+    width: 17%;
     height: 65px;
     border-radius: 19px;
     background-color: #F3FCFE;
     border: 1px solid #64DFFF;
-    margin: 5%;
+    margin: 2%;
+  }
+  .btn-done2{
+    font-size: 16px;
+    width: 17%;
+    height: 65px;
+    border-radius: 19px;
+    background-color: rgb(243, 243, 243);
+    border: 1px solid #64DFFF;
+    margin: 2%;
   }
   .fileBtn{
     opacity: 0;
@@ -193,4 +199,37 @@ export default {
   ul{
     list-style:none;
   }
+  h5 {
+      margin-left: 3%;
+      margin-top: 1%;
+      font-size: 13.5px;
+  }
+  .application {
+    margin-bottom: 15%;
+    resize: none;
+    width: 73%;
+    border-radius: 10px;
+    background-color: #fcfcfc;
+    border: 1px solid #dbdbdb;
+    height: 50%;
+  }
+  .textarea2 {
+    margin-bottom: 15%;
+    resize: none;
+    width: 50%;
+    border-radius: 10px;
+    background-color: #fcfcfc;
+    border: 1px solid #dbdbdb;
+    height: 30%;
+  }
+  .questions {
+      margin-left: 10%;
+      margin-bottom: 12%;
+      width: 80%;
+      height: 40px;
+      border-bottom: 1px solid #999;
+  }
+h4 {
+  margin-top: 50%;
+}
 </style>

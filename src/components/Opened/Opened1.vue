@@ -55,7 +55,6 @@
         </v-flex>
         <v-flex x12 sm10 md8 lg7>
           <v-combobox v-model="aim" :items="purposes" class="combo"></v-combobox>
-
           <template class="combo" slot="selection" slot-scope="data">
             <v-chip :selected="data.selected" :disabled="data.disabled" :key="JSON.stringify(data.purpose)" class="v-chip--select-multi " @input="data.parent.selectItem(data.purpose)">
               <v-avatar class="accent white--text">
@@ -74,7 +73,6 @@
         </v-flex>
         <v-flex x12 sm10 md8 lg7>
           <v-combobox v-model="department" :items="departments" class="combo"></v-combobox>
-
           <template class="combo" slot="selection" slot-scope="data">
             <v-chip :selected="data.selected" :disabled="data.disabled" :key="JSON.stringify(data.field)" class="v-chip--select-multi " @input="data.parent.selectItem(data.field)">
               <v-avatar class="accent white--text">
@@ -91,30 +89,45 @@
         <p>프로젝트 소개</p>
       </v-flex>
 
-      <v-flex x12 sm10 md8 lg10 offset-sm1 offset-md2>
-        <form class="imgsize">
-          <div class="dropbox" v-if="!image">
-            <input class="input-image" type="file" :multiple="false" @change="onFileChange" accept="image/*" /> <!--이미지만 선택가능-->
-          </div>
+      <v-layout class="content_title" row wrap justify-center>
+        <carousel :per-page="5" :mouse-drag="true" class="carousel">
+          <slide>
+            <form class="imgsize">
+              <div class="dropbox" v-if="!image">
+                <input class="input-image" type="file" :multiple="false" @change="onFileChange" accept="image/*"/>
+                <!--이미지만 선택가능-->
+              </div>
+              <img :src="image" v-if="image" alt="" class="newimg">
+            </form>
+          </slide>
+          <slide>
+            <form class="imgsize">
+              <div class="dropbox" v-if="!image2">
+                <input class="input-image" type="file" :multiple="false" @change="onFileChange2" accept="image/*"/>
+                <!--이미지만 선택가능-->
+              </div>
+              <img :src="image2" v-if="image2" alt="" class="newimg"><!--이미지가 있으면 뜨도록-->
+            </form>
+          </slide>
+          <slide>
+            <form class="imgsize">
+              <div class="dropbox" v-if="!image3">
+                <input class="input-image" type="file" :multiple="false" @change="onFileChange3" accept="image/*"/>
+                <!--이미지만 선택가능-->
+              </div>
+              <img :src="image3" v-if="image3" alt="" class="newimg"><!--이미지가 있으면 뜨도록-->
+            </form>
+          </slide>
+        </carousel>
+      </v-layout>
 
-          <img :src="image" v-if="image" alt="" class="newimg"><!--이미지가 있으면 뜨도록-->
-        </form>
-      </v-flex>
-
-      <v-flex x12 sm10 md8 lg10 offset-sm1 offset-md3>
-        <textarea class="textarea" cols="70" rows="7" placeholder="  프로젝트에 대해 소개해주세요."
-        v-model="explain"></textarea>
-      </v-flex>
-
-      <v-container text-xs-center>
+      <v-container -center>
         <v-layout justify-center>
           <button type="submit" class="btn-done">개설하기</button>
         </v-layout>
       </v-container>
-
       </form>
-
-      </v-container>
+    </v-container>
   </v-form>
 </template>
 
@@ -157,8 +170,13 @@ export default {
         '컨텐츠',
         '기타'
       ],
+      image: null,
+      image2: null,
+      image3: null,
+      arrayimg: [],
       file: null,
-      image: null // 처음엔 null
+      file2: null,
+      file3: null
     }
   },
   methods: {
@@ -171,13 +189,8 @@ export default {
       data.append('aim', this.aim)
       data.append('explain', this.explain)
       data.append('img', this.file)
-
-      /* let axiosConfig = {
-        headers: {
-          'Content-Type': 'application/json',
-          'authorization': this.$store.getters.token
-        }
-      } */
+      data.append('img', this.file2)
+      data.append('img', this.file3)
 
       this.$store.dispatch('uploadOpened', data)
     },
@@ -186,14 +199,38 @@ export default {
       fileReader.onload = () => { // 파일리더가 뭔가를 로드해왔을 때 함수블록을 실행된다
         this.image = fileReader.result
       }
-      fileReader.readAsDataURL(file) // 데이터에서 url을 끌고 오는 것
+      fileReader.readAsDataURL(file)// 데이터에서 url을 끌고 오는 것
+      this.arrayimg.push({arrayimg: this.file})
     },
-    onFileChange (event) {
-      // if ((event.target.files[0]['type']).split('/')[0] === 'image') {
-
-      this.file = event.target.files[0]
+    onFileChange (file) {
+      this.file = file.target.files[0]
       this.getImage(this.file)
-      // }
+      console.log(file)
+    },
+
+    getImage2 (file2) {
+      const fileReader = new FileReader()
+      fileReader.onload = () => { // 파일리더가 뭔가를 로드해왔을 때 함수블록을 실행된다
+        this.image2 = fileReader.result
+      }
+      fileReader.readAsDataURL(file2)// 데이터에서 url을 끌고 오는 것
+      this.arrayimg.push({arrayimg: this.file2})
+    },
+    onFileChange2 (file2) {
+      this.file2 = file2.target.files[0]
+      this.getImage2(this.file2)
+    },
+    getImage3 (file3) {
+      const fileReader = new FileReader()
+      fileReader.onload = () => { // 파일리더가 뭔가를 로드해왔을 때 함수블록을 실행된다
+        this.image3 = fileReader.result
+      }
+      fileReader.readAsDataURL(file3) // 데이터에서 url을 끌고 오는 것
+      this.arrayimg.push({arrayimg: this.file3})
+    },
+    onFileChange3 (file3) {
+      this.file3 = file3.target.files[0]
+      this.getImage3(this.file3)
     }
   }
 }
@@ -244,8 +281,8 @@ export default {
     max-width: 100%;
     margin-bottom: 5%;
     color: transparent;
-    width: 70%;
-    height: 350px;
+    width: 80%;
+    height: 240px;
     opacity: 0.4;
     border-radius: 15px;
     border: 1px solid #707070;
@@ -260,12 +297,13 @@ export default {
     border: 1px solid #dbdbdb;
   }
   .newimg{
-    margin-left: 7%;
+    margin-left: 8%;
     max-width: 100%;
     margin-bottom: 5%;
-    width: 630px;
-    height: 350px;
+    width: 80%;
+    height: 240px;
     border-radius: 15px;
+    border: 1px solid #707070;
   }
 
   .btn-done{
@@ -277,5 +315,8 @@ export default {
     border: 1px solid #64DFFF;
     margin: 5%;
   }
-
+  .carousel {
+    background-color: #fcfcfc;
+    width: 80%;
+  }
   </style>
