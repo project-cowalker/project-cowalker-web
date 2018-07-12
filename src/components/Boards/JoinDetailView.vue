@@ -57,10 +57,8 @@
 
         </v-flex>
       </v-layout>
-
       <v-layout row wrap>
         <v-flex  class="recommend_share">
-
           <div class="wrapper">
             <div class="half">
               <div class="tab blue">
@@ -71,19 +69,14 @@
                     <v-layout v-for="recruit in allApplyMember" :key="recruit.apply_idx">
                       <v-flex x12 sm10 md8 lg7>     <!--v-for="" recruit로 해줄 것-->
                         <v-card flat class="left_card" width="130%">
-
                           <v-card-title primary-title>
                             <div><img :src="recruit.profile_url" width="33px" height="33px" class="user_img"></div>
                             <v-card flat class="position" width="120px"><h3 class="recruit_user_name">{{recruit.user_name}}</h3></v-card>
-
                             <router-link :to="'/boards/' + project_idx + '/subrecruit/' + recruit_idx + '/'+ recruit.apply_idx + '/' + recruit.applicant_idx"><img src="@/assets/dropbox_application_btn.png" width="33px" height="33px" class="appllcaiton">
                             </router-link>
-
                           </v-card-title>
-
                         </v-card>
                       </v-flex>
-
                     </v-layout>
                   </v-container>
                 </div>
@@ -103,10 +96,8 @@
                             <div class="number"><h3 class="number_h3">{{recruit.positon}}</h3></div>
                             <div><img src="@/assets/dropbox_application_btn.png" width="33px" height="33px" class="appllcaiton"></div>
                           </v-card-title>
-
                         </v-card>
                       </v-flex>
-
                     </v-layout>
                   </v-container>
                 </div>
@@ -116,13 +107,10 @@
                 <app-board-share-dialog></app-board-share-dialog>   <!--공유하기-->
               </div>
             </div>
-
           </div>
-
         </v-flex>
       </v-layout>
     </v-container>
-
     <v-container class="v-container" text-xs-center>
       <v-layout  row wrap justify-center>
         <v-flex xs12>
@@ -151,7 +139,6 @@ export default {
       allApplyMember: 'allApplyMember',
       allJoinMember: 'allJoinMember'
     })
-
   },
   created () {
     this.$store.dispatch('getapplyMember', this.project_idx)

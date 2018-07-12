@@ -1,6 +1,6 @@
 <template>
   <main>
-    <v-jumbotron src='http://www.earlyadopter.co.kr/wp-content/uploads/2017/01/Q_Dock_00.jpg' contain height="710px">
+    <v-jumbotron src="https://blogfiles.pstatic.net/MjAxODA3MTNfMTA4/MDAxNTMxNDIxMDk2Njc2.y27JH-BJRy0PZQazM9GHNVheE4YHO76MwBYuR2Ltr1Yg.IIo2Iu1O29_v5yQIifS9lKKYdodpklVV8WHOvz6U0Uwg.PNG.peach404/home_opacity_back_with.png" contain height="755px">
       <v-container fill-height>
         <v-layout align-center>
           <v-flex  class="hidden-xs-only">
@@ -11,7 +11,7 @@
           </v-flex>
           <v-flex x12 sm8 md7 lg7 align-content-center class="text-xs-center text-sm-right"> <!--버튼 중앙으로-->
             <!--프로젝트 보기-->
-            <v-btn class="button" flat dark @click.native.stop="dialog = true" @click="guard">프로젝트 상세보기  ></v-btn>
+            <v-btn class="button" flat dark @click.native.stop="dialog = true" @click="guard"><p class="textBtn">프로젝트 상세보기  ></p></v-btn>
 
             <v-dialog id="dialog" v-model="dialog" width="480.77px">
               <v-card height="508.55%">
@@ -136,9 +136,8 @@ export default {
 <style scoped>
   .button {
     margin-right: 50px;
-    color: white;
     opacity: 0.8;
-    font-size: 20px;
+    font-size: 25px;
     margin-top: 65%;
     margin-left: 45%;
   }
@@ -235,6 +234,13 @@ h2 {
   width: 130%;
 }
 .hidden-xs-only {
-  margin-bottom: 15%;
+  font-weight: bold;
+  margin-bottom: 11%;
+
+}
+
+.textBtn{
+ font-weight: bold;
+  color: #ffffff;
 }
 </style>
