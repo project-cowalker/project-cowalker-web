@@ -35,8 +35,7 @@ export const boardGetters = {
 
   allmypageIntro (state) {
     return state.mypageintros
-  }
-  ,
+  },
   allApplyMember (state, getters) {
     return state.applymembers
   },
@@ -51,6 +50,9 @@ export const boardGetters = {
   },
   token (state) {
     return state.token // 토큰 값 가져오기
+  },
+  allApplyDetailView (state) {
+    return state.ApplyDetailView
   }
 
 }

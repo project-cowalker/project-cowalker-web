@@ -12,6 +12,7 @@ import Recruit from '@/components/Boards/Recruit'
 import Apply from '@/components/Boards/Apply'
 // import JoinDialog from '@/components/Boards/Dialog/JoinDialog'
 import JoinDetailView from '@/components/Boards/JoinDetailView'
+import ApplyList from '@/components/Boards/ApplyList'
 
 Vue.use(Router)
 
@@ -54,6 +55,12 @@ export default new Router({
       name: 'subrecruit',
       props: true,
       component: JoinDetailView
+    },
+    {
+      path: '/boards/:project_idx/subrecruit/:recruit_idx/:apply_idx/:applicant_idx',
+      name: 'applylist',
+      props: true,
+      component: ApplyList
     },
     {
       path: '/boards/:project_idx',

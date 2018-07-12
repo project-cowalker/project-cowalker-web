@@ -12,7 +12,7 @@
           <v-container d-inline-flex class="filter"  fluid grid-list-xl>
             <v-layout justify-center>
               <v-flex xs12 sm6 d-flex>
-                <v-select :items="items" label="목적" v-model="aim"></v-select>
+                <v-select class="v-select" :items="items" label="목적" v-model="aim"></v-select>
               </v-flex>
               <v-flex xs12 sm6 d-flex>
                 <v-select :items="fields" label="분야" v-model="department"></v-select>
@@ -32,25 +32,25 @@
       </form>
     </v-container>
 
-    <v-layout d-inline-flex v-for="board in filteredList" :key="board.id">
-      <v-flex x12 sm10 md8 lg10 offset-sm1 offset-md2>
-        <v-card flat :to="'/boards/' + board.project_idx" class="v-card" width="260px">
-          <v-container fluid>
-            <v-card-media  class="card_image" v-if="board.img_url" height="160px" width="260px" :src="board.img_url"></v-card-media>
-            <v-card-title primary-title>
+    <v-container class="v-container">
+    <v-layout d-inline-flex v-for="board in boards" :key="board.id">
+      <v-flex xs5 sm10 md8 lg10 offset-sm1 offset-md2>
+        <v-card flat :to="'/boards/' + board.project_idx" class="v-card" width="265px">
+
+            <v-card-media  class="card_image" v-if="board.img_url" height="220px" width="265px" :src="board.img_url"></v-card-media>
+
               <v-flex class="v-card-content">
-                <h4>{{board.title}}</h4> <!--class="headline mb-0"-->
+                <h5>{{board.title}}</h5> <!--class="headline mb-0"-->
                 <h6 class="date">{{board.area}} · {{board.department}} · {{board.aim}}</h6>
               </v-flex>
-            </v-card-title>
-            <v-divider></v-divider> <!--선긋기-->
+
             <v-card-actions>
-              <v-spacer></v-spacer> <!--아이콘들 오른쪽 정렬-->
             </v-card-actions>
-          </v-container>
         </v-card>
       </v-flex>
     </v-layout>
+</v-container>
+
   </v-container>
 
 </template>
@@ -125,10 +125,10 @@ export default {
   .card_iamge {
     border-radius: 8px;
   }
-  h4 {
+  h5 {
     text-align: center;
     border: 1px solid #64DFFF;
-    width: 75%;
+    width: 50%;
     margin: auto;
     margin-top: 20px;
   }
@@ -188,5 +188,8 @@ export default {
   }
   .filter {
     width: 400px;
+  }
+  .v-select {
+     border-bottom-color: blue;
   }
 </style>
