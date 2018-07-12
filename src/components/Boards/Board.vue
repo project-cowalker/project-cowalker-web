@@ -86,6 +86,7 @@ export default {
   computed: {
     ...mapGetters({
       boards: 'allBoards',
+<<<<<<< HEAD
       allDetailView: 'allDetailView',
       userView: 'userView'
     })
@@ -93,6 +94,13 @@ export default {
   created () {
     this.$store.dispatch('getDetailView', this.project_idx)// 서버로부터 게시글 다 받아오기
     this.$store.dispatch('getuserView', this.project_idx)
+=======
+      allDetailView: 'allDetailView'
+    })
+  },
+  created () {
+    this.$store.dispatch('getDetailView', this.project_idx) // 서버로부터 게시글 다 받아오기
+>>>>>>> develop
   }
 }
 </script>

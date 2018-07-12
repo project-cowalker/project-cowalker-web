@@ -80,7 +80,7 @@ export const boardMutations = {
   getDetailRecruitSuccess (state, payload) {
     state.recruitDetail = payload.result[0]
     console.log('all getDetailRecruit success')
-    console.log(state.recruitDetail)
+    console.log(payload.result[0] + ' 모집상세 내용')
   },
   getQuestion (state, payload) {
     state.questions = payload.result
@@ -128,5 +128,20 @@ export const boardMutations = {
   allapplyMember (state, payload) {
     state.applymembers = payload.result
     console.log(state.applymembers)
+  },
+  allApplyView (state, payload) {
+    state.applyview = payload.result
+    console.log(state.applymembers)
+  },
+  getApplyDetailView (state, payload) {
+    state.ApplyDetailView = payload.result[0]
+    console.log(state.ApplyDetailView)
+  },
+  PermitSuccess (state, payload) {
+    console.log('지원 수락 성공')
+  },
+  RejectSuccess (state, payload) {
+    console.log('지원 거절 성공')
   }
+
 }

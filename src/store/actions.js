@@ -211,15 +211,14 @@ export const boardActions = {
   },
   getapplyMember ({commit}, payload) {
     console.log('recruit_idx값 ' + payload, '토큰값' + localStorage.getItem('token'))
-    axios.get('http://bghgu.tk:3000/api/apply/' + payload, payload, {
+    axios.get('http://bghgu.tk:3000/api/apply/' + payload, {
       headers: {
-        'authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjozLCJpYXQiOjE1MzEyNDM1MzUsImV4cCI6MTUzMzgzNTUzNX0.Oato5hUiZre3cSRw1vjM1dQwxtzcQpwaJgpp6_tWsU0'
+        'authorization': localStorage.getItem('token')
       }
     }).then(response => {
       commit('allapplyMember', response.data)
       console.log(payload + '.. recruit_idx 조회')
       console.log(localStorage.getItem('token'))
-      // http://18.191.14.154:8080/reviews
     })
   },
   clearError ({commit}) {
@@ -237,7 +236,50 @@ export const boardActions = {
   getstore ({commit}) {
     axios.get('http://18.191.14.154:8080/stores/list').then(res => {
       commit('allstoreSuccess', res)
-    // http://18.191.14.154:8080/reviews
     })
+  },
+  getApplyView ({commit}, payload) {
+    console.log(payload.apply_idx + ': ---apply_idx', payload.applicant_idx + ' : applicant_idx')
+    console.log(localStorage.getItem('token') + ': 토큰값')
+    axios.get('http://bghgu.tk:3000/api/apply/' + payload.apply_idx + '/' + payload.applicant_idx,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          'authorization': localStorage.getItem('token')
+        }
+      }).then(response => {
+      commit('getApplyDetailView', response.data)
+    })
+  },
+  applyPermit ({ commit }, payload) {
+    axios({
+      method: 'PUT',
+      url: 'http://bghgu.tk:3000/api/apply/' + payload.apply_idx + '/' + payload.applicant_idx + '/join/' + payload.join,
+      headers: {
+        authorization: localStorage.getItem('token')
+      }
+    }).then(response => {
+      commit('PermitSuccess', response.data)
+      alert('수락완료')
+    }).catch(
+      (error) => console.log(error)
+    )
+  },
+  applyReject ({ commit }, payload) {
+    console.log(localStorage.getItem('token') + ' -- 토큰값')
+    axios.put('http://bghgu.tk:3000/api/apply/' + payload.apply_idx + '/' + payload.applicant_idx + '/join/' + payload.join,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          'authorization': localStorage.getItem('token')
+        }
+      }
+    ).then(response => {
+      commit('RejectSuccess')
+      alert('거절완료')
+      Router.push('/boards/' + this.project_idx)
+    }).catch(
+      (error) => console.log(error)
+    )
   }
 }

@@ -1,13 +1,20 @@
 <template>
   <main>
-    <v-jumbotron src='http://www.earlyadopter.co.kr/wp-content/uploads/2017/01/Q_Dock_00.jpg' contain height="700px">
+    <v-jumbotron src='http://www.earlyadopter.co.kr/wp-content/uploads/2017/01/Q_Dock_00.jpg' contain height="710px">
       <v-container fill-height>
         <v-layout align-center>
+          <v-flex  class="hidden-xs-only">
+            <p class="recommend_project">이번주 추천 프로젝트는 <br> 무엇일까?</p>
+            <hr class="underline5" color=white nosthade/>
+            <p class="recommend_project">없이 산다</p>
+            <p class="recommend_project">자발적 결핍 프로젝트</p>
+          </v-flex>
           <v-flex x12 sm8 md7 lg7 align-content-center class="text-xs-center text-sm-right"> <!--버튼 중앙으로-->
             <!--프로젝트 보기-->
-            <v-btn class="button" dark @click.native.stop="dialog = true" @click="guard">프로젝트 보기</v-btn>
+            <v-btn class="button" flat dark @click.native.stop="dialog = true" @click="guard">프로젝트 상세보기  ></v-btn>
+
             <v-dialog id="dialog" v-model="dialog" width="480.77px">
-              <v-card height="484.55px">
+              <v-card height="508.55%">
                 <v-container class="v-container" text-xs-center> <!--가운데 정렬-->
 
                   <v-layout row wrap fill-height="300px">
@@ -39,7 +46,6 @@
                             <app-board-signup-dialog></app-board-signup-dialog>
                           </v-flex>
                         </v-layout>
-
                       </form>
                     </v-container>
                   </v-layout>
@@ -57,20 +63,24 @@
       <v-container>
         <h3>추천 프로젝트</h3>
       <v-layout d-inline-flex v-for="board in allgetrecommendproject" :key="board.id">
+<<<<<<< HEAD
             <v-flex x12 sm10 md8 lg10 offset-sm1 offset-md2>
                 <v-card flat :to="'/boards/' + board._id" class="v-card" width="260px" height="300px">
                     <v-container fluid>
                         <v-card-media  class="card_image" v-if="board.img_url" height="160px" width="260px" :src="board.img_url[0]"></v-card-media>
                         <v-card-title primary-title>
+=======
+            <v-flex x12 sm10 md8 lg10 offset-sm1>
+                <v-card flat :to="'/boards/' + board._id" class="v-card" width="260px" height="310x">
+
+                        <v-card-media  class="card_image" v-if="board.img_url" height="200px" width="260px" :src="board.img_url"></v-card-media>
+
+>>>>>>> develop
                             <v-flex class="v-card-content">
-                                <h4>{{board.title}}</h4> <!--class="headline mb-0"-->
+                                <h5>{{board.title}}</h5> <!--class="headline mb-0"-->
                                 <h6 class="date">{{board.area}} · {{board.department}} · {{board.aim}}</h6>
                             </v-flex>
-                        </v-card-title>
-                <v-card-actions>
-                  <v-spacer></v-spacer> <!--아이콘들 오른쪽 정렬-->
-                </v-card-actions>
-                    </v-container>
+
                 </v-card>
             </v-flex>
         </v-layout>
@@ -82,7 +92,6 @@
 <script>
 import {mapGetters} from 'vuex'
 import Router from '@/router/index'
-
 export default {
   props: ['id'], // board id
   data () {
@@ -105,8 +114,7 @@ export default {
     },
     error () {
       return this.$store.getters.error
-    },
-
+    }
   },
   methods: {
     guard () { // 홈화면 프로젝트 보기에서 로그인 되어있는 경우는 /boards로 이동
@@ -137,9 +145,11 @@ export default {
 <style scoped>
   .button {
     margin-right: 50px;
-    color: #212121;
-    border: white 2px solid;
+    color: white;
     opacity: 0.8;
+    font-size: 20px;
+    margin-top: 65%;
+    margin-left: 45%;
   }
   .log {
     width: 116.86px;
@@ -156,10 +166,13 @@ export default {
     border: 1px solid #ccc;
     border-radius: 25px;
   }
+<<<<<<< HEAD
   .input:focus {
     outline: none;
   }
 
+=======
+>>>>>>> develop
   .inputpw {
     width: 262.08px;
     height: 40.64px;
@@ -172,11 +185,14 @@ export default {
     background: url("https://postfiles.pstatic.net/MjAxODA3MDJfODYg/MDAxNTMwNDYwMjk1NTg3.jYhRgBcl9sAWliY26EK-EPfVhLYTQBzws41bRejER9sg.jQGG20bRIw6h5f4eMSftzxsNicGPNd03gE3phqsuXUYg.PNG.rkdud410/password_eye_preview_see.png?type=w966");
     background-repeat: no-repeat;
   }
+<<<<<<< HEAD
 
   .inputpw:focus {
     outline: none;
   }
 
+=======
+>>>>>>> develop
   .top {
     margin-top: 120px;
   }
@@ -188,21 +204,19 @@ export default {
   }
   .v-container {
     background-image: url("https://blogfiles.pstatic.net/MjAxODA3MDFfMjIx/MDAxNTMwNDU2NzY5MzU3.QJYd3SZYqQ7VsFnzlfMNBYHP0E5Mk1hsxaNtiHKAzE8g.l4TOp5kUPfXXW4pJ9S3IHiKFxH97so9U93_Uk2oZx7cg.PNG.rkdud410/sign_illust.png");
-  }.v-card {
+  }
+  .v-card {
     margin: auto;
-    width: 300px;
+    width: 470px;
     margin: 5px;
     border:thistle 0.8px solid;
     border-radius: 8px;
 }
-.card_iamge {
-    border-radius: 8px;
-}
 
-h4 {
+h5 {
     text-align: center;
     border: 1px solid #64DFFF;
-    width: 75%;
+    width: 50%;
     margin: auto;
     margin-top: 20px;
 }
@@ -222,12 +236,23 @@ h4 {
 .lookbtn{
     padding-left: 60px;
 }
-.v-card-content {
-     margin: auto;
-}
 h3 {
   margin-left: 5%;
   margin-bottom: 20px;
 }
-
+h2 {
+  font-size: 20px;
+}
+.recommend_project {
+  color: white;
+  font-size: 220%;
+  margin-bottom: 10%;
+  margin-top: 5%;
+}
+.underline5 {
+  width: 130%;
+}
+.hidden-xs-only {
+  margin-bottom: 15%;
+}
 </style>
