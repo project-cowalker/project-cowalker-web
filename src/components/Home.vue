@@ -67,7 +67,6 @@
                 <v-card flat :to="'/boards/' + board._id" class="v-card" width="260px" height="310x">
 
                         <v-card-media  class="card_image" v-if="board.img_url" height="200px" width="260px" :src="board.img_url"></v-card-media>
-
                             <v-flex class="v-card-content">
                                 <h5>{{board.title}}</h5> <!--class="headline mb-0"-->
                                 <h6 class="date">{{board.area}} · {{board.department}} · {{board.aim}}</h6>
@@ -158,6 +157,9 @@ export default {
     border: 1px solid #ccc;
     border-radius: 25px;
   }
+  .input:focus {
+    outline: none;
+  }
   .inputpw {
     width: 262.08px;
     height: 40.64px;
@@ -169,6 +171,9 @@ export default {
     border-radius: 25px;
     background: url("https://postfiles.pstatic.net/MjAxODA3MDJfODYg/MDAxNTMwNDYwMjk1NTg3.jYhRgBcl9sAWliY26EK-EPfVhLYTQBzws41bRejER9sg.jQGG20bRIw6h5f4eMSftzxsNicGPNd03gE3phqsuXUYg.PNG.rkdud410/password_eye_preview_see.png?type=w966");
     background-repeat: no-repeat;
+  }
+  .inputpw:focus {
+    outline: none;
   }
   .top {
     margin-top: 120px;

@@ -9,6 +9,12 @@ export const boardMutations = {
     state.boards = payload.result
     console.log(payload.result)
   },
+  userViewSuccess (state, payload) {
+    console.log('user View success')
+    console.log(payload.user)
+    state.divisions = payload.user
+    console.log(state.divisions)
+  },
   allgetrecommendproject (state, payload) {
     console.log('all recommendboards success')
     state.recommendboards = payload.result
@@ -50,6 +56,11 @@ export const boardMutations = {
     state.detailboard = payload.result
     console.log('all getDetailView success')
     console.log(state.detailboard[0].title)
+  },
+  getAlarmSuccess (state, payload) {
+    state.alarms = payload.result
+    console.log('all get Alarm success')
+    console.log(payload.result)
   },
   getRecruitSuccess (state, payload) {
     state.recruits = payload.result

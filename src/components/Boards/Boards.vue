@@ -1,5 +1,4 @@
 <template>
-
   <v-container class="v-container">
     <v-container >
       <form @submit.prevent="onSendfilter">
@@ -26,33 +25,27 @@
             </v-layout>
           </v-container>
         </v-flex>
-        <v-flex >
+        <v-flex>
         </v-flex>
       </v-layout>
       </form>
     </v-container>
-
     <v-container class="v-container">
     <v-layout d-inline-flex v-for="board in boards" :key="board.id">
       <v-flex xs5 sm10 md8 lg10 offset-sm1 offset-md2>
         <v-card flat :to="'/boards/' + board.project_idx" class="v-card" width="265px">
-
             <v-card-media  class="card_image" v-if="board.img_url" height="220px" width="265px" :src="board.img_url"></v-card-media>
-
               <v-flex class="v-card-content">
                 <h5>{{board.title}}</h5> <!--class="headline mb-0"-->
                 <h6 class="date">{{board.area}} · {{board.department}} · {{board.aim}}</h6>
               </v-flex>
-
             <v-card-actions>
             </v-card-actions>
         </v-card>
       </v-flex>
     </v-layout>
-</v-container>
-
   </v-container>
-
+  </v-container>
 </template>
 
 <script>
@@ -89,7 +82,8 @@ export default {
         aim: this.aim,
         area: this.area,
         position: this.position,
-        department: this.department
+        department: this.department,
+        keyword: this.search
       }
       console.log(object)
       this.$store.dispatch('sendFilter', object)
