@@ -129,6 +129,10 @@ export const boardMutations = {
     state.applymembers = payload.result
     console.log(state.applymembers)
   },
+  alljoinMember (state, payload) {
+    state.joinmembers = payload.member
+    console.log(state.joinmembers)
+  },
   allApplyView (state, payload) {
     state.applyview = payload.result
     console.log(state.applymembers)

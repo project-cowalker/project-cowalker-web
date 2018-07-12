@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main class="Home">
     <v-jumbotron src='http://www.earlyadopter.co.kr/wp-content/uploads/2017/01/Q_Dock_00.jpg' contain height="710px">
       <v-container fill-height>
         <v-layout align-center>
@@ -15,11 +15,11 @@
 
             <v-dialog id="dialog" v-model="dialog" width="480.77px">
               <v-card height="508.55%">
+
                 <v-container class="v-container" text-xs-center> <!--가운데 정렬-->
 
-                  <v-layout row wrap fill-height="300px">
                     <v-layout class="top">
-                      <v-flex xs12>
+                      <v-flex xs7 sm10 md12 lg12>
                         <v-card-text><h2>코워커와 함께 새로운 여정을 떠나볼까요?</h2></v-card-text>
                       </v-flex>
                     </v-layout>
@@ -27,30 +27,30 @@
                     <v-container fluid>
                       <form @submit.prevent="onSignIn"> <!--제출 이벤트가 페이지를 다시 로드 X -->
                         <v-layout row wrap>
-                          <v-flex xs12>
+                          <v-flex xs7 sm10 md12 lg12>
                             <input class="input" name="email" label="Email" id="email" type="email" v-model="email"
                                    required placeholder="이메일">
                           </v-flex>
                         </v-layout>
                         <v-layout row wrap>
-                          <v-flex xs12 class="pw">
+                          <v-flex xs7 sm10 md12 lg12 class="pw">
                             <input class="inputpw" name="password" label="Password" id="password" type="password"
                                    v-model="password" required placeholder="비밀번호">
                           </v-flex>
                         </v-layout>
                         <v-layout row wrap class="log_signup">
-                          <v-flex xs12>
+                          <v-flex xs7 sm10 md12 lg12 >
                             <v-btn class="log" type="submit" round @click.native="dialog = false">로그인</v-btn>
                           </v-flex>
-                          <v-flex xs12>
+                          <v-flex xs7 sm10 md12 lg12>
                             <app-board-signup-dialog></app-board-signup-dialog>
                           </v-flex>
                         </v-layout>
                       </form>
                     </v-container>
-                  </v-layout>
                   <v-layout row wrap>
                   </v-layout>
+
                 </v-container>
               </v-card>
             </v-dialog>
@@ -60,18 +60,17 @@
       </v-container>
     </v-jumbotron>
 
-      <v-container>
+      <v-container class="main_recommend">
         <h3>추천 프로젝트</h3>
       <v-layout d-inline-flex v-for="board in allgetrecommendproject" :key="board.id">
-            <v-flex x12 sm10 md8 lg10 offset-sm1>
-                <v-card flat :to="'/boards/' + board._id" class="v-card" width="260px" height="310x">
+            <v-flex xs12 sm10 md8 lg10 offset-sm1>
+                <v-card :to="'/boards/' + board._id" class="v-card" width="260px" height="310x">
 
-                        <v-card-media  class="card_image" v-if="board.img_url" height="200px" width="260px" :src="board.img_url"></v-card-media>
+                        <v-card-media  class="card_image" v-if="board.img_url" height="210px" width="260px" :src="board.img_url"></v-card-media>
                             <v-flex class="v-card-content">
                                 <h5>{{board.title}}</h5> <!--class="headline mb-0"-->
                                 <h6 class="date">{{board.area}} · {{board.department}} · {{board.aim}}</h6>
-                            </v-flex>
-
+                           </v-flex>
                 </v-card>
             </v-flex>
         </v-layout>
@@ -140,7 +139,7 @@ export default {
     opacity: 0.8;
     font-size: 20px;
     margin-top: 65%;
-    margin-left: 45%;
+    margin-left: 38%;
   }
   .log {
     width: 116.86px;
@@ -190,8 +189,8 @@ export default {
   .v-card {
     margin: auto;
     width: 470px;
-    margin: 5px;
-    border:thistle 0.8px solid;
+    margin: 7px;
+    border:thistle 0.1px solid;
     border-radius: 8px;
 }
 
@@ -219,7 +218,7 @@ h5 {
     padding-left: 60px;
 }
 h3 {
-  margin-left: 5%;
+  margin-left: 4%;
   margin-bottom: 20px;
 }
 h2 {
@@ -236,5 +235,12 @@ h2 {
 }
 .hidden-xs-only {
   margin-bottom: 15%;
+}
+.main_recommend {
+  margin-left: 9%;
+  margin-bottom: 3%;
+}
+.Home {
+  background-color: white;
 }
 </style>
