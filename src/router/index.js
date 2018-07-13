@@ -12,6 +12,7 @@ import Apply from '@/components/Boards/Apply'
 // import JoinDialog from '@/components/Boards/Dialog/JoinDialog'
 import JoinDetailView from '@/components/Boards/JoinDetailView'
 import ApplyList from '@/components/Boards/ApplyList'
+import BarLogin from '@/components/Subpage/BarLogin'
 
 Vue.use(Router)
 
@@ -21,6 +22,11 @@ export default new Router({
       path: '/',
       name: 'Home',
       component: Home
+    },
+    {
+      path: '/barlogin',
+      name: 'BarLogin',
+      component: BarLogin
     },
     {
       path: '/boards',

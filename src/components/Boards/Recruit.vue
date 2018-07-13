@@ -211,9 +211,13 @@
       </v-container>
 
     <v-container text-xs-center>
+      <v-layout justify-center>
         <v-layout justify-center>
-          <button type="submit" class="btn-done">완료</button>
+          <form >
+            <button type="submit" class="btn-done">완료</button>
+          </form>
         </v-layout>
+      </v-layout>
       </v-container>
 
     </form>
@@ -381,12 +385,12 @@ export default {
     list-style:none;
   }
 .btn-done{
-    font-size: 16px;
-    width: 30%;
-    height: 65px;
-    border-radius: 19px;
-    background-color: #F3FCFE;
-    border: 1px solid #64DFFF;
-    margin: 5%;
+  font-size: 15px;
+  width: 180px;
+  height: 65px;
+  border-radius: 20px;
+  background-color: #F3FCFE;
+  border: 2px solid rgb(106, 213, 240);
+  margin: 5%;
   }
 </style>

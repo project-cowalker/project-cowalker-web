@@ -8,7 +8,6 @@
           </v-list-tile-action>
           <v-list-tile-content>{{ item.title }}</v-list-tile-content>
         </v-list-tile>
-
       </v-list>
     </v-navigation-drawer>
     <v-toolbar flat dark class="transparent" color="grey ligthen-3">
@@ -19,7 +18,7 @@
       <v-toolbar-title>
         <router-link to="/" tag="span" style="cursor: pointer"><img src="@/assets/hometap_logo.png" class="hometap_logo"></router-link>
       </v-toolbar-title>
-      <v-toolbar-items class="toolbar_item_left">
+      <v-toolbar-items class="hidden-xs-only">
         <v-btn class="toolbar_item_left" flat v-for="item in leftMenu" :key="item.title" :to="item.link">
           {{item.title}}
         </v-btn>
@@ -86,20 +85,35 @@ export default {
   data () {
     return {
       sideNav: false,
-      items: []
+      items: [
+
+      ]
     }
   },
   computed: {
     ...mapGetters({
       alarmView: 'alarmView'
     }),
+    menuItems () {
+      let menuItems = [
+        {title: '탐색', link: '/boards'},
+        {title: '로그인', link: '/barlogin'}
+      ]
+      if (this.userIsAuthenticated) {
+        menuItems = [
+          {title: '탐색', link: '/boards'},
+          {title: '개설', link: '/opened1'},
+          {title: '마이페이지', link: '/profile'}
+        ]
+      }
+      return menuItems
+    },
     openedMenu () {
       let openedMenu = [
         {title: '개설', link: '/opened1'}
       ]
       return openedMenu
-    }
-    ,
+    },
     leftMenu () {
       let leftMenu = [
         {title: '탐색', link: '/boards'}

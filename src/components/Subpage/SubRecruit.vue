@@ -9,10 +9,8 @@
                             <div class="number_btn"><button class="title_btn" disabled depressed><h4 class="number">{{ recruit.number }}명</h4></button></div>
                             <div class="hidden-xs-only"><h4>{{recruit.task}}</h4></div>
                         </v-card-title>
-
                 </v-card>
             </v-flex>
-
             <v-flex>
                 <v-card flat class="dday_card" width="60px">
                    <h4 class="dday">D{{recruit.dday}}</h4>
@@ -20,7 +18,6 @@
             </v-flex>
         </v-layout>
     </v-container>
-
 </template>
 
 <script>

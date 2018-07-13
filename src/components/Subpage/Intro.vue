@@ -1,5 +1,4 @@
 <template>
-
   <v-container>
   <v-carousel class="carousel" hide-delimiters>
     <v-carousel-item
