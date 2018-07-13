@@ -3,25 +3,27 @@
     <v-container>
       <form @submit.prevent="onSendfilter">
       <v-layout justify-center>
-        <v-flex class="search_space" xs12 sm10 md8 lg10 offset-sm1>
+        <v-flex class="search_space" xs12 sm10 md8 lg11 offset-sm1>
 
+            <v-flex xs10 lg12>
             <input class="search-wrapper" type="text" v-model="search" placeholder="검색" />
             <v-btn flat type="submit" class="btncss"><h5>검색</h5></v-btn>
+            </v-flex>
 
           <v-container d-inline-flex class="filter" fluid grid-list-xl>
             <v-layout justify-center>
-              <v-flex xs10 sm6 d-flex>
-                <v-select class="v-select" :items="items" label="목적" v-model="aim"></v-select>
-              </v-flex>
-              <v-flex xs10 sm6 d-flex>
-                <v-select :items="fields" label="분야" v-model="department"></v-select>
-              </v-flex>
-              <v-flex xs10 sm6 d-flex>
-                <v-select :items="rules" label="역할" v-model="position"></v-select>
-              </v-flex>
-              <v-flex xs10 sm6 d-flex>
-                <v-select :items="areas" label="지역" v-model="area"></v-select>
-              </v-flex>
+                    <v-flex xs10 sm6 d-flex>
+                      <v-select class="v-select" :items="items" label="목적" v-model="aim"></v-select>
+                    </v-flex>
+                    <v-flex xs10 sm6 d-flex>
+                      <v-select :items="fields" label="분야" v-model="department"></v-select>
+                    </v-flex>
+                    <v-flex xs10 sm6 d-flex>
+                      <v-select :items="rules" label="역할" v-model="position"></v-select>
+                    </v-flex>
+                    <v-flex xs10 sm6 d-flex>
+                      <v-select :items="areas" label="지역" v-model="area"></v-select>
+                    </v-flex>
             </v-layout>
           </v-container>
         </v-flex>
@@ -32,7 +34,7 @@
     </v-container>
     <v-container class="v-container">
     <v-layout d-inline-flex v-for="board in boards" :key="board.id">
-      <v-flex xs5 sm10 md8 lg10 offset-sm1 offset-md2>
+      <v-flex xs6 sm10 md8 lg8>
         <v-card  :to="'/boards/' + board.project_idx" class="v-card" width="265px">
             <v-card-media  class="card_image" v-if="board.img_url" height="220px" width="265px" :src="board.img_url"></v-card-media>
               <v-flex class="v-card-content">
@@ -103,18 +105,20 @@ export default {
 
   #home{
     text-align: center;
+    background-color: white;
   }
   header{
     margin-top: 5vh;
   }
   .v-container{
     margin:auto;
-    margin-bottom: 5%;
+    background-color: white;
   }
   .v-card {
     margin: auto;
     width: 300px;
     margin: 7px;
+    margin-left: 35%;
     border:thistle 0.1px solid;
     border-radius: 8px;
   }
@@ -160,15 +164,17 @@ export default {
   .search-wrapper {
     border: 1px solid #ccc;
     font-size: 12px;
-    padding: 10px;
+    padding: 5px;
     height: 40px ;
     margin-top: 4%;
-    margin-bottom: 90px;
-    width: 70%;
-    margin-left: 12%;
+    margin-bottom: 4%;
+    width: 50%;
+    margin-left: 17%;
     border-radius: 4px;
     background-color: white;
+    display: inline-block;
   }
+
   .search-btn {
     border-radius: 4px;
     border: 1px solid #ccc;

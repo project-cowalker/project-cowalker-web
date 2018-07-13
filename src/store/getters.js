@@ -60,6 +60,9 @@ export const boardGetters = {
   },
   allApplyDetailView (state) {
     return state.ApplyDetailView
+  },
+  allmyprojectList (state) {
+    return state.myprojects
   }
 
 }

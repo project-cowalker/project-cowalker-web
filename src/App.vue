@@ -60,6 +60,7 @@
     </main>
 
     <v-divider></v-divider>
+    <v-flex>
     <v-footer class="hidden-xs-only" height="60" color="light gray">
       <v-spacer>
       </v-spacer>
@@ -70,6 +71,7 @@
         <span class="footer">Copyright © 2018 Cowalker.All Rights Reserved</span>
       </v-spacer>
     </v-footer>
+    </v-flex>
 
   </v-app>
 </template>
@@ -176,4 +178,5 @@ export default {
     color: grey;
     font-size: 13px;
   }
+
 </style>
