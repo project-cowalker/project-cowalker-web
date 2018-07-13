@@ -82,7 +82,8 @@ export const boardActions = {
     ).then(res => {
       commit('writeSuccess')
       console.log(res.data)
-      alert('수정완료')
+      alert('수정완료!!!!')
+
       // commit('mypageView', res.data)
     }).catch(
       (error) => console.log(error)

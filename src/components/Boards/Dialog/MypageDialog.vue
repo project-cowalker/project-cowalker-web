@@ -68,8 +68,7 @@
 
               <template class="combo" slot="selection" slot-scope="data">
                 <v-chip :selected="data.selected" :disabled="data.disabled" :key="JSON.stringify(data.job)"
-                        class="v-chip--select-multi " @input="data.parent.selectItem(data.job)"
-                >
+                        class="v-chip--select-multi " @input="data.parent.selectItem(data.job)">
                   <v-avatar class="accent white--text">
                     {{ data.job.slice(0, 1).toUpperCase() }}
                   </v-avatar>
@@ -135,12 +134,14 @@
 
           <v-container text-xs-center>
             <v-layout justify-center>
-              <form >
-              <input class="btn-done" value="수정완료" type="submit"/>
-              </form>
+              <!--<v-layout justify-center>-->
+                <!--<button type="submit" class="btn-done">수정완료</button>-->
+              <!--</v-layout>-->
+              <!--<form >-->
+              <input class="btn-done" value="수정완료" type="submit"  />
+              <!--</form>-->
             </v-layout>
           </v-container>
-
         </v-container>
       </v-card>
     </form>
@@ -153,6 +154,7 @@ export default {
   data () {
     return {
       email: '',
+      background: null,
       name: '',
       point: 0,
       position: '',
@@ -187,6 +189,7 @@ export default {
       data.append('area', this.area)
 
       this.$store.dispatch('onUploadMypage', data)
+      window.location.reload(true)
     },
     getImage (file) {
       const fileReader = new FileReader()
@@ -257,7 +260,6 @@ export default {
     opacity: 0.4%;
     background-color: lightgray;
     margin-top: 23%;
-
   }
 
   .back-image {

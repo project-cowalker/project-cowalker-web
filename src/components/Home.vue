@@ -1,8 +1,10 @@
 <template>
   <main class="Home">
-    <v-jumbotron src="https://blogfiles.pstatic.net/MjAxODA3MTNfMTA4/MDAxNTMxNDIxMDk2Njc2.y27JH-BJRy0PZQazM9GHNVheE4YHO76MwBYuR2Ltr1Yg.IIo2Iu1O29_v5yQIifS9lKKYdodpklVV8WHOvz6U0Uwg.PNG.peach404/home_opacity_back_with.png" contain height="755px">
-      <v-container fill-height>
-        <v-layout alig-center>
+
+   <v-jumbotron  src="https://s3.ap-northeast-2.amazonaws.com/project-cowalker/KakaoTalk_20180714_021531616.png" contain height="755px">
+     <v-container class="mainbox" fill-height>
+          <v-layout align-center>
+
           <v-flex  class="hidden-xs-only">
             <p class="recommend_project">이번주 추천 프로젝트는 <br> 무엇일까?</p>
             <hr class="underline5" color=white nosthade/>
@@ -11,7 +13,7 @@
           </v-flex>
           <v-flex x12 sm8 md7 lg7 align-content-center class="text-xs-center text-sm-right"> <!--버튼 중앙으로-->
             <!--프로젝트 보기-->
-            <v-btn class="button" flat dark @click.native.stop="dialog = true" @click="guard"><p class="textBtn">프로젝트 상세보기  ></p></v-btn>
+            <v-btn class="hidden-xs-only" flat dark @click.native.stop="dialog = true" @click="guard"><p class="button">프로젝트 상세보기  ></p></v-btn>
 
             <v-dialog id="dialog" v-model="dialog" width="480.77px">
               <v-card height="508.55%">
@@ -133,6 +135,14 @@ export default {
 </script>
 
 <style scoped>
+  @media only screen and (max-width: 400px) {
+     .mainbox{
+       background-image: url("https://s3.ap-northeast-2.amazonaws.com/project-cowalker/KakaoTalk_20180714_051201118.jpg");
+     }
+    .container.fill-height{
+    }
+
+  }
   .button {
     margin-right: 50px;
     opacity: 0.8;
@@ -144,7 +154,7 @@ export default {
     width: 116.86px;
     height: 40.64px;
     box-shadow: none;
-    background: url("https://blogfiles.pstatic.net/MjAxODA3MDFfMzgg/MDAxNTMwNDUyNjQxNDM5.mKX989lzYykQU5ALcT3_SQP-J1VwLAmf29GEYo3bV2Yg.leHoFt4jmF-m96MXXCYj33BOMaMAEKs1HusK6LtD1mcg.PNG.rkdud410/sign_blue_btn.png");
+    background: url("https://s3.ap-northeast-2.amazonaws.com/project-cowalker/KakaoTalk_20180714_031455352.png");
   }
   .input {
     width: 262.08px;
@@ -183,7 +193,7 @@ export default {
     margin-top: 10px;
   }
   .v-container {
-    background-image: url("https://blogfiles.pstatic.net/MjAxODA3MDFfMjIx/MDAxNTMwNDU2NzY5MzU3.QJYd3SZYqQ7VsFnzlfMNBYHP0E5Mk1hsxaNtiHKAzE8g.l4TOp5kUPfXXW4pJ9S3IHiKFxH97so9U93_Uk2oZx7cg.PNG.rkdud410/sign_illust.png");
+    background-image: url("https://s3.ap-northeast-2.amazonaws.com/project-cowalker/KakaoTalk_20180714_025607762.png");
   }
   .v-card {
     margin: auto;

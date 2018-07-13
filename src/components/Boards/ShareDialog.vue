@@ -17,8 +17,9 @@
                 </v-layout>
 
                 <v-layout justify-center>
-                    <v-card flat class="share_card" width="230px" height="57px">
-                      <button id="kakao" @click="sendLink()"><img src="@/assets/kakao_icon.png">
+                    <v-card flat class="share_card" width="170px" height="60px">
+                      <button id="kakao" @click="sendLink()" :key="kakao"><img src="@/assets/kakao_icon.png">
+
                       </button>
                       <social-sharing url="http://cowalker.cf/boards/${project_idx}"
                                       title="Cowalker"
@@ -28,10 +29,9 @@
                                       twitter-user="vuejs"
                                       inline-template>
                         <network network="facebook">
-                          <button ><img width="35px" src="@/assets/facebook_icon.png"></button>
+                          <button  ><img class="facebook" style="margin-left: 25px; margin-top: 10px;" width="35px" src="@/assets/facebook_icon.png"></button>
                         </network>
                       </social-sharing>
-                        <button ><img class="share_btn" src="@/assets/link_icon.png"></button>
                     </v-card>
                 </v-layout>
           </v-container>
@@ -108,22 +108,20 @@ export default {
 }
 
 .share_card {
-    margin-top: 15px;
   border: 1px solid #64DFFF;
   border-radius: 19px;
 
 }
 .facebook{
+  margin-left: 10px;
   width: 20px;
   height: 20px;
-  margin-top: 12px;
-  margin-right: 10px;
+
 }
 .kakao {
     width: 38px;
     height: 38px;
-    margin-top: 12px;
-    margin-right: 30px;
+
 }
 .share_btn {
     width: 35px;
