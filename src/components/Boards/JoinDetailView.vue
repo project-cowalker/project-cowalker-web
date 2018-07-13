@@ -1,6 +1,6 @@
 <template>
   <v-card>
-    <v-flex xs10>
+    <v-flex xs9>
       <v-container class="v-container" text-xs-center>
         <v-layout row wrap justify-center>
           <v-card flat class="logo"><img src="@/assets/project_detail_logo.png"></v-card>
@@ -11,50 +11,50 @@
       <v-layout class="content_title" row wrap>
         <v-flex>
           <table>
-            <v-flex xs5 lg12 xl12>
+            <v-flex xs4 lg12 xl12>
               <tr>
-                <td><h4 class="title">역할<hr class="underline1" color="#81D4FA" noshade/></h4></td>
+                <td><h3>역할</h3></td>
                 <td><h4 class="content">{{allDetailrecruitView.position}}</h4></td>
 
               </tr>
               <tr>
-                <td><h4 class="title">모집기간<hr class="underline2" color="#81D4FA" noshade/></h4></td>
+                <td><h3>모집기간</h3></td>
                 <td><h4 class="content">2018. 07. 01 ~ 2018. 08 .04</h4></td>
               </tr>
               <tr>
-                <td><h4 class="title">모집인원<hr class="underline2" color="#81D4FA" noshade/></h4></td>
+                <td><h3>모집인원</h3></td>
                 <td><h4 class="content">{{allDetailrecruitView.number}}명</h4></td>
               </tr>
               <tr>
-                <td><h4 class="title">활동<hr class="underline1" color="#81D4FA" noshade/></h4></td>
+                <td><h3>활동</h3></td>
                 <td><h4 class="content">{{allDetailrecruitView.task}}</h4></td>
               </tr>
               <tr>
-                <td><h4 class="title">활동기간 및 시간<hr class="underline3" color="#81D4FA" noshade/></h4></td>
+                <td><h3>활동기간 및 시간</h3></td>
                 <td><h4 class="content">2018. 07. 01 ~ 2018. 09 .09 (주 3회 정기모임)</h4></td>
               </tr>
               <tr>
-                <td><h4 class="title">혜택 및 보상<hr class="underline4" color="#81D4FA" noshade/></h4></td>
+                <td><h3>혜택 및 보상</h3></td>
                 <td><h4 class="content">{{allDetailrecruitView.reward}}</h4></td>
               </tr>
               <tr>
-                <td><h4 class="title">활동 위치<hr class="underline5" color="#81D4FA" noshade/></h4></td>
+                <td><h3>활동 위치</h3></td>
                 <td><h4 class="content">{{allDetailrecruitView.area}}</h4></td>
               </tr>
               <tr>
-                <td><h4 class="title">필요역량 및 기술<hr class="underline6" color="#81D4FA" noshade/></h4></td>
+                <td><h3>필요역량 및 기술</h3></td>
                 <td><h4 class="content">{{allDetailrecruitView.ability}}</h4></td>
               </tr>
               <tr>
-                <td><h4 class="title">경력 및 경험<hr class="underline7" color="#81D4FA" noshade/></h4></td>
+                <td><h3>경력 및 경험</h3></td>
                 <td><h4 class="content">{{allDetailrecruitView.career}}</h4></td>
               </tr>
               <tr>
-                <td><h4 class="title">우대사항<hr class="underline2" color="#81D4FA" noshade/></h4></td>
+                <td><h3>우대사항</h3></td>
                 <td><h4 class="content">{{allDetailrecruitView.preference}}</h4></td>
               </tr>
               <tr>
-                <td><h4 class="title">코멘트<hr class="underline8" color="#81D4FA" noshade/></h4></td>
+                <td><h3>코멘트</h3></td>
                 <td><h4 class="content">{{allDetailrecruitView.comment}}</h4></td>
               </tr>
             </v-flex>
@@ -127,7 +127,7 @@
 
     <v-container class="v-container" text-xs-center>
       <v-layout  row wrap>
-        <v-flex xs9 sm5 md10 lg12 xl12>
+        <v-flex xs8 sm5 md10 lg12 xl12>
           <v-btn flat class="apply" type="submit"
                  :to="'/boards/' + this.project_idx +'/' + this.recruit_idx + '/apply'" >
             참여하기</v-btn>
@@ -152,13 +152,12 @@
         allDetailrecruitView: 'allDetailrecruitView',
         allApplyMember: 'allApplyMember',
         allJoinMember: 'allJoinMember'
-
       })
 
     },
     created () {
-      this.$store.dispatch('getapplyMember', this.recruit_idx)
-      this.$store.dispatch('getjoinMember', this.project_idx)
+      this.$store.dispatch('getapplyMember', this.project_idx)
+      this.$store.dispatch('getjoinMember', this.recruit_idx)
       this.$store.dispatch('recruitingDetailView', {
         project_idx: this.project_idx,
         recruit_idx: this.recruit_idx
@@ -351,5 +350,8 @@
   }
   .appllcaiton {
     margin-left: 100%;
+  }
+  h3 {
+    text-align:right;
   }
 </style>

@@ -142,7 +142,7 @@ export default {
   }
 
   .title_btn {
-    width: 140px;
+    width: 170px;
     height: 35px;
     background: #d1ecff;
   }

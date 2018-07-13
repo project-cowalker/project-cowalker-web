@@ -33,12 +33,8 @@
                       </social-sharing>
                         <button ><img class="share_btn" src="@/assets/link_icon.png"></button>
                     </v-card>
-
-
                 </v-layout>
-              <!--+ ${this.project_idx}-->
-
-            </v-container>
+          </v-container>
         </v-card>
     </v-dialog>
 </template>
@@ -66,10 +62,10 @@ export default {
   },
   methods: {
     sendLink() {
-      kakao.init('0faba97f411b66b07e29cc1ac138606f')
+      Kakao.init('e0def3726582d98b3bc5211b736bfa1a')
       Kakao.Link.createDefaultButton({
-        container: '#kakao',
         objectType: 'feed',
+        container: '#kakao',
         content: {
           title: '',
           description: '우리의 팀이 되어주세요!                     공유를 해주시면 토큰을 드립니다!',

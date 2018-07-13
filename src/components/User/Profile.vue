@@ -84,7 +84,7 @@
           <v-tab>
             프로젝트
           </v-tab>
-          <v-tab-item><!--소개, 연혁, 모집 부분-->
+          <v-tab-item><!--소개-->
             <v-card flat>
               <app-board-Intro-dialog></app-board-Intro-dialog>
               <v-container>
@@ -106,6 +106,27 @@
               </v-container>
             </v-card>
           </v-tab-item>
+
+          <v-tab-item><!--프로젝트-->
+            <v-card flat>
+              <h4>개설 프로젝트</h4>
+               <v-container class="v-container">
+                  <v-layout d-inline-flex v-for="board in allmyprojectList" :key="board.title">
+                    <v-flex xs5 sm10 md8 lg10 offset-sm1 offset-md2>
+                      <v-card  :to="'/boards/'" class="v-card" width="250px">
+                          <v-card-media  class="card_image" v-if="board.img_url" height="210px" width="250px" :src="board.img_url[0]"></v-card-media>
+                            <v-flex class="v-card-content">
+                              <h5 class="board_title">{{board.title}}</h5> <!--class="headline mb-0"-->
+                              <h6 class="date">{{board.area}} · {{board.department}} · {{board.aim}}</h6>
+                            </v-flex>
+                          <v-card-actions>
+                          </v-card-actions>
+                      </v-card>
+                    </v-flex>
+                  </v-layout>
+              </v-container>
+            </v-card>
+          </v-tab-item>
         </v-tabs>
       </div>
     </v-flex>
@@ -122,13 +143,16 @@ export default {
   computed: {
     ...mapGetters({
       user: 'user',
+      boards: 'allBoards',
       allmypageView: 'allmypageView',
-      allmypageIntro: 'allmypageIntro'
+      allmypageIntro: 'allmypageIntro',
+      allmyprojectList: 'allmyprojectList'
     })
   },
   created () {
     this.$store.dispatch('mypageView')
     this.$store.dispatch('mypageIntro')
+    this.$store.dispatch('getmyprojectList')
   },
   methods: {
     logout () {
@@ -179,6 +203,10 @@ export default {
   .title {
     margin-left: 30%;
   }
+  h4 {
+    margin-top: 2%;
+    margin-left: 3%;
+  }
 
   .namebg {
     background-color: #d1ecff;
@@ -207,6 +235,31 @@ export default {
 
   button:focus {
     outline: 0;
+  }
+  .v-container{
+    margin:auto;
+    margin-bottom: 1%;
+  }
+  .v-card {
+    margin: 1%;
+    margin-top: 2%;
+    border:thistle 0.1px solid;
+    border-radius: 8px;
+  }
+  .card_iamge {
+    border-radius: 8px;
+  }
+  .board_title {
+    text-align: center;
+    border: 1px solid #64DFFF;
+    width: 50%;
+    margin: auto;
+    margin-top: 10px;
+  }
+  .date
+  {
+    margin-top: 10px;
+    text-align: center;
   }
 
 </style>

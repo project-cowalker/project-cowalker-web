@@ -254,7 +254,7 @@ export default {
       ],
       adx: [
 
-      ],
+      ]
     }
   },
   computed: {
