@@ -3,6 +3,7 @@ import Router from '@/router/index'
 export const boardMutations = {
   allBoards (state) {
     console.log('all boards start')
+
   },
   allBoardsSuccess (state, payload) {
     console.log('all boards success')

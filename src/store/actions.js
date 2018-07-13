@@ -1,6 +1,7 @@
 import axios from 'axios'
 import Router from '@/router/index'
 
+
 export const boardActions = {
 
   getAllboards ({commit}) {
