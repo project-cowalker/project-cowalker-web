@@ -137,7 +137,7 @@
       <v-container text-xs-center>
       <v-layout justify-center row wrap>
         <v-flex xs12 sm10 md8 lg9>
-          <textarea class="textarea2" cols="35" rows="7" v-model="explain" label="프로젝트에 대해 소개해주세요.">프로젝트에 대해 소개해주세요.</textarea>
+          <textarea class="textarea2" cols="35" rows="7" v-model="explain" placeholder="프로젝트에 대해 소개해주세요."></textarea>
         </v-flex>
       </v-layout>
       </v-container>
@@ -328,11 +328,12 @@ export default {
     border: 1px solid #dbdbdb;
   }
   .newimg{
-    margin-left: 8%;
+    display: flex;
     max-width: 100%;
     margin-bottom: 5%;
+    color: transparent;
     width: 80%;
-    height: 240px;
+    height: 60%;
     border-radius: 15px;
     border: 1px solid #707070;
   }
@@ -349,7 +350,7 @@ export default {
     margin-bottom: 8%;
   }
   .carousel {
-    width: 80%;
+    width: 70%;
   }
   .imgsize {
     width: 100%;

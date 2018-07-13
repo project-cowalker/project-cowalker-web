@@ -89,6 +89,7 @@ export const boardMutations = {
   },
   writeApplySuccess (state, payload) {
     state.applys = payload
+    console.log(state.applys)
   },
   setLoading (state, payload) {
     state.boards = payload
