@@ -13,48 +13,48 @@
                         <table>
                           <v-flex xs5 lg12 xl12>
                             <tr>
-                                <td><h4 class="title">역할<hr class="underline1" color="#81D4FA" noshade/></h4></td>
+                                <td><h4 class="title">역할</h4></td>
                                 <td><h4 class="content">{{allDetailrecruitView.position}}</h4></td>
 
                             </tr>
                              <tr>
-                                <td><h4 class="title">모집기간<hr class="underline2" color="#81D4FA" noshade/></h4></td>
+                                <td><h4 class="title">모집기간</h4></td>
                                 <td><h4 class="content">2018. 07. 01 ~ 2018. 08 .04</h4></td>
                             </tr>
                              <tr>
-                                <td><h4 class="title">모집인원<hr class="underline2" color="#81D4FA" noshade/></h4></td>
+                                <td><h4 class="title">모집인원</h4></td>
                                 <td><h4 class="content">{{allDetailrecruitView.number}}명</h4></td>
                             </tr>
                              <tr>
-                                <td><h4 class="title">활동<hr class="underline1" color="#81D4FA" noshade/></h4></td>
+                                <td><h4 class="title">활동</h4></td>
                                 <td><h4 class="content">{{allDetailrecruitView.task}}</h4></td>
                             </tr>
                              <tr>
-                                <td><h4 class="title">활동기간 및 시간<hr class="underline3" color="#81D4FA" noshade/></h4></td>
+                                <td><h4 class="title">활동기간 및 시간</h4></td>
                                 <td><h4 class="content">2018. 07. 01 ~ 2018. 09 .09 (주 3회 정기모임)</h4></td>
                             </tr>
                             <tr>
-                                <td><h4 class="title">혜택 및 보상<hr class="underline4" color="#81D4FA" noshade/></h4></td>
+                                <td><h4 class="title">혜택 및 보상</h4></td>
                                 <td><h4 class="content">{{allDetailrecruitView.reward}}</h4></td>
                             </tr>
                             <tr>
-                                <td><h4 class="title">활동 위치<hr class="underline5" color="#81D4FA" noshade/></h4></td>
+                                <td><h4 class="title">활동 위치</h4></td>
                                 <td><h4 class="content">{{allDetailrecruitView.area}}</h4></td>
                             </tr>
                             <tr>
-                                <td><h4 class="title">필요역량 및 기술<hr class="underline6" color="#81D4FA" noshade/></h4></td>
+                                <td><h4 class="title">필요역량 및 기술</h4></td>
                                 <td><h4 class="content">{{allDetailrecruitView.ability}}</h4></td>
                             </tr>
                             <tr>
-                                <td><h4 class="title">경력 및 경험<hr class="underline7" color="#81D4FA" noshade/></h4></td>
+                                <td><h4 class="title">경력 및 경험</h4></td>
                                 <td><h4 class="content">{{allDetailrecruitView.career}}</h4></td>
                             </tr>
                             <tr>
-                                <td><h4 class="title">우대사항<hr class="underline2" color="#81D4FA" noshade/></h4></td>
+                                <td><h4 class="title">우대사항</h4></td>
                                 <td><h4 class="content">{{allDetailrecruitView.preference}}</h4></td>
                             </tr>
                             <tr>
-                                <td><h4 class="title">코멘트<hr class="underline8" color="#81D4FA" noshade/></h4></td>
+                                <td><h4 class="title">코멘트</h4></td>
                                 <td><h4 class="content">{{allDetailrecruitView.comment}}</h4></td>
                             </tr>
                             </v-flex>

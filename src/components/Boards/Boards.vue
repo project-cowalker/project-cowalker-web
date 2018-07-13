@@ -105,13 +105,14 @@ export default {
 
   #home{
     text-align: center;
+    background-color: white;
   }
   header{
     margin-top: 5vh;
   }
   .v-container{
     margin:auto;
-    margin-bottom: 5%;
+    background-color: white;
   }
   .v-card {
     margin: auto;

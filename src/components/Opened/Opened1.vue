@@ -1,5 +1,5 @@
 <template>
-  <v-form>
+  <v-form class="area">
     <v-container>
       <v-layout>
         <v-flex class="title">
@@ -25,13 +25,13 @@
 
     <v-container grid-list-md text-xs>
       <v-layout row wrap>
-        <v-flex sm10 md8 lg10 offset-sm1 offset-md2>
+        <v-flex sm10 md8 lg19 offset-sm1 offset-md2>
           <p class="p_title">요약 소개</p>
         </v-flex>
       </v-layout>
 
       <v-layout row wrap>
-        <v-flex sm12 md8 lg10 offset-sm1 offset-md3>
+        <v-flex sm12 md8 lg9 offset-sm1 offset-md3>
           <textarea class="textarea" cols="30" rows="5" v-model="summary"></textarea>
         </v-flex>
       </v-layout>
@@ -98,6 +98,7 @@
 
       <v-layout class="content_title" row wrap justify-center>
         <carousel :per-page="5" :mouse-drag="true" class="carousel">
+          <v-flex> <!--v-flex부분-->
           <slide>
             <form class="imgsize">
               <div class="dropbox" v-if="!image">
@@ -107,6 +108,8 @@
               <img :src="image" v-if="image" alt="" class="newimg">
             </form>
           </slide>
+          </v-flex>
+          <v-flex>
           <slide class="hidden-xs-only">
             <form class="imgsize">
               <div class="dropbox" v-if="!image2">
@@ -116,7 +119,9 @@
               <img :src="image2" v-if="image2" alt="" class="newimg"><!--이미지가 있으면 뜨도록-->
             </form>
           </slide>
-          <slide>
+          </v-flex>
+          <v-flex>
+          <slide class="hidden-xs-only">
             <form class="imgsize">
               <div class="dropbox" v-if="!image3">
                 <input class="input-image" type="file" :multiple="false" @change="onFileChange3" accept="image/*"/>
@@ -125,6 +130,7 @@
               <img :src="image3" v-if="image3" alt="" class="newimg"><!--이미지가 있으면 뜨도록-->
             </form>
           </slide>
+          </v-flex>
         </carousel>
       </v-layout>
 
@@ -308,7 +314,7 @@ export default {
   }
   .textarea{
     resize: none;
-    width: 73%;
+    width: 70%;
     border-radius: 10px;
     background-color: #fcfcfc;
     border: 1px solid #dbdbdb;
@@ -346,10 +352,13 @@ export default {
     width: 80%;
   }
   .imgsize {
-    width: 90%;
+    width: 100%;
     height: 50%;
   }
   .content_title {
     height: 40%;
+  }
+  .area {
+    background-color: white;
   }
   </style>
