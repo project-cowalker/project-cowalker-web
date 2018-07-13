@@ -6,14 +6,14 @@ export const boardActions = {
 
   getAllboards ({commit}) {
     commit('allBoards') // 네트워킹 시작을 알림(commit으로 mutation 호출)
-    axios.get('http://bghgu.tk:3000/api/search').then(response => {
+    axios.get('http://52.78.122.242:3000/api/search').then(response => {
       commit('allBoardsSuccess', response.data)
       console.log(response.data)
       // http://18.191.14.154:8080/reviews
     })
   },
   getrecommendproject ({commit}) {
-    axios.get('http://bghgu.tk:3000/api/home').then(response => {
+    axios.get('http://52.78.122.242:3000/api/home').then(response => {
       commit('allgetrecommendproject', response.data)
     })
   },
@@ -21,7 +21,7 @@ export const boardActions = {
   signUp ({commit}, payload) {
     commit('setLoading', true)
     commit('clearError')
-    axios.post('http://bghgu.tk:3000/api/signup', payload)
+    axios.post('http://52.78.122.242:3000/api/signup', payload)
       .then(r => {
         commit('setLoading', false)
         commit('signUpSuccess')
@@ -38,7 +38,7 @@ export const boardActions = {
   signIn ({commit}, payload) {
     commit('setLoading', true)
     commit('clearError')
-    axios.post('http://bghgu.tk:3000/api/signin', payload)
+    axios.post('http://52.78.122.242:3000/api/signin', payload)
       .then(response => {
         commit('setLoading', false)
         commit('signInSuccess', payload)
@@ -54,7 +54,7 @@ export const boardActions = {
       )
   },
   uploadOpened ({ commit }, payload) {
-    axios.post('http://bghgu.tk:3000/api/project', payload,
+    axios.post('http://52.78.122.242:3000/api/project', payload,
       {
         headers: {
           'Content-Type': 'application/json',
@@ -72,7 +72,7 @@ export const boardActions = {
       )
   },
   onUploadMypage ({ commit }, payload) {
-    axios.put('http://bghgu.tk:3000/api/mypage', payload,
+    axios.put('http://52.78.122.242:3000/api/mypage', payload,
       {
         headers: {
           'Content-Type': 'application/json',
@@ -89,7 +89,7 @@ export const boardActions = {
     )
   },
   onloadIntro ({ commit }, payload) {
-    axios.put('http://bghgu.tk:3000/api/intro', payload,
+    axios.put('http://52.78.122.242:3000/api/intro', payload,
       {
         headers: {
           'authorization': localStorage.getItem('token')
@@ -105,7 +105,7 @@ export const boardActions = {
     )
   },
   sendFilter ({ commit }, payload) {
-    axios.get('http://bghgu.tk:3000/api/search?' + 'aim=' + payload.aim + '&area=' + payload.area + '&department=' + payload.department + '&position=' + payload.position + '&keyword=' + payload.keyword)
+    axios.get('http://52.78.122.242:3000/api/search?' + 'aim=' + payload.aim + '&area=' + payload.area + '&department=' + payload.department + '&position=' + payload.position + '&keyword=' + payload.keyword)
       .then(res => {
         commit('sendFilterSuccess')
         commit('allBoardsSuccess', res.data)
@@ -114,7 +114,7 @@ export const boardActions = {
       )
   },
   recruiting ({commit}, payload) {
-    axios.post('http://bghgu.tk:3000/api/project/recruit', payload,
+    axios.post('http://52.78.122.242:3000/api/project/recruit', payload,
       {
         headers: {
           'authorization': localStorage.getItem('token')
@@ -128,13 +128,13 @@ export const boardActions = {
       )
   },
   getDetailView ({commit}, payload) {
-    axios.get('http://bghgu.tk:3000/api/project/' + payload).then(response => {
+    axios.get('http://52.78.122.242:3000/api/project/' + payload).then(response => {
       commit('getDetailViewSuccess', response.data)
       console.log(payload + 'project_idx 값')
     })
   },
   getuserView ({commit}, payload) {
-    axios.get('http://bghgu.tk:3000/api/project/' + payload,
+    axios.get('http://52.78.122.242:3000/api/project/' + payload,
       {
         headers: {
           'Authorization': localStorage.getItem('token')
@@ -145,13 +145,13 @@ export const boardActions = {
     })
   },
   recruitingView ({commit}, payload) {
-    axios.get('http://bghgu.tk:3000/api/project/' + payload + '/recruit').then(response => {
+    axios.get('http://52.78.122.242:3000/api/project/' + payload + '/recruit').then(response => {
       commit('getRecruitSuccess', response.data)
       console.log(payload)
     })
   },
   sendAlarm ({commit}) {
-    axios.get('http://bghgu.tk:3000/api/alarm',
+    axios.get('http://52.78.122.242:3000/api/alarm',
       {
         headers: {
           'authorization': localStorage.getItem('token')
@@ -161,7 +161,7 @@ export const boardActions = {
     })
   },
   mypageView ({commit}) {
-    axios.get('http://bghgu.tk:3000/api/mypage',
+    axios.get('http://52.78.122.242:3000/api/mypage',
       {
         headers: {
           'authorization': localStorage.getItem('token')
@@ -171,7 +171,7 @@ export const boardActions = {
     })
   },
   mypageIntro ({commit}) {
-    axios.get('http://bghgu.tk:3000/api/intro',
+    axios.get('http://52.78.122.242:3000/api/intro',
       {
         headers: {
           'authorization': localStorage.getItem('token')
@@ -181,7 +181,7 @@ export const boardActions = {
     })
   },
   recruitingDetailView ({commit}, payload) {
-    axios.get('http://bghgu.tk:3000/api/project/' + payload.project_idx + '/recruit/' + payload.recruit_idx, {
+    axios.get('http://52.78.122.242:3000/api/project/' + payload.project_idx + '/recruit/' + payload.recruit_idx, {
       headers: {
         'authorization': localStorage.getItem('token')
       }
@@ -191,13 +191,13 @@ export const boardActions = {
     })
   },
   getQuestion  ({commit}, payload) {
-    axios.get('http://bghgu.tk:3000/api/question/' + payload).then(response => {
+    axios.get('http://52.78.122.242:3000/api/question/' + payload).then(response => {
       commit('getQuestion', response.data)
       console.log(payload + ' recruit_idx 값')
     })
   },
   writeApply ({ commit }, payload) {
-    axios.post('http://bghgu.tk:3000/api/apply', payload,
+    axios.post('http://52.78.122.242:3000/api/apply', payload,
       {
         headers: {
           'Content-Type': 'application/json',
@@ -213,7 +213,7 @@ export const boardActions = {
   },
   getapplyMember ({commit}, payload) {
     console.log('recruit_idx값 ' + payload, '토큰값' + localStorage.getItem('token'))
-    axios.get('http://bghgu.tk:3000/api/apply/' + payload, {
+    axios.get('http://52.78.122.242:3000/api/apply/' + payload, {
       headers: {
         'authorization': localStorage.getItem('token')
       }
@@ -224,7 +224,7 @@ export const boardActions = {
     })
   },
   getjoinMember ({commit}, payload) {
-    axios.get('http://bghgu.tk:3000/api/project/team/' + payload).then(response => {
+    axios.get('http://52.78.122.242:3000/api/project/team/' + payload).then(response => {
       commit('alljoinMember', response.data)
       console.log(payload + 'project_idx 값')
     })
@@ -236,20 +236,20 @@ export const boardActions = {
     commit('logoutSuccess')
   },
   register ({commit}, payload) { // payload로 db id값 넘어옴
-    axios.get('http://localhost:4000/results').then(res => {
+    axios.get('http://52.78.122.242:3000/results').then(res => {
       commit('register', res, payload)
     })
   },
 
   getstore ({commit}) {
-    axios.get('http://18.191.14.154:8080/stores/list').then(res => {
+    axios.get('http://52.78.122.242:3000/stores/list').then(res => {
       commit('allstoreSuccess', res)
     })
   },
   getApplyView ({commit}, payload) {
     console.log(payload.apply_idx + ': ---apply_idx', payload.applicant_idx + ' : applicant_idx')
     console.log(localStorage.getItem('token') + ': 토큰값')
-    axios.get('http://bghgu.tk:3000/api/apply/' + payload.apply_idx + '/' + payload.applicant_idx,
+    axios.get('http://52.78.122.242:3000/api/apply/' + payload.apply_idx + '/' + payload.applicant_idx,
       {
         headers: {
           'Content-Type': 'application/json',
@@ -262,7 +262,7 @@ export const boardActions = {
   applyPermit ({ commit }, payload) {
     axios({
       method: 'PUT',
-      url: 'http://bghgu.tk:3000/api/apply/' + payload.apply_idx + '/' + payload.applicant_idx + '/join/' + payload.join,
+      url: 'http://52.78.122.242:3000/api/apply/' + payload.apply_idx + '/' + payload.applicant_idx + '/join/' + payload.join,
       headers: {
         authorization: localStorage.getItem('token')
       }
@@ -276,7 +276,7 @@ export const boardActions = {
   applyReject ({ commit }, payload) {
     axios({
       method: 'PUT',
-      url: 'http://bghgu.tk:3000/api/apply/' + payload.apply_idx + '/' + payload.applicant_idx + '/join/' + payload.join,
+      url: 'http://52.78.122.242:3000/api/apply/' + payload.apply_idx + '/' + payload.applicant_idx + '/join/' + payload.join,
       headers: {
         authorization: localStorage.getItem('token')
       }
@@ -288,7 +288,7 @@ export const boardActions = {
     )
   },
   getmyprojectList ({commit}) {
-    axios.get('http://bghgu.tk:3000/api/user/project', {
+    axios.get('http://52.78.122.242:3000/api/user/project', {
       headers: {
         'authorization': localStorage.getItem('token')
       }
