@@ -146,6 +146,11 @@ export const boardMutations = {
   },
   RejectSuccess (state, payload) {
     console.log('지원 거절 성공')
+  },
+  allmyprojectList (state, payload) {
+    state.myprojects = payload.result
+    console.log('내 프로젝트 리스트 가져오기 성공')
+    console.log(state.myprojects)
   }
 
 }

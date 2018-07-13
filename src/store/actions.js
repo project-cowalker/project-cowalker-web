@@ -64,7 +64,7 @@ export const boardActions = {
       .then(res => {
         commit('writeSuccess')
         console.log(res.data.project_idx)
-        Router.push('/')
+        Router.push('/boards')
         alert('개설완료')
       }).catch(
         (error) => console.log(error)
@@ -284,5 +284,15 @@ export const boardActions = {
     }).catch(
       (error) => console.log(error)
     )
+  },
+  getmyprojectList ({commit}) {
+    axios.get('http://bghgu.tk:3000/api/user/project', {
+      headers: {
+        'authorization': localStorage.getItem('token')
+      }
+    }).then(response => {
+      commit('allmyprojectList', response.data)
+      console.log(response.data)
+    })
   }
 }

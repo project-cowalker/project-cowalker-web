@@ -66,7 +66,7 @@
             <v-flex xs12 sm10 md8 lg10 offset-sm1>
                 <v-card :to="'/boards/' + board._id" class="v-card" width="260px" height="310x">
 
-                        <v-card-media  class="card_image" v-if="board.img_url" height="210px" width="260px" :src="board.img_url"></v-card-media>
+                        <v-card-media  class="card_image" v-if="board.img_url" height="210px" width="260px" :src="board.img_url[0]"></v-card-media>
                             <v-flex class="v-card-content">
                                 <h5>{{board.title}}</h5> <!--class="headline mb-0"-->
                                 <h6 class="date">{{board.area}} · {{board.department}} · {{board.aim}}</h6>

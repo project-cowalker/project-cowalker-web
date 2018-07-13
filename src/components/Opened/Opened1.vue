@@ -8,35 +8,41 @@
       </v-layout>
 
     <form @submit.prevent="onUploadOpened">
-      <v-layout row wrap >
-        <v-flex x12 sm10 md8 lg10 offset-sm1 offset-md2>
+
+      <v-container grid-list-md text-xs>
+      <v-layout row wrap>
+        <v-flex xs12 sm10 md8 lg10 offset-sm1 offset-md2>
           <p class="p_title">프로젝트 제목</p>
         </v-flex>
       </v-layout>
 
       <v-layout row wrap>
-        <v-flex x12 sm10 md8 lg12 offset-sm1 offset-md2>
+        <v-flex xs12 sm10 md8 lg12 offset-sm1 offset-md2>
           <input class="input_p" type="text" v-model="title"/>
         </v-flex>
       </v-layout>
+      </v-container>
 
+    <v-container grid-list-md text-xs>
       <v-layout row wrap>
-        <v-flex x12 sm10 md8 lg10 offset-sm1 offset-md2>
+        <v-flex sm10 md8 lg10 offset-sm1 offset-md2>
           <p class="p_title">요약 소개</p>
         </v-flex>
       </v-layout>
 
       <v-layout row wrap>
-        <v-flex x12 sm10 md8 lg10 offset-sm1 offset-md3>
+        <v-flex sm12 md8 lg10 offset-sm1 offset-md3>
           <textarea class="textarea" cols="30" rows="5" v-model="summary"></textarea>
         </v-flex>
       </v-layout>
+    </v-container>
 
+    <v-container>
       <v-layout d-line-flex>
-        <v-flex x12 sm10 md8 lg1 offset-sm1 offset-md2>
+        <v-flex sm10 md8 lg1 offset-sm1 offset-md2>
           <p class="p_title1">지역</p>
         </v-flex>
-        <v-flex x12 sm10 md8 lg7>
+        <v-flex sm10 md8 lg7>
           <v-combobox v-model="area" :items="locations" class="combo"></v-combobox>
           <template class="combo" slot="selection" slot-scope="data">
             <v-chip :selected="data.selected" :disabled="data.disabled" :key="JSON.stringify(data.location)" class="v-chip--select-multi " @input="data.parent.selectItem(data.location)">
@@ -84,6 +90,7 @@
 
         </v-flex>
       </v-layout>
+      </v-container>
 
       <v-flex class="title1">
         <p>프로젝트 소개</p>
@@ -100,7 +107,7 @@
               <img :src="image" v-if="image" alt="" class="newimg">
             </form>
           </slide>
-          <slide>
+          <slide class="hidden-xs-only">
             <form class="imgsize">
               <div class="dropbox" v-if="!image2">
                 <input class="input-image" type="file" :multiple="false" @change="onFileChange2" accept="image/*"/>
@@ -121,7 +128,15 @@
         </carousel>
       </v-layout>
 
-      <v-container -center>
+      <v-container text-xs-center>
+      <v-layout justify-center row wrap>
+        <v-flex xs12 sm10 md8 lg9>
+          <textarea class="textarea2" cols="35" rows="7" v-model="explain" label="프로젝트에 대해 소개해주세요.">프로젝트에 대해 소개해주세요.</textarea>
+        </v-flex>
+      </v-layout>
+      </v-container>
+
+      <v-container>
         <v-layout justify-center>
           <button type="submit" class="btn-done">개설하기</button>
         </v-layout>
@@ -254,19 +269,22 @@ export default {
     font-size: 17px;
   }
   .p_title{
-    font-size: 17px;
+    font-size: 15px;
+    margin-top: 2%;
   }
   .p_title1{
     margin-top: 5%;
-    font-size: 17px;
+    font-size: 15px;
   }
   .combo{
     width: 35%;
     margin-left: -3%;
   }
   .dropbox{
-    margin-left: 8%;
-    margin-top:20px;
+    margin-left: 15%;
+    margin-top: 20px;
+    width: 80%;
+    height: 260px;
   }
   .input_p {
     margin-left: 8%;
@@ -282,7 +300,7 @@ export default {
     margin-bottom: 5%;
     color: transparent;
     width: 80%;
-    height: 240px;
+    height: 60%;
     opacity: 0.4;
     border-radius: 15px;
     border: 1px solid #707070;
@@ -290,9 +308,16 @@ export default {
   }
   .textarea{
     resize: none;
-    margin-left: -3%;
     width: 73%;
     border-radius: 10px;
+    background-color: #fcfcfc;
+    border: 1px solid #dbdbdb;
+  }
+  .textarea2 {
+    resize: none;
+    width: 78%;
+    border-radius: 10px;
+    margin-right: 5%;
     background-color: #fcfcfc;
     border: 1px solid #dbdbdb;
   }
@@ -308,15 +333,23 @@ export default {
 
   .btn-done{
     font-size: 16px;
-    width: 30%;
+    width: 25%;
     height: 65px;
     border-radius: 19px;
     background-color: #F3FCFE;
     border: 1px solid #64DFFF;
-    margin: 5%;
+    margin: 3%;
+    margin-left: 1%;
+    margin-bottom: 8%;
   }
   .carousel {
-    background-color: #fcfcfc;
     width: 80%;
+  }
+  .imgsize {
+    width: 90%;
+    height: 50%;
+  }
+  .content_title {
+    height: 40%;
   }
   </style>
