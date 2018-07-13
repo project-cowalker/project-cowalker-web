@@ -1,5 +1,5 @@
 <template>
-  <v-form>
+  <v-form class="form">
     <v-container>
       <v-layout>
         <v-flex class="title">
@@ -8,19 +8,19 @@
       </v-layout>
     <form @submit.prevent="onApply">
       <v-layout d-line-flex>
-        <v-flex x12 sm10 md8 lg1 offset-sm1 offset-md2>
+        <v-flex xs6 sm10 md8 lg1 offset-sm1 offset-md2>
           <p class="p_title">소개</p>
         </v-flex>
-        <v-flex x12 sm10 md8 lg10>
+        <v-flex sm10 md8 lg10>
           <textarea class="textarea" cols="70" rows="7" placeholder="  자기소개" v-model="introduce"></textarea>
         </v-flex>
       </v-layout>
 
       <v-layout d-line-flex>
-        <v-flex x12 sm10 md8 lg2 offset-sm1 offset-md1>
-          <p class="p_title">&emsp;&emsp;&emsp;&emsp;&ensp;모집역할</p>
+        <v-flex  sm10 md8 lg2 offset-sm1 offset-md1>
+          <p class="p_title">&emsp;&emsp;&emsp;모집역할</p>
         </v-flex>
-        <v-flex x12 sm10 md8 lg10>
+        <v-flex xs12 sm10 md8 lg10>
           <form>
             <input type="text" class="regular" v-model="position">
           </form>
@@ -28,10 +28,10 @@
       </v-layout>
 
       <v-layout d-line-flex>
-        <v-flex x12 sm10 md8 lg2 offset-sm1 offset-md1>
-          <p class="p_title">&emsp;&emsp;&emsp;&emsp;&ensp;연락처</p>
+        <v-flex  sm10 md8 lg2 offset-sm1 offset-md1>
+          <p class="p_title">&emsp;&emsp;&emsp;&emsp;연락처</p>
         </v-flex>
-        <v-flex x12 sm10 md8 lg10>
+        <v-flex xs12 sm10 md8 lg10>
           <form>
             <input type="text" class="regular" v-model="phone" placeholder="[-없이 작성]">
           </form>
@@ -39,18 +39,20 @@
       </v-layout>
 
       <v-layout d-line-flex>
-          <v-flex x12 sm10 md8 lg2 offset-sm1 offset-md1>
-            <p class="p_title">&emsp;&emsp;&emsp;&emsp;&ensp;이력서</p>
+          <v-flex sm10 md8 lg2 offset-sm1 offset-md1>
+            <p class="p_title">&emsp;&emsp;&emsp; &nbsp;이력서</p>
           </v-flex>
+          <v-flex xs12 sm10 md8 lg10>
             <form style="width: 50%">
-              <v-flex>
+              <v-flex xs12 sm10 md8 lg10>
                 <input class="input_p" type="text" v-model="portfolio_url" placeholder="이메일 또는 웹사이트" />
               </v-flex>
               <v-flex>
-                <button type="button"><img src="https://blogfiles.pstatic.net/MjAxODA3MDVfNzAg/MDAxNTMwNzg2Mjk4MDQy.ww-axj12lCFQavSp_GtEAn3GQg_oD03bBVLQg7V9bvIg.LQEXNcznuEDgWU-0gmvx8Ju-oT-Bo0l4xmBBP8JMCXAg.PNG.peach404/dropbox_application_btn.png" alt=""></button>
+                <button type="button"></button>
                 <input type="file" class="fileBtn" multiple>
               </v-flex>
             </form>
+          </v-flex>
       </v-layout>
 
       <v-layout>
@@ -73,9 +75,11 @@
 
       <v-container text-xs-center>
         <v-layout justify-center>
+          <v-flex xs10>
           <button type="submit" class="btn-done">
             참여 신청완료
           </button>
+          </v-flex>
         </v-layout>
       </v-container>
 
@@ -137,9 +141,11 @@ export default {
     font-weight: bold;
   }
   .p_title{
-    font-size: 17px;
+    font-size: 14px;
     margin-top: 3%;
     margin-bottom: 12%;
+    margin-left: 16%;
+    width: 100px;
   }
   .textarea{
     margin-bottom: 15%;
@@ -152,6 +158,7 @@ export default {
   }
   .input_p {
     height: 40px;
+    margin-left: 12%;
     border-radius: 8px;
     background-color: #fcfcfc;
     border: 1px solid #dbdbdb;
@@ -161,6 +168,7 @@ export default {
     margin-bottom: 12%;
     width: 33%;
     height: 40px;
+    margin-left: 8%;
     border-bottom: 1px solid #999;
   }
   .btn-done{
@@ -192,5 +200,8 @@ export default {
 
   ul{
     list-style:none;
+  }
+  .form {
+    background-color: white;
   }
 </style>

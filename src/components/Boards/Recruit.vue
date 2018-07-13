@@ -166,7 +166,6 @@
         </v-flex>
     </v-flex>
   </v-layout>
-
     <v-layout>
       <v-flex x12 sm10 md8 lg2 offset-sm1 offset-md1>
         <p class="p_title">&emsp;&emsp;&emsp;우대사항</p>
@@ -177,7 +176,6 @@
           </v-flex>
       </v-flex>
     </v-layout>
-
     <v-layout>
       <v-flex x12 sm10 md8 lg2 offset-sm1 offset-md1>
         <p class="p_title" >&ensp;&emsp;&emsp;&emsp;코멘트</p>
@@ -188,7 +186,6 @@
         </v-flex>
       </v-flex>
     </v-layout>
-
     <v-layout>
       <v-flex x12 sm10 md8 lg2 offset-sm1 offset-md1>
         <p class="p_title">&emsp;&emsp;&emsp;&emsp;&emsp;질문</p>
@@ -257,7 +254,7 @@ export default {
       ],
       adx: [
 
-      ],
+      ]
     }
   },
   computed: {
