@@ -1,15 +1,10 @@
 <template>
   <main class="Home">
-<<<<<<< HEAD
 
    <v-jumbotron  src="https://s3.ap-northeast-2.amazonaws.com/project-cowalker/KakaoTalk_20180714_021531616.png" contain height="755px">
      <v-container class="mainbox" fill-height>
           <v-layout align-center>
-=======
-    <v-jumbotron src="https://blogfiles.pstatic.net/MjAxODA3MTNfMTA4/MDAxNTMxNDIxMDk2Njc2.y27JH-BJRy0PZQazM9GHNVheE4YHO76MwBYuR2Ltr1Yg.IIo2Iu1O29_v5yQIifS9lKKYdodpklVV8WHOvz6U0Uwg.PNG.peach404/home_opacity_back_with.png" contain height="755px">
-      <v-container fill-height>
-        <v-layout alig-center>
->>>>>>> develop
+
           <v-flex  class="hidden-xs-only">
             <p class="recommend_project">이번주 추천 프로젝트는 <br> 무엇일까?</p>
             <hr class="underline5" color=white nosthade/>

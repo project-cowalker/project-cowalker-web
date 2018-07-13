@@ -260,10 +260,6 @@ export default {
     opacity: 0.4%;
     background-color: lightgray;
     margin-top: 23%;
-<<<<<<< HEAD
-=======
-
->>>>>>> develop
   }
 
   .back-image {

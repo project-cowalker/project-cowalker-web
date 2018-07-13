@@ -17,13 +17,9 @@
                 </v-layout>
 
                 <v-layout justify-center>
-<<<<<<< HEAD
                     <v-card flat class="share_card" width="170px" height="60px">
                       <button id="kakao" @click="sendLink()" :key="kakao"><img src="@/assets/kakao_icon.png">
-=======
-                    <v-card flat class="share_card" width="230px" height="57px">
-                      <button id="kakao" @click="sendLink()"><img src="@/assets/kakao_icon.png">
->>>>>>> develop
+
                       </button>
                       <social-sharing url="http://cowalker.cf/boards/${project_idx}"
                                       title="Cowalker"
