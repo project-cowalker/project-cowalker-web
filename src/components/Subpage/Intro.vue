@@ -2,12 +2,9 @@
 
   <v-container>
   <v-carousel class="carousel" hide-delimiters>
-    <v-carousel-item
-      v-for="(item,i) in items"
-      :key="i"
-      :src="item.src"
-    ></v-carousel-item>
-  </v-carousel>
+      <v-carousel-item
+      v-for="image in allDetailView.img_url" :src="image" :key="image" v-if="allDetailView"></v-carousel-item>
+      </v-carousel>
 
   <v-flex>
     <v-card flat class="intro" width="100%" height="200px">

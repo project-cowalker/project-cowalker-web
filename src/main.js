@@ -7,8 +7,8 @@ import { store } from './store/store'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
 import 'babel-polyfill'
-import SigninDialog from './components/user/SigninDialog.vue' // 다이얼로그
-import SignupDialog from './components/user/SignupDialog.vue' // 다이얼로그
+import SigninDialog from './components/User/SigninDialog.vue' // 다이얼로그
+import SignupDialog from './components/User/SignupDialog.vue' // 다이얼로그
 import ShareDialog from './components/Boards/ShareDialog.vue' // 다이얼로그
 import RecommendDialog from './components/Boards/RecommendDialog.vue' // 다이얼로그
 import IntroDialog from './components/Boards/Dialog/IntroDialog.vue'
@@ -19,7 +19,7 @@ import VueBreadcrumbs from 'vue-breadcrumbs'
 
 import VeeValidate from 'vee-validate'
 import VueCarousel from 'vue-carousel'
-var SocialSharing = require('vue-social-sharing');
+var SocialSharing = require('vue-social-sharing')
 // import { Carousel, Slide } from 'vue-carousel'
 
 Vue.config.productionTip = false

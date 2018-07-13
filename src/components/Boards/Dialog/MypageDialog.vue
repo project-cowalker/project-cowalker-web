@@ -7,17 +7,19 @@
     <form @submit.prevent="onUploadMypage">
       <v-card>
         <v-container class="v-container">
-          <v-layout class="content_title" row wrap>
-
+          <v-container class="content_title">
+            <v-flex  justify-center offset-sm1 offset-md2>
             <v-layout justify-center>
+              <v-flex x12>
               <form class="imgsize">
                 <div class="dropbox" v-if="!image">
                   <input class="back-image" type="file" :multiple="false" @change="onFileChange" accept="image/*"/>
                   <!--이미지만 선택가능-->
                 </div>
-
                 <img :src="image" v-if="image" alt="" class="newimg">
               </form>
+              </v-flex>
+              <v-flex x12>
               <form class="imgsize">
                 <div class="dropbox" v-if="!image2">
                   <input class="input-image" type="file" :multiple="false" @change="onFileChange2" accept="image/*"/>
@@ -25,26 +27,25 @@
                 </div>
                 <img :src="image2" v-if="image2" alt="" class="newimg_pro"><!--이미지가 있으면 뜨도록-->
               </form>
+              </v-flex>
             </v-layout>
+            </v-flex>
+          </v-container>
+
+          <v-layout>
+            <v-flex x12 sm12 md12 lg12 offset-md3>
+            <span class="text_area" style="color:#707070;">프로젝트 이미지</span>
+            </v-flex>
+            <v-flex x12 sm12 md12 lg12 offset-md1>
+            <span class="text_area" style="color:#707070;">프로필 이미지</span>
+            </v-flex>
           </v-layout>
-          <v-layout d-line-flex justify-center>
-            <p style="margin-top: -20px; color:#707070;">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;프로젝트 이미지</p>
-            <p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</p>
-            <p style="margin-top: -20px; color:#707070;">프로필 이미지</p>
-          </v-layout>
+
           <v-layout row wrap>
-            <v-flex x12 sm10 md8 lg10 offset-sm1 offset-md2>
-              <p>이름</p>
+            <v-flex x12 sm10 md8 lg10 offset-sm1 offset-md2 class="resume">
+              <span>이력서</span>
             </v-flex>
-            <v-flex x12 sm10 md8 lg12 offset-md2>
-              <input class="input_p1" type="text" v-model="name"/>
-            </v-flex>
-          </v-layout>
-          <v-layout row wrap>
-            <v-flex x12 sm10 md8 lg10 offset-sm1 offset-md2>
-              <p>이력서</p>
-            </v-flex>
-            <v-flex x12 sm10 md8 lg12 offset-md2>
+            <v-flex x12 sm10 md8 lg12 offset-md2 class="resume">
               <input class="input_p" type="text" v-model="portfolio_url"/>
             </v-flex>
           </v-layout>
@@ -134,7 +135,9 @@
 
           <v-container text-xs-center>
             <v-layout justify-center>
-              <button type="submit" class="btn-done">수정완료</button>
+              <form >
+              <input class="btn-done" value="수정완료" type="submit"/>
+              </form>
             </v-layout>
           </v-container>
 
@@ -174,9 +177,8 @@ export default {
   methods: {
     onUploadMypage () {
       const data = new FormData()
-      data.append('profile_img', this.file)
-      data.append('background_img', this.background)
-      data.append('name', this.name)
+      data.append('profile_img', this.background)
+      data.append('background_img', this.file)
       data.append('point', this.point)
       data.append('introduce', this.introduce)
       data.append('portfolio_url', this.portfolio_url)
@@ -213,6 +215,10 @@ export default {
 </script>
 
 <style scoped>
+
+  .resume{
+    margin-top: 4%;
+  }
   .dialog_style {
     border-radius: 25px;
   }
@@ -246,13 +252,11 @@ export default {
     max-width: 100%;
     display: flex;
     color: transparent;
-    width: 180px;
+    width: 60%;
     height: 180px;
     opacity: 0.4%;
     background-color: lightgray;
-    margin-top: 100px;
-    margin-left: 20%;
-    margin-bottom: 40px;
+    margin-top: 23%;
 
   }
 
@@ -261,27 +265,27 @@ export default {
     max-width: 100%;
     display: flex;
     color: transparent;
-    width: 300px;
+    width: 70%;
     height: 250px;
     opacity: 0.4%;
     background-color: lightgray;
-    margin-top: 10%
+    margin-top: 4%;
   }
 
   .newimg {
 
-    margin-top: 50px;
+    margin-top: 4%;
     max-width: 100%;
     margin-bottom: 5%;
-    width: 300px;
+    width: 70%;
     height: 250px;
   }
 
   .newimg_pro {
-    margin-top: 50px;
+    margin-top: 20%;
     max-width: 100%;
     margin-bottom: 5%;
-    width: 180px;
+    width: 60%;
     height: 180px;
 
   }
@@ -322,12 +326,12 @@ export default {
   }
 
   .btn-done {
-    font-size: 16px;
-    width: 30%;
+    font-size: 15px;
+    width: 180px;
     height: 65px;
-    border-radius: 19px;
+    border-radius: 20px;
     background-color: #F3FCFE;
-    border: 1px solid #64DFFF;
+    border: 2px solid rgb(106, 213, 240);
     margin: 5%;
   }
 </style>

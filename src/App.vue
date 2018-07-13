@@ -8,9 +8,11 @@
           </v-list-tile-action>
           <v-list-tile-content>{{ item.title }}</v-list-tile-content>
         </v-list-tile>
+
       </v-list>
     </v-navigation-drawer>
-    <v-toolbar flat dark class="v-toolbar" color="grey darken-1">
+    <v-toolbar flat dark class="transparent" color="grey ligthen-3">
+
       <v-toolbar-side-icon
         @click.stop="sideNav = !sideNav"
         class="hidden-sm-and-up"></v-toolbar-side-icon>
@@ -24,41 +26,43 @@
       </v-toolbar-items>
       <v-spacer></v-spacer>
       <v-toolbar-items flat class="hidden-xs-only"> <!--hidden-xs-only는 모바일 환경에서 사라짐-->
-        <v-btn flat v-for="item in menuItems" :key="item.title" :to="item.link">
-          <div>{{ item.title }}</div>
-        </v-btn>
-
-        <dev v-if="this.userIsAuthenticated">
-          <v-menu offset-y>
-            <v-btn slot="activator" color="grey darken-1" depressed width="50px" style="margin-top: 22px">알림</v-btn>
+        <!--개설-->
+        <v-toolbar-items class="toolbar_item_right">
+          <v-btn flat v-for="item in openedMenu" :key="item.title" :to="item.link">
+            {{item.title}}
+          </v-btn>
+        </v-toolbar-items>
+        <!--알람-->
+        <v-flex v-if="this.userIsAuthenticated">
+          <v-menu offset-y class="toolbar_item_right" >
+            <v-btn flat slot="activator" depressed width="30px" style="margin-top: 20px;">알림</v-btn>
             <v-list class="list">
-              <div class="alarmback" v-if="!alarmView.result">
-                <img class="alarmImg" src="@/assets/alarm_photo_cowalker.png">
-                <v-list-title class="alarmText"> 프로젝트에 참여해보세요!</v-list-title>
-              </div>
-              <div v-else>
-                <v-list-tile v-for="list in alarmView" :key="list.alarm">
+              <div v-if="alarmView">
+                <v-list-tile  v-for="list in alarmView" :key="list.alarm">
                   <img class="alarmImg" src="@/assets/alarm_photo_cowalker.png">
                   <v-list-tile-title class="alarmText">{{ list.contents }}</v-list-tile-title>
                 </v-list-tile>
               </div>
+              <div v-else>
+                <img class="alarmImg" src="@/assets/alarm_photo_cowalker.png">
+                <v-list-title class="alarmText"> 프로젝트에 참여해보세요!</v-list-title>
+              </div>
             </v-list>
           </v-menu>
-        </dev>
-
-        <dev v-if="this.userIsAuthenticated">
-          <v-toolbar-items class="toolbar_item_left">
-            <v-btn flat v-for="item in profileMenu" :key="item.title" :to="item.link" style="margin-top: 22px">
+        </v-flex>
+        <!--마이페이지-->
+        <v-flex v-if="this.userIsAuthenticated">
+          <v-toolbar-items class="toolbar_item_right" >
+            <v-btn flat v-for="item in profileMenu"  :key="item.title" :to="item.link" style="margin-top: 20px">
               {{item.title}}
             </v-btn>
           </v-toolbar-items>
-        </dev>
+        </v-flex>
       </v-toolbar-items>
     </v-toolbar>
     <main>
       <router-view></router-view>
     </main>
-
     <v-divider></v-divider>
     <v-flex>
     <v-footer class="hidden-xs-only" height="60" color="light gray">
@@ -72,7 +76,6 @@
       </v-spacer>
     </v-footer>
     </v-flex>
-
   </v-app>
 </template>
 
@@ -90,11 +93,11 @@ export default {
     ...mapGetters({
       alarmView: 'alarmView'
     }),
-    menuItems () {
-      let menuItems = [
+    openedMenu () {
+      let openedMenu = [
         {title: '개설', link: '/opened1'}
       ]
-      return menuItems
+      return openedMenu
     },
     leftMenu () {
       let leftMenu = [
@@ -121,44 +124,23 @@ export default {
 </script>
 
 <style>
-  .alarmback {
-    background-color: #f1f1f196;
+  .footer{
+    color: grey;
+    font-size: 13px;
   }
-
-  .alarmBtn {
-    background-color: #f1f1f196;
-  }
-
   .alarmText {
     font-size: 13px;
-    margin-left: 10px;
-    background-color: #f1f1f196;
-    margin-right: 10px;
   }
-
   .alarmImg {
     width: 22px;
     height: 22px;
     margin: 3px;
-    background-color: #f1f1f196;
   }
-
   .list {
-    margin-top: 30px;
-    margin-left: 10px;
-    margin-bottom: 10px;
-    margin-right: 10px;
-    background-color: #f1f1f196;
+    margin-top: 14px;
+    margin-left: 5px;
+    margin-bottom: 5px;
   }
-
-  .toolbar_item_left:hover {
-    background-color: rgb(89, 233, 233);
-  }
-
-  .toolbar_item_right:hover {
-    background-color: rgb(89, 233, 233);
-  }
-
   .v-toolbar {
     height: 48px;
   }

@@ -31,7 +31,7 @@
                             </tr>
                              <tr>
                                 <td><h3>활동기간 및 시간</h3></td>
-                                <td><h4 class="content">2018. 07. 01 ~ 2018. 09 .09 (주 3회 정기모임)</h4></td>
+                                <td><h4 class="content">{{allDetailrecruitView.activity}}</h4></td>
                             </tr>
                             <tr>
                                 <td><h3>혜택 및 보상</h3></td>
@@ -152,16 +152,17 @@ export default {
       allDetailrecruitView: 'allDetailrecruitView',
       allApplyMember: 'allApplyMember',
       allJoinMember: 'allJoinMember'
+
     })
 
   },
   created () {
-    this.$store.dispatch('getapplyMember', this.project_idx)
-    this.$store.dispatch('getjoinMember', this.recruit_idx)
     this.$store.dispatch('recruitingDetailView', {
       project_idx: this.project_idx,
       recruit_idx: this.recruit_idx
     })
+    this.$store.dispatch('getapplyMember', this.recruit_idx)
+    this.$store.dispatch('getjoinMember', this.project_idx)
   }
 }
 </script>
