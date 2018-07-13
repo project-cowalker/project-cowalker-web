@@ -3,7 +3,7 @@
     <v-layout justify-end>
       <app-board-mypage-dialog></app-board-mypage-dialog>
       <form @submit.prevent="logout">
-        <button type="submit" class="btncss">로그아웃</button>
+      <button type="submit" class="btncss">로그아웃</button>
       </form>
     </v-layout>
     <v-flex xs12 sm10 md10 lg10 xl10 offset-sm1> <!--v-card 안에서-->
@@ -16,7 +16,7 @@
         </v-flex>
 
         <v-container> <!--사진 옆 설명부분-->
-          <v-flex class="profileImg" fluid xs12 sm10 md10 lg12 xl10>
+          <v-flex class="profileImg" fluid xs12 sm10 md10 lg12 xl12>
             <v-layout justify-center text-xs-center >
               <v-card width="110px" class="title" flat>
                 <v-card-media :src="allmypageView.profile_url" class="mainImg" height="110px" style="border: 1px solid #d1ecff;"></v-card-media>
@@ -112,15 +112,13 @@
               <h4>개설 프로젝트</h4>
                <v-container class="v-container">
                   <v-layout d-inline-flex v-for="board in allmyprojectList" :key="board.title">
-                    <v-flex xs5 sm10 md8 lg10 offset-sm1 offset-md2>
+                    <v-flex xs5 sm10 md8 lg10 offset-sm1 offset-md2 class="dkdk">
                       <v-card  :to="'/boards/'" class="v-card" width="250px">
                           <v-card-media  class="card_image" v-if="board.img_url" height="210px" width="250px" :src="board.img_url[0]"></v-card-media>
                             <v-flex class="v-card-content">
                               <h5 class="board_title">{{board.title}}</h5> <!--class="headline mb-0"-->
                               <h6 class="date">{{board.area}} · {{board.department}} · {{board.aim}}</h6>
                             </v-flex>
-                          <v-card-actions>
-                          </v-card-actions>
                       </v-card>
                     </v-flex>
                   </v-layout>
@@ -168,7 +166,7 @@ export default {
 
 <style scoped>
   .carousel {
-    /*height: 320px;*/
+    height: 280px;
     margin: 0;
   }
   .mainImg{
@@ -176,8 +174,9 @@ export default {
   }
   .intro {
     margin-top: 40px;
-    border: rgb(218, 217, 217) 1px solid;
-    border-radius: 10px;
+  border:rgb(218, 217, 217) 1px solid;
+  border-radius: 10px;
+  margin-bottom: 5%;
   }
 
   .btncss {
@@ -192,7 +191,7 @@ export default {
   }
 
   .profileImg {
-    margin-left: -30px
+    margin-left: 9%;
   }
 
   .tb {
@@ -210,9 +209,9 @@ export default {
 
   .namebg {
     background-color: #d1ecff;
-    font-size: 17px;
+    font-size: 15px;
     margin-top:10px;
-    margin-left: 10px;
+    margin-left: 3%;
   }
 
   .total {
@@ -237,7 +236,6 @@ export default {
     outline: 0;
   }
   .v-container{
-    margin:auto;
     margin-bottom: 1%;
   }
   .v-card {
@@ -261,5 +259,14 @@ export default {
     margin-top: 10px;
     text-align: center;
   }
+  h3 {
+  margin-left: 5%;
+  margin-top: 20px;
+  border-bottom: 2.5px solid #81D4FA;
+  width: 35px;
+}
+.dkdk {
+  margin: 10%;
+}
 
 </style>

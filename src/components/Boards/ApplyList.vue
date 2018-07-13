@@ -1,5 +1,5 @@
 <template>
-  <v-form>
+  <v-form class="form">
     <v-container>
       <v-layout>
         <v-flex class="title">
@@ -232,5 +232,8 @@ export default {
   }
 h4 {
   margin-top: 50%;
+}
+.form {
+  background-color: white;
 }
 </style>

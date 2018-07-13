@@ -121,7 +121,7 @@
         </v-flex>
         <v-flex x12 sm10 md8 lg12>
           <form>
-            <input type="text" class="regular" v-model="activitiy">
+            <input type="text" class="regular" v-model="activity">
           </form>
         </v-flex>
       </v-layout>
@@ -211,9 +211,13 @@
       </v-container>
 
     <v-container text-xs-center>
+      <v-layout justify-center>
         <v-layout justify-center>
-          <button type="submit" class="btn-done">완료</button>
+          <form >
+            <button type="submit" class="btn-done">완료</button>
+          </form>
         </v-layout>
+      </v-layout>
       </v-container>
 
     </form>
@@ -233,7 +237,7 @@ export default {
       end_date: null,
       number: null,
       task: null,
-      activitiy: null,
+      activity: null,
       reward: null,
       area: null,
       ability: null,
@@ -299,7 +303,7 @@ export default {
         end_date: this.end_date,
         number: this.number,
         task: this.task,
-        activitiy: this.activitiy,
+        activity: this.activity,
         reward: this.reward,
         area: this.area,
         ability: this.ability,
@@ -381,12 +385,12 @@ export default {
     list-style:none;
   }
 .btn-done{
-    font-size: 16px;
-    width: 30%;
-    height: 65px;
-    border-radius: 19px;
-    background-color: #F3FCFE;
-    border: 1px solid #64DFFF;
-    margin: 5%;
+  font-size: 15px;
+  width: 180px;
+  height: 65px;
+  border-radius: 20px;
+  background-color: #F3FCFE;
+  border: 2px solid rgb(106, 213, 240);
+  margin: 5%;
   }
 </style>
