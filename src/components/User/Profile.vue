@@ -241,7 +241,7 @@ export default {
     margin-bottom: 1%;
   }
   .v-card {
-    margin: auto;
+    margin: 1%;
     margin-top: 2%;
     border:thistle 0.1px solid;
     border-radius: 8px;
