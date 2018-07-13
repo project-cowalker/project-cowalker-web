@@ -19,7 +19,7 @@ import VueBreadcrumbs from 'vue-breadcrumbs'
 
 import VeeValidate from 'vee-validate'
 import VueCarousel from 'vue-carousel'
-var SocialSharing = require('vue-social-sharing');
+var SocialSharing = require('vue-social-sharing')
 // import { Carousel, Slide } from 'vue-carousel'
 
 Vue.config.productionTip = false

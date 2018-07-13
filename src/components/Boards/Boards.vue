@@ -34,7 +34,7 @@
     </v-container>
     <v-container class="v-container">
     <v-layout d-inline-flex v-for="board in boards" :key="board.id">
-      <v-flex xs6 sm10 md8 lg8>
+      <v-flex xs6 sm10 md8 lg7>
         <v-card  :to="'/boards/' + board.project_idx" class="v-card" width="265px">
             <v-card-media  class="card_image" v-if="board.img_url" height="220px" width="265px" :src="board.img_url"></v-card-media>
               <v-flex class="v-card-content">
@@ -113,6 +113,7 @@ export default {
   .v-container{
     margin:auto;
     background-color: white;
+    margin-bottom: 5%;
   }
   .v-card {
     margin: auto;

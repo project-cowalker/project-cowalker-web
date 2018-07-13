@@ -121,7 +121,7 @@
         </v-flex>
         <v-flex x12 sm10 md8 lg12>
           <form>
-            <input type="text" class="regular" v-model="activitiy">
+            <input type="text" class="regular" v-model="activity">
           </form>
         </v-flex>
       </v-layout>
@@ -237,7 +237,7 @@ export default {
       end_date: null,
       number: null,
       task: null,
-      activitiy: null,
+      activity: null,
       reward: null,
       area: null,
       ability: null,
@@ -303,7 +303,7 @@ export default {
         end_date: this.end_date,
         number: this.number,
         task: this.task,
-        activitiy: this.activitiy,
+        activity: this.activity,
         reward: this.reward,
         area: this.area,
         ability: this.ability,

@@ -235,6 +235,7 @@ export const boardActions = {
   },
   logout ({commit}) {
     commit('logoutSuccess')
+    Router.push('/')
   },
   register ({commit}, payload) { // payload로 db id값 넘어옴
     axios.get('http://52.78.122.242:3000/results').then(res => {
