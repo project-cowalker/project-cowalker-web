@@ -24,11 +24,11 @@
                     </v-card>
                 </v-layout>
 
-              <social-sharing url="http://localhost:8080/boards/"
-                              title="The Progressive JavaScript Framework"
-                              description="Intuitive, Fast and Composable MVVM for building interactive interfaces."
-                              quote="Vue is a progressive framework for building user interfaces."
-                              hashtags="vuejs,javascript,framework"
+              <social-sharing url="http://cowalker.cf/boards/${project_idx}"
+                              title=""
+                              description="우리팀이 되어주세요! 공유해주시면 토큰을 드립니다."
+                              quote="우리팀이 되어주세요! 공유해주시면 토큰을 드립니다."
+                              hashtags=""
                               twitter-user="vuejs"
                               inline-template>
                 <network network="facebook">
@@ -65,8 +65,10 @@ export default {
   },
   methods: {
     sendKakao () {
+      Kakao.init('e0def3726582d98b3bc5211b736bfa1a')
       Kakao.Link.sendDefault({
         objectType: 'feed',
+        container: '#kakao',
         content: {
           title: '',
           description: '우리의 팀이 되어주세요!                     공유를 해주시면 토큰을 드립니다!',
