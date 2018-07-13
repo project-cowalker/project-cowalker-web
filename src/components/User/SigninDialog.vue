@@ -1,7 +1,7 @@
 <template>
-        <v-dialog persistent v-model="SigninDialog" max-width="300">
+        <v-dialog  persistent v-model="SigninDialog" width="">
         <v-btn class="button" dark large accent slot="activator">프로젝트 보기</v-btn>
-        <v-card>
+        <v-card class="mainbox" width="">
            <v-container class="v-container">
                 <v-layout row wrap>
                     <v-flex xs12>
@@ -15,6 +15,7 @@
                     </v-flex>
 
                      <v-container fluid>
+                       <v-flex x5 sm10 md8 lg10>
                             <form @submit.prevent="onSignIn"> <!--제출 이벤트가 페이지를 다시 로드 X -->
                                 <v-layout row wrap>
                                     <v-flex xs12>
@@ -32,6 +33,7 @@
                                     </v-flex>
                                 </v-layout>
                             </form>
+                       </v-flex>
                         </v-container>
                 </v-layout>
                  <v-layout row wrap>
@@ -84,6 +86,9 @@ export default {
 </script>
 
 <style>
+  .mainbox{
+    width: 80%;
+  }
 .button {
   margin-right: 50px;
   color: #212121;
