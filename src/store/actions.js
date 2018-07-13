@@ -292,7 +292,6 @@ export const boardActions = {
       }
     }).then(response => {
       commit('allmyprojectList', response.data)
-      console.log(response.data)
     })
   }
 }
