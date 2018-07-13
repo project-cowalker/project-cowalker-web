@@ -1,6 +1,7 @@
 import axios from 'axios'
 import Router from '@/router/index'
 
+
 export const boardActions = {
 
   getAllboards ({commit}) {
@@ -83,7 +84,6 @@ export const boardActions = {
       console.log(res.data)
       alert('수정완료')
       // commit('mypageView', res.data)
-
     }).catch(
       (error) => console.log(error)
     )
