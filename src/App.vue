@@ -8,6 +8,7 @@
           </v-list-tile-action>
           <v-list-tile-content>{{ item.title }}</v-list-tile-content>
         </v-list-tile>
+
       </v-list>
     </v-navigation-drawer>
     <v-toolbar flat dark class="transparent" color="grey ligthen-3">
@@ -126,32 +127,25 @@ export default {
     color: grey;
     font-size: 13px;
   }
-
   .alarmText {
     font-size: 13px;
-
   }
-
   .alarmImg {
     width: 22px;
     height: 22px;
     margin: 3px;
   }
-
   .list {
     margin-top: 14px;
     margin-left: 5px;
     margin-bottom: 5px;
   }
-
   .toolbar_item_left:hover {
     background-color: rgb(89, 233, 233);
   }
-
   .toolbar_item_right:hover {
     background-color: rgb(89, 233, 233);
   }
-
   .v-toolbar {
     height: 48px;
   }

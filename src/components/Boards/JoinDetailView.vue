@@ -141,30 +141,30 @@
 </template>
 
 <script>
-import {mapGetters} from 'vuex'
-export default {
-  props: ['project_idx', 'recruit_idx'],
-  data: () => ({
-  }),
-  computed: {
-    ...mapGetters({
-      allrecruitview: 'allrecruitView',
-      allDetailrecruitView: 'allDetailrecruitView',
-      allApplyMember: 'allApplyMember',
-      allJoinMember: 'allJoinMember'
+  import {mapGetters} from 'vuex'
+  export default {
+    props: ['project_idx', 'recruit_idx'],
+    data: () => ({
+    }),
+    computed: {
+      ...mapGetters({
+        allrecruitview: 'allrecruitView',
+        allDetailrecruitView: 'allDetailrecruitView',
+        allApplyMember: 'allApplyMember',
+        allJoinMember: 'allJoinMember'
 
-    })
+      })
 
-  },
-  created () {
-    this.$store.dispatch('getapplyMember', this.recruit_idx)
-    this.$store.dispatch('getjoinMember', this.project_idx)
-    this.$store.dispatch('recruitingDetailView', {
-      project_idx: this.project_idx,
-      recruit_idx: this.recruit_idx
-    })
+    },
+    created () {
+      this.$store.dispatch('getapplyMember', this.recruit_idx)
+      this.$store.dispatch('getjoinMember', this.project_idx)
+      this.$store.dispatch('recruitingDetailView', {
+        project_idx: this.project_idx,
+        recruit_idx: this.recruit_idx
+      })
+    }
   }
-}
 </script>
 
 <style scoped>
