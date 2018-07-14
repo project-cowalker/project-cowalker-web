@@ -6,7 +6,7 @@
       </v-carousel>
 
   <v-flex>
-    <v-card flat class="intro" width="100%" height="200px">
+    <v-card flat class="intro" width="100%" height="400px">
       <h3>소개</h3>
       <h4>{{allDetailView.explain}}</h4>
     </v-card>

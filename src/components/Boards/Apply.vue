@@ -172,7 +172,7 @@ export default {
     border-bottom: 1px solid #999;
   }
   .btn-done{
-    font-size: 16px;
+    font-size: 13px;
     width: 30%;
     height: 65px;
     border-radius: 19px;

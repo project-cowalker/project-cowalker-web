@@ -49,7 +49,7 @@
                   </v-layout>
 
                   <v-layout justify-center v-if="userView === '참여하기'">
-                    <v-btn class="register-btn" large accent slot="activator" outline color="cyan lighten-4">
+                    <v-btn @click="moveBtn(1500)" class="register-btn" large accent slot="activator" outline color="cyan lighten-4">
                       <v-text class="register-text"><h6>참여하기</h6></v-text>
                     </v-btn> <!--참여하기-->
                   </v-layout>
@@ -80,24 +80,31 @@
   </v-layout>
 </template>
 <script>
-  import {mapGetters} from 'vuex'
+import {mapGetters} from 'vuex'
 
-  export default {
-    props: ['project_idx'], // project_idx 값 넘기기
-    data: () => ({}),
-    computed: {
-      ...mapGetters({
-        boards: 'allBoards',
+export default {
+  props: ['project_idx'], // project_idx 값 넘기기
+  data: () => ({}),
+  computed: {
+    ...mapGetters({
+      boards: 'allBoards',
 
-        allDetailView: 'allDetailView',
-        userView: 'userView'
-      })
-    },
-    created () {
-      this.$store.dispatch('getDetailView', this.project_idx)// 서버로부터 게시글 다 받아오기
-      this.$store.dispatch('getuserView', this.project_idx)
+      allDetailView: 'allDetailView',
+      userView: 'userView'
+    })
+  },
+  created () {
+    this.$store.dispatch('getDetailView', this.project_idx)// 서버로부터 게시글 다 받아오기
+    this.$store.dispatch('getuserView', this.project_idx)
+  },
+  methods: {
+    moveBtn (e) {
+      if (e) {
+        window.scrollTo(0, e)
+      }
     }
   }
+}
 </script>
 
 <style scoped>

@@ -28,6 +28,7 @@
                           <button id="kakao"><img  style=" margin-top: 10px;" width="35px" src="@/assets/line.png"></button>
                         </network>
                       </social-sharing>
+
                       <social-sharing url="http://cowalker.cf/boards/${project_idx}"
                                       title="Cowalker"
                                       description=""
@@ -36,7 +37,7 @@
                                       twitter-user="vuejs"
                                       inline-template>
                         <network network="facebook">
-                          <button ><img class="btn" style="margin-left: 150px;" width="35px" src="@/assets/facebook_icon.png"></button>
+                          <button ><img class="btn"  width="35px" src="@/assets/facebook_icon.png"></button>
                         </network>
                       </social-sharing>
                     </v-card>

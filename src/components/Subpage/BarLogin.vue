@@ -101,6 +101,7 @@ export default {
     width: 116.86px;
     height: 40.64px;
     box-shadow: none;
+    margin-right: 3%;
     background: url("https://s3.ap-northeast-2.amazonaws.com/project-cowalker/KakaoTalk_20180714_031455352.png");
   }
   .bottom{
