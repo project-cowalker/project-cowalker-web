@@ -46,7 +46,7 @@ export default {
 
 <style scoped>
 .carousel {
-    height: 320px;
+    height: 450px;
     margin: 0;
 }
 .intro {

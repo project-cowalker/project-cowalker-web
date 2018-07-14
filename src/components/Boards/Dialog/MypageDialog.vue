@@ -33,10 +33,10 @@
           </v-container>
 
           <v-layout>
-            <v-flex x12 sm12 md12 lg12 offset-md3>
-            <span class="text_area" style="color:#707070;">프로젝트 이미지</span>
+            <v-flex x7 sm12 md12 lg12 offset-md3>
+            <span class="text_area" style="color:#707070;">&emsp;&emsp;배경 이미지</span>
             </v-flex>
-            <v-flex x12 sm12 md12 lg12 offset-md1>
+            <v-flex x7 sm12 md12 lg12 offset-md1>
             <span class="text_area" style="color:#707070;">프로필 이미지</span>
             </v-flex>
           </v-layout>
@@ -224,6 +224,9 @@ export default {
   }
   .dialog_style {
     border-radius: 25px;
+  }
+  .input:focus {
+    outline: none;
   }
 
   .mypage-btn {

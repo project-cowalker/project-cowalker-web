@@ -13,7 +13,7 @@
           <v-container d-inline-flex class="filter" fluid grid-list-xl>
             <v-layout justify-center>
                     <v-flex xs10 sm6 d-flex>
-                      <v-select class="v-select" :items="items" label="목적" v-model="aim"></v-select>
+                      <v-select id="aim_f" class="v-select" :items="items" label="목적" v-model="aim"></v-select>
                     </v-flex>
                     <v-flex xs10 sm6 d-flex>
                       <v-select :items="fields" label="분야" v-model="department"></v-select>
@@ -57,10 +57,10 @@ export default {
     return {
       show: false,
       search: '',
-      items: ['창업', '공모전 참여', '스터디', '사이드 프로젝트', '창작', '기타'],
-      fields: ['블록체인', 'IOT', '인공지능', '디자인', '컨텐츠', '기타'],
-      rules: ['PM', '기획', '디자이너', '개발자', '기타'],
-      areas: ['서울', '경기도', '충청도', '강원도', '전라도', '경상도', '제주도'],
+      items: ['','창업', '봉사', '스터디', '사이드 프로젝트', '창작', '기타'],
+      fields: ['','블록체인', 'IOT', '인공지능', '디자인', '컨텐츠', '기타'],
+      rules: ['','PM', '기획', '디자이너', '개발자', '기타'],
+      areas: ['','서울', '경기', '충청도', '강원도', '전라도', '경상도', '제주도'],
       aim: '',
       department: '',
       position: '',
@@ -97,7 +97,9 @@ export default {
 }
 </script>
 
+
 <style scoped>
+
   *{
     margin: 0;
     padding: 0;
@@ -129,7 +131,7 @@ export default {
   .board_title {
     text-align: center;
     border: 1px solid #64DFFF;
-    width: 50%;
+    width: 60%;
     margin: auto;
     margin-top: 20px;
   }

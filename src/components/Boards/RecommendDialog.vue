@@ -15,8 +15,19 @@
                 <v-card-title><h3>감사의 표시로 씨앗을 드립니다.</h3></v-card-title>
                 </v-layout>
                 <v-layout justify-center>
-                    <v-card flat class="share_card" width="170px" height="60px">
-                        <button id="kakao" @click="sendLink()" :key="kakao"><img src="@/assets/kakao_icon.png"></button>
+                    <v-card flat class="share_card" width="180px" height="60px">
+                        <!--<button id="kakao" @click="sendLink()" :key="kakao"><img src="@/assets/kakao_icon.png"></button>-->
+                      <social-sharing url="http://cowalker.cf/boards/${project_idx}"
+                                      title="Cowalker"
+                                      description=""
+                                      quote="우리팀이 되어주세요! 공유 해주시면 토큰을 드립니다."
+                                      hashtags=""
+                                      twitter-user="vuejs"
+                                      inline-template>
+                        <network network="line">
+                          <button id="kakao"><img  style=" margin-top: 10px;" width="35px" src="@/assets/line.png"></button>
+                        </network>
+                      </social-sharing>
                       <social-sharing url="http://cowalker.cf/boards/${project_idx}"
                                       title="Cowalker"
                                       description=""
@@ -25,7 +36,7 @@
                                       twitter-user="vuejs"
                                       inline-template>
                         <network network="facebook">
-                          <button ><img width="35px" src="@/assets/facebook_icon.png"></button>
+                          <button ><img class="btn" style="margin-left: 150px;" width="35px" src="@/assets/facebook_icon.png"></button>
                         </network>
                       </social-sharing>
                     </v-card>
@@ -87,6 +98,7 @@ export default {
 </script>
 
 <style scoped>
+  button:focus {outline:none;}
 .share {
     color : gray;
     width: 20px;
@@ -101,12 +113,9 @@ export default {
 #kakao {
     width: 38px;
     height: 38px;
-    margin-right: 30px;
+    /*margin-right: px;*/
     margin-top: 12px;
 }
-.share_btn {
-    width: 38px;
-    height: 38px;
-}
+
 
 </style>

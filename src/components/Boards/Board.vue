@@ -18,6 +18,7 @@
                 </div>
               </v-flex>
             </v-card-title>
+
             <v-container d-inline-flex>
               <v-layout> <!--추천공유참여하기 가운데로 모으기-->
                 <v-flex class="user_name" d-inline-flex xs6 sm8 md5 lg3 xl12>
@@ -42,31 +43,21 @@
               <v-layout justify-center class="recommend_share"> <!--추천공유참여하기 가운데로 모으기-->
                 <v-flex d-inline-flex xs12 sm10 md8 lg8 xl8>
                   <v-layout justify-center>
-                  <app-board-recommend-dialog></app-board-recommend-dialog> <!--:id="allDetailView.project_idx"-->
-                  <app-board-share-dialog></app-board-share-dialog>
+                    <app-board-recommend-dialog></app-board-recommend-dialog> <!--:id="allDetailView.project_idx"-->
+                    <app-board-share-dialog></app-board-share-dialog>
+                    &emsp; &emsp; &emsp;
+                  </v-layout>
 
-                  &ensp;
-                  <div v-if="userView === '참여하기'">
-                    <v-btn class="register-btn" :to="'/boards/' + this.project_idx + '/subrecruit'" large accent slot="activator" outline color="cyan lighten-4">
+                  <v-layout justify-center v-if="userView === '참여하기'">
+                    <v-btn class="register-btn" large accent slot="activator" outline color="cyan lighten-4">
                       <v-text class="register-text"><h6>참여하기</h6></v-text>
                     </v-btn> <!--참여하기-->
-                  </div>
-                  <div v-if="userView === '개설자'">
+                  </v-layout>
+                  <v-layout justify-center v-else>
                     <v-btn class="register-btn" :to="'/boards/' + this.project_idx + '/recruit'"
                            large accent slot="activator" outline color="cyan lighten-4">
                       <v-text class="register-text"><h6>모집하기</h6></v-text>
                     </v-btn> <!--모집하기-->
-                  </div>
-                  <div v-if="userView === '참여대기'">
-                    <v-btn class="register-btn" large accent slot="activator" outline color="cyan lighten-4">
-                      <v-text class="register-text">참여대기</v-text>
-                    </v-btn> <!--참여하기-->
-                  </div>
-                  <div v-if="userView === '참여완료'">
-                    <v-btn class="register-btn" large accent slot="activator" outline color="cyan lighten-4">
-                      <v-text class="register-text">참여완료</v-text>
-                    </v-btn> <!--참여하기-->
-                  </div>
                   </v-layout>
                 </v-flex>
               </v-layout> <!--모바일환경에서 제대로 작동하려면 layout안에 flex 선언하기-->
@@ -78,10 +69,7 @@
         <div id="v-tab">
           <v-tabs v-model="active" slider-color="cyan lighten-4">
             <v-tab :to="'/boards/' + this.project_idx + '/'">소개</v-tab>
-            <!--<div >-->
-            <!--ref="applyBtn"-->
-            <v-tab  :to="'/boards/' + this.project_idx + '/subrecruit'">모집</v-tab>
-            <!--</div>-->
+            <v-tab :to="'/boards/' + this.project_idx + '/subrecruit'">모집</v-tab>
           </v-tabs>
           <router-view></router-view>
         </div>
@@ -92,26 +80,24 @@
   </v-layout>
 </template>
 <script>
-import {mapGetters} from 'vuex'
+  import {mapGetters} from 'vuex'
 
-export default {
-  props: ['project_idx'], // project_idx 값 넘기기
-  data: () => ({}),
-  computed: {
-    ...mapGetters({
-      boards: 'allBoards',
+  export default {
+    props: ['project_idx'], // project_idx 값 넘기기
+    data: () => ({}),
+    computed: {
+      ...mapGetters({
+        boards: 'allBoards',
 
-      allDetailView: 'allDetailView',
-      userView: 'userView'
-    })
-  },
-  created () {
-    this.$store.dispatch('getDetailView', this.project_idx)// 서버로부터 게시글 다 받아오기
-    this.$store.dispatch('getuserView', this.project_idx)
-  },
-  methods: {
+        allDetailView: 'allDetailView',
+        userView: 'userView'
+      })
+    },
+    created () {
+      this.$store.dispatch('getDetailView', this.project_idx)// 서버로부터 게시글 다 받아오기
+      this.$store.dispatch('getuserView', this.project_idx)
+    }
   }
-}
 </script>
 
 <style scoped>
@@ -142,7 +128,7 @@ export default {
   }
 
   .title_btn {
-    width: 170px;
+    width: 200px;
     height: 35px;
     background: #d1ecff;
   }
@@ -186,7 +172,7 @@ export default {
 
   }
   h6 {
-   font-size: 12px;
+    font-size: 12px;
   }
   .summary_intro {
     color: rgb(94, 94, 94);
@@ -196,7 +182,7 @@ export default {
     border-radius: 7px;
   }
   .register-btn {
-     border: #d1ecff 2px solid;
-     border-radius: 5px;
+    border: #d1ecff 2px solid;
+    border-radius: 5px;
   }
 </style>

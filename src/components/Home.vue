@@ -13,7 +13,7 @@
           </v-flex>
           <v-flex x12 sm8 md7 lg7 align-content-center class="text-xs-center text-sm-right"> <!--버튼 중앙으로-->
             <!--프로젝트 보기-->
-            <v-btn class="hidden-xs-only" flat dark @click.native.stop="dialog = true" @click="guard"><p class="button">프로젝트 상세보기  ></p></v-btn>
+            <v-btn id="button" class="hidden-xs-only" flat dark @click.native.stop="dialog = true" @click="guard"><p>프로젝트 상세보기  ></p></v-btn>
 
             <v-dialog id="dialog" v-model="dialog" width="480.77px">
               <v-card height="508.55%">
@@ -143,11 +143,11 @@ export default {
     }
 
   }
-  .button {
+  #button {
     margin-right: 50px;
     opacity: 0.8;
     font-size: 25px;
-    margin-top: 65%;
+    margin-top: 67%;
     margin-left: 38%;
   }
   .log {

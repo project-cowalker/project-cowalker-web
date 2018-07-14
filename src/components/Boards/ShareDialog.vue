@@ -18,9 +18,21 @@
 
                 <v-layout justify-center>
                     <v-card flat class="share_card" width="170px" height="60px">
-                      <button id="kakao" @click="sendLink()" :key="kakao"><img src="@/assets/kakao_icon.png">
+                      <!--<button id="kakao" @click="sendLink()" :key="kakao"><img src="@/assets/kakao_icon.png">-->
 
-                      </button>
+                      <!--</button>-->
+                      <social-sharing url="http://cowalker.cf/boards/${project_idx}"
+                                      title="Cowalker"
+                                      description=""
+                                      quote="우리팀이 되어주세요! 공유 해주시면 토큰을 드립니다."
+                                      hashtags=""
+                                      twitter-user="vuejs"
+                                      inline-template>
+                        <network network="line">
+                          <button  ><img class="facebook" style="margin-left: 25px; margin-top: 10px;" width="35px" src="@/assets/line.png"></button>
+                        </network>
+                      </social-sharing>
+
                       <social-sharing url="http://cowalker.cf/boards/${project_idx}"
                                       title="Cowalker"
                                       description=""
@@ -117,6 +129,9 @@ export default {
   width: 20px;
   height: 20px;
 
+}
+.facebook:focus {
+  outline: none;
 }
 .kakao {
     width: 38px;

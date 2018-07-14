@@ -3,7 +3,7 @@
     <v-layout justify-end>
       <app-board-mypage-dialog></app-board-mypage-dialog>
       <form @submit.prevent="logout">
-      <button type="submit" class="btncss">로그아웃</button>
+        <button type="submit" class="btncss">로그아웃</button>
       </form>
     </v-layout>
     <v-flex xs12 sm10 md10 lg10 xl10 offset-sm1> <!--v-card 안에서-->
@@ -110,18 +110,18 @@
           <v-tab-item><!--프로젝트-->
             <v-card flat>
               <h4>개설 프로젝트</h4>
-               <v-container class="v-container">
-                  <v-layout d-inline-flex v-for="board in allmyprojectList" :key="board.title">
-                    <v-flex xs5 sm10 md8 lg10 offset-sm1 offset-md2 class="dkdk">
-                      <v-card  :to="'/boards/'" class="v-card" width="250px">
-                          <v-card-media  class="card_image" v-if="board.img_url" height="210px" width="250px" :src="board.img_url[0]"></v-card-media>
-                            <v-flex class="v-card-content">
-                              <h5 class="board_title">{{board.title}}</h5> <!--class="headline mb-0"-->
-                              <h6 class="date">{{board.area}} · {{board.department}} · {{board.aim}}</h6>
-                            </v-flex>
-                      </v-card>
-                    </v-flex>
-                  </v-layout>
+              <v-container class="v-container">
+                <v-layout d-inline-flex v-for="board in allmyprojectList" :key="board.title">
+                  <v-flex xs5 sm10 md8 lg10 offset-sm1 offset-md2 class="dkdk">
+                    <v-card  :to="'/boards/'" class="v-card" width="250px">
+                      <v-card-media  class="card_image" v-if="board.img_url" height="210px" width="250px" :src="board.img_url[0]"></v-card-media>
+                      <v-flex class="v-card-content">
+                        <h5 class="board_title">{{board.title}}</h5> <!--class="headline mb-0"-->
+                        <h6 class="date">{{board.area}} · {{board.department}} · {{board.aim}}</h6>
+                      </v-flex>
+                    </v-card>
+                  </v-flex>
+                </v-layout>
               </v-container>
             </v-card>
           </v-tab-item>
@@ -132,35 +132,35 @@
 </template>
 
 <script>
-import {mapGetters} from 'vuex'
+  import {mapGetters} from 'vuex'
 
-export default {
-  data () {
-    return {}
-  },
-  computed: {
-    ...mapGetters({
-      user: 'user',
-      boards: 'allBoards',
-      allmypageView: 'allmypageView',
-      allmypageIntro: 'allmypageIntro',
-      allmyprojectList: 'allmyprojectList'
-    })
-  },
-  created () {
-    this.$store.dispatch('mypageView')
-    this.$store.dispatch('mypageIntro')
-    this.$store.dispatch('getmyprojectList')
-  },
-  methods: {
-    logout () {
-      this.$store.dispatch('logout')
+  export default {
+    data () {
+      return {}
     },
-    bag () {
-      alert('서비스 준비중입니다.')
+    computed: {
+      ...mapGetters({
+        user: 'user',
+        boards: 'allBoards',
+        allmypageView: 'allmypageView',
+        allmypageIntro: 'allmypageIntro',
+        allmyprojectList: 'allmyprojectList'
+      })
+    },
+    created () {
+      this.$store.dispatch('mypageView')
+      this.$store.dispatch('mypageIntro')
+      this.$store.dispatch('getmyprojectList')
+    },
+    methods: {
+      logout () {
+        this.$store.dispatch('logout')
+      },
+      bag () {
+        alert('서비스 준비중입니다.')
+      }
     }
   }
-}
 
 </script>
 
@@ -174,9 +174,9 @@ export default {
   }
   .intro {
     margin-top: 40px;
-  border:rgb(218, 217, 217) 1px solid;
-  border-radius: 10px;
-  margin-bottom: 5%;
+    border:rgb(218, 217, 217) 1px solid;
+    border-radius: 10px;
+    margin-bottom: 5%;
   }
 
   .btncss {
@@ -250,7 +250,7 @@ export default {
   .board_title {
     text-align: center;
     border: 1px solid #64DFFF;
-    width: 50%;
+    width: 60%;
     margin: auto;
     margin-top: 10px;
   }
@@ -260,13 +260,13 @@ export default {
     text-align: center;
   }
   h3 {
-  margin-left: 5%;
-  margin-top: 20px;
-  border-bottom: 2.5px solid #81D4FA;
-  width: 35px;
-}
-.dkdk {
-  margin: 10%;
-}
+    margin-left: 5%;
+    margin-top: 20px;
+    border-bottom: 2.5px solid #81D4FA;
+    width: 35px;
+  }
+  .dkdk {
+    margin: 10%;
+  }
 
 </style>

@@ -258,7 +258,6 @@ export default {
 </script>
 
 <style scoped>
-
   .title{
     margin-top: 30px;
     margin-bottom: 5%;

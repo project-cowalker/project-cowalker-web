@@ -334,6 +334,9 @@ input[type=radio]:checked + label::after {
     margin-left: 15%;
     margin-bottom: 3%;
 }
+.input:focus {
+  outline: none;
+}
 .member {
     border:#81D4FA 1px solid;
     border-bottom-left-radius: 15px;
